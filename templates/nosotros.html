@@ -1,0 +1,112 @@
+{# --------------- Variables --------------- #}
+	{% set jumbotronImage = 'nosotros.jpg' %}
+	{% set subscribeImage = 'subscribe2' %}
+	{% set title = 'Nosotros' %}
+{# ----------------------------------------- #}
+
+{% extends "_layout" %}
+
+{% block jumbotron %}
+	<div class="pleca pleca-primary"></div>
+	<div class="container position-relative">
+		<h1 class="text-white text-uppercase text-center mb-3">
+			El concepto de ingeniería Urany
+		</h1>
+	</div>
+{% endblock %}
+
+{% block content %}
+	<section class="container py-md-5">
+		<div class="row py-5 align-items-center">
+			<div class="col-12 col-md-4 col-lg-3">
+				<h2 class="h4 mb-0 text-uppercase">
+					Los 3 pilares fundamentales de Urany
+				</h2>
+			</div>
+			<div class="w-100 d-lg-none"></div>
+			<div class="col-12 col-md-4 col-lg-3">
+				<div class="icon icon-nosotros">
+					{% include 'includes/equipo.svg.twig' %}
+				</div>
+				<p class="text-uppercase text-center mb-0 px-md-3">
+					Nuestro equipo de trabajo
+				</p>
+			</div>
+			<div class="col-12 col-md-4 col-lg-3">
+				<div class="icon icon-nosotros">
+					{% include 'includes/lineas.svg.twig' %}
+				</div>
+				<p class="text-uppercase text-center mb-0 px-md-3">
+					Nuestras líneas de producto
+				</p>
+			</div>
+			<div class="col-12 col-md-4 col-lg-3">
+				<div class="icon icon-nosotros">
+					{% include 'includes/ingenieria.svg.twig' %}
+				</div>
+				<p class="text-uppercase text-center mb-0 px-md-3">
+					Nuestro servicio de ingeniería
+				</p>
+			</div>
+		</div>
+	</section>
+	<section class="container-fluid">
+		<div class="row align-items-md-stretch">
+			<div class="d-none bg-cover d-lg-block col-lg-6" style="background-image:url(/assets/img/nosotros1.jpg)"></div>
+			<div class="bg-light col-12 py-5 col-lg-6 px-md-5 max-lg-490">
+				<h2 class="text-uppercase mb-3 px-md-5 px-lg-0 ml-xl-3">
+					Una empresa orgullosa de su grupo de trabajo
+				</h2>
+				<p class="text-justify px-md-5 px-lg-0 ml-xl-3">
+					Somos una empresa orgullosa de nuestro grupo de trabajo. Nos hemos enfocado desde la contratación de cada una de las personas que lo forman, en buscar alta integridad gracias a los valores morales adquiridos en casa. Personas con alto espíritu de servicio, de trato amable y sencillo, además de niveles altos de competencia propios de cada puesto.
+				</p>
+				<p class="text-justify px-md-5 px-lg-0 ml-xl-3">
+					Nuestro objetivo principal es ser una fuente confiable de productos y servicios que satisfaga las expectativas y requerimientos de nuestros clientes, a través de un compromiso que involucra alternativas de solución.
+				</p>
+			</div>
+		</div>
+	</section>
+	<section class="container-fluid">
+		<div class="row pt-5 align-items-md-stretch">
+			<div class="col-12 px-0 py-5 col-md-8 ml-md-auto d-lg-flex align-items-lg-center justify-content-lg-end col-lg-6 order-lg-1">
+				<img src="/assets/img/nosotros2.png" class="img-fluid mb-md-0">
+			</div>
+			<div class="col-12 py-5 col-md-8 px-md-5 col-lg-6 max-lg-490">
+				<h2 class="text-uppercase mb-3 ml-md-auto mr-lg-3">
+					Distribuidores de fabricantes de nivel internacional
+				</h2>
+				<p class="text-justify ml-md-auto mr-lg-3">
+					{% if currentSite.language == 'es-CO' %}
+						Hemos logrado la confianza de las empresas más importantes a nivel mundial fabricantes de equipos complementarios al servo motor, dejando en nuestras manos sus marcas para ser manejadas por Urany haciendo el rol del fabricante.
+					{% else %}
+						Hemos logrado la confianza de las Empresas más importantes a nivel mundial, dejando sus marcas en nuestras manos, para que las distribuyamos en México, Centro y Sudamérica.
+					{% endif %}
+				</p>
+				<p class="text-justify ml-md-auto mr-lg-3">
+					Gracias a ese nivel de relación, y siendo una empresa orgullosamente Mexicana, podemos constatar que hemos creado una red de distribución, un posicionamiento de la marca en el mercado, implementado estrategias comerciales y brindado un soporte no sólo técnico, sino también administrativo y logístico; que permitan el afianzamiento de nuestros clientes y socios comerciales.
+				</p>
+			</div>
+		</div>
+	</section>
+	<section class="container">
+		<div class="row py-5 align-items-md-center">
+			<div class="col-12 col-md-8 col-lg-6">
+				<img src="/assets/img/nosotros3.png" class="img-fluid mb-5 mb-md-0">
+			</div>
+			<div class="col-12 col-md-7 ml-md-auto col-lg-6 mx-lg-auto">
+				<h2 class="text-uppercase mb-3">
+					Cálculo de aplicaciones
+				</h2>
+				<p class="text-justify">
+					En Urany, nos hemos especializado en el área mecánica aplicada a los servo sistemas. El objetivo es brindar un servicio de cálculo de aplicaciones a servo controlar, que garantice el poder controlar un mecanismo con alta precisión, exactitud, capacidad, confiabilidad y un alto desempeño normalmente a velocidades extremas.
+ 				</p>
+ 				<p class="text-justify">
+					Este servicio de alta calidad y confiabilidad, nos ha dado el prestigio con el que contamos, siendo un proveedor de soluciones mecánicas con alto espíritu de servicio y cooperación para compañías que utilizan, distribuyen o integran servo sistemas.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	{#% include 'partials/_map' %#}
+	{% include 'partials/_subscribe' %}
+{% endblock %}

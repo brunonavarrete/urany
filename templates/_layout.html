@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="{{ currentSite.language }}" query="{{ craft.app.request.queryStringWithoutPath }}">
+	{% cache %}
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="home" href="{{ currentSite.baseUrl }}" />
+
+		<link rel="apple-touch-icon-precomposed" sizes="57x57" href="/assets/img/apple-touch-icon-57x57.png" />
+		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/img/apple-touch-icon-114x114.png" />
+		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/img/apple-touch-icon-72x72.png" />
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/apple-touch-icon-144x144.png" />
+		<link rel="apple-touch-icon-precomposed" sizes="60x60" href="/assets/img/apple-touch-icon-60x60.png" />
+		<link rel="apple-touch-icon-precomposed" sizes="120x120" href="/assets/img/apple-touch-icon-120x120.png" />
+		<link rel="apple-touch-icon-precomposed" sizes="76x76" href="/assets/img/apple-touch-icon-76x76.png" />
+		<link rel="apple-touch-icon-precomposed" sizes="152x152" href="/assets/img/apple-touch-icon-152x152.png" />
+		<link rel="icon" type="image/png" href="/assets/img/favicon-196x196.png" sizes="196x196" />
+		<link rel="icon" type="image/png" href="/assets/img/favicon-96x96.png" sizes="96x96" />
+		<link rel="icon" type="image/png" href="/assets/img/favicon-32x32.png" sizes="32x32" />
+		<link rel="icon" type="image/png" href="/assets/img/favicon-128.png" sizes="128x128" />
+		<meta name="application-name" content="Urany"/>
+		<meta name="msapplication-TileColor" content="#FFFFFF" />
+		<meta name="msapplication-TileImage" content="/assets/img/mstile-144x144.png" />
+		<meta name="msapplication-square70x70logo" content="/assets/img/mstile-70x70.png" />
+		<meta name="msapplication-square150x150logo" content="/assets/img/mstile-150x150.png" />
+		<meta name="msapplication-wide310x150logo" content="/assets/img/mstile-310x150.png" />
+		<meta name="msapplication-square310x310logo" content="/assets/img/mstile-310x310.png" />
+
+      <link rel="stylesheet" type="text/css" href="{{ craft.app.config.general.assetsUrl }}css/main.css">
+
+			{% hook 'seomaticRender' %}
+	</head>
+	{% endcache %}
+	<body>
+
+		<!-- BEGIN JIVOSITE CODE {literal} -->
+		<script type='text/javascript'>
+		(function(){ var widget_id = '9uodbPg51x';var d=document;var w=window;function l(){
+		var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = '//code.jivosite.com/script/geo-widget/'+widget_id; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);}if(d.readyState=='complete'){l();}else{if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();</script>
+		<!-- {/literal} END JIVOSITE CODE -->
+
+		{% include 'partials/_main-header' %}
+		{% include 'partials/_offcanvas' %}
+
+		{% if title != 'Blog' and title != 'Búsqueda' and title != 'Productos' and title != 'Política de privacidad' and title != 'Industrias' %}
+			<div id="main-jumbotron" class="position-relative jumbotron jumbotron-fluid {% if title == 'Inicio' or title == 'Demo Truck' or title == 'Bolsa de trabajo' or title == '404' %}home{% elseif title == 'Marcas' %}white{% elseif title == 'Descargas' %}descargas{% endif %} bg-cover position-relative d-flex justify-content-center align-items-center mb-0 pb-0" {% if jumbotronImage is defined %} style="background-image:url(/assets/img/{{ jumbotronImage }});" {% endif %}>
+				{% block jumbotron %}{% endblock %}
+			</div>
+		{% endif %}
+
+		{% block content %}{% endblock %}
+
+		{% include 'partials/_modal-gracias' %}
+
+		{% cache %}
+			{% include 'partials/_main-footer' %}
+		{% endcache %}
+
+    <script src="{{ craft.app.config.general.assetsUrl }}main.js"></script>
+	</body>
+</html>

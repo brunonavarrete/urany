@@ -1,0 +1,40 @@
+<section class="grid-slider container mb-5">
+	<div class="row mx-0">
+		<h2 class="col-12 mb-3 mt-4 px-0 pb-2 border border-light border-left-0 border-right-0 border-top-0 bolder h5 text-primary text-uppercase">
+			Artículos Relacionados
+			<ul class="arrows small list-unstyled mb-0 p-0 d-flex d-md-none">
+				<li class="px-2">
+					<i class="fa fa-chevron-left text-primary"></i>
+				</li>
+				<li class="px-2">
+					<i class="fa fa-chevron-right text-primary"></i>
+				</li>
+			</ul>
+		</h2>
+	</div>
+	<div class="slider-slider row mx-0">
+		{% for entry in craft.entries.section('instaBlog').all() %}
+		<a href="{{ entry.url }}" class="blog-item row d-block col-12 mx-0 px-0 pr-sm-3">
+			<div class="thumb col-12 bg-cover" style="background-image:url({{ entry.instaBlogImage[0].getUrl('blog') }})"></div>
+			<div class="info col-12 px-0 pt-3 pb-md-0 pt-md-1">
+				<h3 class="h5 bold mb-2">
+					{{ entry.title }}
+				</h3>
+				<p class="mb-0 text-muted">
+					<span class="text-muted">
+						{{ entry.postDate | date("F d, Y") }}
+					</span>
+				</p>
+				<p class="meta text-justify mb-0">
+					{{ entry.instaBlogBody | striptags | slice(0, 250) ~ '...' }}
+				</p>
+			</div>
+		</a><!-- /item -->
+		{% endfor %}
+	</div>
+	<div class="row text-right mt-3 mx-0">
+		<a href="{{ siteUrl('blog') }}" class="text-primary ml-auto">
+			Todas las entradas <i class="fa fa-chevron-right ml-2"></i>
+		</a>
+	</div>
+</section>

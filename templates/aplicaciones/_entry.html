@@ -1,0 +1,76 @@
+{# --------------- Variables --------------- #}
+	{% set jumbotronImage = entry.fotoEncabezado[0].filename %}
+	{% set subscribeImage = 'subscribe2' %}
+	{% set title = 'Aplicaciones:' ~ ' ' ~ entry.title %}
+{# ----------------------------------------- #}
+
+{% extends "_layout" %}
+
+{% block jumbotron %}
+	<div class="pleca pleca-primary"></div>
+	<div class="container position-relative">
+		<h1 class="text-white text-uppercase text-center mb-3">
+			Aplicación: {{ entry.title }}
+		</h1>
+	</div>
+{% endblock %}
+
+{% block content %}
+	{% set filasTexto = entry.filasTexto %}
+	{% if filasTexto is defined %}
+		<section class="container">
+			{% for fila in filasTexto %}
+				<div class="row py-5 align-items-md-center">
+					{% if fila.imagen[0] is defined %}
+						<div class="col-12 col-md-8 col-lg-4 mx-lg-auto {% if fila.textFirst == 'false' %}order-lg-1{% endif %}">
+							<img src="{{ fila.imagen[0].url }}" class="img-fluid mb-5 mb-md-0">
+						</div>
+					{% endif %}
+					<div class="col-12 {% if fila.imagen[0] is defined %}col-md-7 ml-md-auto col-lg-6{% else %}col-lg-7{% endif %} mx-lg-auto">
+						{{ fila.texto }}
+						<a href="#" data-chat="open" class="btn btn-primary text-uppercase">
+							Cotizar aplicación
+						</a>
+					</div>
+				</div>
+			{% endfor %}
+		</section>
+	{% endif %}
+
+	<section class="container pb-md-5">
+		<div class="row pt-3 pb-5 align-items-center">
+			<h2 class="col-12 h3 text-uppercase col-lg-3 align-self-start">
+				Elementos más utilizados
+			</h2>
+			<div class="col-12 row mx-0 col-lg-9">
+				{% set grid = entry.gridProductos %}
+				{% for product in grid %}
+					<div class="articulo col-12 text-center col-md-4">
+						<div class="thumb d-flex justify-content-center align-items-center">
+							{% if product.foto[0]|length > 0 %}
+								<img src="{{ product.foto[0].url }}">
+							{% else %}
+								<img src="/assets/img/icon-black.png">
+							{% endif %}
+						</div>
+						<div>
+							<h5 class="small text-uppercase text-muted mt-3">
+								{{ product.marca }}
+							</h5>
+							<h3 class="h5">
+								{{ product.modelo }}
+							</h3>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+			<div class="col-12 text-center">
+				<a href="#" data-chat="open" class="btn btn-primary mt-5 text-uppercase">
+					Ver más piezas
+				</a>
+			</div>
+		</div>
+	</section>
+
+	{% include 'partials/_subscribe' %}
+{% endblock %}

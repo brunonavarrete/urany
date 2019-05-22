@@ -1,0 +1,40 @@
+<div id="modal-marca" class="modal" tabindex="-1" role="dialog">
+	<div class="modal-dialog d-flex h-100 my-0 justify-content-center align-items-center" role="document">
+		<div class="modal-content">
+			<div class="modal-body p-0">
+				{% if title == 'Productos' %}
+					{% set familias = craft.entries.section('familiaProductos').all() %}
+				{% else %}
+					{% set familias = craft.entries.section('familiaProductos').search('marca:'~entry.title).all() %}
+				{% endif %}
+				{% for familia in familias %}
+					{% set products = familia.gridProductos.all() %}
+					{% for product in products %}
+						<div class="producto px-3 text-center" data-producto="{{ product.modelo }}">
+							<div class="thumb d-flex justify-content-center align-items-center">
+								{% if product.foto[0]|length > 0 %}
+									<img src="/assets/img/{{ product.foto[0].filename }}">
+								{% else %}
+									{% include 'includes/square.svg.twig' %}
+								{% endif %}
+							</div>
+							<h2 class="h5 my-3">
+								<small class="d-block text-muted text-uppercase mb-1">
+									{{ product.marca }}
+								</small>
+								{{ product.modelo }}
+							</h2>
+							<div class="descripcion mb-4">
+								{{ product.descripcion }}
+								<a href="#" class="text-primary" data-dismiss="modal">Volver</a>
+								{% if product.catalogo|length > 1 %}
+									<a class="btn btn-primary ml-5" href="/assets/img/{{ entry.catalogo[0].descarga[0].filename }}" download>Descargar catálogo</a>
+								{% endif %}
+							</div>
+						</div>
+					{% endfor %}
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</div>

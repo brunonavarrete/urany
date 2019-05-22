@@ -1,0 +1,84 @@
+{# --------------- Variables --------------- #}
+	{% set jumbotronImage = 'bolsa-de-trabajo1.jpg' %}
+	{% set title = 'Bolsa de trabajo' %}
+{# ----------------------------------------- #}
+
+{% extends "_layout" %}
+
+{% block jumbotron %}
+	<div class="pleca pleca-primary"></div>
+	<div class="container">
+			<div class="row py-5 align-items-center pt-md-5">
+				<div class="col-12 col-md-6 col-lg-5 pr-lg-5 ml-lg-auto">
+					<h3 class="h4 text-uppercase text-white mb-4">
+						Forma parte de nuestro equipo de trabajo
+					</h3>
+					<p class="text-white text-justify">
+						Estamos en constante búsqueda de talento para todas nuestras áreas. Acércate a Urany y desempéñate en una empresa de nivel internacional.
+					</p>
+				</div>
+				<div class="col-12 mt-5 col-md-6 mt-md-0 mr-lg-auto">
+					<form class="row contact-form" method="post" enctype="multipart/form-data">
+						{{ csrfInput() }}
+						<input type="hidden" name="action" value="contact-form/send">
+						<input type="hidden" name="address">
+						<div class="form-group col-12">
+							<input name="fromName" type="text" placeholder="Nombre completo" class="form-control form-control-outline-white text-white">
+						</div>
+						<div class="form-group col-12">
+							<input name="fromEmail" type="email" placeholder="Correo electrónico" class="form-control form-control-outline-white text-white">
+						</div>
+						<div class="form-group col-12 row mx-0">
+							<input name="message[Teléfono]" type="number" placeholder="Teléfono" class="form-control form-control-outline-white text-white">
+						</div>
+						<div class="form-group col-12">
+							<input name="message[Puesto de interés]" type="text" placeholder="Puesto de interés" class="form-control form-control-outline-white text-white">
+						</div>
+						<!--div class="form-group col-12">
+							<label class="custom-file w-100">
+							  <input type="file" id="file2" name="attachment" class="custom-file-input form-control-outline-white text-white">
+							  <span class="custom-file-control"></span>
+							</label>
+						</div-->
+						<div class="form-group row mx-0 col-12">
+							<p class="form-message"></p>
+							<input type="submit" value="Enviar solicitud" class="btn btn-outline-white text-white px-4 mt-3 ml-auto">
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+{% endblock %}
+
+{#% block content %}
+	<section id="bolsa-de-trabajo" class="container">
+		<div class="row py-5">
+			<div class="col-12 card-columns">
+				{% for i in 1..8 %}
+					<div class="card reveal mb-4">
+						<div class="thumb bg-cover" style="background-image:url({{ siteUrl }}assets/img/{{ i % 2 == 0 ? 'vacante1.jpg' : 'vacante2.jpg' }})"></div>
+						<div class="info p-3">
+							<h3 class="h5 bold">
+								{{ i % 2 == 0 ? 'Análisis de aplicación de campo' : 'Especialista en marketing y ventas' }}
+							</h3>
+							<p class="mb-3">
+								{{ i % 2 == 0 ? 'Experto en manejo de perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.' : 'Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.' }}
+							</p>
+							<ul class="list-unstyled px-0 mx-0 mb-0 row small bold">
+								<li class="col-auto pl-0">
+									<i class="fa fa-clock-o mr-2"></i> Tiempo completo
+								</li>
+								<li class="col-auto pl-0">
+									<i class="fa fa-calendar mr-2"></i> 5 de noviembre
+								</li>
+							</ul>
+							<a href="#" class="btn btn-sm btn-outline-primary mt-4 px-5 bold">
+								Aplicar
+							</a>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+{% endblock %#}

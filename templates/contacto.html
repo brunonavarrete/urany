@@ -1,0 +1,70 @@
+{# --------------- Variables --------------- #}
+	{% set jumbotronImage = 'contacto.png' %}
+	{% set title = 'Contacto' %}
+{# ----------------------------------------- #}
+
+{% extends "_layout" %}
+
+{% block jumbotron %}
+	<div class="pleca gradient"></div>
+	<div class="container">
+		<div class="position-relative text-center">
+			<h1 class="h3 text-white text-uppercase mt-5 mb-3 px-sm-5">
+				Contáctanos
+				<div class="mx-auto logo-contacto">
+					{% include 'includes/logo_white.svg.twig' %}
+				</div>
+			</h1>
+		</div>
+		<div class="row py-5 align-items-center">
+			<div class="col-12 col-md-6 col-lg-5 ml-lg-auto">
+				<h3 class="h4 text-uppercase text-white mb-4">
+					Ponte en contacto con nosotros <small class="text-lowercase d-block my-4">o</small> chatea con nosotros
+				</h3>
+				<div class="form-group row mx-0">
+					<input data-chat="open" type="submit" value="Iniciar chat" class="btn btn-white px-4">
+				</div>
+			</div>
+			<div class="col-12 mt-5 col-md-6 mt-md-0 mr-lg-auto">
+				<form class="row contact-form" method="post" action="" accept-charset="UTF-8">
+					{{ csrfInput() }}
+					<input type="hidden" name="action" value="contact-form/send">
+					<input type="hidden" name="address">
+					<div class="form-group col-12">
+						<input type="text" name="fromName" placeholder="Nombre completo" class="form-control">
+					</div>
+					<div class="form-group col-12">
+						<input type="email" name="fromEmail" placeholder="Correo electrónico" class="form-control">
+					</div>
+					<div class="form-group col-12 row mx-0">
+						<div class="col-12 px-0 mb-3 col-md-8 mb-md-0 pl-md-0 pr-md-2">
+							<input type="number" name="message[Teléfono]" placeholder="Teléfono institucional" class="form-control">
+						</div>
+						<div class="col-12 px-0 col-md-4 pr-md-0 pl-md-2">
+							<input type="number" name="message[Extensión]" placeholder="Extensión" class="form-control">
+						</div>
+					</div>
+					<div class="form-group col-12">
+						<input type="text" name="message[Empresa]" placeholder="Empresa" class="form-control">
+					</div>
+					<div class="form-group col-12">
+						<input type="text" name="message[Ciudad y estado]" placeholder="Ciudad y estado" class="form-control">
+					</div>
+					<div class="form-group col-12">
+						<textarea name="message[body]" placeholder="Escribe un mensaje" class="form-control"></textarea>
+					</div>
+					<div class="form-group row mx-0 col-12">
+						<p class="form-message"></p>
+						<input type="submit" value="Enviar solicitud" class="btn btn-outline-white px-4 mt-3 ml-auto">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block content %}
+	{% include 'partials/_slider' ignore missing with {'white':true} %}
+	{# include 'partials/_direcciones' #}
+	{#% include 'partials/_map' %#}
+{% endblock %}

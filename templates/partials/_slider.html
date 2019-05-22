@@ -1,0 +1,52 @@
+<section class="container-fluid {% if reverse is defined %}reverse-slick{% elseif white is defined %}bg-white white-slick{% else %}bg-primary-dark{% endif %} py-5">
+	<div class="container position-relative">
+		<div class="slick">
+			<div class="slick-slide d-flex text-center flex-column flex-md-row text-md-left align-items-md-center px-lg-5">
+				<div class="icon col-12 col-md-4 col-lg-3">
+					{% include 'includes/servo.svg.twig' %}
+				</div>
+				<div class="info col-12 {% if (white is defined or reverse is defined) %}text-primary{% else %}text-white{% endif %} col-md-8 col-lg-9">
+					<h3 class="text-uppercase">
+						Especialistas en aplicaciones servo controladas
+					</h3>
+					<p class="mb-0">
+						Urany es el aliado ideal para compañías especialistas en la parte electrónica y de control que integran y comercializan servo sistemas para automatización y que requieren de equipos mecánicos diseñados para aplicaciones servo controladas de alta precisión y alto dinamismo
+					</p>
+				</div>
+			</div>
+			<div class="slick-slide d-flex text-center flex-column flex-md-row text-md-left align-items-md-center px-lg-5">
+				<div class="icon col-12 col-md-4 col-lg-3">
+					{% include 'includes/componentes.svg.twig' %}
+				</div>
+				<div class="info col-12 {% if (white is defined or reverse is defined) %}text-primary{% else %}text-white{% endif %} col-md-8 col-lg-9">
+					<h3 class="text-uppercase">
+						Expertos en el análisis de aplicaciones en campo
+					</h3>
+					<p class="mb-0">
+						Óptima selección de los componentes de sistemas industriales servo controlados definiendo las bases para el éxito de la aplicación.
+					</p>
+				</div>
+			</div>
+			<div class="slick-slide d-flex text-center flex-column flex-md-row text-md-left align-items-md-center px-lg-5">
+				<div class="icon col-12 col-md-4 col-lg-3">
+					{% include 'includes/portafolio.svg.twig' %}
+				</div>
+				<div class="info col-12 {% if (white is defined or reverse is defined) %}text-primary{% else %}text-white{% endif %} col-md-8 col-lg-9">
+					<h3 class="text-uppercase">
+						Portafolio versátil
+					</h3>
+					<p class="mb-0">
+						Nuestra gama de productos puede aplicarse también en maquinaria que no requiere el nivel de precisión de un servo sistema.
+					</p>
+				</div>
+			</div>
+		</div>
+		<div id="prevSlick" class="d-none {% if (white is defined or reverse is defined) %}text-primary{% else %}text-white{% endif %} small d-sm-block">
+			<i class="fa fa-chevron-left"></i>
+		</div>
+		<div id="nextSlick" class="d-none {% if (white is defined or reverse is defined) %}text-primary{% else %}text-white{% endif %} small d-sm-block">
+			<i class="fa fa-chevron-right"></i>
+		</div>
+	</div>
+	<div id="dots" class="container d-flex mt-4"></div>
+</section>

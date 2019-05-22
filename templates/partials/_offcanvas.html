@@ -1,0 +1,35 @@
+{% if currentSite.language == 'es-MX' %}
+	<nav id="offcanvas" class="d-none d-lg-block bg-white px-2">
+		<ul class="list-unstyled px-4 m-0 row">
+			<li class="col-12 px-0 pt-3 pb-2 text-right">
+        <button id="close-menu">
+          <i class="far fa-times py-2 px-2"></i>
+        </button>
+      </li>
+			<li class="col-12 py-3 px-0">
+				<form action="{{ siteUrl }}buscar" method="GET" class="input-group mb-2 mb-sm-0">
+					<input id="lang" name="lang" type="hidden" value="{{ currentSite.language }}" />
+			    	<input id="q" name="q" type="text" class="form-control border-right-0" placeholder="Busca un producto">
+			    	<button class="input-group-addon bg-white text-muted border-left-0">
+			    		<i class="fa fa-search"></i>
+			    	</button>
+			    </form>
+			</li>
+			<li class="col-12 py-3 px-0 border border-muted border-left-0 border-right-0 border-top-0">
+				<a href="{{ url('demotruck') }}" class="text-muted text-uppercase">
+					Demo truck
+				</a>
+			</li>
+			<li class="col-12 py-3 px-0 border border-muted border-left-0 border-right-0 border-top-0">
+				<a href="{{ url('bolsa-de-trabajo') }}" class="text-muted text-uppercase">
+					Bolsa de trabajo
+				</a>
+			</li>
+			<li class="col-12 py-3 px-0 border border-muted border-left-0 border-right-0 border-top-0">
+				<a href="{{ url('descargas') }}" class="text-muted text-uppercase">
+					Descargas
+				</a>
+			</li>
+		</ul>
+	</nav>
+{% endif %}

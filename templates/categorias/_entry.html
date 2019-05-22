@@ -1,0 +1,46 @@
+{# --------------- Variables --------------- #}
+	{% set title = 'Productos' %}
+	{#% set subscribeImage = (entry.fotoSubscribe[0].url) ? entry.fotoSubscribe[0].filename[:-4] : 'subscribe2' %#}
+	{% set subscribeImage = 'subscribe2' %}
+{# ----------------------------------------- #}
+
+{% extends "_layout" %}
+
+{% block content %}
+	{% set familias = craft.entries.section('familiaProductos').all() %}
+	{% if familias|length > 0 %}
+		<section class="container py-5 mt-lg-5">
+			<div class="row py-5 align-items-center py-md-3">
+				<h1 class="col-12 my-4">{{entry.title}}</h1>
+				<div class="col-12 row mx-0" data-grid="{{(familia is defined) ? familia.title : ''}}">
+					{% for familia in familias %}
+						{% set products = familia.gridProductos.all() %}
+						{% for product in products %}
+							{% if product.categoria is not empty and product.categoria[0] == entry.title %}
+								<div class="articulo col-12 mb-4 text-center col-sm-6 col-md-4 col-lg-3" {% if product.descripcion is not null and product.descripcion|length > 0 %} data-target="{{ product.modelo }}" {% endif %}>
+									<div class="thumb d-flex justify-content-center align-items-center">
+										{% if product.foto[0]|length > 0 %}
+											<img src="/assets/img/{{ product.foto[0].filename }}">
+										{% else %}
+											<img src="/assets/img/icon-black.png">
+										{% endif %}
+									</div>
+									<div>
+										<h5 class="small text-uppercase text-muted mt-3">
+											{{ product.marca }}
+										</h5>
+										<h3 class="h5">
+											{{ product.modelo }}
+										</h3>
+									</div>
+								</div>
+							{% endif %}
+						{% endfor %}
+					{% endfor %}
+				</div>
+			</div>
+		</section>
+	{% endif %}
+	{% include 'partials/_subscribe' %}
+	{% include 'partials/_modal-categoria' %}
+{% endblock %}

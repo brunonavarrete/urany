@@ -1,0 +1,36 @@
+ {# --------------- Variables --------------- #}
+	{% set title = 'Búsqueda' %}
+	{% set query = craft.app.request.getParam('q') %}
+	{% set results = craft.entries().search(query).all() %}
+{# ----------------------------------------- #}
+
+{% extends "_layout" %}
+
+{% block content %}
+	<section class="container position-relative my-5 pt-5 px-md-0">
+		<div class="row py-5">
+			<div class="col-12">
+				<h1 class="h3 px-3">
+					Resultados de búsqueda: <em>"{{ query }}"</em>
+				</h1>
+				<ul class="list-unstyled px-3">
+					{% for entry in results %}
+						{% if (entry.type != 'aplicaciones') %}
+							<li class="h5 bold">
+								{% if (entry.type != 'marcas') %}
+								<a href="{{ siteUrl ~ 'marcas/' ~ entry.marca|lower }}" class="text-muted">
+									+ {{ entry.title }} &mdash; {{ entry.marca }}
+								</a>
+								{% else %}
+								<a href="{{ siteUrl ~ 'marcas/' ~ entry.title|lower }}" class="text-muted">
+									+ {{ entry.title }}
+								</a>
+								{% endif %}
+							</li>
+						{% endif %}
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</section>
+{% endblock %}

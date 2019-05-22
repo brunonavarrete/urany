@@ -1,0 +1,10 @@
+import styles from './sass/style.scss';
+import $ from 'jquery';
+window.jQuery = $;
+window.$ = $;
+import 'popper.js';
+import 'bootstrap';
+import 'slick-carousel';
+import '@fortawesome/fontawesome-pro/js/all';
+import 'scrollreveal';
+import './js/custom';

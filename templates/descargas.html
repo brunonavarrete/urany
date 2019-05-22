@@ -1,0 +1,39 @@
+{# --------------- Variables --------------- #}
+	{% set jumbotronImage = 'nosotros.jpg' %}
+	{% set subscribeImage = 'subscribe1' %}
+	{% set title = 'Descargas' %}
+	{% set marcas = craft.entries.section('marcas').all() %}
+{# ----------------------------------------- #}
+
+
+
+{% extends "_layout" %}
+
+{% block jumbotron %}
+	<div class="pleca pleca-primary"></div>
+	<div class="container position-relative">
+		<h1 class="text-white text-uppercase text-center mb-3">
+			Descargas
+		</h1>
+		<p class="text-center text-white mb-0">
+			Consulta la documentación oficial de cada uno de los equipos de nuestras marcas para alcanzar el mayor desempeño.
+		</p>
+	</div>
+{% endblock %}
+
+{% block content %}
+
+	<section class="container py-5">
+		<div id="descargas" class="row py-4 justify-content-around">
+			{% for marca in marcas %}
+				<div class="logo col-12 row justify-content-center align-items-end mb-5 col-sm-6 mt-lg-3 col-lg-4">
+					<img src="{{ marca.logoParaFondoOscuro[0].url }}" class="{{ marca.title == 'Wittenstein' or marca.title == 'Weiss' ? 'tall' : '' }} col-12 px-0">
+					<a class="col-auto btn btn-outline-secondary mt-5" target="_blank" href="{{ marca.linkDocumentacion}}">Descargar documentación</a>
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+
+	{% include 'partials/_subscribe' %}
+	{% include 'partials/_modal-video' %}
+{% endblock %}

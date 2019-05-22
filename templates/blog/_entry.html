@@ -1,0 +1,61 @@
+{# --------------- Variables --------------- #}
+	{% set title = 'Blog' %}
+{# ----------------------------------------- #}
+
+{% extends "_layout" %}
+
+{% block content %}
+	<section id="blog-top" class="container">
+		<div class="row mx-0 pt-4">
+			<div class="col-12 bg-cover featured-image" style="background-image:url({{ entry.instaBlogImage[0].getUrl('single') }})">
+				<!--div class="share-links bg-white text-primary px-3 py-2">
+					<span class="small">Compártelo en:</span>
+					<a href="https://www.facebook.com/sharer/sharer.php?u=" class="fa fa-facebook ml-3 text-primary"></a>
+					<a href="#" class="fa fa-twitter ml-3 text-primary"></a>
+					<a href="#" class="fa fa-whatsapp ml-3 text-primary"></a>
+				</div-->
+			</div><!-- /featured-image -->
+		</div><!-- /row -->
+	</section>
+	<section class="grid-inline container mt-5">
+		<div class="row mt-3">
+			<div class="col-12 col-lg-8">
+				<a href="{{entry.instaBlogCategories[0].url}}" class="
+				text-primary">{{entry.instaBlogCategories[0].title}}</a>
+				<h1 class="mt-0 mb-0 boldest">
+					{{ entry.title }}
+				</h1>
+				{% if entry.autor %}
+				<p class="mb-3">
+					Autor: {{entry.autor}}
+				</p>
+				{% endif %}
+				<p class="meta small mb-5">
+					<span class="category-tag bg-primary text-white px-2 py-1 text-capitalize">
+						{{ entry.postDate | date("M d, Y") }}
+					</span>
+				</p>
+				<div id="instaBody">
+					{{ entry.instaBlogBody }}
+				</div>
+				<div id="instaTags" class="my-5">
+					{% for tag in entry.instaBlogTags.all() %}
+						<span class="category-tag bg-primary-dark text-white px-2 py-1">{{ tag.title}}</span>
+					{% endfor %}
+				</div>
+				<div class="form-group">
+					{# <h3 class="mt-5 h5 text-muted">Deja un comentario</h3>
+					<textarea class="form-control" rows="4"></textarea>
+					<a href="#" class="text-primary ml-auto float-right">
+						Enviar <i class="fa fa-chevron-right mt-3 mb-5 ml-2 mb-lg-0"></i>
+					</a> #}
+					{# Output the Disqus embed code using the 'disqusEmbed' function #}
+          {{ disqusEmbed(entry.slug, entry.title, entry.url) }}
+				</div>
+			</div>
+			{% include 'blog/partials/_sidebar' %}
+		</div>
+	</section>
+	{% set entries = craft.entries.section('instaBlog').relatedTo(entry.instaBlogCategories[0]).limit(8).id('not ' ~ entry.id) %}
+	{% include 'blog/partials/_grid-slider' with {entries:entries} %}
+{% endblock %}

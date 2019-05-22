@@ -1,0 +1,15 @@
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';
+@import '../../node_modules/slick-carousel/slick/slick.scss';
+@import '../../node_modules/hamburgers/dist/hamburgers.css';
+
+@import 'global/old-styles.scss';
+
+svg {
+  box-sizing: initial;
+}
+
+#close-menu {
+  background: none;
+  padding: 0;
+  border: none;
+}

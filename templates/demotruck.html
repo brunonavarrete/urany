@@ -1,0 +1,96 @@
+{# --------------- Variables --------------- #}
+	{% set jumbotronImage = 'real_demotruck.jpg' %}
+	{% set subscribeImage = 'subscribe2' %}
+	{% set title = 'Demo Truck' %}
+{# ----------------------------------------- #}
+
+{% extends "_layout" %}
+
+{% block jumbotron %}
+	<div class="pleca gradient"></div>
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-12 ml-auto col-sm-7 col-md-6 col-lg-5">
+				<h1 class="h4 text-uppercase text-white text-lg-right">
+					Demo truck <small class="text-lowercase small">by</small>
+					<div class="mt-2">
+						{% include 'includes/logo_white.svg.twig' %}
+					</div>
+				</h1>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block content %}
+	<section class="container-fluid bg-primary">
+		<div class="container">
+			<div class="row pb-5 align-items-center pt-md-5">
+				<div class="col-12 col-md-6 col-lg-5 pr-lg-5 ml-lg-auto">
+					<h3 class="h4 text-uppercase text-white mb-4">
+						Solicita el demo truck <br class="d-none d-lg-block">en tu empresa
+					</h3>
+					<p class="text-white text-justify">
+						Como parte de nuestro servicio al cliente, en URANY contamos con una unidad de demostración móvil, en el cual se puede interactuar con los equipos más actuales.
+					</p>
+				</div>
+				<div class="col-12 mt-5 col-md-6 mt-md-0 mr-lg-auto">
+					<form class="row">
+						<div class="form-group col-12">
+							<input type="text" placeholder="Nombre completo" class="form-control">
+						</div>
+						<div class="form-group col-12">
+							<input type="email" placeholder="Correo electrónico" class="form-control">
+						</div>
+						<div class="form-group col-12 row mx-0">
+							<div class="col-12 px-0 mb-3 col-md-8 mb-md-0 pl-md-0 pr-md-2">
+								<input type="number" placeholder="Teléfono institucional" class="form-control">
+							</div>
+							<div class="col-12 px-0 col-md-4 pr-md-0 pl-md-2">
+								<input type="number" placeholder="Extensión" class="form-control">
+							</div>
+						</div>
+						<div class="form-group col-12">
+							<input type="text" placeholder="Empresa" class="form-control">
+						</div>
+						<div class="form-group col-12">
+							<input type="text" placeholder="Ciudad y estado" class="form-control">
+						</div>
+						<div class="form-group row mx-0 col-12">
+							<input type="submit" value="Enviar solicitud" class="btn btn-outline-white text-white px-4 mt-3 ml-auto">
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="container-fluid">
+		<div class="row align-items-md-stretch">
+			<div class="d-none bg-cover d-lg-block col-lg-6" style="background-image:url(/assets/img/real_demotruck2.jpg)">
+				<div class="pleca gradient pleca-transparent"></div>
+			</div>
+			<div class="bg-light col-12 py-5 col-lg-6 px-md-5 max-lg-490">
+				<h2 class="text-uppercase mb-3 px-md-5 px-lg-0 ml-xl-3">
+					Unidad de demostración móvil interactiva
+				</h2>
+				<!--p class="text-justify px-md-5 px-lg-0 ml-xl-3">
+					Las soluciones que puedes encontrar en nuestro Demo Truck son de: Automatización, Visualización, Sensores, Control Industrial, Seguridad, Control de Movimiento, Potencia y Redes Industriales.  Algunos de los equipos con los que se puede interactuar son:
+				</p-->
+				<!--p class="text-justify px-md-5 px-lg-0 ml-xl-3">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation.
+				</p-->
+				<p class="text-justify px-md-5 px-lg-0 ml-xl-3">
+					Dimensiones:
+					<ul>
+						<li>Largo: 7.3m</li>
+						<li>Ancho: 4.4m</li>
+						<li>Alto: 3.35m</li>
+						<li>Peso: 4 toneladas</li>
+					</ul>
+				</p>
+			</div>
+		</div>
+	</section>
+	{% include 'partials/_slider' ignore missing with {'white':true} %}
+	{% include 'partials/_subscribe' %}
+{% endblock %}

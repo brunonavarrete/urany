@@ -1,0 +1,48 @@
+{#
+ # 404 template
+ # ------------
+ #
+ # This template is loaded whenever Craft cannot figure out how to
+ # respond to an incoming request. No setup is involved to get your
+ # 404 page working; you just need to call it 404.html and put it
+ # at the root of your craft/templates/ folder.
+ #
+ # You can also create 400.html, 403.html, 500.html, and 503.html
+ # templates if you’d like. If Craft can’t find an error template
+ # to match the error code, it will just use the one in
+ # craft/app/templates/ instead.
+ #
+ # See this page for more details on how Craft routes requests:
+ # http://craftcms.com/docs/routing
+ #}
+
+{# --------------- Variables --------------- #}
+	{% set jumbotronImage = 'home.jpg' %}
+	{% set title = '404' %}
+{# ----------------------------------------- #}
+
+{% extends "_layout" %}
+
+{% block jumbotron %}
+	<style type="text/css" media="screen">
+		#main-header,
+		#main-footer {
+			display:none;
+		}
+	</style>
+	<div class="pleca pleca-primary"></div>
+	<div class="container">
+			<div class="row py-5 align-items-center">
+				<div class="col-12 col-lg-7 mx-lg-auto text-center">
+					{% include 'includes/logo_white.svg.twig' %}
+					<h2 class="text-uppercase text-white mt-5 mb-2">
+						404 - Página no encontrada
+					</h2>
+					<p class="text-white mb-0">
+						Ocurrió un error y no pudimos encontrar la página que buscabas. <a href="{{ currentSite.baseUrl }}" class="text-white">Volver a URANY.</a>
+					</p>
+				</div>
+
+			</div>
+		</div>
+{% endblock %}
