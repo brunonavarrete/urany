@@ -5,7 +5,7 @@
     "craftcms/contact-form-honeypot": "1.0.2",
     "craftcms/redactor": "2.3.3.2",
     "nystudio107/craft-disqus": "1.1.0",
-    "nystudio107/craft-seomatic": "^3.2",
+    "nystudio107/craft-seomatic": "3.2.5",
     "vlucas/phpdotenv": "^2.4.0"
   },
   "autoload": {
