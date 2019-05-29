@@ -1,28 +1,30 @@
 <aside class="col-12 row mx-0 my-5 align-items-center align-self-start col-lg-4 my-lg-0 align-items-lg-start pl-xl-5 ml-xl-auto sticky-top pt-lg-5">
-	<div class="d-none col-12 px-0 d-lg-block col-md-6 col-lg-12 mb-5">
-		<h3 class="mt-1 bolder h4 text-primary text-uppercase">
-			Comparte en tus redes
-		</h3>
-		<div class="row justify-content-center mt-4">
-			<div class="d-flex flex-column align-items-center">
-				<a class="px-3 social-goal" href="https://www.facebook.com/sharer/sharer.php?u={{(entry.url is defined ? entry.url)}}&t={{(entry.title is defined) ? entry.title}}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
-					   target="_blank"><i class="fab fa-facebook-f fa-2x  btn-facebook"></i></a>
-				<small>Facebook</small>
-			</div>
-			<div class="d-flex flex-column align-items-center">
-				<a class="px-3 social-goal" href="https://www.linkedin.com/shareArticle?mini=true&url={{(entry.url is defined) ? entry.url}}&title={{(entry.title is defined) ? entry.title}}&summary={{ (entry.instaBlogBody is defined) ? entry.instaBlogBody | striptags | slice(0, 250) ~ '...' }}&source=blog" target="_blank"><i class="fab fa-linkedin-in fa-2x btn-linkedin"></i></a>
-				<small>LinkedIn</small>
-			</div>
-			<div class="d-flex flex-column align-items-center">
-				<a class="px-3 social-goal" href="whatsapp://send?text=Vi este {{(entry.title is defined) ? entry.title}} en {{siteName}} y me pareció excelente. {{(entry.url is defined) ? entry.url}}" data-action="share/whatsapp/share"><i class="fab fa-whatsapp fa-2x btn-whatsapp"></i></a>
-				<small>Whatsapp</small>
-			</div>
-			<div class="d-flex flex-column align-items-center">
-				<a class="px-3 social-goal" href="mailto:?subject=Checa este {{(entry.title is defined) ? entry.title}}&amp;body=Vi este {{(entry.title is defined) ? entry.title}} en {{siteName}} y me pareció excelente. {{(entry.url is defined) ? entry.url}}"><i class="fa fa-envelope fa-2x btn-dark-color"></i></a>
-				<small>Mail</small>
+	{% if entry is defined %}
+		<div class="d-none col-12 px-0 d-lg-block col-md-6 col-lg-12 mb-5">
+			<h3 class="mt-1 bolder h4 text-primary text-uppercase">
+				Comparte en tus redes
+			</h3>
+			<div class="row justify-content-center mt-4">
+				<div class="d-flex flex-column align-items-center">
+					<a class="px-3 social-goal" href="https://www.facebook.com/sharer/sharer.php?u={{(entry.url is defined ? entry.url)}}&t={{(entry.title is defined) ? entry.title}}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
+						target="_blank"><i class="fab fa-facebook-f fa-2x  btn-facebook"></i></a>
+					<small>Facebook</small>
+				</div>
+				<div class="d-flex flex-column align-items-center">
+					<a class="px-3 social-goal" href="https://www.linkedin.com/shareArticle?mini=true&url={{(entry.url is defined) ? entry.url}}&title={{(entry.title is defined) ? entry.title}}&summary={{ (entry.instaBlogBody is defined) ? entry.instaBlogBody | striptags | slice(0, 250) ~ '...' }}&source=blog" target="_blank"><i class="fab fa-linkedin-in fa-2x btn-linkedin"></i></a>
+					<small>LinkedIn</small>
+				</div>
+				<div class="d-flex flex-column align-items-center">
+					<a class="px-3 social-goal" href="whatsapp://send?text=Vi este {{(entry.title is defined) ? entry.title}} en {{siteName}} y me pareció excelente. {{(entry.url is defined) ? entry.url}}" data-action="share/whatsapp/share"><i class="fab fa-whatsapp fa-2x btn-whatsapp"></i></a>
+					<small>Whatsapp</small>
+				</div>
+				<div class="d-flex flex-column align-items-center">
+					<a class="px-3 social-goal" href="mailto:?subject=Checa este {{(entry.title is defined) ? entry.title}}&amp;body=Vi este {{(entry.title is defined) ? entry.title}} en {{siteName}} y me pareció excelente. {{(entry.url is defined) ? entry.url}}"><i class="fa fa-envelope fa-2x btn-dark-color"></i></a>
+					<small>Mail</small>
+				</div>
 			</div>
 		</div>
-	</div>
+	{% endif %}
 	<a href="{{ url('demotruck') }}" class="ad position-relative bg-cover col-12 p-4 mb-3 col-md-6 col-lg-12 mb-lg-4" style="background-image:url(/assets/img/demotruck.jpg)">
 		<div class="pleca pleca-primary"></div>
 		<div class="frame position-relative border border-white text-white d-flex justify-content-center align-items-center">
