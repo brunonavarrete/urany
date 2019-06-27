@@ -1,11 +1,11 @@
 {
   "require": {
-    "craftcms/cms": "3.1.28",
-    "craftcms/contact-form": "2.2.4",
+    "craftcms/cms": "3.1.32.1",
+    "craftcms/contact-form": "2.2.5",
     "craftcms/contact-form-honeypot": "1.0.2",
     "craftcms/redactor": "2.3.3.2",
     "nystudio107/craft-disqus": "1.1.0",
-    "nystudio107/craft-seomatic": "3.2.5",
+    "nystudio107/craft-seomatic": "3.2.10",
     "vlucas/phpdotenv": "^2.4.0"
   },
   "autoload": {

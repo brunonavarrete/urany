@@ -1,72 +1,72 @@
-import $ from 'jquery';
+import $ from "jquery";
 window.jQuery = $;
 window.$ = $;
-import Headroom from 'headroom.js';
-import ScrollReveal from 'scrollreveal';
+import Headroom from "headroom.js";
+import ScrollReveal from "scrollreveal";
 /* --------------------------
 	Fit images
 -------------------------- */
 function fitImages() {
-  $('.articulo').each(function() {
-    var img = $(this).find('.thumb img');
+  $(".articulo").each(function() {
+    var img = $(this).find(".thumb img");
     var imgWidth = img.outerWidth();
     var imgHeight = img.outerHeight();
     if (imgWidth > imgHeight) {
-      img.addClass('horizontal');
+      img.addClass("horizontal");
     }
   });
 }
-$(window).on('load', function() {
+$(window).on("load", function() {
   fitImages();
 });
 /* --------------------------
 ------ Chat ------
 -------------------------- */
 var invitationSent = false;
-$('[data-chat]').click(function(e) {
+$("[data-chat]").click(function(e) {
   e.preventDefault();
   var status = jivo_api.chatMode();
-  if (status === 'online' && !invitationSent) {
-    var chat = $(this).data('chat');
-    var marca = $(this).data('marca');
-    if (chat === 'nombre') {
-      var nombre = $('#contacta').val();
-      var marca = $(this).data('marca');
-      if (nombre && nombre != '' && (marca && marca != '')) {
+  if (status === "online" && !invitationSent) {
+    var chat = $(this).data("chat");
+    var marca = $(this).data("marca");
+    if (chat === "nombre") {
+      var nombre = $("#contacta").val();
+      var marca = $(this).data("marca");
+      if (nombre && nombre != "" && (marca && marca != "")) {
         jivo_api.setCustomData([
           {
-            title: 'Nombre',
+            title: "Nombre",
             content: nombre
           },
           {
-            title: 'Marca',
+            title: "Marca",
             content: marca
           }
         ]);
         var msg =
-          'Hola ' +
+          "Hola " +
           nombre +
-          ', veo que estás interesado en nuestros productos ' +
+          ", veo que estás interesado en nuestros productos " +
           marca +
-          ', ¿cómo puedo ayudarte?';
-      } else if (nombre && nombre != '') {
+          ", ¿cómo puedo ayudarte?";
+      } else if (nombre && nombre != "") {
         jivo_api.setCustomData([
           {
-            title: 'Nombre',
+            title: "Nombre",
             content: nombre
           }
         ]);
-        var msg = 'Hola ' + nombre + ', ¿cómo puedo ayudarte?';
+        var msg = "Hola " + nombre + ", ¿cómo puedo ayudarte?";
       }
     } else {
-      var msg = 'Bienvenido a Urany, ¿cómo puedo ayudarle?';
+      var msg = "Bienvenido a Urany, ¿cómo puedo ayudarle?";
     }
     jivo_api.showProactiveInvitation(msg);
     invitationSent = true;
   } else {
     jivo_api.open();
   }
-  ga('send', { hitType: 'pageview', page: '/clic-cta', title: 'Clic en CTA' });
+  ga("send", { hitType: "pageview", page: "/clic-cta", title: "Clic en CTA" });
 });
 
 /* --------------------------
@@ -75,18 +75,18 @@ $('[data-chat]').click(function(e) {
 
 function revealMessage(msg, form) {
   form
-    .find('.form-message')
+    .find(".form-message")
     .html(msg)
-    .addClass('open');
+    .addClass("open");
   setTimeout(function() {
     form
-      .find('.form-message')
-      .html('')
-      .removeClass('open');
+      .find(".form-message")
+      .html("")
+      .removeClass("open");
   }, 5000);
 }
 
-$('.contact-form').submit(function(e) {
+$(".contact-form").submit(function(e) {
   // Prevent the form from actually submitting
   e.preventDefault();
 
@@ -96,24 +96,24 @@ $('.contact-form').submit(function(e) {
   var data = $(this).serialize();
 
   // block multiple clicks
-  form.find('input').attr('disabled', true);
+  form.find("input").attr("disabled", true);
 
   // Send it to the server
-  $.post('/', data, function(response) {
+  $.post("/", data, function(response) {
     if (response.success) {
-      ga('send', {
-        hitType: 'pageview',
-        page: '/formulario-enviado',
-        title: 'Formulario enviado'
+      ga("send", {
+        hitType: "pageview",
+        page: "/formulario-enviado",
+        title: "Formulario enviado"
       });
       revealMessage(
-        'Gracias por contactarnos, te contactaremos cuanto antes.',
+        "Gracias por contactarnos, te contactaremos cuanto antes.",
         form
       );
     } else {
-      revealMessage('Hubo un error, intenta de nuevo más tarde.', form);
+      revealMessage("Hubo un error, intenta de nuevo más tarde.", form);
     }
-    form.find('input').attr('disabled', false);
+    form.find("input").attr("disabled", false);
   });
 });
 
@@ -121,50 +121,50 @@ $('.contact-form').submit(function(e) {
 ------ Mailchimp ------
 -------------------------- */
 
-$('form.newsletter').submit(function(e) {
+$("form.newsletter").submit(function(e) {
   e.preventDefault();
-  $form = $(this);
+  var $form = $(this);
   $.ajax({
-    type: $form.attr('method'),
-    url: $form.attr('action'),
+    type: $form.attr("method"),
+    url: $form.attr("action"),
     data: $form.serialize(),
     cache: false,
-    dataType: 'json',
-    contentType: 'application/json; charset=utf-8',
+    dataType: "json",
+    contentType: "application/json; charset=utf-8",
     beforeSend: function() {
-      $form.find('[type="submit"]').attr('disabled', true);
+      $form.find('[type="submit"]').attr("disabled", true);
     },
     error: function(err) {
       console.error(err);
-      alert('Ocurrió un error, inténtalo más tarde.');
+      alert("Ocurrió un error, inténtalo más tarde.");
     },
     success: function(data) {
       if (
-        data.result == 'success' ||
-        data.msg.indexOf('ya está suscrito a esta lista') >= 0
+        data.result == "success" ||
+        data.msg.indexOf("ya está suscrito a esta lista") >= 0
       ) {
-        if ($form.is('.newsletter-subscribe')) {
+        if ($form.is(".newsletter-subscribe")) {
           $form.fadeOut(50);
           setTimeout(function() {
-            $('#download').addClass('success');
+            $("#download").addClass("success");
           }, 65);
-          ga('send', {
-            hitType: 'pageview',
-            page: '/descarga-catalogo',
-            title: 'Descarga catalogo'
+          ga("send", {
+            hitType: "pageview",
+            page: "/descarga-catalogo",
+            title: "Descarga catalogo"
           });
         } else {
-          $('#modal-mailchimp').modal();
-          ga('send', {
-            hitType: 'pageview',
-            page: '/registro-mailchimp',
-            title: 'Registro Mailchimp'
+          $("#modal-mailchimp").modal();
+          ga("send", {
+            hitType: "pageview",
+            page: "/registro-mailchimp",
+            title: "Registro Mailchimp"
           });
         }
       } else {
-        $form.find('.mailchimp-error').html(data.msg);
+        $form.find(".mailchimp-error").html(data.msg);
       }
-      $form.find('[type="submit"]').attr('disabled', false);
+      $form.find('[type="submit"]').attr("disabled", false);
     }
   });
 });
@@ -172,17 +172,17 @@ $('form.newsletter').submit(function(e) {
 /* --------------------------
 --------- Headroom ----------
 -------------------------- */
-var header = document.getElementById('main-header');
+var header = document.getElementById("main-header");
 var headroom = new Headroom(header, {
   offset: $(header).height(),
   onTop: function() {
-    if ($('#scroll').length) {
-      $('#scroll').fadeIn(400);
+    if ($("#scroll").length) {
+      $("#scroll").fadeIn(400);
     }
   },
   onNotTop: function() {
-    if ($('#scroll').length) {
-      $('#scroll').fadeOut(400);
+    if ($("#scroll").length) {
+      $("#scroll").fadeOut(400);
     }
   }
 });
@@ -191,10 +191,10 @@ headroom.init();
 /* -------------------------
 --------- Scroll -----------
 -------------------------- */
-$('#scroll').click(function() {
-  $('html,body').animate(
+$("#scroll").click(function() {
+  $("html,body").animate(
     {
-      scrollTop: $('#top-home').offset().top
+      scrollTop: $("#top-home").offset().top
     },
     800
   );
@@ -203,40 +203,40 @@ $('#scroll').click(function() {
 /* -------------------------
 --------- Social share goal -----------
 -------------------------- */
-$('.social-goal').click(function() {
-  ga('send', {
-    hitType: 'pageview',
-    page: '/social-share',
-    title: 'Social share'
+$(".social-goal").click(function() {
+  ga("send", {
+    hitType: "pageview",
+    page: "/social-share",
+    title: "Social share"
   });
 });
 
 /* --------------------------
 ------ Nav (collapse) -------
 -------------------------- */
-$('.navbar-collapse').on('show.bs.collapse', function() {
-  $('#main-header').addClass('showing');
+$(".navbar-collapse").on("show.bs.collapse", function() {
+  $("#main-header").addClass("showing");
 });
-$('.navbar-collapse').on('hidden.bs.collapse', function() {
-  $('#main-header').removeClass('showing');
+$(".navbar-collapse").on("hidden.bs.collapse", function() {
+  $("#main-header").removeClass("showing");
 });
 
 /* --------------------------
 ------- Toggle grids --------
 -------------------------- */
-$('#nav-marca [data-target]').click(function() {
-  var show = $(this).data('target');
-  if ($(this).is('.btn-outline-primary')) {
+$("#nav-marca [data-target]").click(function() {
+  var show = $(this).data("target");
+  if ($(this).is(".btn-outline-primary")) {
     // toggle
-    $('[data-grid],[data-info]').hide();
+    $("[data-grid],[data-info]").hide();
     $('[data-grid="' + show + '"],[data-info="' + show + '"]').fadeIn(150);
     // toggle classes
-    $('#nav-marca [data-target]')
-      .addClass('btn-outline-primary')
-      .removeClass('btnprimary');
+    $("#nav-marca [data-target]")
+      .addClass("btn-outline-primary")
+      .removeClass("btnprimary");
     $(this)
-      .addClass('btn-primary')
-      .removeClass('btn-outline-primary');
+      .addClass("btn-primary")
+      .removeClass("btn-outline-primary");
     // update title
     //$('#category-title').text( title );
   }
@@ -246,54 +246,54 @@ $('#nav-marca [data-target]').click(function() {
 /* --------------------------
 ------ Modal producto -------
 -------------------------- */
-$('[data-grid] [data-target]').click(function() {
-  var show = $(this).data('target');
-  $('#modal-marca .producto').hide();
+$("[data-grid] [data-target]").click(function() {
+  var show = $(this).data("target");
+  $("#modal-marca .producto").hide();
   $('#modal-marca .producto[data-producto="' + show + '"]').show();
-  $('#modal-marca').modal();
+  $("#modal-marca").modal();
 });
 
 /* --------------------------
 --------- Offcanvas ---------
 -------------------------- */
-$('#main-nav .hamburger').click(function() {
-  $('#offcanvas').addClass('open');
+$("#main-nav .hamburger").click(function() {
+  $("#offcanvas").addClass("open");
 });
-$('#close-menu').click(function() {
-  $('#offcanvas').removeClass('open');
+$("#close-menu").click(function() {
+  $("#offcanvas").removeClass("open");
 });
 
 $(document).mouseup(function(e) {
-  var container = $('#offcanvas');
+  var container = $("#offcanvas");
   // if the target of the click isn't the container nor a descendant of the container
   if (!container.is(e.target) && container.has(e.target).length === 0) {
-    container.removeClass('open');
+    container.removeClass("open");
   }
 });
 
-$(window).on('scroll', function() {
-  $('#offcanvas').removeClass('open');
+$(window).on("scroll", function() {
+  $("#offcanvas").removeClass("open");
 });
 
 /* --------------------------
 ---------- Slick -----------
 -------------------------- */
-$('.slick').slick({
-  appendDots: $('#dots'),
+$(".slick").slick({
+  appendDots: $("#dots"),
   arrows: false,
   dots: true
 });
-$('#nextSlick').click(function() {
-  $('.slick').slick('slickNext');
+$("#nextSlick").click(function() {
+  $(".slick").slick("slickNext");
 });
-$('#prevSlick').click(function() {
-  $('.slick').slick('slickPrev');
+$("#prevSlick").click(function() {
+  $(".slick").slick("slickPrev");
 });
 
 /* Blog */
-$('#blog-top .main-slider').slick({
-  appendDots: $('#blog-top .bullets'),
-  dotsClass: 'd-flex list-unstyled mb-1 p-2 px-md-3 mb-lg-3',
+$("#blog-top .main-slider").slick({
+  appendDots: $("#blog-top .bullets"),
+  dotsClass: "d-flex list-unstyled mb-1 p-2 px-md-3 mb-lg-3",
   arrows: false,
   dots: true,
   fade: true,
@@ -303,15 +303,15 @@ $('#blog-top .main-slider').slick({
       settings: {
         arrows: true,
         dots: false,
-        prevArrow: $('#blog-top ul.arrows li .fa-chevron-left'),
-        nextArrow: $('#blog-top ul.arrows li .fa-chevron-right')
+        prevArrow: $("#blog-top ul.arrows li .fa-chevron-left"),
+        nextArrow: $("#blog-top ul.arrows li .fa-chevron-right")
       }
     }
   ]
 });
-$('.grid-slider .slider-slider').slick({
-  appendDots: $('.grid-slider h2'),
-  dotsClass: 'd-none d-md-flex bullets list-unstyled mb-0',
+$(".grid-slider .slider-slider").slick({
+  appendDots: $(".grid-slider h2"),
+  dotsClass: "d-none d-md-flex bullets list-unstyled mb-0",
   arrows: false,
   dots: true,
   slidesToShow: 3,
@@ -332,8 +332,8 @@ $('.grid-slider .slider-slider').slick({
         slidesToShow: 2,
         slidesToScroll: 2,
         arrows: true,
-        prevArrow: $('.grid-slider h2 ul li .fa-chevron-left'),
-        nextArrow: $('.grid-slider h2 ul li .fa-chevron-right')
+        prevArrow: $(".grid-slider h2 ul li .fa-chevron-left"),
+        nextArrow: $(".grid-slider h2 ul li .fa-chevron-right")
       }
     },
     {
@@ -342,8 +342,8 @@ $('.grid-slider .slider-slider').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
         arrows: true,
-        prevArrow: $('.grid-slider h2 ul li .fa-chevron-left'),
-        nextArrow: $('.grid-slider h2 ul li .fa-chevron-right')
+        prevArrow: $(".grid-slider h2 ul li .fa-chevron-left"),
+        nextArrow: $(".grid-slider h2 ul li .fa-chevron-right")
       }
     }
   ]
@@ -353,15 +353,15 @@ $('.grid-slider .slider-slider').slick({
 ------- Scroll reveal -------
 -------------------------- */
 window.sr = ScrollReveal({
-  origin: 'bottom'
+  origin: "bottom"
 });
-sr.reveal('.reveal');
-sr.reveal('.reveal-left', {
-  origin: 'left',
+sr.reveal(".reveal");
+sr.reveal(".reveal-left", {
+  origin: "left",
   delay: 500
 });
-sr.reveal('.reveal-right', {
-  origin: 'right',
+sr.reveal(".reveal-right", {
+  origin: "right",
   delay: 500
 });
 
@@ -369,15 +369,15 @@ sr.reveal('.reveal-right', {
 ----- Bolsa de trabajo ------
 -------------------------- */
 
-$('#bolsa-de-trabajo .card .btn').click(function(e) {
+$("#bolsa-de-trabajo .card .btn").click(function(e) {
   e.preventDefault();
-  var card = $(this).parents('.card');
+  var card = $(this).parents(".card");
   var title = card
-    .find('h3')
+    .find("h3")
     .text()
     .trim();
   $('.jumbotron [name="puesto"]').val(title);
-  $('html,body').animate(
+  $("html,body").animate(
     {
       scrollTop: 0
     },
@@ -388,7 +388,7 @@ $('#bolsa-de-trabajo .card .btn').click(function(e) {
 /* --------------------------
 ----- Catalogo ------
 -------------------------- */
-$('#descarga-catalogo').submit(function(e) {
+$("#descarga-catalogo").submit(function(e) {
   e.preventDefault();
   var mail = $(this)
     .find('[name="correo"]')
@@ -400,18 +400,18 @@ $('#descarga-catalogo').submit(function(e) {
 ---------- Map -----------
 -------------------------- */
 var arrayPresencia = [
-  ['Querétaro', 20.6121228, -100.480258, 1],
-  ['Irapuato', 20.6774973, -101.341803, 2],
-  ['Monterrey', 25.6487281, -100.4431832, 3]
+  ["Querétaro", 20.6121228, -100.480258, 1],
+  ["Irapuato", 20.6774973, -101.341803, 2],
+  ["Monterrey", 25.6487281, -100.4431832, 3]
 ];
 
 var arrayClientes = [
-  ['Aguascalientes', 21.8857347, -102.2912996, 1],
-  ['Yucatán', 20.9800083, -89.7730058, 2]
+  ["Aguascalientes", 21.8857347, -102.2912996, 1],
+  ["Yucatán", 20.9800083, -89.7730058, 2]
 ];
 
-if ($('section#mapa').length) {
-  var map = new google.maps.Map(document.getElementById('map'), {
+if ($("section#mapa").length) {
+  var map = new google.maps.Map(document.getElementById("map"), {
     zoom: 6,
     center: new google.maps.LatLng(20.6121228, -100.480258),
     mapTypeId: google.maps.MapTypeId.ROADMAP,
@@ -420,41 +420,41 @@ if ($('section#mapa').length) {
       {
         stylers: [
           {
-            visibility: 'off'
+            visibility: "off"
           }
         ]
       },
       {
-        featureType: 'water',
+        featureType: "water",
         stylers: [
           {
-            visibility: 'on'
+            visibility: "on"
           },
           {
-            color: '#30080d'
+            color: "#30080d"
           }
         ]
       },
       {
-        featureType: 'landscape',
+        featureType: "landscape",
         stylers: [
           {
-            visibility: 'on'
+            visibility: "on"
           },
           {
-            color: '#881626'
+            color: "#881626"
           }
         ]
       },
       {
-        featureType: 'administrative',
-        elementType: 'geometry.stroke',
+        featureType: "administrative",
+        elementType: "geometry.stroke",
         stylers: [
           {
-            visibility: 'on'
+            visibility: "on"
           },
           {
-            color: '#30080d'
+            color: "#30080d"
           },
           {
             weight: 1
@@ -462,14 +462,14 @@ if ($('section#mapa').length) {
         ]
       },
       {
-        featureType: 'administrative.country',
-        elementType: 'labels',
+        featureType: "administrative.country",
+        elementType: "labels",
         stylers: [
           {
-            visibility: 'on'
+            visibility: "on"
           },
           {
-            color: '#e2c5c9'
+            color: "#e2c5c9"
           },
           {
             weight: 0.2
@@ -485,7 +485,7 @@ if ($('section#mapa').length) {
 
   for (i = 0; i < arrayPresencia.length; i++) {
     var pinIcon = new google.maps.MarkerImage(
-      '/assets/img/marker1.png',
+      "/assets/img/marker1.png",
       null, // size is determined at runtime
       null, // origin is 0,0
       null, // anchor is bottom center of the scaled image
@@ -502,7 +502,7 @@ if ($('section#mapa').length) {
 
     google.maps.event.addListener(
       marker,
-      'click',
+      "click",
       (function(marker, i) {
         return function() {
           infowindow.setContent(arrayPresencia[i][0]);
@@ -514,7 +514,7 @@ if ($('section#mapa').length) {
 
   for (i = 0; i < arrayClientes.length; i++) {
     var pinIcon = new google.maps.MarkerImage(
-      '/assets/img/marker2.png',
+      "/assets/img/marker2.png",
       null, // size is determined at runtime
       null, // origin is 0,0
       null, // anchor is bottom center of the scaled image
@@ -531,7 +531,7 @@ if ($('section#mapa').length) {
 
     google.maps.event.addListener(
       marker,
-      'click',
+      "click",
       (function(marker, i) {
         return function() {
           infowindow.setContent(arrayClientes[i][0]);
@@ -545,9 +545,9 @@ if ($('section#mapa').length) {
 /* --------------------------
 ------ Nav (search) -------
 -------------------------- */
-$(document).on('click', '.toggle-search', function() {
-  $('#main-nav').toggleClass('search');
-  $('#buscar_nav').fadeToggle(150);
+$(document).on("click", ".toggle-search", function() {
+  $("#main-nav").toggleClass("search");
+  $("#buscar_nav").fadeToggle(150);
 });
 
 //# sourceMappingURL=app.js.map
