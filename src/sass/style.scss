@@ -1,8 +1,8 @@
-@import '../../node_modules/bootstrap/scss/bootstrap.scss';
-@import '../../node_modules/slick-carousel/slick/slick.scss';
-@import '../../node_modules/hamburgers/dist/hamburgers.css';
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+@import "../../node_modules/slick-carousel/slick/slick.scss";
+@import "../../node_modules/hamburgers/dist/hamburgers.css";
 
-@import 'global/old-styles.scss';
+@import "global/old-styles.scss";
 
 svg {
   box-sizing: initial;
@@ -12,4 +12,16 @@ svg {
   background: none;
   padding: 0;
   border: none;
+}
+
+.float-btn {
+  position: fixed;
+  padding: 1rem;
+  bottom: 0;
+  z-index: 2;
+}
+
+.whatsapp-btn {
+  height: 4rem;
+  width: 4rem;
 }
