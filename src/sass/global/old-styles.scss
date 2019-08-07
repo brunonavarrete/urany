@@ -45,26 +45,26 @@ body {
 /* Fonts styles */
 @font-face {
   font-family: 'Brandon-Bold';
-  src: url('../fonts/brandon_bld.woff') format('woff'),
-    url('../fonts/brandon_bld.woff2') format('woff2');
+  src: url('/fonts/brandon_bld.woff') format('woff'),
+    url('/fonts/brandon_bld.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'Brandon-Black';
-  src: url('../fonts/brandon_blk.woff') format('woff'),
-    url('../fonts/brandon_blk.woff2') format('woff2');
+  src: url('/fonts/brandon_blk.woff') format('woff'),
+    url('/fonts/brandon_blk.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'Brandon-Regular';
-  src: url('../fonts/brandon_reg.woff') format('woff'),
-    url('../fonts/brandon_reg.woff2') format('woff2');
+  src: url('/fonts/brandon_reg.woff') format('woff'),
+    url('/fonts/brandon_reg.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'Brandon-Light';
-  src: url('../fonts/brandon_light.woff') format('woff'),
-    url('../fonts/brandon_light.woff2') format('woff2');
+  src: url('/fonts/brandon_light.woff') format('woff'),
+    url('/fonts/brandon_light.woff2') format('woff2');
 }
 
 /* Link styles */
@@ -1518,4 +1518,3 @@ h1 {
   cursor: pointer;
   transform: translateY(-50%);
 }
-/*# sourceMappingURL=main.css.map */

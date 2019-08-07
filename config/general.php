@@ -27,7 +27,6 @@ return [
         // (see https://docs.craftcms.com/v3/project-config.html)
         'useProjectConfigFile' => false,
         'assetsUrl' => getenv('ASSETS_URL'),
-        'allowUpdates' => false
     ],
 
     // Dev environment settings
@@ -46,5 +45,6 @@ return [
     'production' => [
         // Set this to `false` to prevent administrative changes from being made on production
         'allowAdminChanges' => true,
+        'allowUpdates' => false
     ],
 ];

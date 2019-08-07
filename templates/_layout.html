@@ -26,7 +26,7 @@
         <meta content="/assets/img/mstile-310x150.png" name="msapplication-wide310x150logo"/>
         <meta content="/assets/img/mstile-310x310.png" name="msapplication-square310x310logo"/>
 
-        <link rel="stylesheet" type="text/css" href="{{ craft.app.config.general.assetsUrl }}css/main.css">
+        <link rel="stylesheet" href="/css/style.css">
 
     </head>
     {% endcache %}
@@ -71,12 +71,12 @@
 
             {% include 'partials/_modal-gracias' %}
 
-            <a class="float-btn" href="https://wa.me/5214421459116?text=%C2%A1Hola%21%20Vengo%20de%20su%20sitio%20web%20y%20me%20interesa%20conocer%20m%C3%A1s%20de%20las%20marcas%2C%20productos%20y%20servicios%20que%20ofrecen." onclick="ga('send','pageview','/whatsapp')" target="_blank"><img src="{{siteUrl}}assets/img/whatsapp.svg" class="whatsapp-btn" alt="Mándanos un whatsapp"></a>
+            <a class="float-btn" href="https://wa.me/5214421459116?text=%C2%A1Hola%21%20Vengo%20de%20su%20sitio%20web%20y%20me%20interesa%20conocer%20m%C3%A1s%20de%20las%20marcas%2C%20productos%20y%20servicios%20que%20ofrecen." onclick="ga('send','pageview','/whatsapp')" target="_blank"><img src="/assets/img/whatsapp.svg" class="whatsapp-btn" alt="Mándanos un whatsapp"></a>
 
             {% cache %}
             {% include 'partials/_main-footer' %}
             {% endcache %}
 
-            <script src="{{ craft.app.config.general.assetsUrl }}main.js"></script>
+            <script src="/index.js"></script>
         </body>
     </html>

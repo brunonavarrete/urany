@@ -1,6 +1,6 @@
-@import "../../node_modules/bootstrap/scss/bootstrap.scss";
-@import "../../node_modules/slick-carousel/slick/slick.scss";
-@import "../../node_modules/hamburgers/dist/hamburgers.css";
+@import "~bootstrap/scss/bootstrap.scss";
+@import "~slick-carousel/slick/slick.scss";
+@import "~hamburgers/_sass/hamburgers/hamburgers.scss";
 
 @import "global/old-styles.scss";
 
@@ -24,4 +24,4 @@ svg {
 .whatsapp-btn {
   height: 4rem;
   width: 4rem;
-}
+} 
