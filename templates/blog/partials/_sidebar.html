@@ -15,7 +15,10 @@
 					<small>LinkedIn</small>
 				</div>
 				<div class="d-flex flex-column align-items-center">
-					<a class="px-3 social-goal" href="whatsapp://send?text=Vi este {{(entry.title is defined) ? entry.title}} en {{siteName}} y me pareció excelente. {{(entry.url is defined) ? entry.url}}" data-action="share/whatsapp/share"><i class="fab fa-whatsapp fa-2x btn-whatsapp"></i></a>
+					{% set whatsappMessage = ('Vi este artículo: "' ~ entry.title ~ '" en ' ~ siteName ~ ' y me pareció excelente. ' ~ entry.url) %}
+					<a href="https://wa.me/?text={{ whatsappMessage|url_encode }}" target="_blank">
+						<i class="fab fa-whatsapp fa-2x btn-whatsapp"></i>
+					</a>
 					<small>Whatsapp</small>
 				</div>
 				<div class="d-flex flex-column align-items-center">
