@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "590aace571a8d7db686dee180decf137",
+    "content-hash": "e2186304a4147f185140c83e9191e684",
     "packages": [
         {
             "name": "cebe/markdown",
@@ -298,11 +298,11 @@
         },
         {
             "name": "craftcms/cms",
-            "version": "3.2.9",
+            "version": "3.2.10",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/craftcms/cms/zipball/678ec9a876561152a74e5b3e07ebe0d2ca989c22",
-                "reference": "678ec9a876561152a74e5b3e07ebe0d2ca989c22",
+                "url": "https://api.github.com/repos/craftcms/cms/zipball/620fa9e16ae1d6d205868754959c459f55128da2",
+                "reference": "620fa9e16ae1d6d205868754959c459f55128da2",
                 "shasum": ""
             },
             "require": {
@@ -378,7 +378,7 @@
                 "docs": "https://docs.craftcms.com/v3/",
                 "rss": "https://github.com/craftcms/cms/releases.atom"
             },
-            "time": "2019-08-06T17:08:35+00:00"
+            "time": "2019-08-13T15:50:41+00:00"
         },
         {
             "name": "craftcms/contact-form",
@@ -1387,11 +1387,11 @@
         },
         {
             "name": "nystudio107/craft-disqus",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nystudio107/craft-disqus/zipball/acf49e976053c552081af5c533b85f8cea7f33d4",
-                "reference": "acf49e976053c552081af5c533b85f8cea7f33d4",
+                "url": "https://api.github.com/repos/nystudio107/craft-disqus/zipball/86fb24a670563cf53123da3d57a475b3b4e54dbc",
+                "reference": "86fb24a670563cf53123da3d57a475b3b4e54dbc",
                 "shasum": ""
             },
             "require": {
@@ -1436,7 +1436,7 @@
                 "docs": "https://github.com/nystudio107/craft-disqus/blob/v1/README.md",
                 "issues": "https://github.com/nystudio107/craft-disqus/issues"
             },
-            "time": "2019-01-05T02:50:16+00:00"
+            "time": "2019-08-10T19:49:27+00:00"
         },
         {
             "name": "nystudio107/craft-seomatic",
