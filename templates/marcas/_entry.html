@@ -59,19 +59,23 @@
                 </nav>
                 {% set count = 0 %}
                 {% for familia in familias %}
-                    <div class="col-12 col-lg-6 mb-4" style="{% if (count == 0 and query == '') or ( query == familia.title|lower ) %}display:block;{% else %}display:none;{% endif %}" data-info="{{familia.title}}">
-                        <h2 class="h3 text-uppercase">
-                            {{ familia.title }}
-                        </h2>
-                        <div class="cuerpo">
-                            {{ familia.body }}
+                    <div class="col-12 mb-4" style="{% if (count == 0 and query == '') or ( query == familia.title|lower ) %}display:block;{% else %}display:none;{% endif %}" data-info="{{familia.title}}">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6">
+                                <h2 class="h3 text-uppercase">
+                                    {{ familia.title }}
+                                </h2>
+                                <div class="cuerpo">
+                                    {{ familia.body }}
+                                </div>
+                            </div>
+                            {% if familia.instaBlogImage is not empty %}
+                                <div class="col-lg-6">
+                                    <img src="{{ familia.instaBlogImage.one().url }}" alt="{{ familia.title }}" class="img-fluid">
+                                </div>
+                            {% endif %}
                         </div>
                     </div>
-                    {% if familia.instaBlogImage is not empty %}
-                        <div class="col-lg-6">
-                            <img src="{{ familia.instaBlogImage.one().url }}" alt="{{ familia.title }}" class="img-fluid">
-                        </div>
-                    {% endif %}
                     <div class="col-12 row mx-0" style="{% if (count == 0 and query == '') or ( query == familia.title|lower ) %}display:flex;{% else %}display:none;{% endif %}" data-grid="{{familia.title}}">
                         {% set products = familia.gridProductos.all() %}
                         {% for product in products %}
