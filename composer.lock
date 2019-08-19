@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e2186304a4147f185140c83e9191e684",
+    "content-hash": "030898106499ee9ff7bf21bced864af2",
     "packages": [
         {
             "name": "cebe/markdown",
@@ -1387,15 +1387,15 @@
         },
         {
             "name": "nystudio107/craft-disqus",
-            "version": "1.1.1",
+            "version": "1.1.2",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nystudio107/craft-disqus/zipball/86fb24a670563cf53123da3d57a475b3b4e54dbc",
-                "reference": "86fb24a670563cf53123da3d57a475b3b4e54dbc",
+                "url": "https://api.github.com/repos/nystudio107/craft-disqus/zipball/838ae075cf66eb101810cf992959fd5b033dccf9",
+                "reference": "838ae075cf66eb101810cf992959fd5b033dccf9",
                 "shasum": ""
             },
             "require": {
-                "craftcms/cms": "^3.0.0-RC1"
+                "craftcms/cms": "^3.0.0"
             },
             "type": "craft-plugin",
             "extra": {
@@ -1436,15 +1436,15 @@
                 "docs": "https://github.com/nystudio107/craft-disqus/blob/v1/README.md",
                 "issues": "https://github.com/nystudio107/craft-disqus/issues"
             },
-            "time": "2019-08-10T19:49:27+00:00"
+            "time": "2019-08-15T14:52:21+00:00"
         },
         {
             "name": "nystudio107/craft-seomatic",
-            "version": "3.2.19",
+            "version": "3.2.20",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nystudio107/craft-seomatic/zipball/1fd07a20e08890c4416056d3e2ba0a055544b5f7",
-                "reference": "1fd07a20e08890c4416056d3e2ba0a055544b5f7",
+                "url": "https://api.github.com/repos/nystudio107/craft-seomatic/zipball/7a062799926183c41beb61a6f48fe53724070b0b",
+                "reference": "7a062799926183c41beb61a6f48fe53724070b0b",
                 "shasum": ""
             },
             "require": {
@@ -1508,7 +1508,7 @@
                 "docs": "https://nystudio107.com/plugins/seomatic/documentation",
                 "issues": "https://nystudio107.com/plugins/seomatic/support"
             },
-            "time": "2019-08-06T15:37:35+00:00"
+            "time": "2019-08-16T14:36:41+00:00"
         },
         {
             "name": "opis/closure",
