@@ -3,6 +3,18 @@ window.jQuery = $;
 window.$ = $;
 import Headroom from "headroom.js";
 import ScrollReveal from "scrollreveal";
+
+/* --------------------------
+	Toast
+-------------------------- */
+$(".toast").toast({
+  delay: 8000
+});
+$(window).on("load", function() {
+  setTimeout(function() {
+    $("#catalog-notification").toast("show");
+  }, 1000);
+});
 /* --------------------------
 	Fit images
 -------------------------- */
@@ -152,6 +164,16 @@ $("form.newsletter").submit(function(e) {
             hitType: "pageview",
             page: "/descarga-catalogo",
             title: "Descarga catalogo"
+          });
+        } else if ($form.is(".newsletter-subscribe-stock")) {
+          $form.fadeOut(50);
+          setTimeout(function() {
+            $("#download").addClass("success");
+          }, 65);
+          ga("send", {
+            hitType: "pageview",
+            page: "/descarga-catalogo-stock",
+            title: "Descarga catalogo stock"
           });
         } else {
           $("#modal-mailchimp").modal();

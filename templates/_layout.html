@@ -26,8 +26,7 @@
         <meta content="/assets/img/mstile-310x150.png" name="msapplication-wide310x150logo"/>
         <meta content="/assets/img/mstile-310x310.png" name="msapplication-square310x310logo"/>
 
-        <link rel="stylesheet" href="/css/style.css">
-
+        <link href="/css/style.css" rel="stylesheet">
     </head>
     {% endcache %}
     <body>
@@ -62,7 +61,7 @@
         {% include 'partials/_main-header' %}
         {% include 'partials/_offcanvas' %}
 
-        {% if title != 'Blog' and title != 'Búsqueda' and title != 'Productos' and title != 'Política de privacidad' and title != 'Industrias' %}
+        {% if title != 'Blog' and title != 'Búsqueda' and title != 'Productos' and title != 'Política de privacidad' and title != 'Industrias' and title != 'Catálogo de stock' %}
             <div id="main-jumbotron" class="position-relative jumbotron jumbotron-fluid {% if title == 'Inicio' or title == 'Demo Truck' or title == 'Bolsa de trabajo' or title == '404' %}home{% elseif title == 'Marcas' %}white{% elseif title == 'Descargas' %}descargas{% endif %} bg-cover position-relative d-flex justify-content-center align-items-center mb-0 pb-0" {% if jumbotronImage is defined %} style="background-image:url(/assets/img/{{ jumbotronImage }});" {% endif %}> {% block jumbotron %}{% endblock %}
                 </div>
             {% endif %}
@@ -71,11 +70,25 @@
 
             {% include 'partials/_modal-gracias' %}
 
-            <a class="float-btn" href="https://wa.me/5214421459116?text=%C2%A1Hola%21%20Vengo%20de%20su%20sitio%20web%20y%20me%20interesa%20conocer%20m%C3%A1s%20de%20las%20marcas%2C%20productos%20y%20servicios%20que%20ofrecen." onclick="ga('send','pageview','/whatsapp')" target="_blank"><img src="/assets/img/whatsapp.svg" class="whatsapp-btn" alt="Mándanos un whatsapp"></a>
+            <a class="float-btn" href="https://wa.me/5214421459116?text=%C2%A1Hola%21%20Vengo%20de%20su%20sitio%20web%20y%20me%20interesa%20conocer%20m%C3%A1s%20de%20las%20marcas%2C%20productos%20y%20servicios%20que%20ofrecen." onclick="ga('send','pageview','/whatsapp')" target="_blank"><img alt="Mándanos un whatsapp" class="whatsapp-btn" src="/assets/img/whatsapp.svg"></a>
 
             {% cache %}
             {% include 'partials/_main-footer' %}
             {% endcache %}
+
+            <div aria-atomic="true" aria-live="assertive" class="toast m-5" id="catalog-notification" role="alert">
+                <a class="text-dark" href="{{ siteUrl('catalogo-de-stock') }}">
+                    <div class="toast-header">
+                        <strong class="mr-auto">Nuevo catálogo</strong>
+                        <button aria-label="Close" class="ml-2 mb-1 close" data-dismiss="toast" type="button">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="toast-body">
+                        Da click aquí para descargar nuestro nuevo catálogo de stock
+                    </div>
+                </a>
+            </div>
 
             <script src="/index.js"></script>
         </body>
