@@ -8,7 +8,7 @@ import ScrollReveal from "scrollreveal";
 	Toast
 -------------------------- */
 $(".toast").toast({
-  delay: 8000
+  delay: 30000
 });
 $(window).on("load", function() {
   setTimeout(function() {
