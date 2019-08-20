@@ -151,9 +151,11 @@ $("form.newsletter").submit(function(e) {
       alert("Ocurrió un error, inténtalo más tarde.");
     },
     success: function(data) {
+      console.log(data);
       if (
         data.result == "success" ||
-        data.msg.indexOf("ya está suscrito a esta lista") >= 0
+        data.msg.includes("a está suscrito a esta lista") ||
+        data.msg.includes("is already subscribed to list")
       ) {
         if ($form.is(".newsletter-subscribe")) {
           $form.fadeOut(50);
