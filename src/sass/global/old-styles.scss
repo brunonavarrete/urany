@@ -1510,6 +1510,11 @@ h1 {
   top: 50%;
   z-index: 5;
   transform: translate(0, -50%);
+  .input-group-addon {
+    border-color: #ced4da;
+    height: calc(1.5em + 0.75rem + 2px);
+    margin: 0;
+  }
 }
 .toggle-search {
   position: absolute;
