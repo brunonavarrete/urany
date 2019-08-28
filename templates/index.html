@@ -1,111 +1,113 @@
- {# --------------- Variables --------------- #}
-	{% set jumbotronImage = 'home.jpg' %}
-	{% set subscribeImage = 'subscribe1' %}
-	{% set title = 'Inicio' %}
+{# --------------- Variables --------------- #}
+{% set jumbotronImage = 'home.jpg' %}
+{% set subscribeImage = 'subscribe1' %}
+{% set title = 'Inicio' %}
 {# ----------------------------------------- #}
 
 {% extends "_layout" %}
 
 {% block jumbotron %}
-	<div class="pleca pleca-primary"></div>
-	<span class="d-none d-md-block lines container">
-		{% include 'includes/lines.svg.twig' %}
-		{% include 'includes/lines.svg.twig' %}
-	</span>
-	<div class="position-relative text-center">
-		<h1 class="text-white text-uppercase mb-3">Tu aliado en control <br class="d-none d-lg-block">de movimiento</h1>
-		<div class="d-flex justify-content-center align-items-center border border-white rounded-circle square mx-auto" data-toggle="modal" data-target="#modal-video">
-			<i class="fa fa-play text-white"></i>
-		</div>
-	</div>
-	<span id="scroll">
-		<i class="fa fa-chevron-down text-white top"></i>
-		<i class="fa fa-chevron-down text-white bottom"></i>
-	</span>
+    <div class="pleca pleca-primary"></div>
+    <span class="d-none d-md-block lines container">
+        {% include 'includes/lines.svg.twig' %}
+        {% include 'includes/lines.svg.twig' %}
+    </span>
+    <div class="position-relative text-center">
+        <h1 class="text-white text-uppercase mb-3">Tu aliado en control
+            <br class="d-none d-lg-block">de movimiento</h1>
+        <div class="d-flex justify-content-center align-items-center border border-white rounded-circle square mx-auto" data-toggle="modal" data-target="#modal-video">
+            <i class="fa fa-play text-white"></i>
+        </div>
+    </div>
+    <span id="scroll">
+        <i class="fa fa-chevron-down text-white top"></i>
+        <i class="fa fa-chevron-down text-white bottom"></i>
+    </span>
 {% endblock %}
 
 {% block content %}
-	<section id="top-home" class="container position-relative px-md-0 py-md-5">
-		<span class="d-none d-md-block lines lines-gray container px-0">
-			{% include 'includes/lines-gray.svg.twig' %}
-			{% include 'includes/lines-gray.svg.twig' %}
-		</span>
-		<div class="row py-5 align-items-md-center">
-			<div class="col-12 col-md-5 pt-md-5 col-lg-6">
-				<img src="/assets/img/home1.png" class="img-fluid mb-5 mb-md-0 reveal-left" alt="{{siteName}}">
-			</div>
-			<div class="col-12 col-md-7 pt-md-5 col-lg-6 mx-lg-auto">
-				<h2 class="text-uppercase mb-3">
-					Expertos en la automatización de control de movimiento
-				</h2>
-				<p class="text-justify">
-					Expertos en la selección de componentes para automatización de control de movimiento. Contamos con servicio de ingeniería a detalle y ofrecemos productos de alta calidad para dar soluciones de automatización asertivas, reduciendo el riesgo y dando la seguridad de que nuestra propuesta es la mejor. Es por eso que somos un aliado para nuestros clientes.
-				</p>
-				<a href="{{ url('nosotros') }}" class="btn btn-primary mt-4 py-2 px-4 text-uppercase">Historia de Urany</a>
-			</div>
-		</div>
-	</section>
-	<section class="container-fluid">
-		<div class="row align-items-md-stretch">
-			<div class="bg-primary-dark text-white col-12 py-5 col-md-8 px-md-5 col-lg-6 max-lg-490">
-				<h2 class="text-uppercase mb-3 ml-xl-3">
-					Expertos en reducción de riesgos en proyectos industriales
-				</h2>
-				<p class="text-justify ml-xl-3">
-					Ingeniería de detalle desde el análisis de su aplicación en campo, para determinar las condiciones mecánicas del sistema y realizar un cálculo de capacidades con base en datos reales.
-				</p>
-				<ul class="list-unstyled mb-0 ml-xl-3">
-					<li class="mb-2 text-justify">
-						Óptima selección de los componentes de sistemas industriales servo controlados definiendo las bases para el éxito de la aplicación.
-					</li>
-					<li class="mb-2 text-justify">
-						Portafolio versátil de productos, aplicable también en maquinaria que no requiere el nivel de precisión de un servo sistema.
-					</li>
-				</ul>
-			</div>
-			<div class="d-none bg-cover d-md-block col-md-4 col-lg-6" style="background-image:url(/assets/img/home2.jpg)">
-				<div class="pleca gradient pleca-transparent"></div>
-			</div>
-		</div>
-	</section>
-	<section class="container pb-md-0 pt-md-5">
-		<div class="row py-5 align-items-md-center">
-			<div class="col-12 col-md-5 col-lg-6">
-				<img src="/assets/img/home3.png" class="img-fluid mb-5 mb-md-0 reveal-left" alt="{{siteName}}">
-			</div>
-			<div class="col-12 col-md-7 col-lg-6 mx-lg-auto">
-				<h2 class="text-uppercase mb-3">
-					Selección de los elementos de mayor precisión en el mercado
-				</h2>
-				<p class="text-justify">
-					Nuestro portafolios de marcas es producto de una minuciosa selección, para traer a México la más alta calidad y confiabilidad de equipos. Estamos orgullosos de haber logrado con nuestra trayectoria la confianza de fabricantes internacionales de equipos para control de movimiento, como distribuidor exclusivo para México y, en la mayor parte de ellas, para Centroamérica.
-				</p>
-				<a href="{{ url('marcas') }}" class="btn btn-primary mt-4 py-2 px-4 text-uppercase">
-					Ver productos y piezas
-				</a>
-			</div>
-		</div>
-	</section>
-	<!--section class="container pt-md-5">
-		<div class="row py-5 align-items-md-center">
-			<div class="col-12 col-md-5 order-md-1 col-lg-6">
-				<img src="{{ siteUrl }}assets/img/home3.png" class="img-fluid mb-5 mb-md-0">
-			</div>
-			<div class="col-12 col-md-7 col-lg-6 mx-lg-auto">
-				<h2 class="text-uppercase mb-3">
-					Selección de los elementos de mayor precisión en el mercado
-				</h2>
-				<p class="text-justify">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation.
-				</p>
-				<a href="{{ url('marcas') }}" class="btn btn-primary mt-4 py-2 px-4 text-uppercase">
-					Ver productos y piezas
-				</a>
-			</div>
-		</div>
-	</section-->
+    <section id="top-home" class="container position-relative px-md-0 py-md-5">
+        <span class="d-none d-md-block lines lines-gray container px-0">
+            {% include 'includes/lines-gray.svg.twig' %}
+            {% include 'includes/lines-gray.svg.twig' %}
+        </span>
+        <div class="row py-5 align-items-md-center">
+            <div class="col-12 col-md-5 pt-md-5 col-lg-6">
+                <img src="/assets/img/home1.png" class="img-fluid mb-5 mb-md-0 reveal-left" alt="{{siteName}}">
+            </div>
+            <div class="col-12 col-md-7 pt-md-5 col-lg-6 mx-lg-auto">
+                <h2 class="text-uppercase mb-3">
+                    Expertos en la automatización de control de movimiento
+                </h2>
+                <p class="text-justify">
+                    Expertos en la selección de componentes para automatización de control de movimiento. Contamos con servicio de ingeniería a detalle y ofrecemos productos de alta calidad para dar soluciones de automatización asertivas, reduciendo el riesgo y dando la seguridad de que nuestra propuesta es la mejor. Es por eso que somos un aliado para nuestros clientes.
+                </p>
+                <a href="{{ url('nosotros') }}" class="btn btn-primary mt-4 py-2 px-4 text-uppercase">Historia de Urany</a>
+            </div>
+        </div>
+    </section>
+    <section class="container-fluid">
+        <div class="row align-items-md-stretch">
+            <div class="bg-primary-dark text-white col-12 py-5 col-md-8 px-md-5 col-lg-6 max-lg-490">
+                <h2 class="text-uppercase mb-3 ml-xl-3">
+                    Expertos en reducción de riesgos en proyectos industriales
+                </h2>
+                <p class="text-justify ml-xl-3">
+                    Ingeniería de detalle desde el análisis de su aplicación en campo, para determinar las condiciones mecánicas del sistema y realizar un cálculo de capacidades con base en datos reales.
+                </p>
+                <ul class="list-unstyled mb-0 ml-xl-3">
+                    <li class="mb-2 text-justify">
+                        Óptima selección de los componentes de sistemas industriales servo controlados definiendo las bases para el éxito de la aplicación.
+                    </li>
+                    <li class="mb-2 text-justify">
+                        Portafolio versátil de productos, aplicable también en maquinaria que no requiere el nivel de precisión de un servo sistema.
+                    </li>
+                </ul>
+            </div>
+            <div class="d-none bg-cover d-md-block col-md-4 col-lg-6" style="background-image:url(/assets/img/home2.jpg)">
+                <div class="pleca gradient pleca-transparent"></div>
+            </div>
+        </div>
+    </section>
+    <section class="container pb-md-0 pt-md-5">
+        <div class="row py-5 align-items-md-center">
+            <div class="col-12 col-md-5 col-lg-6">
+                <img src="/assets/img/home3.png" class="img-fluid mb-5 mb-md-0 reveal-left" alt="{{siteName}}">
+            </div>
+            <div class="col-12 col-md-7 col-lg-6 mx-lg-auto">
+                <h2 class="text-uppercase mb-3">
+                    Selección de los elementos de mayor precisión en el mercado
+                </h2>
+                <p class="text-justify">
+                    Nuestro portafolios de marcas es producto de una minuciosa selección, para traer a México la más alta calidad y confiabilidad de equipos. Estamos orgullosos de haber logrado con nuestra trayectoria la confianza de fabricantes internacionales de equipos para control de movimiento, como distribuidor exclusivo para México y, en la mayor parte de ellas, para Centroamérica.
+                </p>
+                <a href="{{ url('marcas') }}" class="btn btn-primary mt-4 py-2 px-4 text-uppercase">
+                    Ver productos y piezas
+                </a>
+            </div>
+        </div>
+    </section>
+    <!--section class="container pt-md-5">
+    		<div class="row py-5 align-items-md-center">
+    			<div class="col-12 col-md-5 order-md-1 col-lg-6">
+    				<img src="{{ siteUrl }}assets/img/home3.png" class="img-fluid mb-5 mb-md-0">
+    			</div>
+    			<div class="col-12 col-md-7 col-lg-6 mx-lg-auto">
+    				<h2 class="text-uppercase mb-3">
+    					Selección de los elementos de mayor precisión en el mercado
+    				</h2>
+    				<p class="text-justify">
+    					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation.
+    				</p>
+    				<a href="{{ url('marcas') }}" class="btn btn-primary mt-4 py-2 px-4 text-uppercase">
+    					Ver productos y piezas
+    				</a>
+    			</div>
+    		</div>
+    	</section-->
 
-	{% include 'partials/_brands' %}
-	{% include 'partials/_subscribe' %}
-	{% include 'partials/_modal-video' %}
+    {% include 'partials/_brands' %}
+    {% include 'partials/_stock-catalog-newsletter' %}
+    {% include 'partials/_subscribe' %}
+    {% include 'partials/_modal-video' %}
 {% endblock %}

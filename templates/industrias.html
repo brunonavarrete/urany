@@ -1,47 +1,48 @@
- {# --------------- Variables --------------- #}
-	{% set subscribeImage = 'subscribe1' %}
-	{% set title = 'Industrias' %}
+{# --------------- Variables --------------- #}
+{% set subscribeImage = 'subscribe1' %}
+{% set title = 'Industrias' %}
 {# ----------------------------------------- #}
 
 {% extends "_layout" %}
 
 {% block content %}
 
-	<section class="container pt-md-5 mt-5">
-		<div class="row py-5 align-items-md-center">
-			<div class="col-12 col-lg-8 mx-lg-auto">
-				<h1 class="text-uppercase text-center text-primary mb-3">
-					20 años de Soluciones para la Industria
-				</h1>
-				<p class="text-center">
-					La trayectoria de Urany nos ha llevado a colaborar en decenas de diferentes sectores e industrias. Aumentado nuestra especialización y experiencia en cada uno de las necesidades de nuestros clientes a lo largo del mundo.
-				</p>
-			</div>
-		</div>
-	</section>
+    <section class="container pt-md-5 mt-5">
+        <div class="row py-5 align-items-md-center">
+            <div class="col-12 col-lg-8 mx-lg-auto">
+                <h1 class="text-uppercase text-center text-primary mb-3">
+                    20 años de Soluciones para la Industria
+                </h1>
+                <p class="text-center">
+                    La trayectoria de Urany nos ha llevado a colaborar en decenas de diferentes sectores e industrias. Aumentado nuestra especialización y experiencia en cada uno de las necesidades de nuestros clientes a lo largo del mundo.
+                </p>
+            </div>
+        </div>
+    </section>
 
-	<section class="container grid-slider">
-		<div class="row">
+    <section class="container grid-slider">
+        <div class="row">
 
-			{% for entry in craft.entries.section('industria').all() %}
-			<a href="{{ entry.url }}" class="blog-item col-12 mx-0 col-lg-4 mb-4">
-				<div class="thumb col-12 bg-cover" style="background-image:url({% if entry.fotoEncabezado %}{{ entry.fotoEncabezado[0].getUrl('blog') }} {% endif %})"></div>
-				<div class="info col-12 px-0 pt-3 pb-md-0 pt-md-1">
-					<h3 class="h5 bold mb-2">
-						{{ entry.title }}
-					</h3>
-					<p class="meta text-justify mb-0">
-						{% for block in entry.filasTexto.all() %}
-							{{ block.texto| striptags | slice(0, 250) ~ '...' }}
-						{% endfor %}
-					</p>
-				</div>
-			</a>
-			{% endfor %}
-		</div>
-	</section>
+            {% for entry in craft.entries.section('industria').all() %}
+                <a href="{{ entry.url }}" class="blog-item col-12 mx-0 col-lg-4 mb-4">
+                    <div class="thumb col-12 bg-cover" style="background-image:url({% if entry.fotoEncabezado %}{{ entry.fotoEncabezado[0].getUrl('blog') }} {% endif %})"></div>
+                    <div class="info col-12 px-0 pt-3 pb-md-0 pt-md-1">
+                        <h3 class="h5 bold mb-2">
+                            {{ entry.title }}
+                        </h3>
+                        <p class="meta text-justify mb-0">
+                            {% for block in entry.filasTexto.all() %}
+                                {{ block.texto| striptags | slice(0, 250) ~ '...' }}
+                            {% endfor %}
+                        </p>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </section>
 
-	{% include 'partials/_brands' %}
-	{% include 'partials/_subscribe' %}
-	{% include 'partials/_modal-video' %}
+    {% include 'partials/_brands' %}
+    {% include 'partials/_stock-catalog-newsletter' %}
+    {% include 'partials/_subscribe' %}
+    {% include 'partials/_modal-video' %}
 {% endblock %}
