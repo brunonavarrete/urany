@@ -1,189 +1,208 @@
 {% set currentPath = craft.app.request.pathInfo %}
 {% import "partials/_macros.html" as macros %}
 <header id="main-header" class="fixed-top headroom red {% if title == 'Blog' %} blog {% endif %}">
-	<div class="pleca"></div>
-	<nav class="navbar py-3 navbar-expand-lg navbar-light py-lg-0">
-		<a class="navbar-brand d-lg-none pb-0" href="{{ siteUrl }}">
-			<img src="/assets/img/20_rojo.jpg">
-		</a>
-		<button class="navbar-toggler hamburger px-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="hamburger-box">
-			    <span class="hamburger-inner"></span>
-			</span>
-		</button>
-		<div class="px-3 collapse navbar-collapse d-lg-flex flex-lg-column" id="navbarSupportedContent">
-		  	<nav id="main-nav" class="position-relative mt-4 container navbar-nav row mx-0 order-1 py-lg-3 my-lg-0 mx-lg-auto align-items-md-center">
+    <div class="pleca"></div>
+    <nav class="navbar py-3 navbar-expand-lg navbar-light py-lg-0">
+        <a class="navbar-brand d-lg-none pb-0" href="{{ siteUrl }}">
+            <img src="/assets/img/20_rojo.jpg">
+        </a>
+        <button class="navbar-toggler hamburger px-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+            </span>
+        </button>
+        <div class="px-3 collapse navbar-collapse d-lg-flex flex-lg-column" id="navbarSupportedContent">
+            <nav id="main-nav" class="position-relative mt-4 container navbar-nav row mx-0 order-1 py-lg-3 my-lg-0 mx-lg-auto align-items-md-center">
 
-		  		<div id="buscar_nav">
-		  			<form action="{{ siteUrl }}buscar" method="GET" class="input-group mb-2 mb-sm-0">
-				    	<input id="q" name="q" type="text" class="form-control border-right-0" placeholder="Busca un producto">
-				    	<button class="input-group-addon bg-white text-muted border-left-0">
-				    		<i class="fa fa-search"></i>
-				    	</button>
-				    </form>
-				</div>
-			  	{% if currentSite.language == 'es-MX' %}
-			  		<button class="hamburger d-none d-lg-block" type="button">
-					  <span class="hamburger-box">
-					    <span class="hamburger-inner"></span>
-					  </span>
-					</button><!-- /hamburger (subnav) -->
-					<div class="toggle-search">
-						<i class="fa fa-search"></i>
-						<i class="fa fa-times"></i>
-					</div>
-				{% endif %}
-				<li class="nav-item logo px-0 col-lg-auto px-lg-3 mr-lg-auto d-lg-flex flex-lg-column">
-					<a class="navbar-brand d-none d-lg-flex align-items-lg-center p-lg-0 my-lg-auto" href="{{ siteUrl }}">
-						{#% include 'includes/logo-slogan.svg.twig' %#}
-						<img src="/assets/img/20_rojo.jpg">
-					</a>
-				</li>
-				{# <li class="nav-item px-0 col-lg-auto px-lg-3 {% if '/' in currentPath %}active{% endif %}">
-					<a class="nav-link d-inline-block text-uppercase position-relative px-lg-0" href="{{siteUrl}}{% if locale != 'es-MX' %}?lang={{ locale }}{% endif %}">
-						Inicio
-						{% if '/' in currentPath %} <span class="sr-only">(current)</span> {% endif %}
-					</a>
-				</li> #}
-				<li class="nav-item px-0 col-lg-auto px-lg-3 {% if 'nosotros' in currentPath %}active{% endif %}">
-					<a class="nav-link d-inline-block text-uppercase position-relative px-lg-0" href="{{ siteUrl('nosotros') }}">
-						Nosotros
-						{% if 'nosotros' in currentPath %} <span class="sr-only">(current)</span> {% endif %}
-					</a>
-				</li>
-				<li class="parent nav-item px-0 col-lg-auto px-lg-3 {% if 'marcas' in currentPath %}active{% endif %}">
-					<a class="nav-link d-inline-block text-uppercase position-relative px-lg-0" href="{{ siteUrl('marcas') }}">
-						Marcas <i class="d-none d-xl-inline fas fa-sort-down ml-2"></i>
-						{% if 'marcas' in currentPath %} <span class="sr-only">(current)</span> {% endif %}
-					</a>
-					<div class="children-nav row mx-0 d-none d-lg-flex">
-						<ul class="list-unstyled row mx-auto my-4">
-							{% set marcas = craft.entries.section('marcas').all() %}
-							{% for marca in marcas %}
-                {% if currentSite.language in marca.localidad %}
-                  <li class="py-2 col-6 col-lg-3 text-center">
-                    <a href="{{ marca.url }}" class="text-lgn-white text-uppercase">
-                      {{ marca.title }}
-                    </a>
-                  </li>
+                <div id="buscar_nav">
+                    <form action="{{ siteUrl }}buscar" method="GET" class="input-group mb-2 mb-sm-0">
+                        <input id="q" name="q" type="text" class="form-control border-right-0" placeholder="Busca un producto">
+                        <button class="input-group-addon bg-white text-muted border-left-0">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </form>
+                </div>
+                {% if currentSite.language == 'es-MX' %}
+                    <button class="hamburger d-none d-lg-block" type="button">
+                        <span class="hamburger-box">
+                            <span class="hamburger-inner"></span>
+                        </span>
+                    </button>
+                    <!-- /hamburger (subnav) -->
+                    <div class="toggle-search">
+                        <i class="fa fa-search"></i>
+                        <i class="fa fa-times"></i>
+                    </div>
                 {% endif %}
-							{% endfor %}
-						</ul>
-					</div>
-				</li>
-				<li class="parent nav-item px-0 col-lg-auto px-lg-3 {% if 'industrias' in currentPath %}active{% endif %}">
-					<a class="nav-link d-inline-block text-uppercase position-relative px-lg-0" href="{{ siteUrl('industrias') }}">
-						Industrias <i class="d-none d-xl-inline fas fa-sort-down ml-2"></i>
-						{% if 'industrias' in currentPath %} <span class="sr-only">(current)</span> {% endif %}
-					</a>
-					<div class="children-nav row mx-0 d-none d-lg-flex tall">
-						<ul class="list-unstyled row mx-auto my-4">
-							{% set industrias = craft.entries.section('industria').all() %}
-							{% for industria in industrias %}
-								<li class="py-2 col-6 col-lg-3 text-center">
-									<a class="text-lg-white text-uppercase" href="{{ industria.url }}">
-										{{ industria.title }}
-									</a>
-								</li>
-							{% endfor %}
-						</ul>
-					</div>
-				</li>
-				{% if currentSite.language == 'es-MX' %}
-					<li class="nav-item px-0 col-lg-auto px-lg-3 {% if 'productos' in currentPath %}active{% endif %}">
-						<a class="nav-link d-inline-block text-uppercase position-relative px-lg-0" href="{{ siteUrl('productos') }}">
-							Productos <i class="d-none d-xl-inline fa fa-sort-down ml-2"></i>
-							{% if 'categorias' in currentPath %} <span class="sr-only">(current)</span> {% endif %}
-						</a>
-						<div class="children-nav row mx-0 d-none d-lg-flex tall">
-							<ul class="list-unstyled row mx-auto my-4">
-								{% set categorias = craft.entries.section('categorias').all() %}
-								{% for categoria in categorias %}
-									<li class="py-2 col-6 col-lg-3 d-lg-flex text-center align-items-lg-center justify-content-lg-center">
-										<a class="text-lg-white text-uppercase small" href="{{ categoria.url }}">
-											{{ categoria.title }}
-										</a>
-									</li>
-								{% endfor %}
-							</ul>
-						</div>
-					</li>
-				{% endif %}
-				<li class="nav-item px-0 col-lg-auto px-lg-3 {% if 'blog' in currentPath %}active{% endif %} border-0">
-					<a class="nav-link d-inline-block text-uppercase position-relative px-lg-0" href="{{ siteUrl('blog') }}">
-						Blog
-						{% if 'blog' in currentPath %} <span class="sr-only">(current)</span> {% endif %}
-					</a>
-				</li>
-				<li class="nav-item px-0 col-lg-auto px-lg-3 {% if 'descargas' in currentPath %}active{% endif %} border-0">
-					<a class="nav-link d-inline-block text-uppercase position-relative px-lg-0" href="{{ siteUrl('descargas') }}">
-						Descargas
-						{% if 'descargas' in currentPath %} <span class="sr-only">(current)</span> {% endif %}
-					</a>
-				</li>
-				<li class="nav-item px-0 col-lg-auto pl-lg-3 pr-lg-0 {% if 'contacto' in currentPath %}active{% endif %} border-0">
-					<a class="nav-link btn btn-outline-white d-inline-block text-uppercase position-relative px-3 mt-2 mt-lg-0" href="{{ siteUrl('contacto') }}">
-						Contacto
-						{% if 'contacto' in currentPath %} <span class="sr-only">(current)</span> {% endif %}
-					</a>
-				</li>
-			</nav>
-			<div id="sub-nav" class="row pt-3 py-lg-1 align-self-lg-stretch">
-				<ul class="container nav small flex-row flex-md-row-reverse ml-md-0 mx-lg-auto">
-					<li class="nav-item col-6 col-md-auto order-md-3">
+                <li class="nav-item logo px-0 col-lg-auto px-lg-3 mr-lg-auto d-lg-flex flex-lg-column">
+                    <a
+                        class="navbar-brand d-none d-lg-flex align-items-lg-center p-lg-0 my-lg-auto" href="{{ siteUrl }}">
+                        {#% include 'includes/logo-slogan.svg.twig' %#}
+                        <img src="/assets/img/20_rojo.jpg">
+                    </a>
+                </li>
+                {# <li class="nav-item px-0 col-lg-auto px-lg-3 {% if '/' in currentPath %}active{% endif %}">
+                					<a class="nav-link d-inline-block text-uppercase position-relative px-lg-0" href="{{siteUrl}}{% if locale != 'es-MX' %}?lang={{ locale }}{% endif %}">
+                						Inicio
+                						{% if '/' in currentPath %} <span class="sr-only">(current)</span> {% endif %}
+                					</a>
+                				</li> #}
+                <li class="nav-item px-0 col-lg-auto px-lg-3 {% if 'nosotros' in currentPath %}active{% endif %}">
+                    <a class="nav-link d-inline-block text-uppercase position-relative px-lg-0" href="{{ siteUrl('nosotros') }}">
+                        Nosotros
+                        {% if 'nosotros' in currentPath %}
+                            <span class="sr-only">(current)</span>
+                        {% endif %}
+                    </a>
+                </li>
+                <li class="parent nav-item px-0 col-lg-auto px-lg-3 {% if 'marcas' in currentPath %}active{% endif %}">
+                    <a class="nav-link d-inline-block text-uppercase position-relative px-lg-0" href="{{ siteUrl('marcas') }}">
+                        Marcas
+                        <i class="d-none d-xl-inline fas fa-sort-down ml-2"></i>
+                        {% if 'marcas' in currentPath %}
+                            <span class="sr-only">(current)</span>
+                        {% endif %}
+                    </a>
+                    <div class="children-nav row mx-0 d-none d-lg-flex">
+                        <ul class="list-unstyled row mx-auto my-4">
+                            {% set marcas = craft.entries.section('marcas').all() %}
+                            {% for marca in marcas %}
+                                {% if currentSite.language in marca.localidad %}
+                                    <li class="py-2 col-6 col-lg-3 text-center">
+                                        <a href="{{ marca.url }}" class="text-lgn-white text-uppercase">
+                                            {{ marca.title }}
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </li>
+                <li class="parent nav-item px-0 col-lg-auto px-lg-3 {% if 'industrias' in currentPath %}active{% endif %}">
+                    <a class="nav-link d-inline-block text-uppercase position-relative px-lg-0" href="{{ siteUrl('industrias') }}">
+                        Industrias
+                        <i class="d-none d-xl-inline fas fa-sort-down ml-2"></i>
+                        {% if 'industrias' in currentPath %}
+                            <span class="sr-only">(current)</span>
+                        {% endif %}
+                    </a>
+                    <div class="children-nav row mx-0 d-none d-lg-flex tall">
+                        <ul class="list-unstyled row mx-auto my-4">
+                            {% set industrias = craft.entries.section('industria').all() %}
+                            {% for industria in industrias %}
+                                <li class="py-2 col-6 col-lg-3 text-center">
+                                    <a class="text-lg-white text-uppercase" href="{{ industria.url }}">
+                                        {{ industria.title }}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </li>
+                {% if currentSite.language == 'es-MX' %}
+                    <li class="nav-item px-0 col-lg-auto px-lg-3 {% if 'productos' in currentPath %}active{% endif %}">
+                        <a class="nav-link d-inline-block text-uppercase position-relative px-lg-0" href="{{ siteUrl('productos') }}">
+                            Productos
+                            <i class="d-none d-xl-inline fa fa-sort-down ml-2"></i>
+                            {% if 'categorias' in currentPath %}
+                                <span class="sr-only">(current)</span>
+                            {% endif %}
+                        </a>
+                        <div class="children-nav row mx-0 d-none d-lg-flex tall">
+                            <ul class="list-unstyled row mx-auto my-4">
+                                {% set categorias = craft.entries.section('categorias').all() %}
+                                {% for categoria in categorias %}
+                                    <li class="py-2 col-6 col-lg-3 d-lg-flex text-center align-items-lg-center justify-content-lg-center">
+                                        <a class="text-lg-white text-uppercase small" href="{{ categoria.url }}">
+                                            {{ categoria.title }}
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </li>
+                {% endif %}
+                <li class="nav-item px-0 col-lg-auto px-lg-3 {% if 'blog' in currentPath %}active{% endif %} border-0">
+                    <a class="nav-link d-inline-block text-uppercase position-relative px-lg-0" href="{{ siteUrl('blog') }}">
+                        Blog
+                        {% if 'blog' in currentPath %}
+                            <span class="sr-only">(current)</span>
+                        {% endif %}
+                    </a>
+                </li>
+                <li class="nav-item px-0 col-lg-auto px-lg-3 {% if 'descargas' in currentPath %}active{% endif %} border-0">
+                    <a class="nav-link d-inline-block text-uppercase position-relative px-lg-0" href="{{ siteUrl('descargas') }}">
+                        Descargas
+                        {% if 'descargas' in currentPath %}
+                            <span class="sr-only">(current)</span>
+                        {% endif %}
+                    </a>
+                </li>
+                <li class="nav-item px-0 col-lg-auto pl-lg-3 pr-lg-0 {% if 'contacto' in currentPath %}active{% endif %} border-0">
+                    <a class="nav-link btn btn-outline-white d-inline-block text-uppercase position-relative px-3 mt-2 mt-lg-0" href="{{ siteUrl('contacto') }}">
+                        Contacto
+                        {% if 'contacto' in currentPath %}
+                            <span class="sr-only">(current)</span>
+                        {% endif %}
+                    </a>
+                </li>
+            </nav>
+            <div id="sub-nav" class="row pt-3 py-lg-1 align-self-lg-stretch">
+                <ul class="container nav small flex-row flex-md-row-reverse ml-md-0 mx-lg-auto">
+                    <li class="nav-item col-6 col-md-auto order-md-3">
 
-						{% if currentSite.language == 'es-CO' %}
-						<a href="tel:+573144377901" class="nav-link px-0 py-1 py-lg-0">
-							<i class="fa fa-phone fa-flip-horizontal mr-2"></i>
-								+57 314 437 7901
-						</a>
-						{% else %}
-						{# <a href="tel:018005092620" class="nav-link px-0 py-1 py-lg-0">
-							<i class="fa fa-phone fa-flip-horizontal mr-2"></i>
-								01 800 509 2620
-						</a> #}
-						{% endif %}
-					</li>
-					<li class="nav-item col-6 col-md-auto order-md-2">
-						<a href="mailto:mercadotecnia@urany.net" class="nav-link px-0 py-1 py-lg-0" href="#">
-							<i class="fa fa-envelope mr-2"></i> mercadotecnia@urany.net
-						</a>
-					</li>
-				  	<li class="nav-item col col-md-auto order-md-1 ml-md-auto mr-lg-0 pr-lg-0">
-						<a href="https://www.linkedin.com/company/urany-m%C3%A9xico/" class="nav-link text-primary p-0 py-lg-0" target="_blank">
-							<i class="fab fa-linkedin-in"></i>
-						</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-	{% if 'Blog' in title %}
-		<nav id="blog-nav" class="bg-primary">
-			<div class="container position-relative pr-5">
-				<i class="fa fa-chevron-down text-white p-3 d-lg-none" data-toggle="collapse" data-target="#links"></i>
-				<h1 class="py-3 mb-0 bolder h6 text-white d-lg-none">
-					{{ title }}
-				</h1>
-				<ul id="links" class="list-unstyled mb-0 collapse d-lg-flex">
-					<li class="d-none pt-0 pb-3 d-lg-block py-lg-2 px-lg-5 {{ macros.is_active('blog') }}">
-						<a href="{{ siteUrl('blog') }}" class="">
-							Blog
-						</a>
-					</li>
-					{% set entries = craft.entries.section('instaBlog') %}
-					{% set categories = craft.categories.relatedTo(entries) %}
+                        {% if currentSite.language == 'es-CO' %}
+                            <a href="tel:+573144377901" class="nav-link px-0 py-1 py-lg-0">
+                                <i class="fa fa-phone fa-flip-horizontal mr-2"></i>
+                                +57 314 437 7901
+                            </a>
+                        {% else %}
+                            <a href="tel:8005092620" class="nav-link px-0 py-1 py-lg-0">
+                                <i class="fa fa-phone fa-flip-horizontal mr-2"></i>
+                                800 509 2620
+                            </a>
+                        {% endif %}
+                    </li>
+                    <li class="nav-item col-6 col-md-auto order-md-2">
+                        <a href="mailto:mercadotecnia@urany.net" class="nav-link px-0 py-1 py-lg-0" href="#">
+                            <i class="fa fa-envelope mr-2"></i>
+                            mercadotecnia@urany.net
+                        </a>
+                    </li>
+                    <li class="nav-item col col-md-auto order-md-1 ml-md-auto mr-lg-0 pr-lg-0">
+                        <a href="https://www.linkedin.com/company/urany-m%C3%A9xico/" class="nav-link text-primary p-0 py-lg-0" target="_blank">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    {% if 'Blog' in title %}
+        <nav id="blog-nav" class="bg-primary">
+            <div class="container position-relative pr-5">
+                <i class="fa fa-chevron-down text-white p-3 d-lg-none" data-toggle="collapse" data-target="#links"></i>
+                <h1 class="py-3 mb-0 bolder h6 text-white d-lg-none">
+                    {{ title }}
+                </h1>
+                <ul id="links" class="list-unstyled mb-0 collapse d-lg-flex">
+                    <li class="d-none pt-0 pb-3 d-lg-block py-lg-2 px-lg-5 {{ macros.is_active('blog') }}">
+                        <a href="{{ siteUrl('blog') }}" class="">
+                            Blog
+                        </a>
+                    </li>
+                    {% set entries = craft.entries.section('instaBlog') %}
+                    {% set categories = craft.categories.relatedTo(entries) %}
 
-					{% for category in categories.limit(4).all() %}
-						<li class="pt-0 pb-3 py-lg-2 px-lg-5 {{ macros.is_active(category.slug) }}">
-							<a href="{{category.url}}" class="">
-								{{category.title}}
-							</a>
-						</li>
-					{% endfor %}
-				</ul>
-				</ul>
-			</div>
-		</nav>
-	{% endif %}
-</header>
+                    {% for category in categories.limit(4).all() %}
+                        <li class="pt-0 pb-3 py-lg-2 px-lg-5 {{ macros.is_active(category.slug) }}">
+                            <a href="{{category.url}}" class="">
+                                {{category.title}}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </ul>
+        </div>
+    </nav>
+{% endif %}</header>
