@@ -28,7 +28,23 @@ svg {
 
 .toast {
   position: fixed;
-  top: 0;
-  right: 0;
-  z-index: 3000;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  background: rgb(136, 23, 38);
+  background: linear-gradient(
+    180deg,
+    rgba(136, 23, 38, 1) 0%,
+    rgba(60, 20, 29, 1) 100%
+  );
+  .toast-header {
+    background: transparent;
+    color: #fff;
+  }
+  .close {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    opacity: 1;
+  }
 }

@@ -77,16 +77,16 @@
             {% endcache %}
 
             {% if currentSite.language == 'es-MX' %}
-                <div aria-atomic="true" aria-live="assertive" class="toast m-5" id="catalog-notification" role="alert">
+                <div aria-atomic="true" aria-live="assertive" class="toast m-5 py-3" id="catalog-notification" role="alert">
                     <div class="toast-header">
-                        <a class="text-dark mr-auto" href="{{ siteUrl('catalogo-de-stock') }}">
-                            <strong class="h6 text-uppercase mb-0 text-dark font-weight-bold">Nuevo catálogo de stock</strong>
+                        <a class="mr-auto" href="{{ siteUrl('catalogo-de-stock') }}">
+                            <strong class="h5 text-uppercase mb-0 text-white font-weight-bold">Descarga el nuevo catálogo de stock</strong>
                         </a>
-                        <button aria-label="Close" class="ml-2 mb-1 close" data-dismiss="toast" type="button">
+                        <button aria-label="Close" class="ml-2 mb-1 close text-white" data-dismiss="toast" type="button">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <a class="text-dark" href="{{ siteUrl('catalogo-de-stock') }}">
+                    <a class="text-white" href="{{ siteUrl('catalogo-de-stock') }}">
                         <div class="toast-body">
                             Da click aquí para descargar nuestro nuevo catálogo de stock
                         </div>
