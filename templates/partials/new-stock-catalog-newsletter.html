@@ -1,21 +1,21 @@
-{% if entry is defined and entry.catalogo is defined and entry.catalogo is not empty %}
-    {% set color = entry.catalogo[0].fondo %}
-    {% set portada = entry.catalogo[0].portada[0].url %}
-{% else %}
+
     {% set color = '#4c565d' %}
-    {% set portada = '/assets/img/catalogo-stock.jpg' %}
-{% endif %}
-<section class="container-fluid py-md-5 d-flex align-items-center" style="background-image: linear-gradient(-180deg, {{color}} 0%, #111 100%); min-height: 100vh;">
+    {% set portada = '/assets/img/portadaNuevo.png' %}
+
+<section class="container-fluid py-md-5 d-flex align-items-center" style="background-image: linear-gradient(180deg,#881726,#3c141d); min-height: 100vh;">
     <div class="container d-flex flex-nowrap">
         <div class="row py-5 align-items-center">
-            <div class="col-12 mx-auto col-lg-6 order-md-2 order-lg-1">
+          <div class="col-12 mx-auto col-lg-5 mb-md-5 order-1 order-lg-2">
+              <img class="d-block img-fluid mx-auto col-sm-6 col-lg-12" src="{{ portada }}">
+          </div>
+            <div class="col-12 mx-auto col-lg-6 order-2 order-lg-1">
                 <h3 class="col-12 text-white text-uppercase h2">
-                    Descarga el catálogo de stock
+                    Conoce más de nuestros componentes
                 </h3>
                 <p class="col-12 my-3 text-white">
                     Ingresa tu correo electrónico y te enviaremos de forma automática el catálogo de la marca y un brief para conocer los proyectos de URANY.
                 </p>
-                <form action="https://thebrandindustry.us19.list-manage.com/subscribe/post-json?u=5a7efa6f035c3370673b36d5d&amp;id=fa6cb92292&c=?" class="col-12 mr-lg-auto newsletter newsletter-subscribe-stock validate" id="mc-embedded-subscribe-form" method="get" name="mc-embedded-subscribe-form" novalidate target="_blank">
+                <form action="https://thebrandindustry.us19.list-manage.com/subscribe/post-json?u=5a7efa6f035c3370673b36d5d&amp;id=fa6cb92292&c=?" class="col-12 mr-lg-auto newsletter newsletter-subscribe-stock validate" id="mc-embedded-subscribe-form2" method="get" name="mc-embedded-subscribe-form" novalidate target="_blank">
                     <p class="col-12 mailchimp-error text-white"></p>
                     <div class="input-group w-100 mb-2 mb-sm-0">
                         <input class="d-none form-control form-control-outline-white text-white" id="mce-FNAME" name="FNAME" type="text" value="Descarga">
@@ -24,14 +24,11 @@
                         <input class="input-group-addon btn btn-primary px-5 text-white download-catalogo" type="submit" value="Enviar">
                     </div>
                 </form>
-                <div class="input-group mb-2 col-12 mb-sm-0" id="download">
+                <div class="input-group mb-2 col-12 mb-sm-0 mb-md-5" id="download">
                     <a download href="/assets/img/FolletoNuevo_2019.pdf" class="btn btn-white">
                         Descarga el catálogo
                     </a>
                 </div>
-            </div>
-            <div class="col-12 mx-auto col-lg-5 mb-md-5 order-md-1 order-lg-2">
-                <img class="d-block img-fluid mx-auto col-sm-6 col-lg-12" src="{{ portada }}">
             </div>
         </div>
     </div>
