@@ -8,6 +8,7 @@
 {% block content %}
     {% if entry.catalogo|length > 0 %}
         {% include 'partials/_stock-catalog-newsletter' %}
+        {% include 'partials/new-stock-catalog-newsletter' %}
     {% endif %}
     {% include 'partials/_subscribe' %}
 {% endblock %}
