@@ -688,7 +688,8 @@ h1 {
 }
 
 /* Success subscription */
-#download a {
+#download a,
+.download-btn a {
   position: absolute;
   left: 50%;
   right: 50%;
@@ -698,7 +699,8 @@ h1 {
   border-width: 0;
 }
 
-#download.success a {
+#download.success a,
+.download-btn.success a {
   left: 15px;
   right: 15px;
   border-width: 1px;

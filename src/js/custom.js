@@ -170,7 +170,7 @@ $("form.newsletter").submit(function(e) {
         } else if ($form.is(".newsletter-subscribe-stock")) {
           $form.fadeOut(50);
           setTimeout(function() {
-            $("#download").addClass("success");
+            $form.siblings(".download-btn").addClass("success");
           }, 65);
           ga("send", {
             hitType: "pageview",
