@@ -8,3 +8,4 @@ import 'slick-carousel';
 import '@fortawesome/fontawesome-pro/js/all';
 import 'scrollreveal';
 import './js/custom';
+import './js/_form_calculo';

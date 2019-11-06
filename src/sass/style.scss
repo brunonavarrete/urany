@@ -48,3 +48,320 @@ svg {
     opacity: 1;
   }
 }
+
+/* landing cálculo */
+$rojo-urany: #881626;
+.floating-arm-1{
+    width: 40%;
+    position: absolute;
+    right: 0;
+    bottom: 50%;
+    transform: translateY(-10%);
+    @media (max-width: 767px){
+      width: 90%;
+      top: 80%;
+      bottom: 0;
+    }
+    @media(min-width: 768px){
+      top: 70%;
+      bottom: 0;
+    }
+    @media (min-width: 1200px){
+      top: 50%;
+    }
+}
+.floating-arm-2{
+    width: 43%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translateY(-25%);
+    z-index: 1;
+}
+.gray-button, .white-button{
+  font-size: 1.2rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  font-family: Brandon-bold;
+  letter-spacing: 1.5px;
+}
+.gray-button{
+  background-color: #E2E0E0;
+  color: $rojo-urany;
+  border: none;
+}
+.white-button{
+  background-color: white;
+  color: $rojo-urany;
+  border: none;
+}
+.red-button{
+  background-color: $rojo-urany;
+  color: white !important;
+  border: none;
+}
+
+@for $i from 1 to 6{
+  .zindex#{$i}{
+    z-index: #{$i};
+  }
+}
+
+.form-calculo{   
+  input{
+    height: 3rem;
+    border: unset;
+    outline: none;
+  }
+  .form-control{
+    margin-bottom: 1.5rem;
+    &::placeholder{
+      color: $rojo-urany;
+    }
+  }
+}
+
+.bg-image{
+  &.bg-cover{
+    background-size: cover;
+  }
+  &.bg-no-repeat{
+    background-repeat: no-repeat;
+  }
+}
+
+.hover-calculo{
+  margin-top: 1rem;
+  .content{
+    opacity: 0;
+  }
+  .h1,.title{
+    color: $rojo-urany;
+    font-weight: bold;
+    font-family: Brandon-bold;
+    position: relative;
+  }
+  .h1{
+    opacity: .5;
+    font-size: 5em;
+  }
+  .title{
+    &:after{
+      content: '';
+      position: absolute;
+      bottom: -1em;
+      left: 0;
+      width: 60%;
+      height: 7px;
+      background-color: $rojo-urany;
+    }
+  }
+  &.active{
+    will-change: opacity, height;
+
+    border: 1px solid $rojo-urany;
+    border-bottom: 10px solid $rojo-urany;
+    .h1{
+      opacity: 1;
+    }  
+    .title:after{
+      opacity: 0;
+    }
+    .content{
+      opacity: 1;
+    }
+  }
+  /* show everything when resolutions is lower*/
+  @media (max-width: 1025px){
+    border: 1px solid $rojo-urany !important;
+    border-bottom: 10px solid $rojo-urany !important;
+    .content, .h1{ opacity: 1 !important; }
+    .title:after{ opacity: 0 !important; }
+  }
+}
+.red-title{
+  font-family: Brandon-bold;
+  letter-spacing: 2px;
+}
+.big-titles{
+  font-size: 2rem;
+  @media (min-width: 768px){
+    font-size: 3.5rem;
+  }
+  @media (min-width: 1025px){
+    max-width: 50%;
+  }
+}
+
+
+
+
+/* 
+ *
+ * Animación de borders con pseudoelementos
+ * Origen: https://codepen.io/DannyJoris/pen/BrMgza
+ *
+ */
+.border-animation {
+  --border-width: 0.1em;
+  --animation-speed: 0.3s;
+  --color: #881626;
+  //color: var(--color);
+  position: relative;
+  display: inline-block;
+  border: var(--border-width) solid transparent;
+  border-bottom: 10px solid transparent;
+  
+  .border-animation__inner {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    padding: 0.2em;
+    z-index: 1;
+    border: solid var(--border-width) transparent;
+  }
+  
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    //background: var(--color);
+  }
+  
+  &:focus:before,
+  &:hover:before {
+    animation: beforeBorders var(--animation-speed) forwards ease-in-out;
+    animation-timing-function: linear;
+    -webkit-animation-timing-function: linear;
+  }
+
+  &:focus:after,
+  &:hover:after {
+    animation: afterBorders var(--animation-speed) forwards ease-in-out;
+    animation-timing-function: linear;
+    -webkit-animation-timing-function: linear;
+  }
+  
+  &:focus,
+  &:hover {
+    animation: borderColors var(--animation-speed) steps(1) forwards;
+    animation-timing-function: linear;
+    -webkit-animation-timing-function: linear;
+    outline: none;
+
+    .border-animation__inner {
+      //animation: background calc(var(--animation-speed) / 5 * 3) forwards ease-in-out;
+      animation-delay: calc(var(--animation-speed) / 5 * 2);
+      animation-timing-function: linear;
+      -webkit-animation-timing-function: linear;
+    }
+  }
+}
+
+@keyframes beforeBorders {
+  0% {
+    top: calc(var(--border-width) * -1);
+    left: 50%;
+    bottom: auto;
+    right: auto;
+    width: 0;
+    height: var(--border-width);
+  }
+  33% {    
+    top: calc(var(--border-width) * -1);
+    left: calc(var(--border-width) * -1);
+    bottom: auto;
+    right: auto;
+    width: calc(var(--border-width) + 50%);
+    height: var(--border-width);
+  }
+  66% {
+    top: calc(var(--border-width) * -1);
+    left: calc(var(--border-width) * -1);
+    bottom: auto;
+    right: auto;
+    width: var(--border-width);
+    height: calc((var(--border-width) * 2) + 100%);
+  }
+  100% {
+    top: auto;
+    left: calc(var(--border-width) * -1);
+    bottom: calc(var(--border-width) * -1);
+    right: auto;
+    width: calc(var(--border-width) + 50%);
+    height: calc((var(--border-width) * 2) + 100%);
+  }
+}
+
+@keyframes afterBorders {
+  0% {
+    top: calc(var(--border-width) * -1);
+    left: auto;
+    bottom: auto;
+    right: 50%;
+    width: 0;
+    height: var(--border-width);
+  }
+  33% {    
+    top: calc(var(--border-width) * -1);
+    left: auto;
+    bottom: auto;
+    right: calc(var(--border-width) * -1);
+    width: calc(var(--border-width) + 50%);
+    height: var(--border-width);
+  }
+  66% {
+    top: calc(var(--border-width) * -1);
+    left: auto;
+    bottom: auto;
+    right: calc(var(--border-width) * -1);
+    width: var(--border-width);
+    height: calc((var(--border-width) * 2) + 100%);
+  }
+  100% {
+    top: auto;
+    left: auto;
+    bottom: calc(var(--border-width) * -1);
+    right: calc(var(--border-width) * -1);
+    width: calc(var(--border-width) + 50%);
+    height: calc((var(--border-width) * 2) + 100%);
+  }
+}
+
+@keyframes borderColors {
+  0% {
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+  }
+  33% {
+    border-top-color: var(--color);
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+
+  }
+  66% {
+    border-top-color: var(--color);
+    border-right-color: var(--color);
+    border-bottom-color: transparent;
+    border-left-color: var(--color);
+  }
+  100% {
+    border-top-color: var(--color);
+    border-right-color: var(--color);
+    border-bottom-color: var(--color);
+    border-left-color: var(--color);
+  }
+}
+/* 
+ *
+ * Animación de borders con pseudoelementos
+ *
+ */
+
+
+/* landing cálculo*/

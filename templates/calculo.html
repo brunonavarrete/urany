@@ -1,0 +1,176 @@
+{# --------------- Variables --------------- #}
+{% set jumbotronImage = "calculo_header.jpg" %}
+{% set title = "Cálculo de un eje servocontrolado" %}
+{% set logo  = "assets/img/logo-urany.jpg " %}
+{% set calc1 = "assets/img/calc1.jpg " %}
+{% set calc2 = "assets/img/calc2.jpg " %}
+{% set calc3 = "assets/img/calc3.jpg " %}
+{% set calc4 = "assets/img/calc4.png " %}
+{% set calc5 = "assets/img/calc5.jpg " %}
+{% set calc6 = "assets/img/calc6.png " %}
+{% set calc7 = "assets/img/calc7.jpg " %}
+{% set calc8 = "assets/img/calc8.jpg " %}
+{# ----------------------------------------- #}
+
+{% extends "_layout" %}
+
+{% block jumbotron %}
+	<div class="pleca pleca-primary"></div>
+	<div class="container position-relative" style="">
+		<h1 class="text-white text-uppercase text-center mb-3 font-weight-bold mx-auto big-titles">
+			{{ title }}
+		</h1>
+	</div>
+{% endblock %}
+
+{% block content %}
+	<div class="container-fluid mt-n5 pt-2">
+		<div class="row">
+			<div class="col-12 col-md-7 text-right align-self-center">
+				<div class="row mb-5">
+					<div class="col-12 col-md-7 my-5 my-md-0 offset-md-4">
+						<img src="{{ logo }}" alt="Logo URANY" class="img-fluid my-5">
+						<p class="h5">Somos una empresa con más de 20 años de experiencia especializados en generar el análisis, cálculo, selección e implementación de servosistemas <b>con una tasa de confiabilidad de 99.86%</b>. Nuestro cálculo evita riesgos para tu proceso y fallas técnicas. </p>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-md-5 mt-n3 px-0">
+				<a href="#cta_container" class="btn mt-n1 gray-button px-lg-5 py-3 rounded-0 scroll_to">COTIZA AHORA</a>
+				<img src="{{ calc1 }}" alt="CNC machine" class="img-fluid mb-md-n5 zindex2 position-relative">
+			</div>
+		</div>
+	</div>
+
+	<div class="container-fluid position-relative">
+		<div class="row mt-n5">
+			<div class="col-12 col-md-2 px-0 align-self-end">
+				<img src="{{ calc2 }}" alt="CNC machine" class="img-fluid d-none d-md-block">
+			</div>
+			<div class="col-12 col-md-8">
+				<div class="row h-100 position-relative zindex1 bg-image bg-no-repeat bg-cover" style="background-image: url({{ calc3 }});">
+					<div class="col-12 col-md-6 pr-4 pt-3 pt-md-0">
+						<p class="bold h1 pb-3 pl-0 pl-lg-5 pt-5 text-right text-white">Realiza tu elección de sistema con un departamento de cálculo altamente especializado.
+						</p>
+						<a href="#cta_container" class="col-12 btn btn-outline-primary text-uppercase col-md-auto white-button float-right mb-3 scroll_to">COTIZA AHORA</a>
+					</div>
+					<div class="col-12 col-md-6">
+					</div>
+					<div class="col-12 col-md-6">
+					</div>
+					<div class="col-12 col-md-6 px-0 align-self-end mb-n5">
+						<img src="{{ calc5 }}" alt="Fondo gris" class="img-fluid slide-right">
+					</div>
+				</div>
+			</div>
+		</div>
+		<img src="{{ calc4 }}" alt="CNC machine" class="img-fluid floating-arm-1 zindex1 ">
+	</div>
+	
+	<div class="container my-5 py-5">
+		<div class="row my-5 py-5">
+			<div class="col-12 text-center mt-5">
+				<h2 class="h1 text-primary red-title">NUESTRO PROCESO DE CÁLCULO</h2>
+			</div>
+			<div class="col-12 col-md-6 col-lg-4 px-3 mt-3 ">
+				<div class="hover-calculo py-5 px-4 h-100 border-animation">
+					<div class="border-animation__inner">
+						<p class="h1">1</p>
+						<p class="title h4">ANÁLISIS DE LA APLICACIÓN</p>
+						<p class="content">Finalmente, el Departamento de Cálculo selecciona los componentes óptimos y adecuados para la aplicación y se realiza una propuesta comercial. 
+						Dentro de esa propuesta se consideran: Presupuesto, desempeño y preferencia del cliente; siempre garantizando el éxito de la automatización de la máquina o proceso. </p>
+						<a href="" class=""></a>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-md-6 col-lg-4 px-3 mt-3 ">
+				<div class="hover-calculo py-5 px-4 h-100 border-animation">
+					<div class="border-animation__inner">
+						<p class="h1">2</p>
+						<p class="title h4">CÁLCULO DE LA APLICACIÓN</p>
+						<p class="content">Finalmente, el Departamento de Cálculo selecciona los componentes óptimos y adecuados para la aplicación y se realiza una propuesta comercial. 
+						Dentro de esa propuesta se consideran: Presupuesto, desempeño y preferencia del cliente; siempre garantizando el éxito de la automatización de la máquina o proceso. </p>
+						<a href="" class=""></a>
+					</div>
+				</div>
+			</div>
+			<div class="col col-lg-4 px-3 mt-3 ">
+				<div class="hover-calculo py-5 px-4 h-100 active border-animation">
+					<div class="border-animation__inner">
+						<p class="h1">3</p>
+						<p class="title h4">SELECCIÓN DE COMPONENTES DEL SERVOSISTEMA CON PROPUESTA COMERCIAL </p>
+						<p class="content">Finalmente, el Departamento de Cálculo selecciona los componentes óptimos y adecuados para la aplicación y se realiza una propuesta comercial. 
+						Dentro de esa propuesta se consideran: Presupuesto, desempeño y preferencia del cliente; siempre garantizando el éxito de la automatización de la máquina o proceso.
+						</p>
+					<p class="content">
+						<a href="#cta_container" class="scroll_to red-button px-4 py-2 d-table-cell mt-2 scroll_to">COTIZA AHORA</a>
+					</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	
+
+	<div class="container-fluid position-relative zindex3">
+		<div class="row position-relative mb-n5">
+			<div class="col-12 col-md-3"></div>
+			<div class="col-12 col-md-8">
+				<img src="{{ calc7 }}" alt="Equipo servocontrolado" class="img-fluid slide-left">
+			</div>
+			<div class="col-12 col-md-1"></div>
+			<div class="col-12 col-md-10 " style="background-image: url({{ calc5 }});">
+				<div class="row">
+					<div class="col-12 col-md-6 offset-md-5 text-center">
+						<p class="py-5 mb-0 h5">Servicio personalizado y realizado por un equipo de expertos con vasta experiencia en simulación, cálculo y selección de componentes mecánicos y servocontrolados que garantizará la inversión efectuada y disminuirá el riesgo de implementación o puesta en marcha.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<img src="{{ calc6 }}" alt="CNC machine" class="img-fluid floating-arm-2 zindex3 ">
+	</div>
+
+
+	<div id="cta_container" class="container-fluid position-relative zindex2 form-calculo bg-image bg-no-repeat bg-cover" style="background-image: url({{ calc8 }});">
+		<div class="mb-lg-5 py-4 py-md-5"></div>
+		<div class="container">
+			<div class="row justify-content-around">
+				<div class="col-12 col-md-10 mb-5 py-5">
+					<form method="post" accept-charset="UTF-8" id="form_calculo">
+						<div class="row">
+							{{ csrfInput() }}
+							<input type="hidden" name="action" value="contact-form/send">
+							<input type="hidden" name="address">
+
+							<div class="col-12 col-md-6">
+								<input type="text" name="fromName" id="fromName" class="form-control text-primary" placeholder="Nombre completo">
+							</div>
+							<div class="col-12 col-md-6">
+								<input type="text" name="fromEmail" id="fromEmail" class="form-control text-primary" placeholder="Correo Electrónico">
+							</div>
+							<div class="col-12 col-md-8">
+								<input type="text" name="message[Teléfono][]" id="telefono" class="form-control text-primary" placeholder="Teléfono institucional">
+							</div>
+							<div class="col-12 col-md-4">
+								<input type="text" name="message[Extensión][]" id="extension" class="form-control text-primary" placeholder="Extensión">
+							</div>
+							<div class="col-12 col-md-6">
+								<input type="text" name="message[Empresa][]" id="empresa" class="form-control text-primary" placeholder="Empresa">
+							</div>
+							<div class="col-12 col-md-6">
+								<input type="text" name="message[Ciudad y Estado][]" id="ciudad" class="form-control text-primary" placeholder="Ciudad y Estado">
+							</div>
+							<div class="col-12">
+								<textarea id="" cols="30" rows="10" name="message[body]" id="estado" class="form-control text-primary" placeholder="Escribe un mensaje"></textarea>
+							</div>
+							<div class="col-12 col-md-6 offset-md-6 text-right">
+								 <button type="submit" class="col-12 btn btn-outline-primary text-uppercase col-md-auto white-button float-right mb-3">COTIZA AHORA</button>
+							</div>
+						</div>
+					</form>
+				</div>	
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

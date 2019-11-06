@@ -199,6 +199,10 @@ $("form.newsletter").submit(function(e) {
 var header = document.getElementById("main-header");
 var headroom = new Headroom(header, {
   offset: $(header).height(),
+  tolerance : {
+        up : 5,
+        down : 0
+    },
   onTop: function() {
     if ($("#scroll").length) {
       $("#scroll").fadeIn(400);
@@ -573,5 +577,46 @@ $(document).on("click", ".toggle-search", function() {
   $("#main-nav").toggleClass("search");
   $("#buscar_nav").fadeToggle(150);
 });
+
+
+/* --------------------------
+------ Hover landing cálculo -------
+-------------------------- */
+$('.hover-calculo').on('mouseenter',function(){
+  $('.hover-calculo').removeClass('active');
+  $(this).addClass('active');
+});
+
+/* --------------------------
+------ Scroll body to -------
+------ general function that will work with any anchor link -------
+------ add anchor link as normally -------
+------ add class "scroll_to" to element -------
+-------------------------- */
+$(".scroll_to").on('click', function (event) {
+    event.preventDefault();
+    $('html, body').animate({
+        scrollTop: $($.attr(this, 'href')).offset().top + 70
+    }, 500);
+});
+
+var slideLeft = {
+    distance: '150%',
+    origin: 'right',
+    opacity: null
+};
+var slideRight = {
+    distance: '150%',
+    origin: 'left',
+    opacity: null
+};
+var slideUp = {
+    distance: '1000%',
+    origin: 'bottom',
+    opacity: null
+};
+ScrollReveal().reveal('.slide-left', slideLeft);
+ScrollReveal().reveal('.slide-right', slideRight);
+ScrollReveal().reveal('.slide-up', slideUp);
 
 //# sourceMappingURL=app.js.map
