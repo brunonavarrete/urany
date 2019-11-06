@@ -119,6 +119,13 @@ $rojo-urany: #881626;
       color: $rojo-urany;
     }
   }
+  .messages{
+    .help-block.error{
+      color: white;
+      margin-bottom: 0;
+      margin-top: -1rem;
+    }
+  }
 }
 
 .bg-image{

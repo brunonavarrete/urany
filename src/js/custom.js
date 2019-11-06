@@ -3,6 +3,7 @@ window.jQuery = $;
 window.$ = $;
 import Headroom from "headroom.js";
 import ScrollReveal from "scrollreveal";
+var validate = require("validate.js");
 
 /* --------------------------
 	Toast

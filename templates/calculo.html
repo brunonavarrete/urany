@@ -57,8 +57,8 @@
 					</div>
 					<div class="col-12 col-md-6">
 					</div>
-					<div class="col-12 col-md-6 px-0 align-self-end mb-n5">
-						<img src="{{ calc5 }}" alt="Fondo gris" class="img-fluid slide-right">
+					<div class="col-12 col-md-6 px-0 align-self-end mb-n5 slide-left">
+						<img src="{{ calc5 }}" alt="Fondo gris" class="img-fluid">
 					</div>
 				</div>
 			</div>
@@ -136,38 +136,55 @@
 		<div class="container">
 			<div class="row justify-content-around">
 				<div class="col-12 col-md-10 mb-5 py-5">
-					<form method="post" accept-charset="UTF-8" id="form_calculo">
+					<form method="post" accept-charset="UTF-8" class="form_calculo">
 						<div class="row">
-							{{ csrfInput() }}
-							<input type="hidden" name="action" value="contact-form/send">
-							<input type="hidden" name="address">
-
-							<div class="col-12 col-md-6">
+							<div class="form-group">
+								{{ csrfInput() }}
+								<div class="messages"></div>
+							</div>
+							<div class="form-group">
+								<input type="hidden" name="action" value="contact-form/send">
+								<div class="messages"></div>
+							</div>
+							<div class="form-group">
+								<input type="hidden" name="address">
+								<div class="messages"></div>
+							</div>
+							<div class="col-12 col-md-6 form-group">
 								<input type="text" name="fromName" id="fromName" class="form-control text-primary" placeholder="Nombre completo">
+								<div class="messages"></div>
 							</div>
-							<div class="col-12 col-md-6">
-								<input type="text" name="fromEmail" id="fromEmail" class="form-control text-primary" placeholder="Correo Electrónico">
+							<div class="col-12 col-md-6 form-group">
+								<input type="email" name="fromEmail" id="fromEmail" class="form-control text-primary" placeholder="Correo Electrónico">
+								<div class="messages"></div>
 							</div>
-							<div class="col-12 col-md-8">
+							<div class="col-12 col-md-8 form-group">
 								<input type="text" name="message[Teléfono][]" id="telefono" class="form-control text-primary" placeholder="Teléfono institucional">
+								<div class="messages"></div>
 							</div>
-							<div class="col-12 col-md-4">
+							<div class="col-12 col-md-4 form-group">
 								<input type="text" name="message[Extensión][]" id="extension" class="form-control text-primary" placeholder="Extensión">
+								<div class="messages"></div>
 							</div>
-							<div class="col-12 col-md-6">
+							<div class="col-12 col-md-6 form-group">
 								<input type="text" name="message[Empresa][]" id="empresa" class="form-control text-primary" placeholder="Empresa">
+								<div class="messages"></div>
 							</div>
-							<div class="col-12 col-md-6">
+							<div class="col-12 col-md-6 form-group">
 								<input type="text" name="message[Ciudad y Estado][]" id="ciudad" class="form-control text-primary" placeholder="Ciudad y Estado">
+								<div class="messages"></div>
 							</div>
-							<div class="col-12">
+							<div class="col-12 form-group">
 								<textarea id="" cols="30" rows="10" name="message[body]" id="estado" class="form-control text-primary" placeholder="Escribe un mensaje"></textarea>
+								<div class="messages"></div>
 							</div>
-							<div class="col-12 col-md-6 offset-md-6 text-right">
+							<div class="col-12 col-md-6 offset-md-6 text-right form-group">
 								 <button type="submit" class="col-12 btn btn-outline-primary text-uppercase col-md-auto white-button float-right mb-3">COTIZA AHORA</button>
+								 <div class="messages"></div>
 							</div>
 						</div>
 					</form>
+					<div class="form-alert animated" role="alert"></div>
 				</div>	
 			</div>
 		</div>
