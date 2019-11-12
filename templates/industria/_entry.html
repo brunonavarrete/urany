@@ -1,7 +1,7 @@
 {# --------------- Variables --------------- #}
-	{% set jumbotronImage = entry.fotoEncabezado[0].filename %}
-	{% set subscribeImage = 'subscribe2' %}
-	{% set title = 'Aplicaciones:' ~ ' ' ~ entry.title %}
+{% set jumbotronImage = entry.fotoEncabezado[0].filename %}
+{% set subscribeImage = 'subscribe2' %}
+{% set title = 'Aplicaciones:' ~ ' ' ~ entry.title %}
 {# ----------------------------------------- #}
 
 {% extends "_layout" %}
@@ -10,7 +10,8 @@
 	<div class="pleca pleca-primary"></div>
 	<div class="container position-relative">
 		<h1 class="text-white text-uppercase text-center mb-3">
-			Industria: {{ entry.title }}
+			Industria:
+			{{ entry.title }}
 		</h1>
 	</div>
 {% endblock %}
@@ -23,7 +24,7 @@
 				<div class="row py-5 align-items-md-center">
 					{% if fila.imagen|length >= 1 %}
 						<div class="col-12 col-md-6 col-lg-6 mx-lg-auto {% if fila.textFirst == 'false' %}order-lg-1{% endif %}">
-							<img src="{{ fila.imagen[0].url }}" class="img-fluid mb-5 mb-md-0">
+							<img src="{{ fila.imagen[0].url }}" class="img-fluid mb-5 mb-md-0" alt="Urany">
 						</div>
 					{% endif %}
 					<div class="col-12 {% if fila.imagen[0]|length >= 1 %}col-md-7 ml-md-auto col-lg-6{% else %}col-lg-7{% endif %} mx-lg-auto">
@@ -56,39 +57,39 @@
 	</section>
 
 	{# <section class="container pb-md-5">
-		<div class="row pt-3 pb-5 align-items-center">
-			<h2 class="col-12 h3 text-uppercase col-lg-3 align-self-start">
-				Productos más utilizados
-			</h2>
-			<div class="col-12 row mx-0 col-lg-9">
-				{% set grid = entry.gridProductos %}
-				{% for product in grid %}
-					<div class="articulo col-12 text-center col-md-4">
-						<div class="thumb d-flex justify-content-center align-items-center">
-							{% if product.foto[0]|length > 0 %}
-								<img src="{{ siteUrl ~ product.foto[0].url }}">
-							{% else %}
-								<img src="{{ siteUrl }}assets/img/icon-black.png">
-							{% endif %}
+			<div class="row pt-3 pb-5 align-items-center">
+				<h2 class="col-12 h3 text-uppercase col-lg-3 align-self-start">
+					Productos más utilizados
+				</h2>
+				<div class="col-12 row mx-0 col-lg-9">
+					{% set grid = entry.gridProductos %}
+					{% for product in grid %}
+						<div class="articulo col-12 text-center col-md-4">
+							<div class="thumb d-flex justify-content-center align-items-center">
+								{% if product.foto[0]|length > 0 %}
+									<img src="{{ siteUrl ~ product.foto[0].url }}">
+								{% else %}
+									<img src="{{ siteUrl }}assets/img/icon-black.png">
+								{% endif %}
+							</div>
+							<div>
+								<h5 class="small text-uppercase text-muted mt-3">
+									{{ product.marca }}
+								</h5>
+								<h3 class="h5">
+									{{ product.modelo }}
+								</h3>
+							</div>
 						</div>
-						<div>
-							<h5 class="small text-uppercase text-muted mt-3">
-								{{ product.marca }}
-							</h5>
-							<h3 class="h5">
-								{{ product.modelo }}
-							</h3>
-						</div>
-					</div>
-				{% endfor %}
+					{% endfor %}
+				</div>
+				<div class="col-12 text-center">
+					<a href="#" data-chat="open" class="btn btn-primary mt-5 text-uppercase">
+						Ver más piezas
+					</a>
+				</div>
 			</div>
-			<div class="col-12 text-center">
-				<a href="#" data-chat="open" class="btn btn-primary mt-5 text-uppercase">
-					Ver más piezas
-				</a>
-			</div>
-		</div>
-	</section> #}
+		</section> #}
 
 	<section class="grid-slider container">
 		<div class="row mx-0">
@@ -106,24 +107,25 @@
 		</div>
 		<div class="slider-slider row mx-0">
 			{% for entry in craft.entries.section('industria').orderBy('RAND()').id('not ' ~ entry.id).limit(9).all() %}
-			<a href="{{ entry.url }}" class="blog-item col-12 mx-0 mb-4">
-				<div class="thumb col-12 bg-cover" style="background-image:url({% if entry.fotoEncabezado %}{{ entry.fotoEncabezado[0].getUrl('blog') }} {% endif %})"></div>
-				<div class="info col-12 px-0 pt-3 pb-md-0 pt-md-1">
-					<h3 class="h5 bold mb-2">
-						{{ entry.title }}
-					</h3>
-					<p class="meta text-justify mb-0">
-						{% for block in entry.filasTexto.all() %}
-							{{ block.texto| striptags | slice(0, 250) ~ '...' }}
-						{% endfor %}
-					</p>
-				</div>
-			</a>
+				<a href="{{ entry.url }}" class="blog-item col-12 mx-0 mb-4">
+					<div class="thumb col-12 bg-cover" style="background-image:url({% if entry.fotoEncabezado %}{{ entry.fotoEncabezado[0].getUrl('blog') }} {% endif %})"></div>
+					<div class="info col-12 px-0 pt-3 pb-md-0 pt-md-1">
+						<h3 class="h5 bold mb-2">
+							{{ entry.title }}
+						</h3>
+						<p class="meta text-justify mb-0">
+							{% for block in entry.filasTexto.all() %}
+								{{ block.texto| striptags | slice(0, 250) ~ '...' }}
+							{% endfor %}
+						</p>
+					</div>
+				</a>
 			{% endfor %}
 		</div>
 		<div class="row text-right mt-3 mx-0">
 			<a href="{{ siteUrl('industrias') }}" class="text-primary ml-auto">
-				Todas las industrias <i class="fa fa-chevron-right ml-2"></i>
+				Todas las industrias
+				<i class="fa fa-chevron-right ml-2"></i>
 			</a>
 		</div>
 	</section>

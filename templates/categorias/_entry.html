@@ -1,7 +1,7 @@
 {# --------------- Variables --------------- #}
-	{% set title = 'Productos' %}
-	{#% set subscribeImage = (entry.fotoSubscribe[0].url) ? entry.fotoSubscribe[0].filename[:-4] : 'subscribe2' %#}
-	{% set subscribeImage = 'subscribe2' %}
+{% set title = 'Productos' %}
+{#% set subscribeImage = (entry.fotoSubscribe[0].url) ? entry.fotoSubscribe[0].filename[:-4] : 'subscribe2' %#}
+{% set subscribeImage = 'subscribe2' %}
 {# ----------------------------------------- #}
 
 {% extends "_layout" %}
@@ -20,9 +20,9 @@
 								<div class="articulo col-12 mb-4 text-center col-sm-6 col-md-4 col-lg-3" {% if product.descripcion is not null and product.descripcion|length > 0 %} data-target="{{ product.modelo }}" {% endif %}>
 									<div class="thumb d-flex justify-content-center align-items-center">
 										{% if product.foto[0]|length > 0 %}
-											<img src="/assets/img/{{ product.foto[0].filename }}">
+											<img src="/assets/img/{{ product.foto[0].filename }}" alt="{{product.marca}}">
 										{% else %}
-											<img src="/assets/img/icon-black.png">
+											<img src="/assets/img/icon-black.png" alt="{{product.marca}}">
 										{% endif %}
 									</div>
 									<div>

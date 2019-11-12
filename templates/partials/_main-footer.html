@@ -1,163 +1,163 @@
 <footer id="main-footer" class="position-relative container-fluid px-0">
-    <span class="d-none d-md-block lines container">
-        {% include 'includes/lines.svg.twig' %}
-        {% include 'includes/lines.svg.twig' %}
-    </span>
-    <div class="container row py-5 mx-auto px-0 mx-">
-        <div
-            class="col-12">
-            {#% include 'includes/logo_white.svg.twig' %#}
-            <img src="/assets/img/20_plata.png">
-        </div>
-        <div class="col-12 col-md-5 mr-md-auto col-lg-4 mx-lg-auto">
-            <nav class="row">
-                <h4 class="heading text-uppercase text-white col-12 mt-5 mb-4 my-md-5">
-                    Menú
-                </h4>
-                <ul class="list-unstyled col-6 mb-0">
-                    <li class="mb-3">
-                        <a class="text-white text-uppercase" href="{{ siteUrl }}" title="Inicio">
-                            Inicio
-                        </a>
-                    </li>
-                    <li class="mb-3">
-                        <a class="text-white text-uppercase" href="{{ url('nosotros') }}" title="Nosotros">
-                            Nosotros
-                        </a>
-                    </li>
-                    <li class="mb-3">
-                        <a class="text-white text-uppercase" href="{{ url('marcas') }}" title="Marcas">
-                            Marcas
-                        </a>
-                    </li>
-                    <li class="mb-3">
-                        <a class="text-white text-uppercase" href="{{ url('industrias') }}" title="Industrias">
-                            Industrias
-                        </a>
-                    </li>
-                    <li class="mb-3">
-                        <a class="text-white text-uppercase" href="{{ url('productos') }}" title="Productos">
-                            Productos
-                        </a>
-                    </li>
-                </ul>
-                <ul class="list-unstyled col-6 mb-0">
-                    <li class="mb-3">
-                        <a class="text-white text-uppercase" href="{{ url('blog') }}" title="Blog">
-                            Blog
-                        </a>
-                    </li>
-                    <li class="mb-3">
-                        <a class="text-white text-uppercase" href="{{ url('contacto') }}" title="Contacto">
-                            Contacto
-                        </a>
-                    </li>
-                    <li class="mb-3">
-                        <a class="text-white text-uppercase" href="{{ url('demotruck') }}" title="Demo truck">
-                            Demo truck
-                        </a>
-                    </li>
-                    <li class="mb-3">
-                        <a class="text-white text-uppercase" href="{{ url('bolsa-de-trabajo') }}" title="Bolsa de trabajo">
-                            Bolsa de trabajo
-                        </a>
-                    </li>
-                    <li class="mb-3">
-                        <a class="text-white text-uppercase" href="{{ url('descargas') }}" title="descargas">
-                            Descargas
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-        <!-- /menu -->
-        <div class="col-12 col-md-5 col-lg-4">
-            <nav class="row">
-                <h4 class="heading text-uppercase text-white col-12 mt-5 mb-4 my-md-5">
-                    Marcas
-                </h4>
-                <ul class="list-unstyled col-6 mb-0">
-                    {% set marcas = craft.entries.section('marcas').all() %}
-                    {% set count = 0 %}
-                    {% for marca in marcas %}
-                        {% set count = count + 1 %}
-                        {% if currentSite.language in marca.localidad %}
-                            <li class="mb-3">
-                                <a href="{{ marca.url }}" class="text-white text-uppercase">
-                                    {{ marca.title }}
-                                </a>
-                            </li>
-                        {% endif %}
-                        {% if currentSite.language != 'es-MX' %}
-                            {% set countCheck = 4 %}
-                        {% else %}
-                            {% set countCheck = 5 %}
-                        {% endif %}
-                        {% if count == countCheck %}
-                        </ul>
-                        <ul class="list-unstyled col-6 mb-0">
-                        {% endif %}
-                    {% endfor %}
-                </ul>
-            </nav>
-        </div>
-        <!-- /marcas -->
-        <div class="col-12 col-lg-4">
-            <form class="row newsletter validate" action="https://thebrandindustry.us19.list-manage.com/subscribe/post-json?u=5a7efa6f035c3370673b36d5d&amp;id=fa6cb92292&c=?" method="get" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
-                <h4 class="heading text-uppercase text-white col-12 mt-5 mb-3">
-                    Suscríbete a nuestro boletín
-                </h4>
-                <div class="form-group col-12">
-                    <input class="form-control form-control-outline-white text-white" type="text" name="FNAME" id="mce-FNAME" placeholder="Nombre completo">
-                </div>
-                <div class="form-group col-12">
-                    <input class="required form-control form-control-outline-white text-white" type="email" name="EMAIL" id="mce-EMAIL" placeholder="Correo electrónico">
-                </div>
-                <div class="form-group col-12">
-                    <input class="form-control form-control-outline-white text-white" type="text" name="INDUSTRY" id="mce-INDUSTRY" placeholder="Industria">
-                </div>
-                <div class="form-group col-12">
-                    <input class="form-control form-control-outline-white text-white" type="hidden" name="MARCA" id="mce-Marca" placeholder="Marca" value="{% if entry is defined and entry.type == 'marcas' %}{{ entry.title }}{% else %}-{% endif %}">
-                    <p class="mailchimp-error text-white col-12"></p>
-                    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_76eca850044e63b8396b17368_e094e71b93" tabindex="-1" value=""></div>
-                    <input class="btn btn-outline-white px-4 ml-auto" type="submit" value="Subscribirse" name="subscribe" id="mc-embedded-subscribe">
-                </div>
-            </form>
-            <!--form class="row">
-            
-            				<div class="form-group col-12">
-            					<input type="text" placeholder="Nombre completo" class="form-control form-control-outline-white text-white">
-            				</div>
-            				<div class="form-group col-12">
-            					<input type="email" placeholder="Correo electrónico" class="form-control form-control-outline-white text-white">
-            				</div>
-            				<div class="form-group col-12">
-            					<input type="text" placeholder="Industria a la que pertenece" class="form-control form-control-outline-white text-white">
-            				</div>
-            				<div class="form-group row mx-0 col-12">
-            					<input type="submit" value="Suscribirse" class="btn btn-outline-white px-4 ml-auto">
-            				</div>
-            			</form-->
-        </div>
-        <!-- /newsletter -->
-    </div>
-    <div id="copyright" class="row mx-0">
-        <div class="container py-4">
-            <ul class="list-unstyled mb-0 text-white d-md-flex">
-                <li class="pr-md-4">URANY&copy;
-                    {{ now|date('Y') }}, Todos los derechos reservados.</li>
-                <li class="text-uppercase px-md-4">
-                    <a href="{{ siteUrl('politica-de-privacidad') }}" class="text-white">
-                        Políticas de privacidad
-                    </a>
-                </li>
-                <li class="px-md-4 font-italic">
-                    A
-                    <a href="mailto:amandujano@thebrandindustry.com" class="text-white font-weight-bold">The Brand Industry</a>
-                    project
-                </li>
-            </ul>
-        </div>
-    </div>
+	<span class="d-none d-md-block lines container">
+		{% include 'includes/lines.svg.twig' %}
+		{% include 'includes/lines.svg.twig' %}
+	</span>
+	<div class="container row py-5 mx-auto px-0 mx-">
+		<div
+			class="col-12">
+			{#% include 'includes/logo_white.svg.twig' %#}
+			<img src="/assets/img/20_plata.png" alt="Urany">
+		</div>
+		<div class="col-12 col-md-5 mr-md-auto col-lg-4 mx-lg-auto">
+			<nav class="row">
+				<h4 class="heading text-uppercase text-white col-12 mt-5 mb-4 my-md-5">
+					Menú
+				</h4>
+				<ul class="list-unstyled col-6 mb-0">
+					<li class="mb-3">
+						<a class="text-white text-uppercase" href="{{ siteUrl }}" title="Inicio">
+							Inicio
+						</a>
+					</li>
+					<li class="mb-3">
+						<a class="text-white text-uppercase" href="{{ url('nosotros') }}" title="Nosotros">
+							Nosotros
+						</a>
+					</li>
+					<li class="mb-3">
+						<a class="text-white text-uppercase" href="{{ url('marcas') }}" title="Marcas">
+							Marcas
+						</a>
+					</li>
+					<li class="mb-3">
+						<a class="text-white text-uppercase" href="{{ url('industrias') }}" title="Industrias">
+							Industrias
+						</a>
+					</li>
+					<li class="mb-3">
+						<a class="text-white text-uppercase" href="{{ url('productos') }}" title="Productos">
+							Productos
+						</a>
+					</li>
+				</ul>
+				<ul class="list-unstyled col-6 mb-0">
+					<li class="mb-3">
+						<a class="text-white text-uppercase" href="{{ url('blog') }}" title="Blog">
+							Blog
+						</a>
+					</li>
+					<li class="mb-3">
+						<a class="text-white text-uppercase" href="{{ url('contacto') }}" title="Contacto">
+							Contacto
+						</a>
+					</li>
+					<li class="mb-3">
+						<a class="text-white text-uppercase" href="{{ url('demotruck') }}" title="Demo truck">
+							Demo truck
+						</a>
+					</li>
+					<li class="mb-3">
+						<a class="text-white text-uppercase" href="{{ url('bolsa-de-trabajo') }}" title="Bolsa de trabajo">
+							Bolsa de trabajo
+						</a>
+					</li>
+					<li class="mb-3">
+						<a class="text-white text-uppercase" href="{{ url('descargas') }}" title="descargas">
+							Descargas
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+		<!-- /menu -->
+		<div class="col-12 col-md-5 col-lg-4">
+			<nav class="row">
+				<h4 class="heading text-uppercase text-white col-12 mt-5 mb-4 my-md-5">
+					Marcas
+				</h4>
+				<ul class="list-unstyled col-6 mb-0">
+					{% set marcas = craft.entries.section('marcas').all() %}
+					{% set count = 0 %}
+					{% for marca in marcas %}
+						{% set count = count + 1 %}
+						{% if currentSite.language in marca.localidad %}
+							<li class="mb-3">
+								<a href="{{ marca.url }}" class="text-white text-uppercase">
+									{{ marca.title }}
+								</a>
+							</li>
+						{% endif %}
+						{% if currentSite.language != 'es-MX' %}
+							{% set countCheck = 4 %}
+						{% else %}
+							{% set countCheck = 5 %}
+						{% endif %}
+						{% if count == countCheck %}
+						</ul>
+						<ul class="list-unstyled col-6 mb-0">
+						{% endif %}
+					{% endfor %}
+				</ul>
+			</nav>
+		</div>
+		<!-- /marcas -->
+		<div class="col-12 col-lg-4">
+			<form class="row newsletter validate" action="https://thebrandindustry.us19.list-manage.com/subscribe/post-json?u=5a7efa6f035c3370673b36d5d&amp;id=fa6cb92292&c=?" method="get" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+				<h4 class="heading text-uppercase text-white col-12 mt-5 mb-3">
+					Suscríbete a nuestro boletín
+				</h4>
+				<div class="form-group col-12">
+					<input class="form-control form-control-outline-white text-white" type="text" name="FNAME" id="mce-FNAME" placeholder="Nombre completo">
+				</div>
+				<div class="form-group col-12">
+					<input class="required form-control form-control-outline-white text-white" type="email" name="EMAIL" id="mce-EMAIL" placeholder="Correo electrónico">
+				</div>
+				<div class="form-group col-12">
+					<input class="form-control form-control-outline-white text-white" type="text" name="INDUSTRY" id="mce-INDUSTRY" placeholder="Industria">
+				</div>
+				<div class="form-group col-12">
+					<input class="form-control form-control-outline-white text-white" type="hidden" name="MARCA" id="mce-Marca" placeholder="Marca" value="{% if entry is defined and entry.type == 'marcas' %}{{ entry.title }}{% else %}-{% endif %}">
+					<p class="mailchimp-error text-white col-12"></p>
+					<!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+					<div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_76eca850044e63b8396b17368_e094e71b93" tabindex="-1" value=""></div>
+					<input class="btn btn-outline-white px-4 ml-auto" type="submit" value="Subscribirse" name="subscribe" id="mc-embedded-subscribe">
+				</div>
+			</form>
+			<!--form class="row">
+			            
+			            				<div class="form-group col-12">
+			            					<input type="text" placeholder="Nombre completo" class="form-control form-control-outline-white text-white">
+			            				</div>
+			            				<div class="form-group col-12">
+			            					<input type="email" placeholder="Correo electrónico" class="form-control form-control-outline-white text-white">
+			            				</div>
+			            				<div class="form-group col-12">
+			            					<input type="text" placeholder="Industria a la que pertenece" class="form-control form-control-outline-white text-white">
+			            				</div>
+			            				<div class="form-group row mx-0 col-12">
+			            					<input type="submit" value="Suscribirse" class="btn btn-outline-white px-4 ml-auto">
+			            				</div>
+			            			</form-->
+		</div>
+		<!-- /newsletter -->
+	</div>
+	<div id="copyright" class="row mx-0">
+		<div class="container py-4">
+			<ul class="list-unstyled mb-0 text-white d-md-flex">
+				<li class="pr-md-4">URANY&copy;
+					{{ now|date('Y') }}, Todos los derechos reservados.</li>
+				<li class="text-uppercase px-md-4">
+					<a href="{{ siteUrl('politica-de-privacidad') }}" class="text-white">
+						Políticas de privacidad
+					</a>
+				</li>
+				<li class="px-md-4 font-italic">
+					A
+					<a href="mailto:amandujano@thebrandindustry.com" class="text-white font-weight-bold">The Brand Industry</a>
+					project
+				</li>
+			</ul>
+		</div>
+	</div>
 </footer>

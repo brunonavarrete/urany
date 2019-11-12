@@ -9,38 +9,38 @@
 {% extends "_layout" %}
 
 {% block jumbotron %}
-    <div class="pleca pleca-primary"></div>
-    <div class="container position-relative">
-        <h1 class="text-white text-uppercase text-center mb-3">
-            Descargas
-        </h1>
-        <p class="text-center text-white mb-0">
-            Consulta la documentación oficial de cada uno de los equipos de nuestras marcas para alcanzar el mayor desempeño.
-        </p>
-    </div>
+	<div class="pleca pleca-primary"></div>
+	<div class="container position-relative">
+		<h1 class="text-white text-uppercase text-center mb-3">
+			Descargas
+		</h1>
+		<p class="text-center text-white mb-0">
+			Consulta la documentación oficial de cada uno de los equipos de nuestras marcas para alcanzar el mayor desempeño.
+		</p>
+	</div>
 {% endblock %}
 
 {% block content %}
 
-    <section class="container py-5">
-        <div class="row py-4 justify-content-around" id="descargas">
-            {% for marca in marcas %}
-                {% if currentSite.language in marca.localidad %}
-                    <div class="logo col-12 row justify-content-center align-items-end mb-5 col-sm-6 mt-lg-3 col-lg-4">
-                        <img src="{{ marca.logoParaFondoOscuro[0].url }}" class="{{ marca.title == 'Wittenstein' or marca.title == 'Weiss' or marca.title == 'Posital Fraba' ? 'tall' : '' }} col-12 px-0">
-                        <a class="col-auto btn btn-outline-secondary mt-5" target="_blank" href="{{ marca.linkDocumentacion}}">Descargar documentación</a>
-                    </div>
-                {% endif %}
-            {% endfor %}
-            {% if currentSite.language == 'es-MX' %}
-                <div class="logo col-12 row justify-content-center align-items-end mb-5 col-sm-6 mt-lg-3 col-lg-4">
-                    <img src="/assets/img/logo_red.png" class="col-12 px-0">
-                    <a class="col-auto btn btn-outline-secondary mt-5" target="_blank" href="{{ siteUrl('catalogo-de-stock') }}">Descargar documentación</a>
-                </div>
-            {% endif %}
-        </div>
-    </section>
+	<section class="container py-5">
+		<div class="row py-4 justify-content-around" id="descargas">
+			{% for marca in marcas %}
+				{% if currentSite.language in marca.localidad %}
+					<div class="logo col-12 row justify-content-center align-items-end mb-5 col-sm-6 mt-lg-3 col-lg-4">
+						<img src="{{ marca.logoParaFondoOscuro[0].url }}" class="{{ marca.title == 'Wittenstein' or marca.title == 'Weiss' or marca.title == 'Posital Fraba' ? 'tall' : '' }} col-12 px-0" alt="" {{marca.title}}>
+						<a class="col-auto btn btn-outline-secondary mt-5" target="_blank" href="{{ marca.linkDocumentacion}}">Descargar documentación</a>
+					</div>
+				{% endif %}
+			{% endfor %}
+			{% if currentSite.language == 'es-MX' %}
+				<div class="logo col-12 row justify-content-center align-items-end mb-5 col-sm-6 mt-lg-3 col-lg-4">
+					<img src="/assets/img/logo_red.png" class="col-12 px-0" alt="Urany">
+					<a class="col-auto btn btn-outline-secondary mt-5" target="_blank" href="{{ siteUrl('catalogo-de-stock') }}">Descargar documentación</a>
+				</div>
+			{% endif %}
+		</div>
+	</section>
 
-    {% include 'partials/_subscribe' %}
-    {% include 'partials/_modal-video' %}
+	{% include 'partials/_subscribe' %}
+	{% include 'partials/_modal-video' %}
 {% endblock %}

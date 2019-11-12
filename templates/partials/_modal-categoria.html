@@ -14,7 +14,7 @@
 							<div class="producto px-3 text-center" data-producto="{{ product.modelo }}">
 								<div class="thumb d-flex justify-content-center align-items-center">
 									{% if product.foto[0]|length > 0 %}
-										<img src="/assets/img/{{ product.foto[0].filename }}">
+										<img src="/assets/img/{{ product.foto[0].filename }}" alt="{{product.marca}}">
 									{% else %}
 										{% include 'includes/square.svg.twig' %}
 									{% endif %}

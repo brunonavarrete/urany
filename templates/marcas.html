@@ -1,6 +1,6 @@
 {# --------------- Variables --------------- #}
-	{% set subscribeImage = 'subscribe1' %}
-	{% set title = 'Marcas' %}
+{% set subscribeImage = 'subscribe1' %}
+{% set title = 'Marcas' %}
 {# ----------------------------------------- #}
 
 {% extends "_layout" %}
@@ -11,49 +11,50 @@
 	</div>
 	<div class="position-relative text-center pt-5 container">
 		<h1 class="h2 text-primary text-uppercase mb-3 px-sm-5">
-			Los fabricantes internacionales<br class="d-none d-lg-block"> que confían en nosotros
+			Los fabricantes internacionales<br class="d-none d-lg-block">
+			que confían en nosotros
 		</h1>
 		<div id="marcas-marcas">
 			<div class="row mt-sm-0 mt-lg-4 {% if currentSite.language == 'es-CO' %}pb-lg-5{% endif %} justify-content-center d-flex">
 				{% for marca in craft.entries.section('marcas').all() %}
 					<a href="{{ marca.url }}" class="logo col-6 d-flex justify-content-center align-items-center col-sm-3 my-4 col-lg-3">
-						<img class="img-fluid" src="{{ marca.logoParaFondoOscuro[0].url }}">
+						<img class="img-fluid" src="{{ marca.logoParaFondoOscuro[0].url }}" alt="{{marca.title}}">
 					</a>
 				{% endfor %}
 			</div>
 			{# <div class="row mx-0 px-0 mt-5 col-12 mt-sm-3 mt-md-5 col-lg-12 mt-lg-3">
-				<a href="{{ url('marcas/wittenstein') }}{% if locale != 'es-MX' %}?lang={{ locale }}{% endif %}" class="logo col-6 mb-5 d-flex justify-content-center align-items-center col-sm-3 mb-sm-0 my-sm-4 col-lg-3">
-					<img class="large square" src="{{ siteUrl }}assets/img/logos/wittenstein.png">
-				</a>
-				<a href="{{ url('marcas/weiss') }}{% if locale != 'es-MX' %}?lang={{ locale }}{% endif %}" class="logo col-6 mb-5 d-flex justify-content-center align-items-center col-sm-3 mb-sm-0 my-sm-4 col-lg-3">
-					<img class="large square" src="{{ siteUrl }}assets/img/logos/weiss.png">
-				</a>
-				<a href="{{ url('marcas/unimotion') }}{% if locale != 'es-MX' %}?lang={{ locale }}{% endif %}" class="logo col-6 mb-5 d-flex justify-content-center align-items-center col-sm-3 my-sm-4 col-lg-3">
-					<img src="{{ siteUrl }}assets/img/logos/unimotion.png" class="logo-sm">
-				</a>
-				<a href="{{ url('marcas/linmot') }}{% if locale != 'es-MX' %}?lang={{ locale }}{% endif %}" class="logo col-6 mb-5 d-flex justify-content-center align-items-center col-sm-3 my-sm-4 col-lg-3">
-					<img src="{{ siteUrl }}assets/img/logos/linmot.png" class="logo-sm">
-				</a>
-			</div>
-			<div class="row mx-0 px-0 col-12 mt-sm-0 mt-lg-4 col-lg-12 mt-lg-0 {% if locale == 'es-CO' %}pb-lg-5{% endif %}">
-				{% if locale != 'es-CO' %}
-					<a href="{{ url('marcas/exlar') }}{% if locale != 'es-MX' %}?lang={{ locale }}{% endif %}" class="logo col-6 mb-5 d-flex justify-content-center align-items-center col-sm-3 my-sm-4 col-lg-3">
-						<img src="{{ siteUrl }}assets/img/logos/exlar.png" class="logo-sm">
-					</a>
-					<a href="{{ url('marcas/mts') }}{% if locale != 'es-MX' %}?lang={{ locale }}{% endif %}" class="logo col-6 mb-5 d-flex justify-content-center align-items-center col-sm-3 my-sm-4 col-lg-3">
-						<img src="{{ siteUrl }}assets/img/logos/temposonics.png">
-					</a>
-				{% endif %}
-				<a href="{{ url('marcas/mayr') }}{% if locale != 'es-MX' %}?lang={{ locale }}{% endif %}" class="logo col-6 mb-5 d-flex justify-content-center align-items-center col-sm-3 my-sm-4 {% if locale == 'es-CO' %}ml-sm-auto{% endif %} col-lg-3">
-					<img src="{{ siteUrl }}assets/img/logos/mayr.png">
-				</a>
-				<a href="{{ url('marcas/edrive') }}{% if locale != 'es-MX' %}?lang={{ locale }}{% endif %}" class="logo col-6 mb-5 d-flex justify-content-center align-items-center col-sm-3 my-sm-4 col-lg-3">
-					<img src="{{ siteUrl }}assets/img/logos/edrive.png" class="logo-sm">
-				</a>
-				<a href="{{ url('marcas/joyce') }}{% if locale != 'es-MX' %}?lang={{ locale }}{% endif %}" class="logo col-6 mb-5 d-flex justify-content-center align-items-center col-sm-3 {% if locale != 'es-CO' %}mx-sm-auto{% else %}mr-sm-auto{% endif %} my-sm-4 col-lg-3">
-					<img src="{{ siteUrl }}assets/img/logos/joyce.png">
-				</a>
-			</div> #}
+							<a href="{{ url('marcas/wittenstein') }}{% if locale != 'es-MX' %}?lang={{ locale }}{% endif %}" class="logo col-6 mb-5 d-flex justify-content-center align-items-center col-sm-3 mb-sm-0 my-sm-4 col-lg-3">
+								<img class="large square" src="{{ siteUrl }}assets/img/logos/wittenstein.png">
+							</a>
+							<a href="{{ url('marcas/weiss') }}{% if locale != 'es-MX' %}?lang={{ locale }}{% endif %}" class="logo col-6 mb-5 d-flex justify-content-center align-items-center col-sm-3 mb-sm-0 my-sm-4 col-lg-3">
+								<img class="large square" src="{{ siteUrl }}assets/img/logos/weiss.png">
+							</a>
+							<a href="{{ url('marcas/unimotion') }}{% if locale != 'es-MX' %}?lang={{ locale }}{% endif %}" class="logo col-6 mb-5 d-flex justify-content-center align-items-center col-sm-3 my-sm-4 col-lg-3">
+								<img src="{{ siteUrl }}assets/img/logos/unimotion.png" class="logo-sm">
+							</a>
+							<a href="{{ url('marcas/linmot') }}{% if locale != 'es-MX' %}?lang={{ locale }}{% endif %}" class="logo col-6 mb-5 d-flex justify-content-center align-items-center col-sm-3 my-sm-4 col-lg-3">
+								<img src="{{ siteUrl }}assets/img/logos/linmot.png" class="logo-sm">
+							</a>
+						</div>
+						<div class="row mx-0 px-0 col-12 mt-sm-0 mt-lg-4 col-lg-12 mt-lg-0 {% if locale == 'es-CO' %}pb-lg-5{% endif %}">
+							{% if locale != 'es-CO' %}
+								<a href="{{ url('marcas/exlar') }}{% if locale != 'es-MX' %}?lang={{ locale }}{% endif %}" class="logo col-6 mb-5 d-flex justify-content-center align-items-center col-sm-3 my-sm-4 col-lg-3">
+									<img src="{{ siteUrl }}assets/img/logos/exlar.png" class="logo-sm">
+								</a>
+								<a href="{{ url('marcas/mts') }}{% if locale != 'es-MX' %}?lang={{ locale }}{% endif %}" class="logo col-6 mb-5 d-flex justify-content-center align-items-center col-sm-3 my-sm-4 col-lg-3">
+									<img src="{{ siteUrl }}assets/img/logos/temposonics.png">
+								</a>
+							{% endif %}
+							<a href="{{ url('marcas/mayr') }}{% if locale != 'es-MX' %}?lang={{ locale }}{% endif %}" class="logo col-6 mb-5 d-flex justify-content-center align-items-center col-sm-3 my-sm-4 {% if locale == 'es-CO' %}ml-sm-auto{% endif %} col-lg-3">
+								<img src="{{ siteUrl }}assets/img/logos/mayr.png">
+							</a>
+							<a href="{{ url('marcas/edrive') }}{% if locale != 'es-MX' %}?lang={{ locale }}{% endif %}" class="logo col-6 mb-5 d-flex justify-content-center align-items-center col-sm-3 my-sm-4 col-lg-3">
+								<img src="{{ siteUrl }}assets/img/logos/edrive.png" class="logo-sm">
+							</a>
+							<a href="{{ url('marcas/joyce') }}{% if locale != 'es-MX' %}?lang={{ locale }}{% endif %}" class="logo col-6 mb-5 d-flex justify-content-center align-items-center col-sm-3 {% if locale != 'es-CO' %}mx-sm-auto{% else %}mr-sm-auto{% endif %} my-sm-4 col-lg-3">
+								<img src="{{ siteUrl }}assets/img/logos/joyce.png">
+							</a>
+						</div> #}
 		</div>
 	</div>
 {% endblock %}

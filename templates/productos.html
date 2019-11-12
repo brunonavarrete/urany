@@ -1,6 +1,6 @@
 {# --------------- Variables --------------- #}
-	{% set subscribeImage = 'subscribe1' %}
-	{% set title = 'Productos' %}
+{% set subscribeImage = 'subscribe1' %}
+{% set title = 'Productos' %}
 {# ----------------------------------------- #}
 
 {% extends "_layout" %}
@@ -18,9 +18,9 @@
 							<div class="articulo col-6 mb-4 text-center col-sm-6 col-md-4 col-lg-3" {% if product.descripcion is defined %} data-target="{{ product.modelo }}" {% endif %}>
 								<div class="thumb d-flex justify-content-center align-items-center">
 									{% if product.foto[0] is defined %}
-										<img src="{{ product.foto[0].url }}">
+										<img src="{{ product.foto[0].url }}" alt="{{product.modelo}}">
 									{% else %}
-										<img src="/assets/img/icon-black.png">
+										<img src="/assets/img/icon-black.png" alt="{{product.modelo}}">
 									{% endif %}
 								</div>
 								<div>
@@ -50,26 +50,28 @@
 			<div class="container">
 				<div class="row py-5 align-items-center">
 					<div class="col-12 mx-auto col-lg-4">
-						<img class="d-block img-fluid mx-auto col-sm-6 col-lg-12" src="{{ portada }}">
+						<img class="d-block img-fluid mx-auto col-sm-6 col-lg-12" src="{{ portada }}" alt="Catálogo">
 					</div>
 					<div class="col-12 mx-auto col-lg-6">
 						<h3 class="col-12 text-white text-uppercase h2">
-							Descarga el catálogo de {{ entry.title }}
+							Descarga el catálogo de
+							{{ entry.title }}
 						</h3>
 						<p class="col-12 my-3 text-white">
 							Ingresa tu correo electrónico y te enviaremos de forma automática el catálogo de la marca y un brief para conocer los proyectos de URANY.
 						</p>
 						<form action="#" method="get" accept-charset="utf-8" class="col-12 col-lg-10 mr-lg-auto">
 							<div class="input-group mb-2 mb-sm-0">
-						    	<input type="text" class="form-control text-center" placeholder="Correo electrónico">
-						    	<a download href="{{ entry.catalogo[0].descarga[0].url }}" class="input-group-addon btn btn-primary text-white download-catalogo">
-						    		Descargar
-						    	</a>
-						    </div>
+								<input type="text" class="form-control text-center" placeholder="Correo electrónico">
+								<a download href="{{ entry.catalogo[0].descarga[0].url }}" class="input-group-addon btn btn-primary text-white download-catalogo">
+									Descargar
+								</a>
+							</div>
 						</form>
 					</div>
 				</div>
-			</div><!-- /container -->
+			</div>
+			<!-- /container -->
 		</section>
 	{% endif %}
 	{% include 'partials/_subscribe' %}
