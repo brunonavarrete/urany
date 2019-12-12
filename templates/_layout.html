@@ -72,9 +72,9 @@
 
             <a class="float-btn" href="https://wa.me/5214421459116?text=%C2%A1Hola%21%20Vengo%20de%20su%20sitio%20web%20y%20me%20interesa%20conocer%20m%C3%A1s%20de%20las%20marcas%2C%20productos%20y%20servicios%20que%20ofrecen." onclick="ga('send','pageview','/whatsapp')" target="_blank"><img alt="Mándanos un whatsapp" class="whatsapp-btn" src="/assets/img/whatsapp.svg"></a>
 
-            {# {% cache %} #}
+            {% cache %}
             {% include 'partials/_main-footer' %}
-            {# {% endcache %} #}
+            {% endcache %}
 
             {% if currentSite.language == 'es-MX' %}
                 <div aria-atomic="true" aria-live="assertive" class="toast m-5 py-3 zindex5" id="catalog-notification" role="alert">
