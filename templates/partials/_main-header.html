@@ -37,8 +37,8 @@
 				<li class="nav-item logo px-0 col-lg-auto px-lg-3 mr-lg-auto d-lg-flex flex-lg-column">
 					<a
 						class="navbar-brand d-none d-lg-flex align-items-lg-center p-lg-0 my-lg-auto" href="{{ siteUrl }}">
-						{#% include 'includes/logo-slogan.svg.twig' %#}
-						<img src="/assets/img/20_rojo.jpg" alt="Urany">
+						{% include 'includes/logo-slogan.svg.twig' %}
+						{# <img src="/assets/img/20_rojo.jpg" alt="Urany"> #}
 					</a>
 				</li>
 				{# <li class="nav-item px-0 col-lg-auto px-lg-3 {% if '/' in currentPath %}active{% endif %}">
