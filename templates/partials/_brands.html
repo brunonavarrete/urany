@@ -14,29 +14,30 @@
 						{% endfor %}
 					</div>
 				{% else %}
-					<div class="row mx-0 mt-5">
-						<div class="logo col-12 mb-3 d-flex justify-content-center align-items-center col-md-3 mb-md-0">
-							<img class="large" src="/assets/img/logos/wittenstein.png" alt="Wittenstein">
+					<div class="row mt-sm-0 mt-lg-4 {% if currentSite.language == 'es-CO' %}pb-lg-5{% endif %} justify-content-center d-flex">
+						<div class="logo col-6 d-flex justify-content-center align-items-center col-sm-3 my-4 col-lg-3">
+							<img src="{{ siteUrl }}assets/img/logos/wittenstein.png" class="img-fluid w-75">
 						</div>
-						<div class="logo col-12 mb-3 d-flex justify-content-center align-items-center col-md-3 mb-md-0">
-							<img class="large" src="/assets/img/logos/weiss.png" alt="Weiss">
+						<div class="logo col-6 d-flex justify-content-center align-items-center col-sm-3 my-4 col-lg-3">
+							<img src="{{ siteUrl }}assets/img/logos/weiss.png" class="img-fluid w-75">
 						</div>
-						<div class="logo col-12 d-flex justify-content-center align-items-center col-md-3">
-							<img src="/assets/img/logos/unimotion.png" alt="Unimotion">
+						<div class="logo col-6 d-flex justify-content-center align-items-center col-sm-3 my-4 col-lg-3">
+							<img src="{{ siteUrl }}assets/img/logos/unimotion.png" class="img-fluid w-75">
 						</div>
-						<div class="logo col d-flex justify-content-center align-items-center">
-							<img src="/assets/img/logos/linmot.png" alt="Linmot">
+						<div class="logo col-6 d-flex justify-content-center align-items-center col-sm-3 my-4 col-lg-3">
+							<img src="{{ siteUrl }}assets/img/logos/linmot.png" class="img-fluid w-75">
 						</div>
-					</div>
-					<div class="d-none row mx-0 d-lg-flex mt-lg-4">
-						<div class="logo col d-flex justify-content-center align-items-center">
-							<img src="/assets/img/logos/mayr.png" alt="Mayr">
+						<div class="logo col-6 d-flex justify-content-center align-items-center col-sm-3 my-4 col-lg-3">
+							<img src="{{ siteUrl }}assets/img/logos/mayr.png" class="img-fluid w-75">
 						</div>
-						<div class="logo col d-flex justify-content-center align-items-center">
-							<img src="/assets/img/logos/edrive.png" alt="Edrive">
+						<div class="logo col-6 d-flex justify-content-center align-items-center col-sm-3 my-4 col-lg-3">
+							<img src="{{ siteUrl }}assets/img/logos/edrive.png" class="img-fluid w-75">
 						</div>
-						<div class="logo col d-flex justify-content-center align-items-center">
-							<img src="/assets/img/logos/joyce.png" alt="Joyce">
+						<div class="logo col-6 d-flex justify-content-center align-items-center col-sm-3 my-4 col-lg-3">
+							<img src="{{ siteUrl }}assets/img/logos/joyce.png" class="img-fluid w-75">
+						</div>
+						<div class="logo col-6 d-flex justify-content-center align-items-center col-sm-3 my-4 col-lg-3">
+							<img src="{{ siteUrl }}assets/img/logos/posital.svg" class="img-fluid w-75">
 						</div>
 					</div>
 				{% endif %}

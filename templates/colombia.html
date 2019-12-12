@@ -129,7 +129,7 @@
 				<h2 class="text-center text-uppercase">
 					Las marcas que nos respaldan
 				</h2>
-				<div class="row mt-sm-0 mt-lg-4 {# {% if currentSite.language == 'es-CO' %}pb-lg-5{% endif %} #} justify-content-center d-flex">
+				<div class="row mt-sm-0 mt-lg-4 {% if currentSite.language == 'es-CO' %}pb-lg-5{% endif %} justify-content-center d-flex">
 					<div class="logo col-6 d-flex justify-content-center align-items-center col-sm-3 my-4 col-lg-3">
 						<img src="{{ siteUrl }}assets/img/logos/wittenstein.png" class="img-fluid w-75">
 					</div>
@@ -156,9 +156,9 @@
 					</div>
 				</div>
 				<div class="row mx-0">
-					{# <a href="{{ url('marcas') }}?lang={{ locale }}" class="btn btn-primary mt-4 mx-auto py-2 px-4 mt-md-5 text-uppercase">
+					<a href="{{ url('marcas') }}?lang={{ locale }}" class="btn btn-primary mt-4 mx-auto py-2 px-4 mt-md-5 text-uppercase">
 						Ver catálogos por marca
-					</a> #}
+					</a>
 				</div>
 			</div>
 		</div>
