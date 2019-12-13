@@ -14,7 +14,12 @@
 				<p class="col-12 my-3 text-white">
 					Ingresa tu correo electrónico y te enviaremos de forma automática el catálogo de la marca y un brief para conocer los proyectos de URANY.
 				</p>
-				<form action="https://thebrandindustry.us19.list-manage.com/subscribe/post-json?u=5a7efa6f035c3370673b36d5d&amp;id=fa6cb92292&c=?" class="col-12 mr-lg-auto newsletter newsletter-subscribe-stock validate" id="mc-embedded-subscribe-form2" method="get" name="mc-embedded-subscribe-form" novalidate target="_blank">
+				{% if currentSite.language == 'es-MX' %}
+					{% set action = "https://thebrandindustry.us19.list-manage.com/subscribe/post-json?u=5a7efa6f035c3370673b36d5d&amp;id=fa6cb92292&c=?" %}
+				{% else %}
+					{% set action = "https://urany.us4.list-manage.com/subscribe/post?u=9cab019b9eb5704f2b13bc12d&amp;id=5e6100c984" %}
+				{% endif %}	
+				<form action="{{ action }}" class="col-12 mr-lg-auto newsletter newsletter-subscribe-stock validate" id="mc-embedded-subscribe-form2" method="get" name="mc-embedded-subscribe-form" novalidate target="_blank">
 					<p class="col-12 mailchimp-error text-white"></p>
 					<div class="input-group w-100 mb-2 mb-sm-0">
 						<input class="d-none form-control form-control-outline-white text-white" id="mce-FNAME" name="FNAME" type="text" value="Descarga">
