@@ -6,8 +6,8 @@
 	<div class="container row py-5 mx-auto px-0 mx-">
 		<div
 			class="col-12">
-			{% include 'includes/logo_white.svg.twig' %}
-			{# <img src="/assets/img/20_plata.png" alt="Urany"> #}
+			{# {% include 'includes/img/logo_urany-white.svg' %} #}
+			<img src="/assets/img/logo_urany-white.svg" alt="Urany" class="header-logo">
 		</div>
 		<div class="col-12 col-md-5 mr-md-auto col-lg-4 mx-lg-auto">
 			<nav class="row">
@@ -103,7 +103,10 @@
 		</div>
 		<!-- /marcas -->
 		<div class="col-12 col-lg-4">
-			<form class="row newsletter validate" action="https://thebrandindustry.us19.list-manage.com/subscribe/post-json?u=5a7efa6f035c3370673b36d5d&amp;id=fa6cb92292&c=?" method="get" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+
+			{% set action = "https://thebrandindustry.us19.list-manage.com/subscribe post-json?u=5a7efa6f035c3370673b36d5d&amp;id=fa6cb92292&c=?" %}
+
+			<form class="row newsletter validate" action="{{ action }}" method="get" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
 				<h4 class="heading text-uppercase text-white col-12 mt-5 mb-3">
 					Suscríbete a nuestro boletín
 				</h4>

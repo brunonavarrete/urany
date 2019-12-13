@@ -4,7 +4,7 @@
 	<div class="pleca"></div>
 	<nav class="navbar py-3 navbar-expand-lg navbar-light py-lg-0">
 		<a class="navbar-brand d-lg-none pb-0" href="{{ siteUrl }}">
-			<img src="/assets/img/20_rojo.jpg" alt="Urany">
+			<img src="/assets/img/logo_urany.svg" alt="Urany" class="header-logo">
 		</a>
 		<button class="navbar-toggler hamburger px-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="hamburger-box">
@@ -37,7 +37,9 @@
 				<li class="nav-item logo px-0 col-lg-auto px-lg-3 mr-lg-auto d-lg-flex flex-lg-column">
 					<a
 						class="navbar-brand d-none d-lg-flex align-items-lg-center p-lg-0 my-lg-auto" href="{{ siteUrl }}">
-						{% include 'includes/logo-slogan.svg.twig' %}
+						{# {% include 'includes/logo-slogan.svg.twig' %} #}
+						<img src="/assets/img/logo_urany.svg" alt="Urany" class="header-logo">
+
 						{# <img src="/assets/img/20_rojo.jpg" alt="Urany"> #}
 					</a>
 				</li>
