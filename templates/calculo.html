@@ -26,6 +26,8 @@
 {% endblock %}
 
 {% block content %}
+
+{% cache %}	
 	<div class="container-fluid mt-n5 pt-2">
 		<div class="row">
 			<div class="col-12 col-md-7 text-right align-self-center">
@@ -69,48 +71,7 @@
 		</div>
 		<img src="{{ calc4 }}" alt="CNC machine" class="img-fluid floating-arm-1 zindex1 ">
 	</div>
-	
-	{# <div class="container my-5 py-5">
-		<div class="row my-5 py-5">
-			<div class="col-12 text-center mt-5">
-				<h2 class="h1 text-primary red-title">NUESTRO PROCESO DE CÁLCULO</h2>
-			</div>
-			<div class="col-12 col-md-6 col-lg-4 px-3 mt-3 ">
-				<div class="hover-calculo py-5 px-4 h-100 active border-animation">
-					<div class="border-animation__inner">
-						<p class="h1">1</p>
-						<p class="title h4">ANÁLISIS DE LA APLICACIÓN</p>
-						<p class="content">Uno de nuestros Ingenieros de Aplicaciones interpreta y analiza el objetivo del proceso o máquina que se busca automatizar con un servo sistema. Aquí reúne todas las variables a considerar para una óptima simulación. </p>
-						<a href="" class=""></a>
-					</div>
-				</div>
-			</div>
-			<div class="col-12 col-md-6 col-lg-4 px-3 mt-3 ">
-				<div class="hover-calculo py-5 px-4 h-100 border-animation">
-					<div class="border-animation__inner">
-						<p class="h1">2</p>
-						<p class="title h4">CÁLCULO DE LA APLICACIÓN</p>
-						<p class="content">Después del análisis, nuestro Ingeniero de Aplicaciones genera un reporte detallado con bocetos para que el Departamento de Cálculo realice las simulaciones de cómo funcionará y qué variables intervendrán en el sistema servocontrolado. </p>
-						<a href="" class=""></a>
-					</div>
-				</div>
-			</div>
-			<div class="col col-lg-4 px-3 mt-3 ">
-				<div class="hover-calculo py-5 px-4 h-100 border-animation">
-					<div class="border-animation__inner">
-						<p class="h1">3</p>
-						<p class="title h4">SELECCIÓN DE COMPONENTES DEL SERVOSISTEMA CON PROPUESTA COMERCIAL </p>
-						<p class="content">Finalmente, el Departamento de Cálculo selecciona los componentes óptimos y adecuados para la aplicación y se realiza una propuesta comercial. 
-						Dentro de esa propuesta se consideran: Presupuesto, desempeño y preferencia del cliente; siempre garantizando el éxito de la automatización de la máquina o proceso.
-						</p>
-					<p class="content">
-						<a href="#cta_container" class="scroll_to red-button px-4 py-2 d-table-cell mt-2 scroll_to">COTIZA AHORA</a>
-					</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div> #}
+{% endcache %}
 	
 	<div class="container my-5 py-5 text-center calculo-riesgos">
 		<div class="row pt-5">
@@ -180,6 +141,7 @@
 	
 
 	{# footer part #}
+	{% cache %}
 	<div class="container-fluid position-relative zindex3">
 		<div class="row position-relative mb-n5">
 			<div class="col-12 col-md-3"></div>
@@ -197,6 +159,7 @@
 		</div>
 		<img src="{{ calc6 }}" data-src="{{ calc6 }}" alt="CNC machine" class="lazy img-fluid floating-arm-2 zindex3">
 	</div>
+	{% endcache %}
 
 
 	<div id="cta_container" class=" container-fluid position-relative zindex2 form-calculo bg-image bg-no-repeat bg-cover" style="background-image: url({{ calc8 }});">

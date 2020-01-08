@@ -78,7 +78,7 @@
 		</div>
 	</div>
 	
-
+	{% cache %}
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-12 col-md-6 text-right align-self-center px-md-0">
@@ -94,10 +94,12 @@
 			</div>
 		</div>
 	</div>
+	{% endcache %}
 	
 	{% include 'partials/_mecanismosCalculo' %}
 
 	{# footer part #}
+	{% cache %}
 	<div class="container-fluid position-relative zindex3">
 		<div class="row position-relative mb-n5">
 			<div class="col-12 col-md-3"></div>
@@ -115,6 +117,7 @@
 		</div>
 		<img src="{{ calc6 }}" data-src="{{ calc6 }}" alt="CNC machine" class="lazy img-fluid floating-arm-2 zindex3 ">
 	</div>
+	{% endcache %}
 
 
 	<div id="cta_container" class="container-fluid position-relative zindex2 form-calculo bg-image bg-no-repeat bg-cover" style="background-image: url({{ calc8 }});">
