@@ -378,6 +378,51 @@ $(".grid-slider .slider-slider").slick({
   ]
 });
 
+
+$('.mecanismos-slider-nav').slick({
+  slidesToShow: 4,
+  slidesToScroll: 1,
+  asNavFor: '.mecanismos-slider',
+  dots: false,
+  arrows: false,
+  infinite: true,
+  focusOnSelect: true,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        infinite: true,
+      }
+    },
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        infinite: true,
+      }
+    },
+  ]
+});
+$('.mecanismos-slider').slick({
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  arrows: false,
+  fade: true,
+  infinite: true,
+  adaptiveHeight: true,
+  asNavFor: '.mecanismos-slider-nav'
+});
+$('.mecanismos-slider-previous').on('click', function(){
+    $('.mecanismos-slider-nav').slick("slickPrev");
+});
+$('.mecanismos-slider-next').on('click', function(){
+    $('.mecanismos-slider-nav').slick("slickNext");
+});
+
+
 /* --------------------------
 ------- Scroll reveal -------
 -------------------------- */
@@ -620,4 +665,44 @@ ScrollReveal().reveal('.slide-left', slideLeft);
 ScrollReveal().reveal('.slide-right', slideRight);
 ScrollReveal().reveal('.slide-up', slideUp);
 
+$('.collapse').on('shown.bs.collapse', function () {
+  var headerDiv = '#'+$(this).attr('aria-labelledby');
+  $(headerDiv).toggleClass('active');
+});
+
+$('.collapse').on('hidden.bs.collapse', function () {
+  var headerDiv = '#'+$(this).attr('aria-labelledby');
+  $(headerDiv).removeClass('active');
+});
+
+$('.calculo-tabs a').on('click',function(){
+    $('html, body').animate({
+          scrollTop: $('.tab-content').offset().top - 20
+      }, 500);
+  });
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  var lazyImages = [].slice.call(document.querySelectorAll("img.lazy"));
+
+  if ("IntersectionObserver" in window) {
+    let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          let lazyImage = entry.target;
+          lazyImage.src = lazyImage.dataset.src;
+          lazyImage.classList.remove("lazy");
+          lazyImageObserver.unobserve(lazyImage);
+        }
+      });
+    });
+
+    lazyImages.forEach(function(lazyImage) {
+      lazyImageObserver.observe(lazyImage);
+    });
+  } else {
+    // Possibly fall back to a more compatible method here
+  }
+});
 //# sourceMappingURL=app.js.map

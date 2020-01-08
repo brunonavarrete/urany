@@ -1,0 +1,36 @@
+	<div class="container mb-5 pb-5">
+		<div class="row pt-5">
+			<div class="col-12 text-center mt-5">
+				<h2 class="h1 text-primary red-title">MECANISMOS QUE PODEMOS CALCULAR</h2>
+			</div>
+		</div>
+		<div class="row py-5">
+			<div class="mecanismos-slider-previous col-1 text-center slider-arrow">
+				<img src="/assets/img/sliderArrow.svg" alt="sliderArrow">
+			</div>
+				<div class="mecanismos-slider-nav col-10">
+					{% for mecanismo in mecanismos %}
+						<div class="row">
+							<div class="mecanismo-nav-slide col-10 mx-auto">
+								<p>{{mecanismo.title}}</p>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+			<div class="mecanismos-slider-next col-1 text-center slider-arrow ">
+				<img src="/assets/img/sliderArrow.svg" alt="sliderArrow" class="inverted-arrow">
+			</div>
+			<div class="mecanismos-slider col-10 mx-auto pb-5">
+				{% for mecanismo in mecanismos %}
+					<div class="mecanismo-slide">
+						<p class="text-primary red-title calc mb-0 my-4">{{mecanismo.title}}</p>
+						{{mecanismo.body}}
+					</div>
+				{% endfor %}
+			</div>
+			<div class="col-12 mx-auto pb-5 mb-5 text-center">
+				<a href="#cta_container" class="btn mt-n1 red-button px-lg-5 py-3 rounded-0 scroll_to">COTIZA AHORA</a>
+			</div>
+		</div>
+	</div>
+	

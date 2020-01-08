@@ -66,7 +66,7 @@ $rojo-urany: #881626;
       top: 70%;
       bottom: 0;
     }
-    @media (min-width: 1200px){
+    @media (min-width: 1500px){
       top: 50%;
     }
 }
@@ -200,6 +200,10 @@ $rojo-urany: #881626;
   }
 }
 
+b.red{
+  font-weight: bold;
+  color: #8a2432;
+}
 
 
 
@@ -384,6 +388,34 @@ $rojo-urany: #881626;
 
 }
 
+.mecanismos-slider-nav{
+  .slick-current.slick-active{
+    .mecanismo-nav-slide{
+      background: #8A2432 !important;
+    }
+    p{
+      color: white;
+      margin-bottom: 0;
+      font-weight: bold;
+    }
+  }
+}
+.mecanismo-nav-slide{
+  background: #F8F8F8;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  p{
+    color: #4E4D4D;
+    margin-bottom: 0;
+  }
+}
+.mecanismos-slider{
+  img{ max-width: 100%; }
+}
+
 
 #blog-content{
   img{
@@ -394,4 +426,193 @@ $rojo-urany: #881626;
 
 .header-logo{
   max-width: 150px !important;
+}
+
+.red-title{
+  &.calc{
+    color: #8A2432 !important;
+    letter-spacing: 0;
+    font-size: 1.5rem;
+    font-family: Brandon-regular;
+    font-weight: bold;
+  }
+}
+.big-percentage{
+    color: #8A2432 !important;
+    letter-spacing: 0;
+    font-size: 7em;
+    font-weight: bolder;
+    font-family: Brandon-bold;
+}
+.slider-arrow{
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .inverted-arrow{
+    transform: scale(-1);
+  }
+}
+.calculo-riesgos{
+  *{
+    font-family: 'Brandon-regular'; 
+    color: #4E4D4D;
+  }
+  b{
+    font-family: 'Brandon-bold';
+    font-weight: 100; 
+  }
+  .fact{
+    .red-title,.gray-title{
+      font-family: 'Brandon-bold' !important;
+    }
+    .red-title{
+      font-size: 5rem;
+
+    }
+  }
+}
+
+.proceso-calculo{
+  .nav-item{ flex:1 1 auto; }
+ .nav-link{
+    color: #4E4D4D;
+    font-size: 1.3rem;
+    span{
+      color: #8A2432;
+    }
+    &.active{
+      position: relative;
+      background: #8A2432;
+      color: white;
+      span{
+        color: white;
+      }
+      &:before {
+        content: '';
+        background: #8A2432;
+        position: absolute;
+        height: 100%;
+        width: 30%;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: -25%;
+        border: none;
+        z-index: 1;
+      }
+      &:after{
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        left: -25%;
+        width: 10%;
+        height: 1px;
+        background: white;
+        z-index: 2;
+      }
+    }
+  }
+  .proceso-content{
+    position: relative;
+    .tab-index{
+      position: absolute;
+      font-size: 7rem;
+      color: #8a2432;
+      font-family: 'Brandon-bold';
+      opacity: .2;
+      top: -30px;
+      right: 20px;
+    }
+    .tab-title{
+      font-family: 'Brandon-regular';
+      color: #881626 !important;
+      font-size: 1.48rem;
+      line-height: 1.2;
+      text-transform: uppercase;
+      font-weight: bold;
+      @extend .mt-5, .pt-4;
+    }
+    ul{
+      list-style-type: none;
+        li{
+          position: relative;
+          padding-right: .6rem;
+            &:before {
+            content: '';
+            height: 1px;
+            width: 8px;
+            background: #8a2432;
+            position: absolute;
+            top: 3px;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+          }
+      }
+    }
+  }
+
+  .body{
+    * { 
+      font-family: 'Brandon-regular';
+    }
+  }
+}
+
+.riesgos-accordion{
+  .card{
+    border: unset;
+    margin: .5rem 0;
+  }
+  .card-body{ *{ font-size: 1.1rem; } }
+  .card-header{
+    padding: 0;
+    border-radius: 3px;
+    background: #8a2432;
+    p,button{
+      text-decoration: none;
+      font-size: 1.4rem;
+      text-align: left;
+      color: white;
+      @extend .w-100, .h-100;
+      will-change: transform, border;
+      transition: all .15s ease-in-out;
+    }
+    p{ padding:0; }
+    button{ 
+      position: relative;
+      padding: .7rem 1rem;
+      &:after{
+        content: '';
+        position: absolute;
+        right: 2rem;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        width: 10px;
+        height: 10px;
+        border-right: 2px solid white;
+        border-bottom: 2px solid white;
+        transform: rotate(45deg);
+        transition: all .15s ease-in-out;
+        @media (max-width: 576px) {
+          right: 10px;
+        }
+      }
+    }
+    &.active{
+      button{ 
+          &:after{
+            transform: rotate(-135deg);
+            transition: all .15s ease-in-out;
+            @media (max-width: 576px) {
+              right: 10px;
+            }
+          }
+        }
+    }
+  }
 }

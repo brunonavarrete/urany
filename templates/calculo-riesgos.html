@@ -1,0 +1,179 @@
+{# --------------- Variables --------------- #}
+{% set jumbotronImage = "calculo_header.jpg" %}
+{% set title = "Cálculo de un eje servocontrolado" %}
+{% set logo  = "assets/img/logo-urany.jpg " %}
+{% set calc1 = "assets/img/calc1.jpg " %}
+{% set calc2 = "assets/img/calc2.jpg " %}
+{% set calc3 = "assets/img/calc3.jpg " %}
+{% set calc4 = "assets/img/calc4.png " %}
+{% set calc5 = "assets/img/calc5.jpg " %}
+{% set calc6 = "assets/img/calc6.png " %}
+{% set calc7 = "assets/img/calc7.jpg " %}
+{% set calc8 = "assets/img/calc8.jpg " %}
+{% set calc9 = "assets/img/calc9.png " %}
+{% set mecanismos = craft.entries.section('mecanismosDeCalculo').all() %}
+{% set riesgos    = craft.entries.section('riesgosDeCalculo').all() %}
+{# ----------------------------------------- #}
+
+{% extends "_layout" %}
+
+{% block jumbotron %}
+	<div class="pleca pleca-primary"></div>
+	<div class="container position-relative" style="">
+		<h1 class="text-white text-uppercase text-center mb-3 font-weight-bold mx-auto big-titles">
+			{{ title }}
+		</h1>
+	</div>
+{% endblock %}
+
+{% block content %}
+	
+	<div class="container">
+		<div class="row calculo-riesgos">
+			<div class="col-12 col-md-10 mx-auto my-5">
+				<p class="h4">Seleccionar mal los componentes de tu servo sistema y servo mecanismos, puede significar el <b class="red">fracaso de todo el proceso de automatización.</b></p><br>
+				<p class="h4">En la mayoría de los casos, el equipo de integración detectará la falla de selección hasta el momento de arrancar la máquina, cuando la corrección implicará un cambio de componentes, tiempos largos de entrega y <b class="red">pérdidas económica irreparables.</b></p>
+			</div>
+		</div>
+	</div>
+	
+
+	{# accordion #}
+	<div class="container">
+		<div class="row">
+
+			<div id="accordion" class="col-12 col-md-10 mx-auto calculo-riesgos riesgos-accordion">
+				<p class="h2 my-5 text-center mx-auto text-primary red-title ">Una mala selección puede llevar a las <br>siguientes consecuencias</p>
+
+				{% for riesgo in riesgos %}
+					
+				<div class="card">
+					<div class="card-header {{ (loop.first) ? 'active' : '' }}" id="heading_{{riesgo.id}}">
+						<p class="mb-0">
+							<button class="btn btn-link" data-toggle="collapse" data-target="#collapse_{{riesgo.id}}" aria-expanded="true" aria-controls="collapse_{{riesgo.id}}">
+								{{ riesgo.title }}
+							</button>
+						</p>
+					</div>
+
+					<div id="collapse_{{riesgo.id}}" class="collapse {{ (loop.first) ? 'show' : '' }}" aria-labelledby="heading_{{riesgo.id}}" data-parent="#accordion">
+						<div class="card-body">
+							{{ riesgo.body }}
+						</div>
+					</div>
+				</div>
+
+				{% endfor %}
+				
+			</div>
+
+			<div class="col-12 col-md-10 mx-auto calculo-riesgos text-center my-5">
+				<p class="h1">
+					<b>Reduce el riesgo</b> de una selección empírica o basada en conceptos erróneos y <b>garantiza el funcionamiento de los equipos seleccionados.</b>
+				<div class="col-12 mx-auto text-center mt-5">
+					<a href="#cta_container" class="btn mt-n1 red-button px-lg-5 py-3 rounded-0 scroll_to">COTIZA AHORA</a>
+				</div>
+				</p>
+			</div>
+		</div>
+	</div>
+	
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-12 col-md-6 text-right align-self-center px-md-0">
+				<div class="float-md-right">
+					<p class="h2"> Conoce más sobre nuestra <br>experiencia y proceso de <br> cálculo. </p>
+					<div class="col-12 mx-auto pb-5 mb-5 mt-5 text-right px-0">
+						<a href="/calculo" class="btn mt-n1 red-button px-lg-5 py-3 rounded-0">CONOCE MÁS</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-md-6 px-0">
+				<img src="{{ calc9 }}" data-src="{{ calc9 }}" alt="Cálculo de riesgos" class="lazy float-right img-fluid">
+			</div>
+		</div>
+	</div>
+	
+	{% include 'partials/_mecanismosCalculo' %}
+
+	{# footer part #}
+	<div class="container-fluid position-relative zindex3">
+		<div class="row position-relative mb-n5">
+			<div class="col-12 col-md-3"></div>
+			<div class="col-12 col-md-8">
+				<img src="{{ calc7 }}" alt="Equipo servocontrolado" class="img-fluid">
+			</div>
+			<div class="col-12 col-md-1"></div>
+			<div class="col-12 col-md-10 " style="background-image: url({{ calc5 }});">
+				<div class="row">
+					<div class="col-12 col-md-6 offset-md-5 text-center">
+						<p class="py-5 mb-0 h5 text-primary line-height-15">Servicio personalizado y realizado por un equipo de expertos con vasta experiencia en simulación, cálculo y selección de componentes mecánicos y servocontrolados que garantizará la inversión efectuada y disminuirá el riesgo de implementación o puesta en marcha.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<img src="{{ calc6 }}" alt="CNC machine" class="img-fluid floating-arm-2 zindex3 ">
+	</div>
+
+
+	<div id="cta_container" class="container-fluid position-relative zindex2 form-calculo bg-image bg-no-repeat bg-cover" style="background-image: url({{ calc8 }});">
+		<div class="mb-lg-5 py-4 py-md-5"></div>
+		<div class="container">
+			<div class="row justify-content-around">
+				<div class="col-12 col-md-10 mb-5 py-5">
+					<form method="post" accept-charset="UTF-8" class="form_calculo">
+						<div class="row">
+							<div class="form-group">
+								{{ csrfInput() }}
+								<div class="messages"></div>
+							</div>
+							<div class="form-group">
+								<input type="hidden" name="action" value="contact-form/send">
+								<div class="messages"></div>
+							</div>
+							<div class="form-group">
+								<input type="hidden" name="address">
+								<div class="messages"></div>
+							</div>
+							<div class="col-12 col-md-6 form-group">
+								<input type="text" name="fromName" id="fromName" class="form-control text-primary" placeholder="Nombre completo">
+								<div class="messages"></div>
+							</div>
+							<div class="col-12 col-md-6 form-group">
+								<input type="email" name="fromEmail" id="fromEmail" class="form-control text-primary" placeholder="Correo Electrónico">
+								<div class="messages"></div>
+							</div>
+							<div class="col-12 col-md-8 form-group">
+								<input type="text" name="message[Teléfono][]" id="telefono" class="form-control text-primary" placeholder="Teléfono institucional">
+								<div class="messages"></div>
+							</div>
+							<div class="col-12 col-md-4 form-group">
+								<input type="text" name="message[Extensión][]" id="extension" class="form-control text-primary" placeholder="Extensión">
+								<div class="messages"></div>
+							</div>
+							<div class="col-12 col-md-6 form-group">
+								<input type="text" name="message[Empresa][]" id="empresa" class="form-control text-primary" placeholder="Empresa">
+								<div class="messages"></div>
+							</div>
+							<div class="col-12 col-md-6 form-group">
+								<input type="text" name="message[Ciudad y Estado][]" id="ciudad" class="form-control text-primary" placeholder="Ciudad y Estado">
+								<div class="messages"></div>
+							</div>
+							<div class="col-12 form-group">
+								<textarea id="" cols="30" rows="10" name="message[body]" id="estado" class="form-control text-primary" placeholder="Escribe un mensaje"></textarea>
+								<div class="messages"></div>
+							</div>
+							<div class="col-12 col-md-6 offset-md-6 text-right form-group">
+								 <button type="submit" class="col-12 btn btn-outline-primary text-uppercase col-md-auto white-button float-right mb-3">COTIZA AHORA</button>
+								 <div class="messages"></div>
+							</div>
+						</div>
+					</form>
+					<div class="form-alert animated" role="alert"></div>
+				</div>	
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
