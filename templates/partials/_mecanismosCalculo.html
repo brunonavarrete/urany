@@ -24,7 +24,23 @@
 				{% for mecanismo in mecanismos %}
 					<div class="mecanismo-slide">
 						{% if mecanismo.fotoEncabezado|length %}
-							<img src="{{ mecanismo.fotoEncabezado.one().url }}" data-src="{{ mecanismo.fotoEncabezado.one().url }}" alt="{{ mecanismo.title }}" class="lazy" class="img-fluid lazy my-4">
+							{# <img src="{{ mecanismo.fotoEncabezado.one().url }}" data-src="{{ mecanismo.fotoEncabezado.one().url }}" alt="{{ mecanismo.title }}" class="img-fluid lazy my-4"> #}
+
+							<picture>
+								<!-- large -->
+							    <source srcset="{{ mecanismo.fotoEncabezado.one().getUrl('large') }}"
+							    media="(min-width: 992px)" />
+
+							    <!-- medium -->
+							    <source srcset="{{ mecanismo.fotoEncabezado.one().getUrl('medium') }}"
+							    media="(min-width: 750px)" />
+							    
+							    <!-- small -->
+							    <source srcset="{{ mecanismo.fotoEncabezado.one().getUrl('small') }}" />
+
+							    <!-- fallback -->
+							    <img src="{{ mecanismo.fotoEncabezado.one().url }}" alt="{{ mecanismo.title }}"  class="img-fluid lazy my-4">
+							</picture>
 						{% endif %}
 						<p class="text-primary red-title calc mb-0 my-4">{{mecanismo.title}}</p>
 						{{mecanismo.body}}
