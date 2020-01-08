@@ -24,7 +24,7 @@
 				{% for mecanismo in mecanismos %}
 					<div class="mecanismo-slide">
 						{% if mecanismo.fotoEncabezado|length %}
-							<img src="{{ mecanismo.fotoEncabezado.one().url }}" data-src="{{ mecanismo.fotoEncabezado.one().url }}" alt="{{ mecanismo.title }}" class="lazy" class="img-fluid lazy">
+							<img src="{{ mecanismo.fotoEncabezado.one().url }}" data-src="{{ mecanismo.fotoEncabezado.one().url }}" alt="{{ mecanismo.title }}" class="lazy" class="img-fluid lazy my-4">
 						{% endif %}
 						<p class="text-primary red-title calc mb-0 my-4">{{mecanismo.title}}</p>
 						{{mecanismo.body}}
