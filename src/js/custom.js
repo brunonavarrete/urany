@@ -387,6 +387,7 @@ $('.mecanismos-slider-nav').slick({
   arrows: false,
   infinite: true,
   focusOnSelect: true,
+  lazyLoad: 'ondemand',
   responsive: [
     {
       breakpoint: 1024,
@@ -411,6 +412,7 @@ $('.mecanismos-slider').slick({
   slidesToScroll: 1,
   arrows: false,
   fade: true,
+  lazyLoad: 'ondemand',
   infinite: true,
   adaptiveHeight: true,
   asNavFor: '.mecanismos-slider-nav'
