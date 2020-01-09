@@ -119,17 +119,25 @@ $rojo-urany: #881626;
     border: unset;
     outline: none;
   }
+  .form_calculo{
+    input,textarea{
+      color: #495057;
+    }
+    .form-group{
+      margin-bottom: 0;
+    }
+  }
   .form-control{
     margin-bottom: 1.5rem;
     &::placeholder{
-      color: $rojo-urany;
+      color: #495057;
     }
   }
   .messages{
     .help-block.error{
       color: white;
       margin-bottom: 0;
-      margin-top: -1rem;
+      margin-top: -1.5rem;
     }
   }
 }
@@ -626,6 +634,9 @@ b.red{
 .banner-calculo{
   margin-bottom: 10rem;
   margin-top: 4rem;
+  b{
+    font-family: 'Brandon-bold';
+  }
 }
 .media-width-query-50{
   max-width: 100%;
