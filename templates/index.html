@@ -46,9 +46,16 @@
             </div>
         </div>
     </section>
+
+    {% include 'partials/calculo' %}
+
     <section class="container-fluid">
         <div class="row align-items-md-stretch">
-            <div class="bg-primary-dark text-white col-12 py-5 col-md-8 px-md-5 col-lg-6 max-lg-490">
+            {% set color = '#4c565d' %}
+            <div class="d-none bg-cover d-md-block col-md-4 col-lg-6" style="background-image:url(/assets/img/home2.jpg)">
+                <div class="pleca gradient pleca-transparent"></div>
+            </div>
+            <div class="text-white col-12 py-5 col-md-8 px-md-5 col-lg-6 max-lg-490"  style="background-image: linear-gradient(-180deg, {{color}} 0%, #111 100%);">
                 <h2 class="text-uppercase mb-3 ml-xl-3">
                     Expertos en reducción de riesgos en proyectos industriales
                 </h2>
@@ -64,17 +71,14 @@
                     </li>
                 </ul>
             </div>
-            <div class="d-none bg-cover d-md-block col-md-4 col-lg-6" style="background-image:url(/assets/img/home2.jpg)">
-                <div class="pleca gradient pleca-transparent"></div>
-            </div>
         </div>
     </section>
     <section class="container pb-md-0 pt-md-5">
         <div class="row py-5 align-items-md-center">
-            <div class="col-12 col-md-5 col-lg-6">
+            <div class="col-12 col-md-5 col-lg-6 order-0 order-md-1">
                 <img src="/assets/img/home3.png" class="img-fluid mb-5 mb-md-0 reveal-left" alt="{{siteName}}">
             </div>
-            <div class="col-12 col-md-7 col-lg-6 mx-lg-auto">
+            <div class="col-12 col-md-7 col-lg-6 mx-lg-auto order-1 order-md-0">
                 <h2 class="text-uppercase mb-3">
                     Selección de los elementos de mayor precisión en el mercado
                 </h2>

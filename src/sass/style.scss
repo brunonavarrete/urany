@@ -69,6 +69,12 @@ $rojo-urany: #881626;
     @media (min-width: 1500px){
       top: 50%;
     }
+    &.banner{
+      @media(max-width: 440px){ top: 85%; width: 70%;  }
+      @media(max-width: 768px){ width: 50%;  }
+      @media (min-width: 1200px){ top: 20%; }
+      @media (min-width: 1500px){ top: 0; width: auto;}
+    }
 }
 .floating-arm-2{
     width: 43%;
@@ -614,5 +620,16 @@ b.red{
           }
         }
     }
+  }
+}
+
+.banner-calculo{
+  margin-bottom: 10rem;
+  margin-top: 4rem;
+}
+.media-width-query-50{
+  max-width: 100%;
+  @media (min-width: 800px) {
+    max-width: 50%;
   }
 }
