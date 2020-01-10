@@ -6,7 +6,7 @@
 		</div>
 		<div class="row py-5">
 			<div class="mecanismos-slider-previous col-1 text-center slider-arrow">
-				<img src="/assets/img/sliderArrow.svg" alt="sliderArrow">
+				<img src="/assets/img/sliderArrow.svg" data-src="/assets/img/sliderArrow.svg" alt="sliderArrow" class="lazy">
 			</div>
 				<div class="mecanismos-slider-nav col-10">
 					{% for mecanismo in mecanismos %}
@@ -18,7 +18,7 @@
 					{% endfor %}
 				</div>
 			<div class="mecanismos-slider-next col-1 text-center slider-arrow ">
-				<img src="/assets/img/sliderArrow.svg" alt="sliderArrow" class="inverted-arrow">
+				<img src="/assets/img/sliderArrow.svg" data-src="/assets/img/sliderArrow.svg" alt="sliderArrow" class="inverted-arrow lazy">
 			</div>
 			<div class="mecanismos-slider col-10 mx-auto pb-5">
 				{% for mecanismo in mecanismos %}
@@ -27,18 +27,11 @@
 							{# <img src="{{ mecanismo.fotoEncabezado.one().url }}" data-src="{{ mecanismo.fotoEncabezado.one().url }}" alt="{{ mecanismo.title }}" class="img-fluid lazy my-4"> #}
 
 							<picture>
-								<!-- large -->
 							    <source srcset="{{ mecanismo.fotoEncabezado.one().getUrl('large') }}"
 							    media="(min-width: 992px)" />
-
-							    <!-- medium -->
 							    <source srcset="{{ mecanismo.fotoEncabezado.one().getUrl('medium') }}"
 							    media="(min-width: 750px)" />
-							    
-							    <!-- small -->
 							    <source srcset="{{ mecanismo.fotoEncabezado.one().getUrl('small') }}" />
-
-							    <!-- fallback -->
 							    <img src="{{ mecanismo.fotoEncabezado.one().url }}" alt="{{ mecanismo.title }}"  class="img-fluid lazy my-4">
 							</picture>
 						{% endif %}
