@@ -12,6 +12,8 @@
 {% set calc8 = "assets/img/calc8.jpg " %}
 {% set mecanismos = craft.entries.section('mecanismosDeCalculo').all() %}
 {% set proceso    = craft.entries.section('procesoDeCalculo').all() %}
+
+{% set imagenes = entry.galeria.all() %}
 {# ----------------------------------------- #}
 
 {% extends "_layout" %}
@@ -46,7 +48,14 @@
 			</div>
 			<div class="col-12 col-md-5 mt-n3 px-0">
 				<a href="#cta_container" class="btn mt-n1 gray-button px-lg-5 py-3 rounded-0 scroll_to">COTIZA AHORA</a>
-				<img src="{{ calc1 }}" data-src="{{ calc1 }}" alt="CNC machine" class="lazy img-fluid mb-md-n5 zindex2 position-relative">
+				<picture>
+				    <source srcset="{{ imagenes[0].getUrl('large') }}"
+				    media="(min-width: 992px)" />
+				    <source srcset="{{ imagenes[0].getUrl('medium') }}"
+				    media="(min-width: 750px)" />
+				    <source srcset="{{ imagenes[0].getUrl('small') }}" />
+					<img src="{{ imagenes[0].url }}" data-src="{{ imagenes[0].url }}" alt="CNC machine" class="lazy img-fluid mb-md-n5 zindex2 position-relative">
+				</picture>
 			</div>
 		</div>
 	</div>
@@ -54,7 +63,15 @@
 	<div class="container-fluid position-relative">
 		<div class="row mt-n5">
 			<div class="col-12 col-md-2 px-0 align-self-end">
-				<img src="{{ calc2 }}" data-src="{{ calc2 }}" alt="CNC machine" class="lazy img-fluid d-none d-md-block">
+				<picture>
+				    <source srcset="{{ imagenes[1].getUrl('large') }}"
+				    media="(min-width: 992px)" />
+				    <source srcset="{{ imagenes[1].getUrl('medium') }}"
+				    media="(min-width: 750px)" />
+				    <source srcset="{{ imagenes[1].getUrl('small') }}" />
+					<img src="{{ imagenes[1].url }}" data-src="{{ imagenes[1].url }}" alt="CNC machine" class="lazy img-fluid mb-md-n5 zindex2 position-relative">
+				</picture>
+				{# <img src="{{ calc2 }}" data-src="{{ calc2 }}" alt="CNC machine" class="lazy img-fluid d-none d-md-block"> #}
 			</div>
 			<div class="col-12 col-md-8">
 				<div class="row h-100 position-relative zindex1 bg-image bg-no-repeat bg-cover" style="background-image: url({{ calc3 }});">
@@ -73,7 +90,14 @@
 				</div>
 			</div>
 		</div>
-		<img src="{{ calc4 }}" data-src="{{ calc4 }}" alt="CNC machine" class="lazy img-fluid floating-arm-1 zindex1 ">
+		<picture>
+		    <source srcset="{{ imagenes[2].getUrl('large') }}"
+		    media="(min-width: 992px)" />
+		    <source srcset="{{ imagenes[2].getUrl('medium') }}"
+		    media="(min-width: 750px)" />
+		    <source srcset="{{ imagenes[2].getUrl('small') }}" />
+			<img src="{{ imagenes[2].url }}" data-src="{{ imagenes[2].url }}" alt="CNC machine" class="lazy img-fluid floating-arm-1 zindex1 ">
+		</picture>
 	</div>
 	
 	<div class="container my-5 py-5 text-center calculo-riesgos">
@@ -103,6 +127,11 @@
 	
 	{# TABS #}
 	<div class="container">
+		<div class="row pb-5">
+			<div class="col-12 text-center">
+				<h2 class="h1 text-primary red-title">MECANISMOS QUE PODEMOS CALCULAR</h2>
+			</div>
+		</div>
 		<div class="row proceso-calculo">
 			<div class="col-12 col-md-4 order-0 order-md-1 d-flex">
 				<ul class="nav nav-tabs flex-column border-0 calculo-tabs" id="myTab" role="tablist">
@@ -120,7 +149,7 @@
 					{% for step in proceso %}
 						<div class="tab-pane fade {{ (loop.first ) ? ' show active ' : '' }}" id="tab-{{step.id}}" role="tabpanel" aria-labelledby="tab--{{step.id}}">
 							<div class="row">
-								<div class="col-12 col-md-6 text-right proceso-content">
+								<div class="col-12 col-md-6 text-right proceso-content align-self-center">
 									{% if step.habilitarNumero %}<span class="tab-index">{{ loop.index }}</span>{% endif %}
 									<p class="tab-title">{{ step.title }}</p>
 									<div class="body">{{ step.introduccion }}</div>
@@ -183,7 +212,14 @@
 		<div class="row position-relative mb-n5">
 			<div class="col-12 col-md-3"></div>
 			<div class="col-12 col-md-8">
-				<img src="{{ calc7 }}" data-src="{{ calc7 }}" alt="Equipo servocontrolado" class="lazy img-fluid">
+				<picture>
+				    <source srcset="{{ imagenes[4].getUrl('large') }}"
+				    media="(min-width: 992px)" />
+				    <source srcset="{{ imagenes[4].getUrl('medium') }}"
+				    media="(min-width: 750px)" />
+				    <source srcset="{{ imagenes[4].getUrl('small') }}" />
+					<img src="{{ imagenes[4].url }}" data-src="{{ imagenes[4].url }}" alt="Equipo servocontrolado" class="lazy img-fluid">
+				</picture>
 			</div>
 			<div class="col-12 col-md-1"></div>
 			<div class="col-12 col-md-10 " style="background-image: url({{ calc5 }});">
@@ -196,7 +232,14 @@
 				</div>
 			</div>
 		</div>
-		<img src="{{ calc6 }}" data-src="{{ calc6 }}" alt="CNC machine" class="lazy img-fluid floating-arm-2 zindex3">
+		<picture>
+		    <source srcset="{{ imagenes[3].getUrl('large') }}"
+		    media="(min-width: 992px)" />
+		    <source srcset="{{ imagenes[3].getUrl('medium') }}"
+		    media="(min-width: 750px)" />
+		    <source srcset="{{ imagenes[3].getUrl('small') }}" />
+			<img src="{{ imagenes[3] }}" data-src="{{ imagenes[3] }}" alt="CNC machine" class="lazy img-fluid floating-arm-2 zindex3">
+		</picture>
 	</div>
 	{% endcache %}
 
