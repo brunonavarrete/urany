@@ -46,7 +46,7 @@
 			</div>
 			<div class="col-12 col-md-5 mt-n3 px-0">
 				<a href="#cta_container" class="btn mt-n1 gray-button px-lg-5 py-3 rounded-0 scroll_to">COTIZA AHORA</a>
-				<img src="{{ calc1 }}" alt="CNC machine" class="img-fluid mb-md-n5 zindex2 position-relative">
+				<img src="{{ calc1 }}" data-src="{{ calc1 }}" alt="CNC machine" class="lazy img-fluid mb-md-n5 zindex2 position-relative">
 			</div>
 		</div>
 	</div>
@@ -54,7 +54,7 @@
 	<div class="container-fluid position-relative">
 		<div class="row mt-n5">
 			<div class="col-12 col-md-2 px-0 align-self-end">
-				<img src="{{ calc2 }}" alt="CNC machine" class="img-fluid d-none d-md-block">
+				<img src="{{ calc2 }}" data-src="{{ calc2 }}" alt="CNC machine" class="lazy img-fluid d-none d-md-block">
 			</div>
 			<div class="col-12 col-md-8">
 				<div class="row h-100 position-relative zindex1 bg-image bg-no-repeat bg-cover" style="background-image: url({{ calc3 }});">
@@ -73,7 +73,7 @@
 				</div>
 			</div>
 		</div>
-		<img src="{{ calc4 }}" alt="CNC machine" class="img-fluid floating-arm-1 zindex1 ">
+		<img src="{{ calc4 }}" data-src="{{ calc4 }}" alt="CNC machine" class="lazy img-fluid floating-arm-1 zindex1 ">
 	</div>
 {% endcache %}
 	
@@ -137,7 +137,14 @@
 									{% endif %}
 								</div>
 								<div class="col-12 col-md-6">
-									<img src="{{step.fotoEncabezado.one().url}}" alt="image placeholder" class="img-fluid">
+									<picture>
+									    <source srcset="{{ step.fotoEncabezado.one().getUrl('large') }}"
+									    media="(min-width: 992px)" />
+									    <source srcset="{{ step.fotoEncabezado.one().getUrl('medium') }}"
+									    media="(min-width: 750px)" />
+									    <source srcset="{{ step.fotoEncabezado.one().getUrl('small') }}" />
+										<img src="{{ step.fotoEncabezado.one().url }}" data-src="{{ step.fotoEncabezado.one().url }}" alt="{{ step.title }}" class="img-fluid lazy">
+									</picture>
 								</div>
 							</div>
 						</div>
