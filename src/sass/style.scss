@@ -644,3 +644,44 @@ b.red{
     max-width: 50%;
   }
 }
+#modal-proceso{
+  .modal-dialog {
+    @media (min-width: 576px){
+      max-width: 75%;
+      margin: 1.75rem auto;
+    }
+  }
+  .modal-content{
+    border: 1px solid rgba(136, 22, 38, .2);
+  }
+  .modal-header{
+    border-bottom: 1px solid rgba(136, 22, 38, .2);
+  }
+  .modal-body{
+    color: #4E4D4D;
+  }
+  .modal-title{
+    line-height: 1;
+  }
+  .modal-footer{
+    border-top: 0;
+  }
+}
+.close-modal-times{
+    color: $rojo-urany;
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: 'Brandon-bold';
+    opacity: 1;
+    outline: 0;
+    &:focus{ outline: 0; }
+}
+#modal-video{
+  .modal-content{
+    border: 0;
+    background: transparent;
+  }
+}
+.modal-backdrop {
+    background: rgba(76,86,93,0.8);
+}

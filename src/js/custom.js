@@ -708,3 +708,9 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 });
 //# sourceMappingURL=app.js.map
+
+
+$('.proceso-trigger').on('click', function(){
+  $('#modal-proceso .modal-title').text($(this).attr('data-title'));
+  $('#modal-proceso .modal-body').html($(this).attr('data-body'));
+});
