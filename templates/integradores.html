@@ -1,0 +1,118 @@
+{% extends '_layout' %}
+{% set title = "Integradores" %}
+
+
+{% block content %}
+	<div id="blog-top"></div>
+	
+	<div class="container pt-4">
+		<div class="row">
+			<div class="col-12 col-md-8 mx-auto text-center">
+				<h2 class="h3 text-primary">INTEGRADORES RECONOCIDOS</h2>
+				{# <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, minus et nulla iure unde soluta explicabo excepturi esse repudiandae iste, itaque obcaecati ea nihil incidunt eum eius accusantium a perspiciatis.</p> #}
+			</div>
+
+		</div>
+	</div>
+	<div class="container-fluid px-0">
+		<div class="col-12 container-mapa px-0">
+			<div id="mapa" class=""></div>
+			<div class="filtros">
+				<div class="filtro-inicial h-100 d-flex align-items-center justify-content-center flex-column mx-auto w-75 ">
+					<h2 class="h5 text-center mb-4 mt-4 mt-lg-0">Haz click en un integrador del mapa <br>o fíltralos por industria:</h2>
+					<div class="botones">
+						<div class="row">
+						{% set industrias = craft.categories.group('integradores') %}
+							{% for industria in industrias %}
+								<div class="col-6 col-md-6 col-lg-3">
+									<button class="btn-integradores btn-block mb-4 active" data-industriaId="{{ industria.slug }}">
+										{{ industria.title }}
+									</button>
+								</div>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+
+
+
+			<div class="integrador-ex-info {# hidden #}">
+				<div class="filtro-inicial h-100 {# d-flex align-items-center justify-content-center flex-column  #}mx-auto w-75 ">
+					<div class="botones">
+						<div class="row">
+							<div class="col-9 my-5">
+								<img src="" alt="" class="external-logo-integrador img-fluid">
+							</div>
+							<div class="col-3 align-self-center px-0">
+								<p class="return-to-map mb-n3">< Regresar </p>
+							</div>
+						</div>
+						<div class="row integrador-content-container p-3">
+							<h2 class="h5 mb-4 integrador-title">Aquí va el título del integrador ggg</h2>
+							<div class="integrador-tags"></div>
+							<div class="integrador-body"></div>
+						</div>
+						<div class="col-12 text-right">
+							<a href="#" id="flip-form" class="d-none d-md-inline-block btn-outline-block button px-3 py-2 red-button my-4">
+								Contáctenme
+							</a>
+							<a href="#inner-form" id="flip-scroll" class="d-inline-block d-md-none btn-outline-block button px-3 py-2 red-button my-4">
+								Contáctenme
+							</a>
+						</div>
+
+					</div>
+
+					<div class="formulario-integradores mt-5 {# hidden #}" id="inner-form">
+						<h4 class="h4 mb-4 form-title">Envíanos tus datos</h4>
+						<form method="post" accept-charset="UTF-8" id="integradores-form" action="">
+							<div class="row">
+								{{ csrfInput() }}
+								<input type="hidden" name="action" value="contact-form/send">
+								<input type="hidden" name="address">
+								<input type="hidden" name="toEmail" value="{{ 'leo@thebrandindustry.com,leonardo.mtz.cis@outlook.com'|hash }}">
+
+								<div class="col-12 my-2 px-4">
+									<input type="text" class="form-control" name="fromName" id="fromName" placeholder="Nombre completo" required>
+								</div>
+								<div class="col-12 my-2 px-4">
+									<input type="mail" class="form-control" name="fromEmail" id="fromEmail" placeholder="E-mail" required>
+								</div>
+								<div class="col-12 my-2 px-4">
+									<input type="text" class="form-control" name="message[Teléfono][]" id="telefono" placeholder="Teléfono" required>
+								</div>
+								<div class="col-12 my-2 px-4">
+									<input type="text" class="form-control" name="message[Empresa][]" id="empresa" placeholder="Empresa" required>
+								</div>
+								<div class="col-12">
+									<input type="hidden" class="form-control" name="message[Integrador][]" id="integrador-input" placeholder="Integrador" required>
+								</div>
+
+
+								<div class="col-12 my-2 px-4">
+									<a href="" id="flip-form-2" value="Regresar" class="btn-outline-block button d-inline-block px-3 py-2 red-discrete-button float-left mt-4"> < Regresar </a>
+									<input type="submit" value="Enviar" class="btn-outline-block button d-inline-block px-3 py-2 red-button float-right mt-4">
+								</div>
+									<div class="form-loader col-12 text-right">
+										<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+									</div>
+									<div class="col-12 text-right"><p class="form-loader-message px-3 py-1 text-white"></p></div>
+							</div>
+						</form>
+					</div>
+				</div>
+
+		</div>
+	</div>
+</div>
+
+
+{% set subscribeImage = 'subscribe1' %}
+{% include 'partials/_brands' %}
+{% include 'partials/_stock-catalog-newsletter' %}
+{% include 'partials/_subscribe' %}
+
+{% endblock %}

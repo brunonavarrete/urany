@@ -714,3 +714,35 @@ $('.proceso-trigger').on('click', function(){
   $('#modal-proceso .modal-title').text($(this).attr('data-title'));
   $('#modal-proceso .modal-body').html($(this).attr('data-body'));
 });
+
+
+/* integradores */
+  $('.btn-integradores').on('click', function(){
+    $(this).toggleClass('active');
+  });
+  $('#flip-form').on('click', function(e){
+    e.preventDefault();
+    $('.formulario-integradores').css('display', 'block');
+    $('.integrador-ex-info .botones').css('display', 'none');
+    $('.formulario-integradores').removeClass('hidden');
+  });
+  $("#flip-scroll").click(function(e) {
+    e.preventDefault();
+    $('.formulario-integradores').css('display', 'block');
+    $('.integrador-ex-info .botones').css('display', 'none');
+    $('.formulario-integradores').removeClass('hidden');
+    $("html,body").animate(
+      {
+        scrollTop: $("#inner-form").offset().top - 100
+      },
+      350
+    );
+  });
+  $('#flip-form-2').on('click', function(e){
+    e.preventDefault();
+    $('.formulario-integradores').css('display', 'none');
+    $('.integrador-ex-info .botones').css('display', 'block');
+    $('.formulario-integradores').addClass('hidden');
+  });
+
+/* integradores */

@@ -105,6 +105,10 @@ $rojo-urany: #881626;
   background-color: $rojo-urany;
   color: white !important;
   border: none;
+  outline: 0;
+  &:focus, &:active{
+    outline: 0;
+  }
 }
 
 @for $i from 1 to 6{
@@ -685,3 +689,222 @@ b.red{
 .modal-backdrop {
     background: rgba(76,86,93,0.8);
 }
+
+
+/* integradores */
+
+#mapa{ 
+  width: 100%;
+  min-height: 600px;
+  @media (min-width: 900px){
+    height: 100vh;
+  }
+}
+.container-mapa{
+  position: relative;
+}
+.filtros{
+  position: relative;
+  @media (min-width: 900px){
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    height: 70%;
+    width: 50%;
+    background: linear-gradient(to right, transparent, white, white, white);
+  }
+}
+
+.integrador-ex-info{
+  display: none;
+  position: relative;
+  @media (min-width: 900px){
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    height: 70%;
+    width: 40%;
+    background: linear-gradient(to right, transparent, white, white, white);
+  }
+}
+
+.btn-integradores{
+  transition: all .2s ease-in-out;
+  background: unset;
+  border-radius: .2rem;
+  border: 1px solid $rojo-urany;
+  color: $rojo-urany;
+  padding-right: .5rem 1rem;
+  opacity: 0.4;
+  &.active{
+    opacity: 1;
+  }
+  
+  outline: 0;
+  &:focus{
+    outline: 0;
+  }
+}
+.window_info{
+  .window_title{
+    color: $rojo-urany;
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+  .window-contact{
+    p{
+      margin-bottom: 0 !important;
+    }
+  }
+}
+.integrador-content-container{
+  background: white;
+  @media (min-width: 600px){ 
+    max-height: 200px;
+    overflow-y: scroll;
+  }
+}
+.integrador-title{
+  color: $rojo-urany;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+.form-title{
+  color: $rojo-urany;
+  font-weight: 500;
+}
+.return-to-map{
+  opacity: .6;
+  cursor: pointer;
+}
+
+.formulario-integradores{
+  display: none;
+}
+.ind-tag {
+    border: 1px solid gray;
+    border-radius: 5px;
+    float: left;
+    display: block;
+    margin-right: .4rem;
+    margin-bottom: .2rem;
+    padding: .1rem 1rem;
+    font-size: 0.8rem;
+}
+
+.hidden{ 
+  opacity: 0; 
+}
+.red-discrete-button{
+  border: 2px solid $rojo-urany;
+  color: inherit;
+}
+
+.gm-style .gm-style-iw-c {
+  max-width: 400px !important;
+  padding: 1rem;
+}
+.window_logo img{
+  height: 50px;  
+}
+.external-logo-integrador{
+  height: 50px;
+}
+
+
+.form-loader{
+  display: none;
+}
+.lds-roller {
+  transform: scale(.5);
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-roller div {
+  animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  transform-origin: 40px 40px;
+}
+.lds-roller div:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: $rojo-urany;
+  margin: -4px 0 0 -4px;
+}
+.lds-roller div:nth-child(1) {
+  animation-delay: -0.036s;
+}
+.lds-roller div:nth-child(1):after {
+  top: 63px;
+  left: 63px;
+}
+.lds-roller div:nth-child(2) {
+  animation-delay: -0.072s;
+}
+.lds-roller div:nth-child(2):after {
+  top: 68px;
+  left: 56px;
+}
+.lds-roller div:nth-child(3) {
+  animation-delay: -0.108s;
+}
+.lds-roller div:nth-child(3):after {
+  top: 71px;
+  left: 48px;
+}
+.lds-roller div:nth-child(4) {
+  animation-delay: -0.144s;
+}
+.lds-roller div:nth-child(4):after {
+  top: 72px;
+  left: 40px;
+}
+.lds-roller div:nth-child(5) {
+  animation-delay: -0.18s;
+}
+.lds-roller div:nth-child(5):after {
+  top: 71px;
+  left: 32px;
+}
+.lds-roller div:nth-child(6) {
+  animation-delay: -0.216s;
+}
+.lds-roller div:nth-child(6):after {
+  top: 68px;
+  left: 24px;
+}
+.lds-roller div:nth-child(7) {
+  animation-delay: -0.252s;
+}
+.lds-roller div:nth-child(7):after {
+  top: 63px;
+  left: 17px;
+}
+.lds-roller div:nth-child(8) {
+  animation-delay: -0.288s;
+}
+.lds-roller div:nth-child(8):after {
+  top: 56px;
+  left: 12px;
+}
+@keyframes lds-roller {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* integradores */
+
