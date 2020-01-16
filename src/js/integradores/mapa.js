@@ -246,7 +246,12 @@ $(document).ready(function() {
                         var marker = new google.maps.Marker({
                             map: map,
                             position: results[0].geometry.location,
-                            icon: "/assets/img/marker_map.png",
+                            icon: {
+                                url: "/assets/img/marker_map.svg", // url
+                                scaledSize: new google.maps.Size(25, 25), // scaled size
+                                origin: new google.maps.Point(0,0), // origin
+                                anchor: new google.maps.Point(0, 0) // anchor
+                            },
                             title: industrias,
                         });
                         google.maps.event.addListener(marker, 'click', function(event) {

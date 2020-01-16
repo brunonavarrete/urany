@@ -711,9 +711,9 @@ b.red{
     bottom: 0;
     right: 0;
     margin: auto;
-    height: 70%;
+    height: 100%;
     width: 50%;
-    background: linear-gradient(to right, transparent, white, white, white);
+    background: linear-gradient(to right, rgba(255,255,255,0), white, white, white);
   }
 }
 
@@ -726,9 +726,9 @@ b.red{
     bottom: 0;
     right: 0;
     margin: auto;
-    height: 70%;
+    height: 100%;
     width: 40%;
-    background: linear-gradient(to right, transparent, white, white, white);
+    background: linear-gradient(to right, rgba(255,255,255,0), white, white, white);
   }
 }
 
