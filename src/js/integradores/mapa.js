@@ -331,11 +331,11 @@ $(document).ready(function() {
                     info_card += "<div class='window_logo'>    <img src="+ data.logo +"> </div>";
                     info_card += "<div class='window_title'>   <p> "+ data.title +" </p> </div>";
                     info_card += "<div class='window_address'> <p> "+ data.address +" </p> </div>";
-                    info_card += "<div class='window_contact'> </div>";
-                    $.each(data.contacto, function(i,k){
-                        info_card += "<p class='mb-0'> <img src='/assets/img/"+ k.type  +".svg' style='width: 15px; margin-right: 5px'>"+ k.data +" </p>";
-                    });
-                    info_card += "</div>";
+                    // info_card += "<div class='window_contact'> </div>";
+                    // $.each(data.contacto, function(i,k){
+                    //     info_card += "<p class='mb-0'> <img src='/assets/img/"+ k.type  +".svg' style='width: 15px; margin-right: 5px'>"+ k.data +" </p>";
+                    // });
+                    // info_card += "</div>";
 
                     info_card += "</div>";
 

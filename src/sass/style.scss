@@ -108,6 +108,9 @@ $rojo-urany: #881626;
   outline: 0;
   &:focus, &:active{
     outline: 0;
+    background-color: $rojo-urany;
+    color: white !important;
+    border: none;
   }
 }
 
@@ -713,7 +716,7 @@ b.red{
     margin: auto;
     height: 100%;
     width: 50%;
-    background: linear-gradient(to right, rgba(255,255,255,0), white, white, white);
+    background: linear-gradient(to right, rgba(255,255,255,0), white 25%);
   }
 }
 
@@ -728,7 +731,11 @@ b.red{
     margin: auto;
     height: 100%;
     width: 40%;
-    background: linear-gradient(to right, rgba(255,255,255,0), white, white, white);
+    background: linear-gradient(to right, rgba(255,255,255,0), white 15%);
+  }
+  @media (min-width: 1440px){
+    width: 50%;
+    background: linear-gradient(to right, rgba(255,255,255,0), white 15%);
   }
 }
 
@@ -759,6 +766,9 @@ b.red{
     p{
       margin-bottom: 0 !important;
     }
+  }
+  .window_title, .window_contact, .window_address{
+    font-family: Brandon-Light,sans-serif
   }
 }
 .integrador-content-container{
@@ -802,6 +812,10 @@ b.red{
 .red-discrete-button{
   border: 2px solid $rojo-urany;
   color: inherit;
+  &:hover, &:focus{
+    border: 2px solid $rojo-urany;
+    color: inherit;
+  }
 }
 
 .gm-style .gm-style-iw-c {
