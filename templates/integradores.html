@@ -21,7 +21,7 @@
 				<div class="filtro-inicial h-100 d-flex {# align-items-center #} justify-content-center flex-column mx-auto w-75 ">
 					<h2 class="h5 text-center mb-4 mt-4 mt-lg-0">Haz click en un integrador del mapa <br>o fíltralos por industria:</h2>
 					<div class="botones">
-						<div class="row">
+						<div class="row d-flex justify-content-center">
 
 						{% set entryIds = craft.entries.section('integradores').ids() %}
 						{% set categories = craft.categories.relatedTo({ sourceElement: entryIds }).group('integradores').find() %}
@@ -56,7 +56,7 @@
 							</div>
 						</div>
 						<div class="row integrador-content-container p-3">
-							<h2 class="h5 mb-4 integrador-title">Nombre del integrador</h2>
+							<h2 class="h5 mb-4 integrador-title w-100">Nombre del integrador</h2>
 							<div class="integrador-tags"></div>
 							<div class="integrador-body"></div>
 						</div>
