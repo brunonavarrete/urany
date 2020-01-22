@@ -215,7 +215,6 @@ $('.btn-integradores').on('click', function(){
                 if (markers[i].contador == 0) {
                     markers[i].setVisible(false);
                 }
-                console.log(markers[i].contador);
             }
         });
     }else{
@@ -223,7 +222,6 @@ $('.btn-integradores').on('click', function(){
             if(new RegExp(indId).test(k.title)) {
                 markers[i].setVisible(true);
                 markers[i].contador++;
-                console.log(markers[i].contador);
             }
         });
     }
