@@ -254,6 +254,7 @@ $(document).ready(function() {
                             },
                             title: industrias,
                         });
+                        marker.setVisible(false);
                         google.maps.event.addListener(marker, 'click', function(event) {
                             closeAllInfoWindows();
                             try{

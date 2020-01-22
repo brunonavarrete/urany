@@ -18,14 +18,19 @@
 		<div class="col-12 container-mapa px-0">
 			<div id="mapa" class=""></div>
 			<div class="filtros">
-				<div class="filtro-inicial h-100 d-flex align-items-center justify-content-center flex-column mx-auto w-75 ">
+				<div class="filtro-inicial h-100 d-flex {# align-items-center #} justify-content-center flex-column mx-auto w-75 ">
 					<h2 class="h5 text-center mb-4 mt-4 mt-lg-0">Haz click en un integrador del mapa <br>o fíltralos por industria:</h2>
 					<div class="botones">
 						<div class="row">
-						{% set industrias = craft.categories.group('integradores') %}
+
+						{% set entryIds = craft.entries.section('integradores').ids() %}
+						{% set categories = craft.categories.relatedTo({ sourceElement: entryIds }).group('integradores').find() %}
+
+						{# {% set industrias = craft.categories.group('integradores') %} #}
+						{% set industrias = categories %}
 							{% for industria in industrias %}
 								<div class="col-6 col-md-6 col-lg-3">
-									<button class="btn-integradores btn-block mb-4 active" data-industriaId="{{ industria.slug }}">
+									<button class="btn-integradores btn-block mb-4" data-industriaId="{{ industria.slug }}">
 										{{ industria.title }}
 									</button>
 								</div>
@@ -51,7 +56,7 @@
 							</div>
 						</div>
 						<div class="row integrador-content-container p-3">
-							<h2 class="h5 mb-4 integrador-title">Aquí va el título del integrador ggg</h2>
+							<h2 class="h5 mb-4 integrador-title">Nombre del integrador</h2>
 							<div class="integrador-tags"></div>
 							<div class="integrador-body"></div>
 						</div>
