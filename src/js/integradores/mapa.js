@@ -211,13 +211,19 @@ $('.btn-integradores').on('click', function(){
     if($(this).hasClass('active')){
         $.each(markers, function(i,k){
             if(new RegExp(indId).test(k.title)) {
-                markers[i].setVisible(false);
+                markers[i].contador--;
+                if (markers[i].contador == 0) {
+                    markers[i].setVisible(false);
+                }
+                console.log(markers[i].contador);
             }
         });
     }else{
         $.each(markers, function(i,k){
             if(new RegExp(indId).test(k.title)) {
                 markers[i].setVisible(true);
+                markers[i].contador++;
+                console.log(markers[i].contador);
             }
         });
     }
@@ -250,18 +256,19 @@ $(document).ready(function() {
                                 url: "/assets/img/marker_map.svg", // url
                                 scaledSize: new google.maps.Size(25, 25), // scaled size
                                 origin: new google.maps.Point(0,0), // origin
-                                anchor: new google.maps.Point(0, 0) // anchor
+                                anchor: new google.maps.Point(0, 0), // anchor
                             },
                             title: industrias,
                         });
                         marker.setVisible(false);
+                        marker.contador= 0;
                         google.maps.event.addListener(marker, 'click', function(event) {
                             closeAllInfoWindows();
                             try{
                                 ga("send", {
                                     hitType: "pageview",
                                     page: "/mapa-marcador-integradores",
-                                    title: "Mapa Marcador Integradores"
+                                    title: "Mapa Marcador Integradores",
                                 });
                             }catch(exc){
                                 console.log('function ga no found');
