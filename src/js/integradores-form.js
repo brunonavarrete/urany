@@ -1,4 +1,4 @@
-$('#integradores-form').submit(function(ev) {
+$('.multiple-contact-forms').submit(function(ev) {
     // Prevent the form from actually submitting
     ev.preventDefault();
 

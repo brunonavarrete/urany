@@ -70,44 +70,53 @@
 						</div>
 
 					</div>
+					
+					{% for entry in entryIds %}
+						<div class="formulario-integradores mt-5 {# hidden #}" id="form-{{entry}}" class="inner-form">
+							<h4 class="h4 mb-4 form-title">Envíanos tus datos</h4>
+							<form method="post" accept-charset="UTF-8" action="" class="multiple-contact-forms">
+								<div class="row">
+									{{ csrfInput() }}
+									<input type="hidden" name="action" value="contact-form/send">
+									<input type="hidden" name="address">
 
-					<div class="formulario-integradores mt-5 {# hidden #}" id="inner-form">
-						<h4 class="h4 mb-4 form-title">Envíanos tus datos</h4>
-						<form method="post" accept-charset="UTF-8" id="integradores-form" action="">
-							<div class="row">
-								{{ csrfInput() }}
-								<input type="hidden" name="action" value="contact-form/send">
-								<input type="hidden" name="address">
-								<input type="hidden" name="toEmail" value="{{ 'mercadotecnia@urany.net'|hash }}">
+									{% set currentEntry = craft.entries.id(entry).first() %}
+									{% if currentEntry.multipleMail %}
+										{% set additional = currentEntry.additionalMails %}
+										{% set base = 'mercadotecnia@urany.net'~'' %}
+										{% set mails = [base, additional]|join(',') %}
+										<input type="hidden" name="toEmail" value="{{ mails|hash }}">
+									{% endif %}
 
-								<div class="col-12 my-2 px-4">
-									<input type="text" class="form-control" name="fromName" id="fromName" placeholder="Nombre completo" required>
-								</div>
-								<div class="col-12 my-2 px-4">
-									<input type="mail" class="form-control" name="fromEmail" id="fromEmail" placeholder="E-mail" required>
-								</div>
-								<div class="col-12 my-2 px-4">
-									<input type="text" class="form-control" name="message[Teléfono][]" id="telefono" placeholder="Teléfono" required>
-								</div>
-								<div class="col-12 my-2 px-4">
-									<input type="text" class="form-control" name="message[Empresa][]" id="empresa" placeholder="Empresa" required>
-								</div>
-								<div class="col-12">
-									<input type="hidden" class="form-control" name="message[Integrador][]" id="integrador-input" placeholder="Integrador" required>
-								</div>
-
-
-								<div class="col-12 my-2 px-4">
-									<a href="" id="flip-form-2" value="Regresar" class="btn-outline-block button d-inline-block px-3 py-2 red-discrete-button float-left mt-4"> < Regresar </a>
-									<input type="submit" value="Enviar" class="btn-outline-block button d-inline-block px-3 py-2 red-button float-right mt-4">
-								</div>
-									<div class="form-loader col-12 text-right">
-										<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+									<div class="col-12 my-2 px-4">
+										<input type="text" class="form-control" name="fromName" placeholder="Nombre completo" required>
 									</div>
-									<div class="col-12 text-right"><p class="form-loader-message px-3 py-1 text-white"></p></div>
-							</div>
-						</form>
-					</div>
+									<div class="col-12 my-2 px-4">
+										<input type="mail" class="form-control" name="fromEmail" placeholder="E-mail" required>
+									</div>
+									<div class="col-12 my-2 px-4">
+										<input type="text" class="form-control" name="message[Teléfono][]" placeholder="Teléfono" required>
+									</div>
+									<div class="col-12 my-2 px-4">
+										<input type="text" class="form-control" name="message[Empresa][]" placeholder="Empresa" required>
+									</div>
+									<div class="col-12">
+										<input type="hidden" class="form-control integrador-input" name="message[Integrador][]" placeholder="Integrador" required>
+									</div>
+
+
+									<div class="col-12 my-2 px-4">
+										<a href="" id="flip-form-2" value="Regresar" class="btn-outline-block button d-inline-block px-3 py-2 red-discrete-button float-left mt-4"> < Regresar </a>
+										<input type="submit" value="Enviar" class="btn-outline-block button d-inline-block px-3 py-2 red-button float-right mt-4">
+									</div>
+										<div class="form-loader col-12 text-right">
+											<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+										</div>
+										<div class="col-12 text-right"><p class="form-loader-message px-3 py-1 text-white"></p></div>
+								</div>
+							</form>
+						</div>
+					{% endfor %}
 				</div>
 
 		</div>

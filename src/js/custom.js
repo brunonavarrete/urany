@@ -722,7 +722,8 @@ $('.proceso-trigger').on('click', function(){
   });
   $('#flip-form').on('click', function(e){
     e.preventDefault();
-    $('.formulario-integradores').css('display', 'block');
+    $('.formulario-integradores').css('display', 'none');
+    $('#form-'+$(this).attr('data-formid')).css('display', 'block');
     $('.integrador-ex-info .botones').css('display', 'none');
     $('.formulario-integradores').removeClass('hidden');
   });

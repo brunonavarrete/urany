@@ -15,6 +15,13 @@ window.initMap = function initMap() {
         center: { lat: 24.390519, lng: -85.4238198 },
         scrollwheel: false,
         zoom: 5,
+        mapTypeControl: false,
+        streetViewControl: false,
+        fullscreenControl: false,
+        zoomControl: true,
+        zoomControlOptions: {
+            position: google.maps.ControlPosition.LEFT_BOTTOM
+        },
         styles: 
         [
         {
@@ -259,7 +266,7 @@ $(document).ready(function() {
                             title: industrias,
                         });
                         marker.setVisible(false);
-                        marker.contador= 0;
+                        marker.contador = 0;
                         google.maps.event.addListener(marker, 'click', function(event) {
                             closeAllInfoWindows();
                             try{
@@ -283,12 +290,12 @@ $(document).ready(function() {
                                 $('.filtros').slideDown('fast');
                                 // $('.filtros').removeClass('hidden');
                             });
-                            
+                            $('#flip-form').attr('data-formid',industriaID);
                             $('.external-logo-integrador').attr('src', integrador.logo);
                             $('.external-logo-integrador').attr('alt', integrador.title);
                             $('.integrador-title').text(integrador.title);
                             $('.integrador-body').html(integrador.body);
-                            $('#integrador-input').val(integrador.title);
+                            $('.integrador-input').val(integrador.title);
                             var tags = '';
                             $.each(integrador.tags, function(i,k){
                                 tags += "<div class='ind-tag'>" + k + "</div>";
