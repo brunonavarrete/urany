@@ -10,7 +10,7 @@ var infowindow;
 var infoWindows = [];
 var l_info;
 
-window.initMap = function initMap() {
+function initMap() {
     map = new google.maps.Map(document.getElementById('mapa'), {
         center: { lat: 24.390519, lng: -85.4238198 },
         scrollwheel: false,
@@ -203,12 +203,12 @@ window.initMap = function initMap() {
 };
 
 
-window.initMap = initMap;
-// $('#mapa').lazyLoadGoogleMaps(
-// {
-//     key: 'AIzaSyB6JPVsCUTqKazE-LlvKvYl__C_M1BsCdk',
-//     callback: window.initMap = initMap,
-// });
+//window.initMap = initMap;
+$('#mapa').lazyLoadGoogleMaps(
+{
+    key: 'AIzaSyB6JPVsCUTqKazE-LlvKvYl__C_M1BsCdk',
+    callback: window.initMap = initMap,
+});
 
 
 
