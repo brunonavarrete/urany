@@ -10,15 +10,11 @@ $('.multiple-contact-forms').submit(function(ev) {
         data: $(this).serialize(),
         success: function(response) {
             if (response.success) {
-                try{
-                    ga("send", {
-                        hitType: "pageview",
-                        page: "/mapa-formulario-integradores",
-                        title: "Mapa Formulario Integradores"
-                    });
-                }catch(exc){
-                    console.log('function ga no found');
-                }
+                ga("send", {
+                    hitType: "pageview",
+                    page: "/mapa-formulario-integradores",
+                    title: "Mapa Formulario Integradores"
+                });
 
                 $('.form-loader-message').html('Ya recibimos tu información!');
                 $('.form-loader-message').addClass('bg-success');
