@@ -123,10 +123,12 @@ window.$ = $;
     */
   // Hook up the form so we can prevent it from being posted
     var form = document.querySelector("form.form_calculo");
+    try{
         form.addEventListener("submit", function(ev) {
             ev.preventDefault();
             handleFormSubmit(this, '.form_calculo');
         });
+    }catch(exc){}
 
 
   function handleFormSubmit(form, formName) {
