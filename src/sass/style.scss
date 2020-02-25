@@ -77,11 +77,11 @@ $rojo-urany: #881626;
     }
 }
 .floating-arm-2{
-    width: 43%;
+    // width: 43%;
     position: absolute;
     left: 0;
     top: 0;
-    transform: translateY(-25%);
+    transform: translate(-5%, 0%);
     z-index: 1;
 }
 .gray-button, .white-button{
