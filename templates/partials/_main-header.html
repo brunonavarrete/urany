@@ -23,11 +23,11 @@
 					</form>
 				</div>
 				{% if currentSite.language == 'es-MX' %}
-					<button class="hamburger d-none d-lg-block" type="button">
+					{# <button class="hamburger d-none d-lg-block" type="button">
 						<span class="hamburger-box">
 							<span class="hamburger-inner"></span>
 						</span>
-					</button>
+					</button> #}
 					<!-- /hamburger (subnav) -->
 					<div class="toggle-search">
 						<i class="fa fa-search"></i>
@@ -171,10 +171,23 @@
 							mercadotecnia@urany.net
 						</a>
 					</li>
-					<li class="nav-item col col-md-auto order-md-1 ml-md-auto mr-lg-0 pr-lg-0">
+					
+					<li class="nav-item col col-md-auto mr-lg-0 pr-lg-0">
 						<a href="https://www.linkedin.com/company/urany-m%C3%A9xico/" class="nav-link text-primary p-0 py-lg-0" target="_blank">
 							<i class="fab fa-linkedin-in"></i>
 						</a>
+					</li>
+					<li class="nav-item col-12 col-md-auto mr-lg-0 pr-lg-0">
+						<a href="{{ url('descargas') }}" class="nav-link text-primary p-0 py-lg-0">Descargas</a>
+					</li>
+					<li class="nav-item col-12 col-md-auto mr-lg-0 pr-lg-0">
+						<a href="{{ url('bolsa-de-trabajo') }}" class="nav-link text-primary p-0 py-lg-0">Bolsa de trabajo</a>
+					</li>
+					<li class="nav-item col-12 col-md-auto mr-lg-0 pr-lg-0">
+						<a href="{{ url('demotruck') }}" class="nav-link text-primary p-0 py-lg-0">Demo truck</a>
+					</li>
+					<li class="nav-item col-12 col-md-auto mr-lg-0 pr-lg-0 ml-md-auto">
+						<a href="{{ url('integradores') }}" class="nav-link text-primary p-0 py-lg-0">Integradores</a>
 					</li>
 				</ul>
 			</div>

@@ -59,7 +59,7 @@
         <!-- {/literal} END JIVOSITE CODE -->
 
         {% include 'partials/_main-header' %}
-        {% include 'partials/_offcanvas' %}
+        {# {% include 'partials/_offcanvas' %} #}
 
         {% if title != 'Blog' and title != 'Búsqueda' and title != 'Productos' and title != 'Política de privacidad' and title != 'Industrias' and title != 'Catálogo de stock' and title != 'Integradores' %}
             <div id="main-jumbotron" class="position-relative jumbotron jumbotron-fluid {% if title == 'Inicio' or title == 'Demo Truck' or title == 'Bolsa de trabajo' or title == '404' %}home{% elseif title == 'Marcas' %}white{% elseif title == 'Descargas' %}descargas{% endif %} bg-cover position-relative d-flex justify-content-center align-items-center mb-0 pb-0" {% if jumbotronImage is defined %} style="background-image:url(/assets/img/{{ jumbotronImage }});" {% endif %}> {% block jumbotron %}{% endblock %}
