@@ -10,7 +10,7 @@
 {% set calc6 = "assets/img/calc6.png " %}
 {% set calc7 = "assets/img/calc7.jpg " %}
 {% set calc8 = "assets/img/calc8.jpg " %}
-{% set mecanismos = craft.entries.section('mecanismosDeCalculo').all() %}
+{% set mecanismos = craft.entries.section('mecanismosDeCalculo').with(['fotoEncabezado']).all() %}
 {% set proceso    = craft.entries.section('procesoDeCalculo').all() %}
 
 {% set imagenes = entry.galeria.all() %}
@@ -198,8 +198,9 @@
 </div>
 {% endcache %}
 
-		
-	{% include '/partials/_mecanismosCalculo' %}
+	{% cache %}
+		{% include '/partials/_mecanismosCalculo' %}
+	{% endcache %}
 
 	{# footer part #}
 	{% cache %}

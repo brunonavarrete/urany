@@ -27,12 +27,10 @@
 							{# <img src="{{ mecanismo.fotoEncabezado.one().url }}" data-src="{{ mecanismo.fotoEncabezado.one().url }}" alt="{{ mecanismo.title }}" class="img-fluid lazy my-4"> #}
 
 							<picture>
-							    <source srcset="{{ mecanismo.fotoEncabezado.one().getUrl('large') }}"
-							    media="(min-width: 992px)" />
-							    <source srcset="{{ mecanismo.fotoEncabezado.one().getUrl('medium') }}"
-							    media="(min-width: 750px)" />
-							    <source srcset="{{ mecanismo.fotoEncabezado.one().getUrl('small') }}" />
-							    <img src="{{ mecanismo.fotoEncabezado.one().url }}" alt="{{ mecanismo.title }}"  class="img-fluid lazy my-4">
+							    <img src="{{ mecanismo.fotoEncabezado[0].getUrl('small') }}"
+							    	 data-src="{{ mecanismo.fotoEncabezado[0].getUrl('large') }}"
+							    	 data-srcset="{{ mecanismo.fotoEncabezado[0].getUrl('large') }}"
+							         alt="{{ mecanismo.title }}"  class="img-fluid lazy my-4">
 							</picture>
 						{% endif %}
 						<p class="text-primary red-title calc mb-0 my-4">{{mecanismo.title}}</p>
