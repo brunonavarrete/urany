@@ -57,7 +57,7 @@
 
 	<div class="container-fluid position-relative">
 		<div class="row mt-n5">
-			<div class="col-12 col-md-2 px-0 align-self-end">
+			<div class="col-12 col-md-2 px-0 align-self-end d-none d-md-block">
 				<picture>
 				    <source srcset="{{ imagenes[1].getUrl('large') }}"
 				    media="(min-width: 1440px)" />
@@ -228,7 +228,7 @@
 				</div>
 			</div>
 		</div>
-		<picture>
+		<picture class="d-none d-md-block">
 		    <source srcset="{{ imagenes[3].getUrl('large') }}"
 		    media="(min-width: 1440px)" />
 		    <source srcset="{{ imagenes[3].getUrl('medium') }}"

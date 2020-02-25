@@ -83,6 +83,9 @@ $rojo-urany: #881626;
     top: 0;
     transform: translate(-5%, 0%);
     z-index: 1;
+    @media (max-width: 769px) {
+      width: 75%;
+    }
 }
 .gray-button, .white-button{
   font-size: 1.2rem;
