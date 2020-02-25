@@ -18,6 +18,7 @@ $('.multiple-contact-forms').submit(function(ev) {
 
                 $('.form-loader-message').html('Ya recibimos tu información!');
                 $('.form-loader-message').addClass('bg-success');
+                $('.integrador-contactData').removeClass('d-none');
             } else {
                 $('.form-loader-message').html('Ocurrió un error, intenta de nuevo.');
                 $('.form-loader-message').addClass('bg-danger');

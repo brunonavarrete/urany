@@ -296,6 +296,7 @@ $(document).ready(function() {
                             $('.integrador-title').text(integrador.title);
                             $('.integrador-body').html(integrador.body);
                             $('.integrador-input').val(integrador.title);
+                            $('.integrador-contactData').addClass('d-none');
                             var tags = '';
                             $.each(integrador.tags, function(i,k){
                                 tags += "<div class='ind-tag'>" + k + "</div>";

@@ -62,10 +62,10 @@
 						</div>
 						<div class="col-12 text-right">
 							<a href="#" id="flip-form" class="d-none d-md-inline-block btn-outline-block button px-3 py-2 red-button my-4">
-								Contáctenme
+								Contactarme y ver datos
 							</a>
 							<a href="#inner-form" id="flip-scroll" class="d-inline-block d-md-none btn-outline-block button px-3 py-2 red-button my-4">
-								Contáctenme
+								Contactarme y ver datos
 							</a>
 						</div>
 
@@ -73,7 +73,8 @@
 					
 					{% for entry in entryIds %}
 						<div class="formulario-integradores mt-5 {# hidden #}" id="form-{{entry}}" class="inner-form">
-							<h4 class="h4 mb-4 form-title">Envíanos tus datos</h4>
+							<h4 class="h4 mb-0 form-title">Envíanos tus datos</h4><br>
+							<img src="" alt="" class="external-logo-integrador img-fluid my-3">
 							<form method="post" accept-charset="UTF-8" action="" class="multiple-contact-forms">
 								<div class="row">
 									{{ csrfInput() }}
@@ -89,16 +90,16 @@
 									{% endif %}
 
 									<div class="col-12 my-2 px-4">
-										<input type="text" class="form-control" name="fromName" placeholder="Nombre completo" required>
+										<input type="text" class="form-control keep_text keep_nombre" name="fromName" placeholder="Nombre completo" required>
 									</div>
 									<div class="col-12 my-2 px-4">
-										<input type="mail" class="form-control" name="fromEmail" placeholder="E-mail" required>
+										<input type="mail" class="form-control keep_text keep_email" name="fromEmail" placeholder="E-mail" required>
 									</div>
 									<div class="col-12 my-2 px-4">
-										<input type="text" class="form-control" name="message[Teléfono][]" placeholder="Teléfono" required>
+										<input type="text" class="form-control keep_text keep_phone" name="message[Teléfono][]" placeholder="Teléfono" required>
 									</div>
 									<div class="col-12 my-2 px-4">
-										<input type="text" class="form-control" name="message[Empresa][]" placeholder="Empresa" required>
+										<input type="text" class="form-control keep_text keep_empresa" name="message[Empresa][]" placeholder="Empresa" required>
 									</div>
 									<div class="col-12">
 										<input type="hidden" class="form-control integrador-input" name="message[Integrador][]" placeholder="Integrador" required>
@@ -106,13 +107,31 @@
 
 
 									<div class="col-12 my-2 px-4">
-										<a href="" id="flip-form-2" value="Regresar" class="btn-outline-block button d-inline-block px-3 py-2 red-discrete-button float-left mt-4"> < Regresar </a>
+										<a href="" id="" value="Regresar" class=" flip-form-2 btn-outline-block button d-inline-block px-3 py-2 red-discrete-button float-left mt-4"> < Regresar </a>
 										<input type="submit" value="Enviar" class="btn-outline-block button d-inline-block px-3 py-2 red-button float-right mt-4">
 									</div>
 										<div class="form-loader col-12 text-right">
 											<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
 										</div>
 										<div class="col-12 text-right"><p class="form-loader-message px-3 py-1 text-white"></p></div>
+
+									<div class="col-12">
+										<div class="integrador-contactData d-none">
+											<p class="mb-0">Contacto {{ currentEntry.title }} </p>
+											{% for contacto in currentEntry.contacto %}
+												<p class='mb-0'>
+													<img src="/assets/img/{{contacto.tipo}}.svg" style="width: 15px; margin-right: 5px">
+													{% if contacto.tipo == 'sitioWeb' %}
+														<a href="{{ contacto.contacto }}" target="_blank" class="text-body">{{ contacto.contacto }}</a>
+													{% else %}
+														{{contacto.contacto}}	
+													{% endif %}
+												</p>
+												
+											{% endfor %}
+						                    
+										</div>
+									</div>
 								</div>
 							</form>
 						</div>

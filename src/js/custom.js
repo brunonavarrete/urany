@@ -739,11 +739,18 @@ $('.proceso-trigger').on('click', function(){
       350
     );
   });
-  $('#flip-form-2').on('click', function(e){
+  $('.flip-form-2').on('click', function(e){
     e.preventDefault();
     $('.formulario-integradores').css('display', 'none');
     $('.integrador-ex-info .botones').css('display', 'block');
     $('.formulario-integradores').addClass('hidden');
   });
+
+  $('.keep_text').on('change paste keyup', function(){
+    if ($(this).hasClass('keep_nombre'))  { $('.keep_nombre').val($(this).val()); }
+    if ($(this).hasClass('keep_email'))   { $('.keep_email').val($(this).val());  }
+    if ($(this).hasClass('keep_phone'))   { $('.keep_phone').val($(this).val());  }
+    if ($(this).hasClass('keep_empresa')) { $('.keep_empresa').val($(this).val());}
+  })
 
 /* integradores */
