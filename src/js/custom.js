@@ -717,9 +717,6 @@ $('.proceso-trigger').on('click', function(){
 
 
 /* integradores */
-  $('.btn-integradores').on('click', function(){
-    $(this).toggleClass('active');
-  });
   $('#flip-form').on('click', function(e){
     e.preventDefault();
     $('.formulario-integradores').css('display', 'none');

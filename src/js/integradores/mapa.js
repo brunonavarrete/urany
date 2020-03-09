@@ -10,6 +10,8 @@ var infowindow;
 var infoWindows = [];
 var l_info;
 
+var initialClick = false;
+
 function initMap() {
     map = new google.maps.Map(document.getElementById('mapa'), {
         center: { lat: 24.390519, lng: -85.4238198 },
@@ -211,28 +213,36 @@ $('#mapa').lazyLoadGoogleMaps(
 });
 
 
-
 $('.btn-integradores').on('click', function(){ 
-    var indId = $(this).attr('data-industriaId'); 
-
-    if($(this).hasClass('active')){
-        $.each(markers, function(i,k){
-            if(new RegExp(indId).test(k.title)) {
-                markers[i].contador--;
-                if (markers[i].contador == 0) {
-                    markers[i].setVisible(false);
-                }
-            }
-        });
+    console.log(initialClick);
+    if (!initialClick){
+        initialClick = !initialClick;
+        $.each(markers, function(i,k){ markers[i].setVisible(false); });
+        $('.btn-integradores').removeClass('active');
+        $(this).trigger('click');
     }else{
-        $.each(markers, function(i,k){
-            if(new RegExp(indId).test(k.title)) {
-                markers[i].setVisible(true);
-                markers[i].contador++;
-            }
-        });
+        var indId = $(this).attr('data-industriaId'); 
+        if($(this).hasClass('active')){
+            $.each(markers, function(i,k){
+                if(new RegExp(indId).test(k.title)) {
+                    markers[i].contador--;
+                    if (markers[i].contador == 0) {
+                        markers[i].setVisible(false);
+                    }
+                }
+            });
+        }else{
+            $.each(markers, function(i,k){
+                if(new RegExp(indId).test(k.title)) {
+                    markers[i].setVisible(true);
+                    markers[i].contador++;
+                }
+            });
+        }
+        $(this).toggleClass('active');
     }
 });
+
 
 
 $(document).ready(function() {
@@ -265,7 +275,7 @@ $(document).ready(function() {
                             },
                             title: industrias,
                         });
-                        marker.setVisible(false);
+                        //marker.setVisible(false);
                         marker.contador = 0;
                         google.maps.event.addListener(marker, 'click', function(event) {
                             closeAllInfoWindows();
@@ -358,4 +368,11 @@ $(document).ready(function() {
             }
         }
     });
+    // }).done(function(data){
+    //     var botones = $('.btn-integradores');
+    //     $.each(botones, function(i,k){
+    //         var indId = $(this).attr('data-industriaId');
+    //         console.log(indId);
+    //     });
+    // });
 });
