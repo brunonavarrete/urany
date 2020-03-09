@@ -1,7 +1,7 @@
 import $ from 'jquery';
 window.jQuery = $;
 window.$ = $;
-import './locations.json';
+import locations from './locations.js';
 
 var geocoder;
 var map;
@@ -214,7 +214,6 @@ $('#mapa').lazyLoadGoogleMaps(
 
 
 $('.btn-integradores').on('click', function(){ 
-    console.log(initialClick);
     if (!initialClick){
         initialClick = !initialClick;
         $.each(markers, function(i,k){ markers[i].setVisible(false); });
@@ -247,7 +246,9 @@ $('.btn-integradores').on('click', function(){
 
 $(document).ready(function() {
     $.get('/api/integrador_info.json',function(data){  
+
         data = data.data;
+        geocoder = new google.maps.Geocoder();
         for (var i = 0; i < data.length; i++) {
             
             var industriaID = data[i].id;
@@ -255,17 +256,19 @@ $(document).ready(function() {
             var info = fillInfoWindow(data[i]);
             var integrador = data[i];
 
-            geocoder = new google.maps.Geocoder();
             geocoder.geocode({
                 'address': data[i].zipCode , "componentRestrictions":{"country":"MX"}
             }, geoCallback(industriaID, industrias, info, integrador));
 
+            // var markerLocations = {lat: locations[i].lat, lng: locations[i].lon}
+            // geoCallback(industriaID, industrias, info, integrador, markerLocations);
             function geoCallback(industriaID, industrias, l_info, integrador){
+                console.log(locations[i]);
                 var ogCallback = function (results, status) {
-
-                    if (status == google.maps.GeocoderStatus.OK) {
+                    // if (status == google.maps.GeocoderStatus.OK) {
                         var marker = new google.maps.Marker({
                             map: map,
+                            // position: location,
                             position: results[0].geometry.location,
                             icon: {
                                 url: "/assets/img/marker_map.svg", // url
@@ -324,9 +327,9 @@ $(document).ready(function() {
                         });
                         markers.push(marker);
 
-                    } else {
-                        alert("Geocode was not successful for the following reason: " + status);
-                    }
+                    // } else {
+                    //     alert("Geocode was not successful for the following reason: " + status);
+                    // }
                 }
                 return ogCallback;
             }//end geoCallback
@@ -366,6 +369,7 @@ $(document).ready(function() {
 
                 return info_card;
             }
+
         }
     });
     // }).done(function(data){
