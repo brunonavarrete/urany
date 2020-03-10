@@ -1,7 +1,7 @@
 import $ from 'jquery';
 window.jQuery = $;
 window.$ = $;
-
+import allocations from './locations.js'
 
 var geocoder;
 var map;
@@ -214,7 +214,6 @@ $('#mapa').lazyLoadGoogleMaps(
 
 
 $('.btn-integradores').on('click', function(){ 
-    console.log(initialClick);
     if (!initialClick){
         initialClick = !initialClick;
         $.each(markers, function(i,k){ markers[i].setVisible(false); });
@@ -256,80 +255,78 @@ $(document).ready(function() {
             var info = fillInfoWindow(data[i]);
             var integrador = data[i];
 
-            geocoder.geocode({
-                'address': data[i].zipCode , "componentRestrictions":{"country":"MX"}
-            }, geoCallback(industriaID, industrias, info, integrador));
-
-            function geoCallback(industriaID, industrias, l_info, integrador){
-                var ogCallback = function (results, status) {
-
-                    if (status == google.maps.GeocoderStatus.OK) {
-                        var marker = new google.maps.Marker({
-                            map: map,
-                            position: results[0].geometry.location,
-                            icon: {
-                                url: "/assets/img/marker_map.svg", // url
-                                scaledSize: new google.maps.Size(25, 25), // scaled size
-                                origin: new google.maps.Point(0,0), // origin
-                                anchor: new google.maps.Point(0, 0), // anchor
-                            },
-                            title: industrias,
-                        });
-                        //marker.setVisible(false);
-                        marker.contador = 0;
-                        google.maps.event.addListener(marker, 'click', function(event) {
-                            closeAllInfoWindows();
-                            try{
-                                ga("send", {
-                                    hitType: "pageview",
-                                    page: "/mapa-marcador-integradores",
-                                    title: "Mapa Marcador Integradores",
-                                });
-                            }catch(exc){
-                                console.log('function ga no found');
-                            }
-                            
-                            
-                            var iwindow = new google.maps.InfoWindow({
-                                content: l_info,
-                            });
-                            iwindow.open(map, this);
-                            infoWindows.push(iwindow);
-                            google.maps.event.addListener(iwindow,'closeclick',function(){
-                                $('.integrador-ex-info').slideUp('fast');
-                                $('.filtros').slideDown('fast');
-                                // $('.filtros').removeClass('hidden');
-                            });
-                            $('#flip-form').attr('data-formid',industriaID);
-                            $('.external-logo-integrador').attr('src', integrador.logo);
-                            $('.external-logo-integrador').attr('alt', integrador.title);
-                            $('.integrador-title').text(integrador.title);
-                            $('.integrador-body').html(integrador.body);
-                            $('.integrador-input').val(integrador.title);
-                            $('.integrador-contactData').addClass('d-none');
-                            var tags = '';
-                            $.each(integrador.tags, function(i,k){
-                                tags += "<div class='ind-tag'>" + k + "</div>";
-                            });
-                            $('.integrador-tags').html(tags);
-
-                                $('.integrador-ex-info').slideDown('fast');
-                                $('.formulario-integradores').css('display', 'none');
-                                $('.integrador-ex-info .botones').css('display', 'block');
-                                $('.filtros').slideUp('fast');
-
-                                // $('.integrador-ex-info').removeClass('hidden');
-                                //$('.filtros').addClass('hidden');
-
-                        });
-                        markers.push(marker);
-
-                    } else {
-                        console.log("Geocode was not successful for the following reason: " + status);
-                    }
+            $.each(allocations, function(index, elem){
+                if (elem.zip == data[i].zipCode) {
+                    placeMarker(elem, data, industriaID, industrias, info, integrador);
                 }
-                return ogCallback;
-            }//end geoCallback
+            });
+
+            function placeMarker(location, data, industriaID, industrias, l_info, integrador){
+                try{
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        position: {lat: location.lat, lng: location.lon},
+                        icon: {
+                            url: "/assets/img/marker_map.svg", // url
+                            scaledSize: new google.maps.Size(25, 25), // scaled size
+                            origin: new google.maps.Point(0,0), // origin
+                            anchor: new google.maps.Point(0, 0), // anchor
+                        },
+                        title: industrias,
+                    });
+
+                    marker.contador = 0;
+                    google.maps.event.addListener(marker, 'click', function(event) {
+                        closeAllInfoWindows();
+                        try{
+                            ga("send", {
+                                hitType: "pageview",
+                                page: "/mapa-marcador-integradores",
+                                title: "Mapa Marcador Integradores",
+                            });
+                        }catch(exc){
+                            console.log('function ga no found');
+                        }
+                        
+                        
+                        var iwindow = new google.maps.InfoWindow({
+                            content: l_info,
+                        });
+                        iwindow.open(map, this);
+                        infoWindows.push(iwindow);
+                        google.maps.event.addListener(iwindow,'closeclick',function(){
+                            $('.integrador-ex-info').slideUp('fast');
+                            $('.filtros').slideDown('fast');
+                            // $('.filtros').removeClass('hidden');
+                        });
+                        $('#flip-form').attr('data-formid',industriaID);
+                        $('.external-logo-integrador').attr('src', integrador.logo);
+                        $('.external-logo-integrador').attr('alt', integrador.title);
+                        $('.integrador-title').text(integrador.title);
+                        $('.integrador-body').html(integrador.body);
+                        $('.integrador-input').val(integrador.title);
+                        $('.integrador-contactData').addClass('d-none');
+                        var tags = '';
+                        $.each(integrador.tags, function(i,k){
+                            tags += "<div class='ind-tag'>" + k + "</div>";
+                        });
+                        $('.integrador-tags').html(tags);
+
+                            $('.integrador-ex-info').slideDown('fast');
+                            $('.formulario-integradores').css('display', 'none');
+                            $('.integrador-ex-info .botones').css('display', 'block');
+                            $('.filtros').slideUp('fast');
+
+                            // $('.integrador-ex-info').removeClass('hidden');
+                            //$('.filtros').addClass('hidden');
+
+                    });
+                    markers.push(marker);
+                }catch(exc){
+                    console.log("this locations has no arguments");
+                }
+
+            }
 
             $('.btn-integradores').on('click', function(){ closeAllInfoWindows(); });
             $('.return-to-map').on('click', function(){ 
@@ -368,11 +365,5 @@ $(document).ready(function() {
             }
         }
     });
-    // }).done(function(data){
-    //     var botones = $('.btn-integradores');
-    //     $.each(botones, function(i,k){
-    //         var indId = $(this).attr('data-industriaId');
-    //         console.log(indId);
-    //     });
-    // });
+   
 });
