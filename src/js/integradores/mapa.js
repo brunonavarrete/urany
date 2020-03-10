@@ -22,7 +22,7 @@ function initMap() {
         fullscreenControl: false,
         zoomControl: true,
         zoomControlOptions: {
-            position: google.maps.ControlPosition.LEFT_BOTTOM
+            position: google.maps.ControlPosition.LEFT_TOP
         },
         styles: 
         [

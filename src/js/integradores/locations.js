@@ -16,7 +16,7 @@ const locations = [
 	{'zip': 83190, lat:29.099558,lon:-110.973482},  // Mecatrónica de México SA de CV
 	{'zip': 32459, lat:31.689652,lon:-106.380725},  // Automatizaciones Rusemi
 	{'zip': 85330, lat:27.955810,lon:-110.812113},  // Sai -Soluciones en Automatización Industrial
-	{'zip': 66005, lat:25.800895,lon:-100.586824},  // Soluciones Robóticas Industriales SA de CV
+	{'zip': 66003, lat:25.800895,lon:-100.586824},  // Soluciones Robóticas Industriales SA de CV
 	{'zip': 66350, lat:25.704174,lon:-100.489040},  // Talos industries
 	{'zip': 64770, lat:25.639506,lon:-100.295150},  // Tecnología en Sistemas de Integración
 ];
