@@ -1,0 +1,70 @@
+{# --------------- Variables --------------- #}
+{% set title = 'Stock' %}
+{# ----------------------------------------- #}
+
+{% extends "_layout" %}
+
+
+
+{% block content %}
+	
+	<div class="container my-5">
+		<div class="row">
+			<div class="col-12 col-md-2 text-center offset-md-1">
+				{% if entry.seleccionadorDeMarca.one() %}
+					<img src="{{ entry.seleccionadorDeMarca.one().logoParaFondoOscuro.one().url }}" alt="{{entry.title}}" class="img-fluid">
+				{% endif %}
+			</div>
+			<div class="col-md-10"><br></div>
+			<div class="col-12 col-md-4">
+				{% if entry.instaBlogImage.one() %}
+					<img src="{{ entry.instaBlogImage.one().url }}" alt="{{entry.title}}" class="img-fluid">
+				{% endif %}
+			</div>
+			<div class="col-12 col-md-8">
+				<div class="row">
+					<div class="col-12 col-md-6 align-self-end">
+						<p class="mb-0 h1">{{entry.title}}</p>
+					</div>
+					<div class="col-12 col-md-6 text-right align-self-end">
+						<p class="mb-0 h5">{{entry.categoriaStock.one().title ?? ''}}</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12 text-justify">
+						<hr>
+						<p class="mb-0">{{entry.body}}</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 mt-5">
+				{# example table in example-table.txt #}
+				{{ entry.contenidoDeProductoEnStock }}
+				 <div class="span">✓: Artículos disponibles en Stock</div>
+			</div>
+		</div>
+	</div>
+ 
+
+
+
+
+<style type="text/css">
+    table {
+    	width: 100%;
+    	text-align: center;
+    }
+    table p{
+    	margin-bottom: 0;
+    }
+    table td{
+    	padding-top: .5rem;
+    	padding-bottom: .5rem;
+    	border: 1px solid lightgray;
+    }
+    #main-jumbotron{
+    	min-height: unset !important;
+    	background: transparent !important;
+    }
+</style>
+{% endblock %}

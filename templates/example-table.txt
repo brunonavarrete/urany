@@ -1,0 +1,103 @@
+<table class="text-center">
+	<tbody>
+		<tr>
+			<td rowspan="2">Tamaño</td>
+			<td colspan="12" class="text-center">Reducción</td>
+			<td rowspan="2">Torque Máximo</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>4</td>
+			<td>5</td>
+			<td>7</td>
+			<td>10</td>
+			<td>15</td>
+			<td>25</td>
+			<td>28</td>
+			<td>30</td>
+			<td>50</td>
+			<td>70</td>
+			<td>100</td>
+		</tr>
+		<tr>
+			<td>CP005</td>
+			<td></td>
+			<td><p>✓</p></td>
+			<td><p>✓</p></td>
+			<td><p>✓</p></td>
+			<td><p>✓</p></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>✓</td>
+			<td></td>
+			<td></td>
+			<td><p>17 - 21 Nm</p></td>
+		</tr>
+		<tr>
+			<td>CP015</td>
+			<td><p>✓</p></td>
+			<td><p>✓</p></td>
+			<td><p>✓</p></td>
+			<td><p>✓</p></td>
+			<td><p>✓</p></td>
+			<td></td>
+			<td><p>✓</p></td>
+			<td><p>✓</p></td>
+			<td><p>✓</p></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>48 - 58 Nm</td>
+		</tr>
+		<tr>
+			<td>CP025</td>
+			<td><p>✓</p></td>
+			<td><p>✓</p></td>
+			<td><p>✓</p></td>
+			<td>✓</td>
+			<td><p>✓</p></td>
+			<td>✓</td>
+			<td><p>✓</p></td>
+			<td></td>
+			<td>✓</td>
+			<td>✓</td>
+			<td>✓</td>
+			<td>✓</td>
+			<td>112 - 150 Nm</td>
+		</tr>
+		<tr>
+			<td>CP035</td>
+			<td><p>✓</p></td>
+			<td><p>✓</p></td>
+			<td><p>✓</p></td>
+			<td></td>
+			<td><p>✓</p></td>
+			<td></td>
+			<td><p>✓</p></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>272 Nm</td>
+		</tr>
+		<tr>
+			<td>CP045</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td><p>✓</p></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>✓</td>
+			<td></td>
+			<td>✓</td>
+			<td>640 Nm</td>
+		</tr>
+	</tbody>
+</table>
