@@ -40,21 +40,23 @@
 					{% set stocks = craft.entries.section('stockDeProductos') %}
 					{% for stock in stocks %}
 						<div class="articulo col-6 mb-4 text-center col-sm-6 col-md-4 col-lg-3">
-							<div class="thumb d-flex justify-content-center align-items-center">
-								{% if stock.thumbnail[0] is defined %}
-									<img src="{{ stock.thumbnail[0].url }}" alt="{{stock.title}}">
-								{% else %}
-									<img src="/assets/img/icon-black.png" alt="{{stock.title}}">
-								{% endif %}
-							</div>
-							<div>
-								<h5 class="small text-uppercase text-muted mt-3">
-									{{ stock.marca }}
-								</h5>
-								<h3 class="h5">
-									{{ stock.title }}
-								</h3>
-							</div>
+							<a href="{{stock.url}}">
+								<div class="thumb d-flex justify-content-center align-items-center">
+									{% if stock.instaBlogImage[0] is defined %}
+										<img src="{{ stock.instaBlogImage[0].url }}" alt="{{stock.title}}">
+									{% else %}
+										<img src="/assets/img/icon-black.png" alt="{{stock.title}}">
+									{% endif %}
+								</div>
+								<div>
+									<h5 class="small text-uppercase text-muted mt-3">
+										{{ stock.marca }}
+									</h5>
+									<h3 class="h5">
+										{{ stock.title }}
+									</h3>
+								</div>
+							</a>
 						</div>
 					{% endfor %}
 				</div>
