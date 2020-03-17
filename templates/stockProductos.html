@@ -39,28 +39,22 @@
 				<div class="row">
 					{% set stocks = craft.entries.section('stockDeProductos') %}
 					{% for stock in stocks %}
-						<h1 class="col-12 my-4">{{stock.title}}</h1>
-						<div class="col-12 row mx-0" data-grid="{{stock.title}}">
-							{% set products = stock.gridProductos.all() %}
-							{% for product in products %}
-								<div class="articulo col-6 mb-4 text-center col-sm-6 col-md-4 col-lg-3" {% if product.descripcion is defined %} data-target="{{ product.modelo }}" {% endif %}>
-									<div class="thumb d-flex justify-content-center align-items-center">
-										{% if product.foto[0] is defined %}
-											<img src="{{ product.foto[0].url }}" alt="{{product.modelo}}">
-										{% else %}
-											<img src="/assets/img/icon-black.png" alt="{{product.modelo}}">
-										{% endif %}
-									</div>
-									<div>
-										<h5 class="small text-uppercase text-muted mt-3">
-											{{ product.marca }}
-										</h5>
-										<h3 class="h5">
-											{{ product.modelo }}
-										</h3>
-									</div>
-								</div>
-							{% endfor %}
+						<div class="articulo col-6 mb-4 text-center col-sm-6 col-md-4 col-lg-3">
+							<div class="thumb d-flex justify-content-center align-items-center">
+								{% if stock.thumbnail[0] is defined %}
+									<img src="{{ stock.thumbnail[0].url }}" alt="{{stock.title}}">
+								{% else %}
+									<img src="/assets/img/icon-black.png" alt="{{stock.title}}">
+								{% endif %}
+							</div>
+							<div>
+								<h5 class="small text-uppercase text-muted mt-3">
+									{{ stock.marca }}
+								</h5>
+								<h3 class="h5">
+									{{ stock.title }}
+								</h3>
+							</div>
 						</div>
 					{% endfor %}
 				</div>
