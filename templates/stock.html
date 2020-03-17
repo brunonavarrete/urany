@@ -23,10 +23,10 @@
 			</div>
 			<div class="col-12 col-md-8 order-0 order-md-3">
 				<div class="row">
-					<div class="col-12 col-md-6 align-self-end">
+					<div class="col-12 col-md-6 align-self-end mt-4 mt-md-0">
 						<p class="mb-0 h1">{{entry.title}}</p>
 					</div>
-					<div class="col-12 col-md-6 text-right align-self-end">
+					<div class="col-12 col-md-6 text-md-right align-self-end">
 						<p class="mb-0 h5">{{entry.categoriaStock.one().title ?? ''}}</p>
 					</div>
 				</div>
@@ -43,6 +43,38 @@
 				 <div class="span">✓: Artículos disponibles en Stock</div>
 			</div>
 		</div>
+
+		<div class="col-12">
+			<div class="row">
+				<div class="col-12">
+					<p class="h3">Más productos</p>
+				</div>
+				{% set stocks = craft.entries.section('stockDeProductos') %}
+				{% for stock in stocks %}
+					<div class="articulo col-6 mb-4 text-center col-sm-6 col-md-4 col-lg-3">
+						<a href="{{stock.url}}" class="text-body">
+							<div class="thumb d-flex justify-content-center align-items-center">
+								{% if stock.instaBlogImage[0] is defined %}
+									<img src="{{ stock.instaBlogImage[0].url }}" alt="{{stock.title}}">
+								{% else %}
+									<img src="/assets/img/icon-black.png" alt="{{stock.title}}">
+								{% endif %}
+							</div>
+							<div>
+								<h5 class="small text-uppercase text-muted mt-3">
+									{{ stock.marca }}
+								</h5>
+								<h3 class="h5">
+									{{ stock.title }}
+								</h3>
+							</div>
+						</a>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+
+
 	</div>
  
 
