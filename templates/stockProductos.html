@@ -1,0 +1,73 @@
+{# --------------- Variables --------------- #}
+{% set title = 'Stock' %}
+{# ----------------------------------------- #}
+
+{% extends "_layout" %}
+{% set jumbotronImage = "stock_fondo.png" %}
+
+{% block jumbotron %}
+    <div class="pleca pleca-primary"></div>
+    <span class="d-none d-md-block lines container">
+        {% include 'includes/lines.svg.twig' %}
+        {% include 'includes/lines.svg.twig' %}
+    </span>
+    <div class="position-relative text-center">
+        <h1 class="text-white text-uppercase mb-3">Catálogo
+            <br class="d-none d-lg-block">de Stock</h1>
+    </div>
+    <span id="scroll">
+        <i class="fa fa-chevron-down text-white top"></i>
+        <i class="fa fa-chevron-down text-white bottom"></i>
+    </span>
+{% endblock %}
+
+
+{% block content %}
+
+	<div class="container py-5">
+		<div class="row">
+			<div class="col-12">
+					<p class="h1">
+						Flexibilidad y adaptabilidad para brindar las mejores soluciones a tu proyecto.
+					</p>
+					<p>
+						Un reto para mantener un inventario de productos mecánicos para aplicaciones de control de movimiento es poder cumplir con la enorme variedad de bridas, bujes y cajas de poleas quese requieren para montarse a la gran cantidad de servomotores que existen en el mercado. En Urany tenemos más de 20 años de experiencia trabajando de la mano con los fabricantes de servomotores con presencia en el país, por lo que después de un extenso análisis podemos asegurar que contamos con diferentes opciones en kits de montaje para ser la mejor elección para su proyecto.
+					</p>
+			</div>
+
+			<div class="col-12">
+				<div class="row">
+					{% set stocks = craft.entries.section('stockDeProductos') %}
+					{% for stock in stocks %}
+						<h1 class="col-12 my-4">{{stock.title}}</h1>
+						<div class="col-12 row mx-0" data-grid="{{stock.title}}">
+							{% set products = stock.gridProductos.all() %}
+							{% for product in products %}
+								<div class="articulo col-6 mb-4 text-center col-sm-6 col-md-4 col-lg-3" {% if product.descripcion is defined %} data-target="{{ product.modelo }}" {% endif %}>
+									<div class="thumb d-flex justify-content-center align-items-center">
+										{% if product.foto[0] is defined %}
+											<img src="{{ product.foto[0].url }}" alt="{{product.modelo}}">
+										{% else %}
+											<img src="/assets/img/icon-black.png" alt="{{product.modelo}}">
+										{% endif %}
+									</div>
+									<div>
+										<h5 class="small text-uppercase text-muted mt-3">
+											{{ product.marca }}
+										</h5>
+										<h3 class="h5">
+											{{ product.modelo }}
+										</h3>
+									</div>
+								</div>
+							{% endfor %}
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+	
+
+
+{% endblock %}
