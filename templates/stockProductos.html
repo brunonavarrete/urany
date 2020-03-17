@@ -26,7 +26,7 @@
 
 	<div class="container py-5">
 		<div class="row">
-			<div class="col-12">
+			<div class="col-12 py-5">
 					<p class="h1">
 						Flexibilidad y adaptabilidad para brindar las mejores soluciones a tu proyecto.
 					</p>
@@ -40,7 +40,7 @@
 					{% set stocks = craft.entries.section('stockDeProductos') %}
 					{% for stock in stocks %}
 						<div class="articulo col-6 mb-4 text-center col-sm-6 col-md-4 col-lg-3">
-							<a href="{{stock.url}}">
+							<a href="{{stock.url}}" class="text-body">
 								<div class="thumb d-flex justify-content-center align-items-center">
 									{% if stock.instaBlogImage[0] is defined %}
 										<img src="{{ stock.instaBlogImage[0].url }}" alt="{{stock.title}}">
@@ -60,6 +60,84 @@
 						</div>
 					{% endfor %}
 				</div>
+			</div>
+
+			<div class="col-12">
+				<p class="h2">Tiempos de Entrega</p>
+				<p>
+					En Urany nos comprometemos a enviar nuestros productos con las dimensiones y accesorios especificados para su montaje, por lo que realizamos esa labor siguiendo los más estrictos estándares de calidad.
+				</p>
+				<div class="stock-table__container table-responsive">
+					<table class="text-center">
+						<tbody>
+							<tr>
+								<td class="text-uppercase" rowspan="2" colspan="1">Producto</td>
+								<td class="text-uppercase" rowspan="2" colspan="1">EXW <br> Querétaro</td>
+								<td class="text-uppercase" rowspan="2" colspan="1">Número de piezas</td>
+							</tr>
+							<tr>
+								<td class="border-0"></td>
+							</tr>
+							<tr>
+								<td>Reductores CP, NP, CPK, NPK</td>
+								<td>1 día hábil, SPV</td>
+								<td>No Restringido</td>
+							</tr>
+							<tr>
+								<td>Coples de elastómero ROBA-ES o fuelle Smartflex sin maquinar <br>(diámetros piloto)</td>
+								<td>Inmediata, SPV</td>
+								<td>No Restringido</td>
+							</tr>
+							<tr>
+								<td>Coples de elastómero ROBA-ES tamaño 14, 19, 24 y 28 barrenado sin cuñero</td>
+								<td>1 día hábil, SPV</td>
+								<td>No restringido</td>
+							</tr>
+							<tr>
+								<td>Coples de elastómero ROBA-ES tamaño 38, 42, 48, 55 y 65 barrenado sin cuñero</td>
+								<td>3 días hábiles, SPV</td>
+								<td>Hasta 8 piezas</td>
+							</tr>
+							<tr>
+								<td>Coples de elastómero ROBA-ES tamaño 14, 19, 24 y 28 barrenado con cuñero</td>
+								<td>2 días hábiles, SPV</td>
+								<td>Hasta 8 piezas</td>
+							</tr>
+							<tr>
+								<td>Coples de elastómero ROBA-ES tamaño 38, 42, 48, 55 y 65 barrenado con cuñero</td>
+								<td>4 días hábiles, SPV</td>
+								<td>Hasta 8 piezas</td>
+							</tr>
+							<tr>
+								<td>Cople de fuelle Smartflex barrenado sin cuñero </td>
+								<td>2 días hábiles, SPV</td>
+								<td>Hasta 8 piezas</td>
+							</tr>
+							<tr>
+								<td>Cople de fuelle Smartflex barrenado con cuñero </td>
+								<td>3 días hábiles, SPV</td>
+								<td>Hasta 8 piezas</td>
+							</tr>
+							<tr>
+								<td>Actuadores de vástago PNCE </td>
+								<td>Inmediata, SPV</td>
+								<td>No restringido</td>
+							</tr>
+							<tr>
+								<td>Actuadores de banda MTJ, MRJ, CTJ y MTJZ</td>
+								<td>7 días hábiles, SPV
+								</td>
+								<td>Hasta 6 piezas</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+
+                <p>
+                	Los tiempos de entrega mostrados son salvo previa venta (SPV). En caso de que las condiciones aquí expuestas no cumplan su requerimiento, favor de contactarnos, trataremos de buscar alguna alternativa.
+                	Para conocer el tiempo de entrega exacto en tu ciudad consulta a uno de nuestros Ingenieros.
+                </p>
 			</div>
 		</div>
 	</div>
