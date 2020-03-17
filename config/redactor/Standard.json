@@ -10,7 +10,7 @@
     "image",
     "video"
   ],
-  "plugins": ["fullscreen", "video"],
+  "plugins": ["fullscreen", "video", "table"],
   "linkNewTab": true,
   "toolbarFixed": true
 }
