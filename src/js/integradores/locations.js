@@ -19,6 +19,8 @@ const locations = [
 	{'zip': 66003, lat:25.800895,lon:-100.586824},  // Soluciones Robóticas Industriales SA de CV
 	{'zip': 66350, lat:25.704174,lon:-100.489040},  // Talos industries
 	{'zip': 64770, lat:25.639506,lon:-100.295150},  // Tecnología en Sistemas de Integración
+	{'zip': 64500, lat:25.698357,lon:-100.313190},  // SAISA Servicios de automatizacion e instrumentacion, s.a. de c.v.
+	{'zip': 31100, lat:28.671463,lon:-106.105501},  // INDUSER S DE RL DE CV
 ];
 
 export default locations;
