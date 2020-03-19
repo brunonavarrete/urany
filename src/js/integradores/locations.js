@@ -1,5 +1,5 @@
 const locations = [
-	{'zip': 25900, lat:25.544930,lon:-100.943588},  // Mecatrónica e Integración
+	{'zip': 98200, lat:25.544930,lon:-100.943588},  // Mecatrónica e Integración
 	{'zip': 50130, lat:19.291308,lon:-99.524794},   // Yne Automatización Internacional SA de CV
 	{'zip': 54600, lat:19.716193,lon:-99.219842},   // ROBÓTICA Y AUTOMATIZACIÓN INDUSTRIAL S.A. DE C.V.
 	{'zip': 76100, lat:20.647606,lon:-100.427965},  // AMD Maquinaria SA de CV
