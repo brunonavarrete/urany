@@ -35,11 +35,34 @@
 					</p>
 			</div>
 
+			
+			{% set stocks = craft.entries.section('stockDeProductos') %}
+			
+			{% set tabs = [{'title': "Todas las marcas", 'id':0 }] %}
+			{% for stock in stocks %}
+				{% set newElem = {'title': stock.seleccionadorDeMarca.one().title, 'id': stock.seleccionadorDeMarca.one().id } %}
+				{% if newElem not in tabs %}
+					{% set tabs = tabs|merge([newElem]) %}	
+				{% endif %}
+			{% endfor %}
+			
+			<nav class="col-12 mb-5" id="nav-marca">
+				<ul class="list-unstyled row mx-0 mb-0">
+					{% set count = 0 %}
+					{% for tab in tabs %}
+						<li class="col-12 btn {% if loop.first %}d-none {% else %} btn-outline-primary {% endif %}text-uppercase col-md-auto mr-md-3 mb-md-3" data-target="{{ tab.title }}">
+							{{ tab.title }}
+						</li>
+						{% set count = count + 1 %}
+					{% endfor %}
+				</ul>
+			</nav>
+
+
 			<div class="col-12">
 				<div class="row">
-					{% set stocks = craft.entries.section('stockDeProductos') %}
 					{% for stock in stocks %}
-						<div class="articulo col-6 mb-4 text-center col-sm-6 col-md-4 col-lg-3">
+						<div class="articulo col-6 mb-4 text-center col-sm-6 col-md-4 col-lg-3" data-info="{{stock.seleccionadorDeMarca.one().title}}">
 							<a href="{{stock.url}}" class="text-body">
 								<div class="thumb d-flex justify-content-center align-items-center">
 									{% if stock.instaBlogImage[0] is defined %}
@@ -49,11 +72,9 @@
 									{% endif %}
 								</div>
 								<div>
-									<h5 class="small text-uppercase text-muted mt-3">
-										{{ stock.marca }}
-									</h5>
-									<h3 class="h5">
-										{{ stock.title }}
+									<p class="mb-2">{{ stock.seleccionadorDeMarca.one().title }}</p>
+									<h3 class="small text-uppercase">
+										{{stock.categoriaStock.one().title ?? ''}} - {{ stock.title }}
 									</h3>
 								</div>
 							</a>
@@ -141,7 +162,7 @@
 			</div>
 		</div>
 	</div>
-	
+	{% include 'partials/_stock-catalog-newsletter' %}
 
 
 {% endblock %}

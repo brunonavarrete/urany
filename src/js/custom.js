@@ -8,14 +8,20 @@ var validate = require("validate.js");
 /* --------------------------
 	Toast
 -------------------------- */
-$(".toast").toast({
-  delay: 30000
+$("#catalog-notification .close, .link-toast-stock").on('click', function(){
+  sessionStorage.setItem('toast-catalogo', 'closed');
 });
-$(window).on("load", function() {
-  setTimeout(function() {
-    $("#catalog-notification").toast("show");
-  }, 1000);
-});
+
+if ( sessionStorage.getItem('toast-catalogo') != 'closed'){
+  $(".toast").toast({
+    delay: 30000
+  });
+  $(window).on("load", function() {
+    setTimeout(function() {
+      $("#catalog-notification").toast("show");
+    }, 1000);
+  });
+}
 /* --------------------------
 	Fit images
 -------------------------- */
