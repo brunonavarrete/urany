@@ -12,5 +12,7 @@
   ],
   "plugins": ["fullscreen", "video", "table"],
   "linkNewTab": true,
-  "toolbarFixed": true
+  "toolbarFixed": true,
+  "imageResizable": true,
+  "imagePosition": true
 }
