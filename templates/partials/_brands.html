@@ -20,8 +20,23 @@
 							{% if marca.slug != 'itoh-denki' %} </a> {% endif %}
 						{% endfor %}
 					</div>
-				{% else %}
-					<div class="row mt-sm-0 mt-lg-4 justify-content-center d-flex marcas-col">
+                {% else %}
+                    <div class="row mt-sm-0 mt-lg-4 justify-content-center d-flex">
+                        {% for marca in craft.entries.section('marcas').all() %}
+                            {% if marca.slug != 'mts' %}
+                                {% if marca.slug != 'itoh-denki' %}
+                                    <a href="{{ marca.url }}" class="logo col-6 d-flex justify-content-center align-items-center col-sm-3 my-3 col-lg-auto">
+                                {% endif %}
+                                    <img class="img-fluid lazy" 
+                                        src="{{ marca.logoParaFondoOscuro[0].url }}" 
+                                        data-src="{{ marca.logoParaFondoOscuro[0].url }}"
+                                        data-srcset="{{ marca.logoParaFondoOscuro[0].url }}"
+                                        alt="{{marca.title}}">
+                                {% if marca.slug != 'itoh-denki' %} </a> {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+					<!-- <div class="row mt-sm-0 mt-lg-4 justify-content-center d-flex marcas-col">
 						<div class="logo col-6 d-flex justify-content-center align-items-center col-sm-3 my-3 col-3">
 							<img src="{{ siteUrl }}assets/img/logos/wittenstein.svg"
 								 data-src="{{ siteUrl }}assets/img/logos/wittenstein.svg"
@@ -67,7 +82,7 @@
 								 data-src="{{ siteUrl }}assets/img/ItohDenki.svg"
 								 data-srcset="{{ siteUrl }}assets/img/ItohDenki.svg" class="lazy img-fluid w-75">
 						</div>
-					</div>
+					</div> -->
 				{% endif %}
 			</div>
 
