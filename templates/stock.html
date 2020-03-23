@@ -64,13 +64,13 @@
                     <input id="subject" type="hidden" name="subject" value="Solicitud de cotización">
 
                     <div class="row">
-                        <div class="col-12 col-md-3 py-2 px-1">
+                        <div class="col-12 col-md-3 py-2 px-md-1">
                             <input type="text" name="fromName" id="" class="form-control" placeholder="Nombre" required>
                         </div>
-                        <div class="col-12 col-md-3 py-2 px-1">
+                        <div class="col-12 col-md-3 py-2 px-md-1">
                             <input type="email" name="fromEmail" id="" class="form-control" placeholder="Correo" required>
                         </div>
-                        <div class="col-12 col-md-3 py-2 px-1">
+                        <div class="col-12 col-md-3 py-2 px-md-1">
                             <input type="text" name="message[Teléfono][]" id="" class="form-control" placeholder="Teléfono" required>
                         </div>
                         <input type="hidden" name="message[Producto][]" id="" class="form-control" value="{{entry.seleccionadorDeMarca.one().title }} de tipo {{ entry.title }}" required>
