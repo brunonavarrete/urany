@@ -1441,6 +1441,9 @@ h1 {
 
 #nav-marca ul li {
   white-space: normal;
+  @media (max-width:576px) {
+    margin: .3rem auto;
+  }
 }
 
 .articulo[data-target] {
