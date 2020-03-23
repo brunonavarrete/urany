@@ -762,7 +762,6 @@ $('.proceso-trigger').on('click', function(){
 $('#cotizar-stock').submit(function(ev) {
     // Prevent the form from actually submitting
     ev.preventDefault();
-    console.log("aklsdmasd");
     $('#thanks1').css('opacity','1');
     // Send it to the server
     $.post({
