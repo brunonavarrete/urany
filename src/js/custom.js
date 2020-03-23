@@ -757,3 +757,37 @@ $('.proceso-trigger').on('click', function(){
   })
 
 /* integradores */
+
+
+$('#cotizar-stock').submit(function(ev) {
+    // Prevent the form from actually submitting
+    ev.preventDefault();
+    console.log("aklsdmasd");
+    $('#thanks1').css('opacity','1');
+    // Send it to the server
+    $.post({
+        url: '/',
+        dataType: 'json',
+        data: $(this).serialize(),
+        success: function(response) {
+            if (response.success) {
+                $('#thanks1').css('opacity','0');
+                $('#thanks2').fadeIn();
+                ga("send", {
+                    hitType: "pageview",
+                    page: "/form-cotizador-stock",
+                    title: "Form Cotizador Stock"
+                });
+            } else {
+                // response.error will be an object containing any validation errors that occurred, indexed by field name
+                // e.g. response.error.fromName => ['From Name is required']
+                alert('An error occurred. Please try again.');
+            }
+        },
+        done: function(){
+            setTimeout(function(){
+                $('#thanks2').fadeOut();
+            },5000)
+        }
+    });
+});

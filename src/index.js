@@ -12,11 +12,11 @@ import 'slick-carousel';
 import {dom, library} from '@fortawesome/fontawesome-svg-core';
 import { faFacebook, faFacebookF, faFacebookSquare, faWhatsapp, faTwitterSquare, faLinkedinIn, faGooglePlusSquare } from '@fortawesome/free-brands-svg-icons';
 import { faSearch, faChevronDown, faChevronLeft, faChevronRight, faEnvelope, faPhone,
-		 faSortDown, faPlay, faTimes } from '@fortawesome/pro-solid-svg-icons';
+		 faSortDown, faPlay, faTimes, faComment, faCircleNotch } from '@fortawesome/pro-solid-svg-icons';
 import {  } from '@fortawesome/pro-regular-svg-icons';
 
 library.add(faSearch, faChevronDown, faChevronLeft, faChevronRight, faEnvelope, faPhone,
-	faSortDown, faPlay, faTimes, faFacebookSquare, 
+	faSortDown, faPlay, faTimes, faFacebookSquare, faComment, faCircleNotch,
 	faFacebook, faFacebookF, faWhatsapp, faTwitterSquare, faLinkedinIn, faGooglePlusSquare);
 
 dom.i2svg();

@@ -971,3 +971,30 @@ b.red{
         border-right: none;
     }
 }
+
+.helpdesk-image{
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+}
+
+.contact-select__component{
+    .contact-channels{
+        // a{
+        //     display: contents;
+        //     clear: both;
+        // }
+        @media (min-width:576px){
+            width: 100%;
+        }
+    }
+}
+.red-btn__stock{
+    color: #fff !important;
+    border-color: #881626 !important;
+    background-color: #881626 !important;
+    transition: all 0.3s ease-in 0.3s;
+    text-transform: uppercase;
+}
+#thanks1{ opacity: 0 }
+#thanks2{ display: none; }

@@ -15,6 +15,22 @@
 					<img src="{{ entry.seleccionadorDeMarca.one().logoParaFondoOscuro.one().url }}" alt="{{entry.title}}" class="img-fluid">
 				{% endif %}
 			</div>
+			<div class="col-12 col-md-9 order-0 text-right mt-auto">
+				<div class="row justify-content-end">
+					<div class="col-8 col-md-auto contact-select__component">
+						<p class="text-left text-md-right mt-4 mt-md-0">¿En qué podemos ayudarte?</p>
+						<div class="d-flex contact-channels">
+							<a href="tel:8005092620" class="mx-2 text-body text-primary"><i class="fas fa-phone"></i> Llámanos</a><br class="d-md-none">
+							<a href="https://wa.me/5214421459116?text=Hola! Vengo de su sitio web y me interesa conocer más acerca de sus productos {{entry.seleccionadorDeMarca.one().title }} de tipo {{ entry.title }}" 
+								class="mx-2 text-body text-primary" target="_blank"><i class="fab fa-whatsapp"></i> Whatsapp</a>
+							<a href="" data-chat="open" class="mx-2 text-body text-primary"><i class="fas fa-comment"></i> Iniciar Chat</a>
+						</div>
+					</div>
+					<div class="col-4 col-md-auto align-self-center">
+						<img src="/assets/img/helpdesk.jpg" data-chat="open" class="helpdesk-image img-fluid" alt="Chatea con nosotros - Urany">
+					</div>
+				</div>
+			</div>
 			<div class="col-md-10 d-none d-md-block"><br></div>
 			<div class="col-6 col-md-4 order-2 order-md-0">
 				{% if entry.instaBlogImage.one() %}
@@ -36,14 +52,44 @@
 						<p class="mb-0">{{entry.body}}</p>
 					</div>
 				</div>
-			</div>
-			<div class="col-12 mt-5 order-4 stock-table__container table-responsive">
+            </div>
+		</div>
+
+        <div class="row">
+            <div class="col-12 col-md-8">
+                <p class="h5">¿Estás interesado en este producto?</p>
+                <form action="" id="cotizar-stock">
+                    {{ csrfInput() }}
+                    <input type="hidden" name="action" value="contact-form/send">
+                    <input id="subject" type="hidden" name="subject" value="Solicitud de cotización">
+
+                    <div class="row">
+                        <div class="col-12 col-md-3 py-2 px-1">
+                            <input type="text" name="fromName" id="" class="form-control" placeholder="Nombre" required>
+                        </div>
+                        <div class="col-12 col-md-3 py-2 px-1">
+                            <input type="email" name="fromEmail" id="" class="form-control" placeholder="Correo" required>
+                        </div>
+                        <div class="col-12 col-md-3 py-2 px-1">
+                            <input type="text" name="message[Teléfono][]" id="" class="form-control" placeholder="Teléfono" required>
+                        </div>
+                        <div class="col-12 col-md-3 py-2">
+                            <input type="submit" class="btn red-btn__stock px-4" value="Cotizar">
+                            <p id="thanks2">Recibimos tu mensaje!</p>
+                            <p id="thanks1"><i class="fas fa-circle-notch fa-spin"></i></p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 mt-5 order-4 stock-table__container table-responsive">
 				{# example table in example-table.txt #}
 				{{ entry.contenidoDeProductoEnStock }}
 				 <div class="span">✓: Artículos disponibles en Stock</div>
-			</div>
-		</div>
-		
+            </div>
+        </div>
 
 		{% set stocks = craft.entries.section('stockDeProductos') %}
 			
