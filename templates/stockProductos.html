@@ -66,7 +66,7 @@
 							<a href="{{stock.url}}" class="text-body">
 								<div class="thumb d-flex justify-content-center align-items-center">
 									{% if stock.instaBlogImage[0] is defined %}
-										<img src="{{ stock.instaBlogImage[0].url }}" alt="{{stock.title}}">
+										<img src="{{ stock.instaBlogImage[0].getUrl('smaller') }}" alt="{{stock.title}}">
 									{% else %}
 										<img src="/assets/img/icon-black.png" alt="{{stock.title}}">
 									{% endif %}
