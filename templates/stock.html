@@ -73,6 +73,7 @@
                         <div class="col-12 col-md-3 py-2 px-1">
                             <input type="text" name="message[Teléfono][]" id="" class="form-control" placeholder="Teléfono" required>
                         </div>
+                        <input type="hidden" name="message[Producto][]" id="" class="form-control" value="{{entry.seleccionadorDeMarca.one().title }} de tipo {{ entry.title }}" required>
                         <div class="col-12 col-md-3 py-2">
                             <input type="submit" class="btn red-btn__stock px-4" value="Cotizar">
                             <p id="thanks2">Recibimos tu mensaje!</p>
