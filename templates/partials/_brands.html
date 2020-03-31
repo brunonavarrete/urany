@@ -9,30 +9,26 @@
 				{% if currentSite.language == 'es-MX' %}
 					<div class="row mt-sm-0 mt-lg-4 justify-content-center d-flex">
 						{% for marca in craft.entries.section('marcas').all() %}
-							{% if marca.slug != 'itoh-denki' %}
-								<a href="{{ marca.url }}" class="logo col-6 d-flex justify-content-center align-items-center col-sm-3 my-3 col-lg-auto">
-							{% endif %}
+							<a href="{{ marca.url }}" class="logo col-6 d-flex justify-content-center align-items-center col-sm-3 my-3 col-lg-auto">
 								<img class="img-fluid lazy" 
 									 src="{{ marca.logoParaFondoOscuro[0].url }}" 
 									 data-src="{{ marca.logoParaFondoOscuro[0].url }}"
 									 data-srcset="{{ marca.logoParaFondoOscuro[0].url }}"
 									 alt="{{marca.title}}">
-							{% if marca.slug != 'itoh-denki' %} </a> {% endif %}
+							</a>
 						{% endfor %}
 					</div>
                 {% else %}
                     <div class="row mt-sm-0 mt-lg-4 justify-content-center d-flex">
                         {% for marca in craft.entries.section('marcas').all() %}
                             {% if marca.slug != 'mts' %}
-                                {% if marca.slug != 'itoh-denki' %}
-                                    <a href="{{ marca.url }}" class="logo col-6 d-flex justify-content-center align-items-center col-sm-3 my-3 col-lg-auto">
-                                {% endif %}
+                                <a href="{{ marca.url }}" class="logo col-6 d-flex justify-content-center align-items-center col-sm-3 my-3 col-lg-auto">
                                     <img class="img-fluid lazy" 
                                         src="{{ marca.logoParaFondoOscuro[0].url }}" 
                                         data-src="{{ marca.logoParaFondoOscuro[0].url }}"
                                         data-srcset="{{ marca.logoParaFondoOscuro[0].url }}"
                                         alt="{{marca.title}}">
-                                {% if marca.slug != 'itoh-denki' %} </a> {% endif %}
+                                </a>
                             {% endif %}
                         {% endfor %}
                     </div>
