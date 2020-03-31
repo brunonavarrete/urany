@@ -66,7 +66,14 @@
 									{{ familia.title }}
 								</h2>
 								<div class="cuerpo">
-									{{ familia.body }}
+                                    {{ familia.body }}
+                                    {% if familia.tablaContenido|length > 0 %}
+                                        <div class="brand-table__container row"> 
+                                            <div class="col-12">
+                                                {{familia.tablaContenido}}
+                                            </div>
+                                        </div>
+                                    {% endif %}
 								</div>
 							</div>
 							{% if familia.instaBlogImage is not empty %}
