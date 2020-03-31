@@ -33,7 +33,15 @@
 					{% if fila.imagen|length >= 1 %}
 						<div class="col-12 col-md-8 col-lg-4 mx-lg-auto {% if fila.textFirst == 'false' %}order-lg-1{% endif %}">
 							<img src="{{ fila.imagen[0].url }}" class="img-fluid mb-5 mb-md-0" alt="{{entry.title}}">
-						</div>
+                        </div>
+                    {% else %}
+                        {% if entry.slug == 'itoh-denki' %}
+                            <div class="col-lg-6">
+                                <div class="embed-responsive embed-responsive-16by9">
+                                    <iframe src="https://www.youtube.com/embed/fwv5de_xVzY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="embed-responsive-item" ></iframe>
+                                </div>
+                            </div>
+                        {% endif %}        
 					{% endif %}
 					<div class="col-12 {% if fila.imagen[0]|length >= 1 %}col-md-7 ml-md-auto col-lg-6{% else %}col-lg-7{% endif %} mx-lg-auto">
 						{{ fila.texto }}
@@ -73,13 +81,6 @@
 								<div class="col-lg-6">
 									<img src="{{ familia.instaBlogImage.one().url }}" alt="{{ familia.title }}" class="img-fluid">
 								</div>
-                            {% endif %}
-                            {% if entry.slug == 'itoh-denki' %}
-                                <div class="col-lg-6">
-                                    <div class="embed-responsive embed-responsive-16by9">
-                                        <iframe src="https://www.youtube.com/embed/fwv5de_xVzY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="embed-responsive-item" ></iframe>
-                                    </div>
-                                </div>
                             {% endif %}
                             {% if familia.tablaContenido|length > 0 %}
                                 <div class="brand-table__container col-12 table-responsive my-5">
