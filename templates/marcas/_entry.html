@@ -67,20 +67,18 @@
 								</h2>
 								<div class="cuerpo">
                                     {{ familia.body }}
-                                    {% if familia.tablaContenido|length > 0 %}
-                                        <div class="brand-table__container row"> 
-                                            <div class="col-12">
-                                                {{familia.tablaContenido}}
-                                            </div>
-                                        </div>
-                                    {% endif %}
 								</div>
 							</div>
 							{% if familia.instaBlogImage is not empty %}
 								<div class="col-lg-6">
 									<img src="{{ familia.instaBlogImage.one().url }}" alt="{{ familia.title }}" class="img-fluid">
 								</div>
-							{% endif %}
+                            {% endif %}
+                            {% if familia.tablaContenido|length > 0 %}
+                                <div class="brand-table__container col-12 table-responsive">
+                                    {{familia.tablaContenido}}
+                                </div>
+                            {% endif %}
 						</div>
 					</div>
 					<div class="col-12 row mx-0" style="{% if (count == 0 and query == '') or ( query == familia.title|lower ) %}display:flex;{% else %}display:none;{% endif %}" data-grid="{{familia.title}}">
