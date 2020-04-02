@@ -79,7 +79,7 @@
 							</div>
 							{% if familia.instaBlogImage is not empty %}
 								<div class="col-lg-6">
-									<img src="{{ familia.instaBlogImage.one().url }}" alt="{{ familia.title }}" class="img-fluid">
+									<img src="{{ familia.instaBlogImage.one().getUrl('small') }}" alt="{{ familia.title }}" class="img-fluid">
 								</div>
                             {% endif %}
                             {% if familia.tablaContenido|length > 0 %}
