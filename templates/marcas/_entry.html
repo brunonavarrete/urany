@@ -79,7 +79,15 @@
 							</div>
 							{% if familia.instaBlogImage is not empty %}
 								<div class="col-lg-6">
-									<img src="{{ familia.instaBlogImage.one().getUrl('small') }}" alt="{{ familia.title }}" class="img-fluid">
+                                    {% if familia.instaBlogImage|length > 1 %}
+                                        <div class="slider-familias">
+                                            {% for image in familia.instaBlogImage.all() %}
+                                                <img src="{{ image.getUrl('small') }}" alt="{{ familia.title }}" class="img-fluid">                                                
+                                            {% endfor %}
+                                        </div>
+                                    {% else %}
+    									<img src="{{ familia.instaBlogImage.one().getUrl('small') }}" alt="{{ familia.title }}" class="img-fluid">
+                                    {% endif %}
 								</div>
                             {% endif %}
                             {% if familia.tablaContenido|length > 0 %}

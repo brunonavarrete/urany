@@ -431,6 +431,20 @@ $('.mecanismos-slider-next').on('click', function(){
 });
 
 
+/**
+ * Slider para familias de productos
+ */
+$('.slider-familias').slick({
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    lazyLoad: 'ondemand',
+    arrows: false,
+    dots: false,
+})
+
 /* --------------------------
 ------- Scroll reveal -------
 -------------------------- */
