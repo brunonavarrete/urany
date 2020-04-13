@@ -442,7 +442,7 @@ $('.slider-familias').slick({
     autoplaySpeed: 2000,
     lazyLoad: 'ondemand',
     arrows: false,
-    dots: false,
+    dots: true,
 })
 
 /* --------------------------

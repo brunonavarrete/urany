@@ -12,6 +12,11 @@ let mix = require('laravel-mix');
  */
 
 mix.js('src/index.js', 'web/').sass('src/sass/style.scss', 'web/css/');
+mix.webpackConfig({
+    watchOptions: {
+      ignored: /node_modules/
+    }
+  })
 
 // Full API
 // mix.js(src, output);
