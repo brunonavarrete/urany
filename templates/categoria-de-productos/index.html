@@ -35,6 +35,29 @@
 					</p>
 			</div>
 
+            {% set stocks = craft.entries.section('productos') %}
+			{% set tabs = [{'title': "Todas las marcas", 'id':0 }] %}
+			{% for stock in stocks %}
+				{% set newElem = {'title': stock.productoMarca.one().title, 'id': stock.productoMarca.one().id } %}
+				{% if newElem not in tabs %}
+					{% set tabs = tabs|merge([newElem]) %}	
+				{% endif %}
+			{% endfor %}
+			
+			<nav class="col-12 mb-5" id="nav-marca">
+				<ul class="list-unstyled row mx-0 mb-0">
+					{% set count = 0 %}
+					{% for tab in tabs %}
+						<li class="col-12 btn {% if loop.first %}d-none {% else %} btn-outline-primary {% endif %}text-uppercase col-md-auto mr-md-3 mb-md-3" data-target="{{ tab.title }}">
+							{{ tab.title }}
+						</li>
+						{% set count = count + 1 %}
+					{% endfor %}
+				</ul>
+			</nav>
+
+
+
             {% set categorias = craft.categories.group('categoriaDeProductos') %}
 
             {% for category in categorias %}
@@ -49,18 +72,7 @@
                 {% endfor %}
             {% endfor %}
 			
-			{# <nav class="col-12 mb-5" id="nav-marca">
-				<ul class="list-unstyled row mx-0 mb-0">
-					{% set count = 0 %}
-					{% for tab in tabs %}
-						<li class="col-12 btn {% if loop.first %}d-none {% else %} btn-outline-primary {% endif %}text-uppercase col-md-auto mr-md-3 mb-md-3" data-target="{{ tab.title }}">
-							{{ tab.title }}
-						</li>
-						{% set count = count + 1 %}
-					{% endfor %}
-				</ul>
-			</nav> #}
-
+			
 
             {% for category in categorias %}
             {% set stocks = craft.entries.relatedTo(category).stock(':notempty:').all() %}
