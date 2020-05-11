@@ -1,0 +1,99 @@
+{# --------------- Variables --------------- #}
+{% set title = 'Stock' %}
+{# ----------------------------------------- #}
+
+{% extends "_layout" %}
+{% set jumbotronImage = "stock_fondo.png" %}
+
+{% block jumbotron %}
+    <div class="pleca pleca-primary"></div>
+    <span class="d-none d-md-block lines container">
+        {% include 'includes/lines.svg.twig' %}
+        {% include 'includes/lines.svg.twig' %}
+    </span>
+    <div class="position-relative text-center">
+        <h1 class="text-white text-uppercase mb-3">Nuestros
+            <br class="d-none d-lg-block">Productos</h1>
+    </div>
+    <span id="scroll">
+        <i class="fa fa-chevron-down text-white top"></i>
+        <i class="fa fa-chevron-down text-white bottom"></i>
+    </span>
+{% endblock %}
+
+
+{% block content %}
+
+	<div class="container py-5">
+		<div class="row">
+			<div class="col-12 py-5">
+					<p class="h1" id="top-home">
+						Flexibilidad y adaptabilidad para brindar las mejores soluciones a tu proyecto.
+					</p>
+					<p>
+						Un reto para mantener un inventario de productos mecánicos para aplicaciones de control de movimiento es poder cumplir con la enorme variedad de bridas, bujes y cajas de poleas quese requieren para montarse a la gran cantidad de servomotores que existen en el mercado. En Urany tenemos más de 20 años de experiencia trabajando de la mano con los fabricantes de servomotores con presencia en el país, por lo que después de un extenso análisis podemos asegurar que contamos con diferentes opciones en kits de montaje para ser la mejor elección para su proyecto.
+					</p>
+			</div>
+
+            {% set categorias = craft.categories.group('categoriaDeProductos') %}
+
+            {% for category in categorias %}
+                {% set stocks = craft.entries.relatedTo(category).all() %}
+                
+                {% set tabs = [{'title': "Todas las marcas", 'id':0 }] %}
+                {% for stock in stocks %}
+                    {% set newElem = {'title': stock.productoMarca.one().title, 'id': stock.productoMarca.one().id } %}
+                    {% if newElem not in tabs %}
+                        {% set tabs = tabs|merge([newElem]) %}	
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+			
+			{# <nav class="col-12 mb-5" id="nav-marca">
+				<ul class="list-unstyled row mx-0 mb-0">
+					{% set count = 0 %}
+					{% for tab in tabs %}
+						<li class="col-12 btn {% if loop.first %}d-none {% else %} btn-outline-primary {% endif %}text-uppercase col-md-auto mr-md-3 mb-md-3" data-target="{{ tab.title }}">
+							{{ tab.title }}
+						</li>
+						{% set count = count + 1 %}
+					{% endfor %}
+				</ul>
+			</nav> #}
+
+
+            {% for category in categorias %}
+                <div class="col-12">
+                    <div class="row">
+                    <div class="col-12"><a href="{{category.url}}"><h2 class="h1 text-body">{{category.title}}</h2></a></div>
+                    {% set stocks = craft.entries.relatedTo(category).stock(':notempty:').all() %}
+					{% for stock in stocks %}
+						<div class="articulo col-6 mb-4 text-center col-sm-6 col-md-4 col-lg-3" data-info="{{stock.productoMarca.one().title}}">
+							<a href="{{stock.url}}" class="text-body">
+								<div class="thumb d-flex justify-content-center align-items-center">
+									{% if stock.instaBlogImage[0] is defined %}
+										<img src="{{ stock.instaBlogImage[0].getUrl('smaller') }}" alt="{{stock.title}}">
+									{% else %}
+										<img src="/assets/img/icon-black.png" alt="{{stock.title}}">
+									{% endif %}
+								</div>
+								<div>
+									<p class="mb-2">{{stock.productoFamilia ?? ''}}</p>
+									<h3 class="small text-uppercase">
+										{{ stock.title }}
+									</h3>
+								</div>
+							</a>
+						</div>
+					{% endfor %}
+				    </div>
+                </div>
+			{% endfor %}
+
+            
+		</div>
+	</div>
+	{% include 'partials/_stock-catalog-newsletter' %}
+
+
+{% endblock %}

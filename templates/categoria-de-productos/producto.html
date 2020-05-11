@@ -1,0 +1,162 @@
+{# --------------- Variables --------------- #}
+{% set title = 'Stock' %}
+{# ----------------------------------------- #}
+
+{% extends "_layout" %}
+
+
+
+{% block content %}
+	
+	<div class="container my-5">
+		<div class="row">
+			<div class="col-6 col-md-2 text-center offset-md-1 order-0">
+				{% if entry.productoMarca.one() %}
+					<img src="{{ entry.productoMarca.one().logoParaFondoOscuro.one().url }}" alt="{{entry.title}}" class="img-fluid">
+				{% endif %}
+			</div>
+			<div class="col-12 col-md-9 order-0 text-right mt-auto">
+				<div class="row justify-content-end">
+					<div class="col-12 col-md-auto contact-select__component">
+						<p class="text-left text-md-right mt-4 mt-md-0">¿En qué podemos ayudarte?</p>
+						<div class="d-flex contact-channels justify-content-around">
+							<a href="tel:8005092620" class="mx-2 text-body text-primary"><i class="fas fa-phone"></i> Llámanos</a><br class="d-md-none">
+							<a href="https://wa.me/5214421459116?text=Hola! Vengo de su sitio web y me interesa conocer más acerca de sus productos {{entry.productoMarca.one().title }} de tipo {{ entry.title }}" 
+								class="mx-2 text-body text-primary" target="_blank"><i class="fab fa-whatsapp"></i> Whatsapp</a>
+							<a href="" data-chat="open" class="mx-2 text-body text-primary"><i class="fas fa-comment"></i> Iniciar Chat</a>
+						</div>
+					</div>
+					<div class="col-4 col-md-auto align-self-center text-center">
+						<img src="/assets/img/helpdesk.jpg" data-chat="open" class="helpdesk-image img-fluid" alt="Chatea con nosotros - Urany">
+					</div>
+				</div>
+			</div>
+			<div class="col-md-10 d-none d-md-block"><br></div>
+			<div class="col-6 col-md-4 order-2 order-md-0">
+				{% if entry.instaBlogImage.one() %}
+					<img src="{{ entry.instaBlogImage.one().url }}" alt="{{entry.title}}" class="img-fluid">
+				{% endif %}
+			</div>
+			<div class="col-12 col-md-8 order-0 order-md-3">
+				<div class="row">
+					<div class="col-12 col-md-6 align-self-end mt-4 mt-md-0">
+						<p class="mb-0 h1">{{entry.title}}</p>
+					</div>
+					<div class="col-12 col-md-6 text-md-right align-self-end">
+						<p class="mb-0 h5">{{entry.productoFamilia ?? ''}}</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12 text-justify">
+						<hr>
+						<p class="mb-0">{{entry.body ?? entry.productoCategoria.one().body ?? '' }}</p>
+					</div>
+				</div>
+            </div>
+		</div>
+
+        <div class="row">
+            <div class="col-12 col-md-8 mt-5">
+                <p class="h5">¿Estás interesado en este producto?</p>
+                <form action="" id="cotizar-stock">
+                    {{ csrfInput() }}
+                    <input type="hidden" name="action" value="contact-form/send">
+                    <input id="subject" type="hidden" name="subject" value="Solicitud de cotización">
+
+                    <div class="row">
+                        <div class="col-12 col-md-3 py-2 px-md-1">
+                            <input type="text" name="fromName" id="" class="form-control" placeholder="Nombre" required>
+                        </div>
+                        <div class="col-12 col-md-3 py-2 px-md-1">
+                            <input type="email" name="fromEmail" id="" class="form-control" placeholder="Correo" required>
+                        </div>
+                        <div class="col-12 col-md-3 py-2 px-md-1">
+                            <input type="text" name="message[Teléfono][]" id="" class="form-control" placeholder="Teléfono" required>
+                        </div>
+                        <input type="hidden" name="message[Producto][]" id="" class="form-control" value="{{entry.productoMarca.one().title }} de tipo {{ entry.title }}" required>
+                        <div class="col-12 col-md-3 py-2">
+                            <input type="submit" class="btn red-btn__stock px-4" value="Cotizar">
+                            <p id="thanks2">Recibimos tu mensaje!</p>
+                            <p id="thanks1"><i class="fas fa-circle-notch fa-spin"></i></p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 mt-5 order-4 stock-table__container table-responsive">
+				{# example table in example-table.txt #}
+                {{ entry.contenidoDeProductoEnStock }}
+                {% if entry.stock %}
+                    <div class="span">✓: Artículos disponibles en Stock</div>
+                {% endif %}
+            </div>
+        </div>
+
+        {% set currentCategory = entry.productoCategoria %}
+		{% set stocks = craft.entries.relatedTo(currentCategory).stock(':notempty:') %}
+			
+			{% set tabs = [{'title': "Todas las marcas", 'id':0 }] %}
+			{% for stock in stocks %}
+				{% set newElem = {'title': stock.productoMarca.one().title, 'id': stock.productoMarca.one().id } %}
+				{% if newElem not in tabs %}
+					{% set tabs = tabs|merge([newElem]) %}	
+				{% endif %}
+			{% endfor %}
+		<div class="col-12">
+			<div class="row my-5 pt-5">
+				<div class="col-12">
+					<p class="h2">Más productos</p>
+				</div>
+				<nav class="col-12 mb-5" id="nav-marca">
+				<ul class="list-unstyled row mx-0 mb-0">
+					{% set count = 0 %}
+					{% for tab in tabs %}
+						<li class="col-12 btn {% if loop.first %}d-none {% else %} btn-outline-primary {% endif %}text-uppercase col-md-auto mr-md-3 mb-md-3" data-target="{{ tab.title }}">
+							{{ tab.title }}
+						</li>
+						{% set count = count + 1 %}
+					{% endfor %}
+				</ul>
+			</nav>
+
+
+			<div class="col-12">
+				<div class="row">
+					{% for stock in stocks %}
+						<div class="articulo col-6 mb-4 text-center col-sm-6 col-md-4 col-lg-3" data-info="{{stock.productoMarca.one().title}}">
+							<a href="{{stock.url}}" class="text-body">
+								<div class="thumb d-flex justify-content-center align-items-center">
+									{% if stock.instaBlogImage[0] is defined %}
+										<img src="{{ stock.instaBlogImage[0].getUrl('smaller') }}" alt="{{stock.title}}">
+									{% else %}
+										<img src="/assets/img/icon-black.png" alt="{{stock.title}}">
+									{% endif %}
+								</div>
+								<div>
+									<p class="mb-2">{{stock.productoFamilia ?? ''}}</p>
+									<h3 class="small text-uppercase">
+										{{ stock.title }}
+									</h3>
+								</div>
+							</a>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+			</div>
+		</div>
+	</div>
+ 
+
+
+
+
+<style type="text/css">
+    #main-jumbotron{
+    	min-height: unset !important;
+    	background: transparent !important;
+    }
+</style>
+{% endblock %}

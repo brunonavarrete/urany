@@ -1,0 +1,86 @@
+{# --------------- Variables --------------- #}
+{% set title = category.title %}
+{# ----------------------------------------- #}
+
+{% extends "_layout" %}
+{% set jumbotronImage = "stock_fondo.png" %}
+
+{% block jumbotron %}
+    <div class="pleca pleca-primary"></div>
+    <span class="d-none d-md-block lines container">
+        {% include 'includes/lines.svg.twig' %}
+        {% include 'includes/lines.svg.twig' %}
+    </span>
+    <div class="position-relative text-center">
+        <h1 class="text-white text-uppercase mb-3">{{category.title}}</h1>
+    </div>
+    <span id="scroll">
+        <i class="fa fa-chevron-down text-white top"></i>
+        <i class="fa fa-chevron-down text-white bottom"></i>
+    </span>
+{% endblock %}
+
+
+{% block content %}
+
+	<div class="container py-5">
+		<div class="row">
+			<div class="col-12 py-5">
+				{{category.body}}
+			</div>
+
+			
+			{% set stocks = craft.entries.relatedTo(category).stock(':notempty:') %}
+			
+			{% set tabs = [{'title': "Todas las marcas", 'id':0 }] %}
+			{% for stock in stocks %}
+				{% set newElem = {'title': stock.productoMarca.one().title, 'id': stock.productoMarca.one().id } %}
+				{% if newElem not in tabs %}
+					{% set tabs = tabs|merge([newElem]) %}	
+				{% endif %}
+			{% endfor %}
+			
+			<nav class="col-12 mb-5" id="nav-marca">
+				<ul class="list-unstyled row mx-0 mb-0">
+					{% set count = 0 %}
+					{% for tab in tabs %}
+						<li class="col-12 btn {% if loop.first %}d-none {% else %} btn-outline-primary {% endif %}text-uppercase col-md-auto mr-md-3 mb-md-3" data-target="{{ tab.title }}">
+							{{ tab.title }}
+						</li>
+						{% set count = count + 1 %}
+					{% endfor %}
+				</ul>
+			</nav>
+
+
+			<div class="col-12">
+				<div class="row">
+					{% for stock in stocks %}
+						<div class="articulo col-6 mb-4 text-center col-sm-6 col-md-4 col-lg-3 " data-info="{{stock.productoMarca.one().title}}">
+							<a href="{{stock.url}}" class="text-body">
+								<div class="thumb d-flex justify-content-center align-items-center">
+									{% if stock.instaBlogImage[0] is defined %}
+										<img src="{{ stock.instaBlogImage[0].getUrl('smaller') }}" alt="{{stock.title}}">
+									{% else %}
+										<img src="/assets/img/icon-black.png" alt="{{stock.title}}">
+									{% endif %}
+								</div>
+								<div>
+									<p class="mb-2">{{stock.productoFamilia ?? ''}}</p>
+									<h3 class="text-uppercase">
+										{{ stock.title }}
+									</h3>
+								</div>
+							</a>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+
+            
+		</div>
+	</div>
+	{% include 'partials/_stock-catalog-newsletter' %}
+
+
+{% endblock %}
