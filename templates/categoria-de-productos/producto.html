@@ -43,7 +43,7 @@
 						<p class="mb-0 h1">{{entry.title}}</p>
 					</div>
 					<div class="col-12 col-md-6 text-md-right align-self-end">
-						<p class="mb-0 h5">{{entry.productoFamilia ?? ''}}</p>
+						<p class="mb-0 h5">{{entry.productoCategoria.one().title ?? ''}}</p>
 					</div>
 				</div>
 				<div class="row">
@@ -87,15 +87,24 @@
         <div class="row">
             <div class="col-12 mt-5 order-4 stock-table__container table-responsive">
 				{# example table in example-table.txt #}
-                {{ entry.contenidoDeProductoEnStock }}
-                {% if entry.stock %}
+                {{ entry.contenidoDeProducto }}
+                {% set paginaStock = craft.entries.section('stock').one() %}
+                {% set stockEntries = paginaStock.productosDeStock %}
+                {% for stockEntry in stockEntries %}
+                	{% if stockEntry.id == entry.id %}
+                		<div class="span">✓: Artículos disponibles en Stock</div>
+                	{% endif %}
+                {% endfor %}
+
+                {# {% if entry.stock %}
                     <div class="span">✓: Artículos disponibles en Stock</div>
-                {% endif %}
+                {% endif %} #}
             </div>
         </div>
 
         {% set currentCategory = entry.productoCategoria %}
-		{% set stocks = craft.entries.relatedTo(currentCategory).stock(':notempty:') %}
+        {# {% set stocks = craft.entries.relatedTo(currentCategory).stock(':notempty:') %} #}
+		{% set stocks = craft.entries.relatedTo(currentCategory) %}
 			
 			{% set tabs = [{'title': "Todas las marcas", 'id':0 }] %}
 			{% for stock in stocks %}
@@ -135,10 +144,10 @@
 									{% endif %}
 								</div>
 								<div>
-									<p class="mb-2">{{stock.productoFamilia ?? ''}}</p>
 									<h3 class="small text-uppercase">
 										{{ stock.title }}
 									</h3>
+									<p class="mb-2">{{stock.productoCategoria.one().title ?? ''}}</p>
 								</div>
 							</a>
 						</div>

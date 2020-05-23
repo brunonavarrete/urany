@@ -35,12 +35,12 @@
 					</p>
 			</div>
 
-			
-			{% set stocks = craft.entries.section('stockDeProductos') %}
+			{% set stocks = entry.productosDeStock %}
+			{# {% set stocks = craft.entries.section('stockDeProductos') %} #}
 			
 			{% set tabs = [{'title': "Todas las marcas", 'id':0 }] %}
 			{% for stock in stocks %}
-				{% set newElem = {'title': stock.seleccionadorDeMarca.one().title, 'id': stock.seleccionadorDeMarca.one().id } %}
+				{% set newElem = {'title': stock.productoMarca.one().title, 'id': stock.productoMarca.one().id } %}
 				{% if newElem not in tabs %}
 					{% set tabs = tabs|merge([newElem]) %}	
 				{% endif %}
@@ -62,7 +62,7 @@
 			<div class="col-12">
 				<div class="row">
 					{% for stock in stocks %}
-						<div class="articulo col-6 mb-4 text-center col-sm-6 col-md-4 col-lg-3" data-info="{{stock.seleccionadorDeMarca.one().title}}">
+						<div class="articulo col-6 mb-4 text-center col-sm-6 col-md-4 col-lg-3" data-info="{{stock.productoMarca.one().title}}">
 							<a href="{{stock.url}}" class="text-body">
 								<div class="thumb d-flex justify-content-center align-items-center">
 									{% if stock.instaBlogImage[0] is defined %}
@@ -72,7 +72,7 @@
 									{% endif %}
 								</div>
 								<div>
-									<p class="mb-2">{{ stock.seleccionadorDeMarca.one().title }}</p>
+									<p class="mb-2">{{ stock.productoMarca.one().title }}</p>
 									<h3 class="small text-uppercase">
 										{{stock.categoriaStock.one().title ?? ''}} - {{ stock.title }}
 									</h3>
