@@ -104,7 +104,7 @@
 
         {% set currentCategory = entry.productoCategoria %}
         {# {% set stocks = craft.entries.relatedTo(currentCategory).stock(':notempty:') %} #}
-		{% set stocks = craft.entries.relatedTo(currentCategory).id('not ' ~ entry.id) %}
+		{% set stocks = craft.entries.relatedTo(currentCategory).id('not ' ~ entry.id).limit(8) %}
 			
 			{% set tabs = [{'title': "Todas las marcas", 'id':0 }] %}
 			{% for stock in stocks %}
