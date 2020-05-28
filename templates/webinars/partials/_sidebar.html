@@ -28,6 +28,43 @@
 			</div>
 		</div>
 	{% endif %}
+	<div class="newsletter col-12 bg-light py-3 px-4 mb-3 col-md-5 mx-md-auto col-lg-12 mr-lg-0 mb-lg-4">
+		<h3 class="h5 bold mt-1">
+			Suscríbete a próximos webinars
+		</h3>
+		{% if currentSite.language == 'es-MX' %}
+			{% set action = "https://thebrandindustry.us19.list-manage.com/subscribe/post-json?u=5a7efa6f035c3370673b36d5d&amp;id=fa6cb92292&c=?" %}
+		{% else %}
+			{% set action = "https://urany.us4.list-manage.com/subscribe/post-json?u=9cab019b9eb5704f2b13bc12d&amp;id=5e6100c984&c=?" %}
+		{% endif %}	
+		<form action="{{ action }}" class="mr-lg-auto newsletter newsletter-subscribe-stock validate" id="mc-embedded-subscribe-form2" method="get" name="mc-embedded-subscribe-form" novalidate target="_blank">
+			<div class="input-group w-100 mb-2 mb-sm-0">
+				<input class="d-none form-control form-control-outline-white text-white" id="mce-FNAME" name="FNAME" type="text" value="Webinars">
+			</div>
+			<div class="form-group mb-0">
+				<input class="form-control px-0 border border-dark border-top-0 border-left-0 border-right-0" id="mce-EMAIL" name="EMAIL" placeholder="Correo electrónico" type="email">
+			</div>
+			<div class="form-group d-flex mb-1">
+				<input class="text-primary ml-auto btn" type="submit" value="Suscribirse">
+			</div>
+			<p class="mailchimp-error col-12"></p>
+		</form>
+	</div>
+	<div class="latest d-none col-12 px-0 d-lg-block col-md-6 col-lg-12 mb-5">
+		<h3 class="mt-1 bolder h4 text-primary text-uppercase">
+			Últimos webinars
+		</h3>
+		<div class="border border-dark pt-4 px-3 pb-3">
+			{% set entries = craft.entries.section('webinars').limit(5).id('not ' ~ entry.id|default("0")) %}
+			{% for entry in entries.all() %}
+				<a href="{{entry.url}}" class="d-block border border-dark border-top-0 border-left-0 border-right-0 mb-3">
+					<h4 class="h5 bold mb-0 pb-3 px-2">
+						{{ entry.title }}
+					</h4>
+				</a>
+			{% endfor %}
+		</div>
+	</div>
 	<a href="{{ url('demotruck') }}" class="ad position-relative bg-cover col-12 p-4 mb-3 col-md-6 col-lg-12 mb-lg-4" style="background-image:url(/assets/img/demotruck.jpg)">
 		<div class="pleca pleca-primary"></div>
 		<div class="frame position-relative border border-white text-white d-flex justify-content-center align-items-center">
@@ -42,42 +79,4 @@
 			</div>
 		</div>
 	</a>
-	<div class="newsletter col-12 bg-light py-3 px-4 mb-3 col-md-5 mx-md-auto col-lg-12 mr-lg-0 mb-lg-4">
-		<h3 class="h5 bold mt-1">
-			Suscríbete a nuestro boletín
-		</h3>
-		{% if currentSite.language == 'es-MX' %}
-			{% set action = "https://thebrandindustry.us19.list-manage.com/subscribe/post-json?u=5a7efa6f035c3370673b36d5d&amp;id=fa6cb92292&c=?" %}
-		{% else %}
-			{% set action = "https://urany.us4.list-manage.com/subscribe/post-json?u=9cab019b9eb5704f2b13bc12d&amp;id=5e6100c984&c=?" %}
-		{% endif %}	
-		<form action="{{ action }}" class="mr-lg-auto newsletter newsletter-subscribe-stock validate" id="mc-embedded-subscribe-form2" method="get" name="mc-embedded-subscribe-form" novalidate target="_blank">
-			<p class="col-12 mailchimp-error"></p>
-			<div class="input-group w-100 mb-2 mb-sm-0">
-				<input class="d-none form-control form-control-outline-white text-white" id="mce-FNAME" name="FNAME" type="text" value="Blog">
-			</div>
-			<div class="form-group mb-0">
-				<input class="form-control px-0 border border-dark border-top-0 border-left-0 border-right-0" id="mce-EMAIL" name="EMAIL" placeholder="Correo electrónico" type="email">
-			</div>
-			<div class="form-group d-flex mb-1">
-				<input class="text-primary ml-auto btn" type="submit" value="Suscribirse">
-			</div>
-			<p class="mailchimp-error text-white col-12"></p>
-		</form>
-	</div>
-	<div class="latest d-none col-12 px-0 d-lg-block col-md-6 col-lg-12 mb-5">
-		<h3 class="mt-1 bolder h4 text-primary text-uppercase">
-			Últimos artículos
-		</h3>
-		<div class="border border-dark pt-4 px-3 pb-3">
-			{% set entries = craft.entries.section('instaBlog').limit(5).id('not ' ~ entry.id|default("0")) %}
-			{% for entry in entries.all() %}
-				<a href="{{entry.url}}" class="d-block border border-dark border-top-0 border-left-0 border-right-0 mb-3">
-					<h4 class="h5 bold mb-0 pb-3 px-2">
-						{{ entry.title }}
-					</h4>
-				</a>
-			{% endfor %}
-		</div>
-	</div>
 </aside>

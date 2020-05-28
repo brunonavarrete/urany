@@ -222,4 +222,33 @@
 			</ul>
 		</div>
 	</nav>
-{% endif %}</header>
+	{% endif %}
+	{% if 'Webinars' in title %}
+		<nav id="blog-nav" class="bg-primary">
+			<div class="container position-relative pr-5">
+				<i class="fa fa-chevron-down text-white p-3 d-lg-none" data-toggle="collapse" data-target="#links"></i>
+				<h1 class="py-3 mb-0 bolder h6 text-white d-lg-none">
+					{{ title }}
+				</h1>
+				<ul id="links" class="list-unstyled mb-0 collapse d-lg-flex">
+					<li class="d-none pt-0 pb-3 d-lg-block py-lg-2 px-lg-5 {{ macros.is_active('webinars') }}">
+						<a href="{{ siteUrl('webinars') }}" class="">
+							Webinars
+						</a>
+					</li>
+					{% set entries = craft.entries.section('webinars') %}
+					{% set categories = craft.categories.relatedTo(entries) %}
+
+					{% for category in categories.limit(4).all() %}
+						<li class="pt-0 pb-3 py-lg-2 px-lg-5 {{ macros.is_active(category.slug) }}">
+							<a href="{{category.url}}" class="">
+								{{category.title}}
+							</a>
+						</li>
+					{% endfor %}
+				</ul>
+			</ul>
+		</div>
+	</nav>
+	{% endif %}
+</header>

@@ -21,6 +21,9 @@ if ( sessionStorage.getItem('toast-catalogo') != 'closed'){
       $("#catalog-notification").toast("show");
     }, 1000);
   });
+} else {
+  $("#catalog-notification").addClass("hide");
+  console.log("Bandera hide");
 }
 /* --------------------------
 	Fit images

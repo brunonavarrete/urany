@@ -99,6 +99,26 @@ $rojo-urany: #881626;
   color: $rojo-urany;
   border: none;
 }
+.white {
+  color: white;
+}
+.rojo-urany {
+  color: $rojo-urany;
+}
+
+.webinarWrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+}
+.webinarWrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 .white-button{
   background-color: white;
   color: $rojo-urany;

@@ -1,7 +1,7 @@
 <section class="grid-slider container mb-5">
 	<div class="row mx-0">
 		<h2 class="col-12 mb-3 mt-4 px-0 pb-2 border border-light border-left-0 border-right-0 border-top-0 bolder h5 text-primary text-uppercase">
-			Artículos Relacionados
+			Webinars Relacionados
 			<ul class="arrows small list-unstyled mb-0 p-0 d-flex d-md-none">
 				<li class="px-2">
 					<i class="fa fa-chevron-left text-primary"></i>
@@ -13,9 +13,11 @@
 		</h2>
 	</div>
 	<div class="slider-slider row mx-0">
-		{% for entry in craft.entries.section('instaBlog').limit(6) %}
+		{% for entry in craft.entries.section('webinars').limit(9) %}
 		<a href="{{ entry.url }}" class="blog-item row d-block col-12 mx-0 px-0 pr-sm-3">
-			<div class="thumb col-12 bg-cover" style="background-image:url({{ entry.instaBlogImage[0].getUrl('blog') }})"></div>
+			<div class="thumb col-12 bg-cover" style="background-image:url({{ entry.instaBlogImage[0].getUrl('blog') }})">
+				<span class="position-absolute zindex2 d-flex align-items-center justify-content-center w-100 h-100"><i class="fa fa-play fa-2x white"></i></span>
+			</div>
 			<div class="info col-12 px-0 pt-3 pb-md-0 pt-md-1">
 				<h3 class="h5 bold mb-2">
 					{{ entry.title }}
@@ -34,7 +36,7 @@
 	</div>
 	<div class="row text-right mt-3 mx-0">
 		<a href="{{ siteUrl('blog') }}" class="text-primary ml-auto">
-			Todas las entradas <i class="fa fa-chevron-right ml-2"></i>
+			Todas los webinars <i class="fa fa-chevron-right ml-2"></i>
 		</a>
 	</div>
 </section>

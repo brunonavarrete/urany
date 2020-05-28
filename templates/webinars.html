@@ -1,0 +1,81 @@
+{# --------------- Variables --------------- #}
+{% set title = 'Webinars' %}
+{% set entries = craft.entries.section('webinars') %}
+{# ----------------------------------------- #}
+
+{% extends "_layout" %}
+
+{% block content %}
+    <section id="blog-top" class="container position-relative">
+        <div class="row position-relative pt-4">
+            <div class="col-12 main-slider">
+                {% for entry in entries.limit(4).all() %}
+                    <a href="{{ entry.url }}" class="slide d-flex row mx-0">
+                        <div class="thumb col-12 bg-cover col-lg-7 col-xl-8" style="background-image:url({{ entry.instaBlogImage[0].getUrl('single') }})">
+                            <span class="position-absolute zindex2 d-flex align-items-center justify-content-center w-100 h-100"><i class="fa fa-play fa-3x white"></i></span>
+                        </div>
+                        {# <div class="thumb col-12 bg-cover col-lg-7 col-xl-8" style="background-image:url( {{entry.videoLink.media.image}})"></div> #}
+                        <!-- /thumb -->
+
+                        <div class="info col-12 p-3 bg-light p-md-4 col-lg-5 col-xl-4 px-lg-4 d-lg-flex align-items-center">
+                            <div class="px-lg-2">
+                                <h2 class="boldest">
+                                    <small class="h6 bold d-block"><span class="bolder">Fecha</span>: {{ entry.fechaYHora | date("F d, Y") }}</small>
+                                    {{ entry.title }}
+                                </h2>
+                                <p class="mb-1 mb-md-3 mb-lg-0">
+                                    {{ entry.instaBlogBody | striptags | slice(0, 250) ~ '...' }}
+                                </p>
+                            </div>
+                        </div>
+                        <!-- /info -->
+                    </a>
+                {% endfor %}
+            </div>
+            <!-- /main-slider -->
+            <div class="bullets d-none mx-auto bg-light d-lg-flex justify-content-lg-center"></div>
+            <ul class="arrows d-flex small bg-light list-unstyled mb-0 px-1 d-md-none">
+                <li class="px-3 pt-1">
+                    <i class="fa fa-chevron-left text-primary"></i>
+                </li>
+                <li class="px-3 pt-1">
+                    <i class="fa fa-chevron-right text-primary"></i>
+                </li>
+            </ul>
+        </div>
+        <!-- /row -->
+    </section>
+    <section class="grid-inline container">
+        <div class="row pt-4">
+            <h2 class="col-12 mb-3 bolder h4 text-primary text-uppercase my-md-4">
+                Últimos webinars
+            </h2>
+            <div class="col-12 col-lg-8">
+                {% for entry in craft.entries.section('webinars').all() %}
+                    <a href="{{ entry.url }}" class="blog-item row col-12 mb-3 mx-0 px-0 mb-lg-4">
+                        <div class="thumb col-12 bg-cover col-md-4" style="background-image:url(/assets/img/{{ entry.instaBlogImage[0].filename }})">
+                            <span class="position-absolute zindex2 d-flex align-items-center justify-content-center w-100 h-100"><i class="fa fa-play fa-2x white"></i></span>
+                        </div>
+                        <div class="info col-12 px-0 py-3 col-md-8 px-md-4 px-lg-3 py-lg-1">
+                            <h3 class="h5 bold mb-2">
+                                {{ entry.title }}
+                            </h3>
+                            <p class="meta small">
+                                <span class="category-tag bg-black text-white px-2 py-1">
+                                    <span class="bolder">Fecha:</span> {{ entry.fechaYHora | date("F d, Y") }}
+                                </span>
+                            </p>
+                            <p class="descripcion mb-0">
+                                {{ entry.instaBlogBody | striptags | slice(0, 200) ~ '...' }}
+                            </p>
+                        </div>
+                    </a>
+                    <!-- /item -->
+                {% endfor %}
+            </div>
+            {% include 'webinars/partials/_sidebar' %}
+        </div>
+    </section>
+    {% include 'webinars/partials/_grid-slider' %}
+    {% include 'partials/_stock-catalog-newsletter' %}
+{% endblock %}
