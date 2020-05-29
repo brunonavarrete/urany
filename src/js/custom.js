@@ -23,7 +23,6 @@ if ( sessionStorage.getItem('toast-catalogo') != 'closed'){
   });
 } else {
   $("#catalog-notification").addClass("hide");
-  console.log("Bandera hide");
 }
 /* --------------------------
 	Fit images
@@ -262,6 +261,16 @@ $(".navbar-collapse").on("hidden.bs.collapse", function() {
 /* --------------------------
 ------- Toggle grids --------
 -------------------------- */
+$("#all-tab").click(function() {
+    $("[data-grid],[data-info]").fadeIn(150);
+    $("#nav-marca [data-target]")
+      .addClass("btn-outline-primary")
+      .removeClass("btnprimary");
+    $(this)
+      .addClass("btn-primary")
+      .removeClass("btn-outline-primary");
+});
+
 $("#nav-marca [data-target]").click(function() {
   var show = $(this).data("target");
   if ($(this).is(".btn-outline-primary")) {
@@ -270,6 +279,9 @@ $("#nav-marca [data-target]").click(function() {
     $('[data-grid="' + show + '"],[data-info="' + show + '"]').fadeIn(150);
     // toggle classes
     $("#nav-marca [data-target]")
+      .addClass("btn-outline-primary")
+      .removeClass("btnprimary");
+    $("#all-tab")
       .addClass("btn-outline-primary")
       .removeClass("btnprimary");
     $(this)

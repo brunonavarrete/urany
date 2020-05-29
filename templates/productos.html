@@ -6,44 +6,27 @@
 {% extends "_layout" %}
 
 {% block content %}
-	{% set familias = craft.entries.section('familiaProductos').all() %}
-	{% if familias is defined %}
-		<section class="container py-5 mt-lg-5">
-			<div class="row py-5 align-items-center py-md-3">
-				{% for familia in familias %}
-					<h1 class="col-12 my-4">{{familia.title}}</h1>
-					<div class="col-12 row mx-0" data-grid="{{familia.title}}">
-						{% set products = familia.gridProductos.all() %}
-						{% for product in products %}
-							<div class="articulo col-6 mb-4 text-center col-sm-6 col-md-4 col-lg-3" {% if product.descripcion is defined %} data-target="{{ product.modelo }}" {% endif %}>
-								<div class="thumb d-flex justify-content-center align-items-center">
-									{% if product.foto[0] is defined %}
-										<img src="{{ product.foto[0].url }}" alt="{{product.modelo}}">
-									{% else %}
-										<img src="/assets/img/icon-black.png" alt="{{product.modelo}}">
-									{% endif %}
-								</div>
-								<div>
-									<h5 class="small text-uppercase text-muted mt-3">
-										{{ product.marca }}
-									</h5>
-									<h3 class="h5">
-										{{ product.modelo }}
-									</h3>
-								</div>
-							</div>
-						{% endfor %}
-					</div>
-				{% endfor %}
-				<div class="col-12 text-center">
-					<a href="#" data-chat="open" class="btn btn-primary mt-5 text-uppercase">
-						Cotizar con un asesor
-					</a>
+	<section class="container py-5 mt-lg-5">
+		<div class="row py-5 align-items-center py-md-3">
+			{% set categorias = craft.categories.group('categoriaDeProductos').all() %}
+			{% for categoria in categorias %}
+				<h1 class="col-12 my-4">{{categoria.title}}</h1>
+				{% set entries = craft.entries.section('productos').relatedTo(categoria) %}
+				<div class="col-12 row mx-0" data-grid="{{categoria.title}}">
+					{% for producto in entries %}
+						{% include 'partials/_product-thumb' %}
+					{% endfor %}
 				</div>
+			{% endfor %}
+			<div class="col-12 text-center">
+				<a href="#" data-chat="open" class="btn btn-primary mt-5 text-uppercase">
+					Cotizar con un asesor
+				</a>
 			</div>
-		</section>
-	{% endif %}
-	{% if entry.catalogo is defined %}
+		</div>
+	</section>
+
+	{# {% if entry.catalogo is defined %}
 		{% set color = entry.catalogo[0].fondo %}
 		{% set portada = entry.catalogo[0].portada[0].url %}
 		<section class="container-fluid py-md-5" style="background-image: linear-gradient(-180deg, #881626 0%, #111 100%);">
@@ -73,7 +56,8 @@
 			</div>
 			<!-- /container -->
 		</section>
-	{% endif %}
+	{% endif %} #}
 	{% include 'partials/_subscribe' %}
 	{% include 'partials/_modal-marca' %}
+
 {% endblock %}

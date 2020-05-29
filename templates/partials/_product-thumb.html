@@ -1,0 +1,18 @@
+<div class="articulo col-6 mb-4 text-center col-sm-6 col-md-4 col-lg-3" data-info="{{producto.productoMarca.one().title}}">
+	<a href="{{producto.url}}" class="text-body">
+		<div class="thumb d-flex justify-content-center align-items-center">
+			{% if producto.instaBlogImage[0] is defined %}
+				<img src="{{ producto.instaBlogImage[0].getUrl('productThumb') }}" alt="{{producto.productoCategoria.one().title ?? ''}} {{producto.title}} {{ producto.productoMarca.one().title }}">
+			{% else %}
+				<img src="/assets/img/icon-black.png" alt="{{producto.title}}">
+			{% endif %}
+		</div>
+		<div>
+			<h3 class="small text-uppercase">
+				{{ producto.title }}
+			</h3>
+			<p class="mb-2">{{ producto.productoMarca.one().title }}</p>
+			<p class="mb-0 h5 small">{{producto.productoCategoria.one().title ?? ''}}</p>
+		</div>
+	</a>
+</div>
