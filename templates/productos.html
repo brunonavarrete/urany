@@ -10,9 +10,10 @@
 		<div class="row py-5 align-items-center py-md-3">
 			{% set categorias = craft.categories.group('categoriaDeProductos').all() %}
 			{% for categoria in categorias %}
-				<h1 class="col-12 my-4">{{categoria.title}}</h1>
+				
 				{% set entries = craft.entries.section('productos').relatedTo(categoria) %}
-				<div class="col-12 row mx-0" data-grid="{{categoria.title}}">
+				<div class="row my-4 mx-0" data-grid="{{categoria.title}}">
+					<h1 class="col-12 h2 text-uppercase">{{categoria.title}}</h1>
 					{% for producto in entries %}
 						{% include 'partials/_product-thumb' %}
 					{% endfor %}
