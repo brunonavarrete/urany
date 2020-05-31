@@ -10,7 +10,8 @@
 		<div class="row py-5 align-items-center py-md-3">
 
 			{% set categorias = craft.categories.group('categoriaDeProductos').all() %}
-
+{# 			{% paginate craft.entries.section('blog').limit(10) as entries %} #}
+			
 			{% for categoria in categorias %}
 				
 				{% set entries = craft.entries.section('productos').relatedTo(categoria) %}

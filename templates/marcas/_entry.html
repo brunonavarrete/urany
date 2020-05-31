@@ -43,14 +43,130 @@
                             </div>
                         {% endif %}        
 					{% endif %}
-					<div class="col-12 {% if fila.imagen[0]|length >= 1 %}col-md-7 ml-md-auto col-lg-6{% else %} {% if entry.slug == 'itoh-denki' %} col-lg-6 {% else %} col-lg-7 {% endif %} {% endif %} mx-lg-auto">
+					<div class="col-12 {% if fila.imagen|length >= 1 %}col-md-7 ml-md-auto col-lg-6{% else %} {% endif %} {% if entry.slug == 'itoh-denki' %} col-lg-6 {% else %} col-lg-7 {% endif %} mx-lg-auto">
 						{{ fila.texto }}
 					</div>
 				</div>
 			{% endfor %}
 		</section>
 	{% endif %}
-	{% set familias = craft.entries.section('familiaProductos').search('marca:'~entry.title).all() %}
+
+	{% set productos = craft.entries.section('productos').relatedTo(entry).all() %}
+	{# {% set stocks = craft.entries.section('stockDeProductos') %} #}
+	{% set count = 0 %}
+	
+	{% set tabs = [] %}
+	{% for producto in productos %}
+		{% set newElem = {'title': producto.productoCategoria.one().title, 'id': producto.productoCategoria.one().id, 'body': producto.productoCategoria.one().body } %}
+		{% if newElem not in tabs %}
+			{% set tabs = tabs|merge([newElem]) %}	
+			{% set count = count + 1 %}
+		{% endif %}
+	{% endfor %}
+
+	{# {% set categorias = craft.categories.group('categoriaDeProductos').relatedTo(entry).all() %} #}
+	<section class="container pb-5">
+		<div class="row py-5 align-items-center py-md-3">
+			<nav class="col-12 mb-5" id="nav-marca">
+				<ul class="list-unstyled row mx-0 mb-0">
+					{% for tab in tabs %}
+						<li class="col-12 btn {% if loop.first %}btn-primary{% else %}btn-outline-primary{% endif %} text-uppercase col-md-auto mr-md-3 mb-md-3" data-target="{{ tab.title }}">
+							{{ tab.title }}
+						</li>
+						{% set count = count + 1 %}
+					{% endfor %}
+				</ul>
+			</nav>
+
+			{% set count = 0 %}
+			{% for tab in tabs %}
+				<div class="col-12 mb-4" style="{% if (count == 0 and query == '') or ( query == tab.title|lower ) %}display:block;{% else %}display:none;{% endif %}" data-info="{{tab.title}}">
+					<div class="row align-items-center">
+						<div class="col-lg-6">
+							<h2 class="h3 text-uppercase">
+								{{ tab.title }}
+							</h2>
+							<div class="cuerpo">
+                                {{ tab.body }}
+							</div>
+						</div>
+						{# {% if familia.instaBlogImage is not empty %}
+							<div class="col-lg-6">
+                                {% if familia.instaBlogImage|length > 1 %}
+                                    <div class="slider-familias">
+                                        {% for image in familia.instaBlogImage.all() %}
+                                            <img src="{{ image.getUrl('small') }}" alt="{{ familia.title }}" class="img-fluid">                                                
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+									<img src="{{ familia.instaBlogImage.one().getUrl('small') }}" alt="{{ familia.title }}" class="img-fluid">
+                                {% endif %}
+							</div>
+                        {% endif %}
+                        {% if familia.tablaContenido|length > 0 %}
+                            <div class="brand-table__container col-12 table-responsive my-5">
+                                {{familia.tablaContenido}}
+                            </div>
+                        {% endif %} #}
+					</div>
+				</div>
+
+				<div class="col-12 row mx-0" style="{% if (count == 0 and query == '') or ( query == tab.title|lower ) %}display:flex;{% else %}display:none;{% endif %}" data-grid="{{tab.title}}">
+
+					{% set entries = craft.entries.section('productos').relatedTo(tab.id) %}
+					{% for producto in entries %}
+						<div class="articulo col-6 mb-4 text-center col-sm-6 col-md-4 col-lg-3">
+							<a href="{{producto.url}}" class="text-body">
+								<div class="thumb d-flex justify-content-center align-items-center">
+									{% if producto.instaBlogImage[0] is defined %}
+										<img src="{{ producto.instaBlogImage[0].getUrl('productThumb') }}" alt="{{producto.productoCategoria.one().title ?? ''}} {{producto.title}} {{ producto.productoMarca.one().title }}">
+									{% else %}
+										<img src="/assets/img/icon-black.png" alt="{{producto.productoCategoria.one().title ?? ''}} {{producto.title}} {{ producto.productoMarca.one().title }}">
+									{% endif %}
+								</div>
+								<div>
+									<h3 class="h5 text-uppercase">
+										{{ producto.title }}
+									</h3>
+									<p class="mb-2">{{ producto.productoMarca.one().title }}</p>
+									<p class="mb-0 h5 small">{{producto.productoCategoria.one().title ?? ''}}</p>
+								</div>
+							</a>
+						</div>
+					{% endfor %}
+					{# {% set productos = familia.gridProductos.all() %}
+					{% for product in products %}
+						<div class="articulo col-12 mb-4 text-center col-sm-6 col-md-4" {% if (product.description is defined or product.catalogo|length > 0) %} data-target="{{ product.modelo }}" {% endif %}>
+							<div class="thumb d-flex justify-content-center align-items-center">
+								{% if product.foto[0]|length > 0 %}
+									<img src="{{ product.foto[0].url }}" alt="{{product.title}}">
+								{% else %}
+									<img src="/assets/img/icon-black.png" alt="{{product.title}}">
+								{% endif %}
+							</div>
+							<div>
+								<h5 class="small text-uppercase text-muted mt-3">
+									{{ product.marca }}
+								</h5>
+								<h3 class="h5">
+									{{ product.modelo }}
+								</h3>
+							</div>
+						</div>
+					{% endfor %} #}
+				</div>
+				{% set count = count + 1 %}
+
+			{% endfor %}
+			<div class="col-12 text-center">
+				<a class="btn btn-primary mt-5 text-uppercase" data-chat="open" href="#">
+					Cotizar con un asesor
+				</a>
+			</div>
+		</div>
+	</section>
+
+	{# {% set familias = craft.entries.section('familiaProductos').search('marca:'~entry.title).all() %}
 	{% if familias|length > 0 %}
 		<section class="container pb-5">
 			<div class="row py-5 align-items-center py-md-3">
@@ -128,7 +244,9 @@
 				</div>
 			</div>
 		</section>
-	{% endif %}
+	{% endif %} #}
+
+
 	{% if entry.catalogo|length > 0 %}
 		{% set color = entry.catalogo[0].fondo %}
 		{% set portada = entry.catalogo[0].portada[0].url %}

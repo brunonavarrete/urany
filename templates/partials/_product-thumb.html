@@ -4,7 +4,7 @@
 			{% if producto.instaBlogImage[0] is defined %}
 				<img src="{{ producto.instaBlogImage[0].getUrl('productThumb') }}" alt="{{producto.productoCategoria.one().title ?? ''}} {{producto.title}} {{ producto.productoMarca.one().title }}">
 			{% else %}
-				<img src="/assets/img/icon-black.png" alt="{{producto.title}}">
+				<img src="/assets/img/icon-black.png" alt="{{producto.productoCategoria.one().title ?? ''}} {{producto.title}} {{ producto.productoMarca.one().title }}">
 			{% endif %}
 		</div>
 		<div>
