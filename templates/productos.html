@@ -21,10 +21,13 @@
 
 			<div class="col-lg-3 mt-4">
 				{% for categoryGroup in navItems.categoryGroups %}
+
 					<h3 class="mb-3 bolder h5 text-primary text-uppercase">{{ categoryGroup.name }}</h5>
+
 					{% if craft.request.isMobileBrowser %}
 						<div class="form-group">
-							<select class="form-control" id="category-select" name="categorias">
+							<select class="form-control" id="category-select-mobile" name="categorias">
+								<option disabled selected >Selecciona una categoría</option>
 								{% for category in attribute(
 									navItems.categories, categoryGroup.handle
 									) %}
@@ -34,14 +37,29 @@
 							</select>
 						</div>
 					{% else %}
-						<ul class="pl-4">
+						<div class="form-group">	
+							<input type="text" id="search-list" class="form-control" placeholder="Busca rápida...">
+						</div>
+						<ul id="category-select" class="pl-4 clean-ul">
 							{% for category in attribute(
 								navItems.categories, categoryGroup.handle
 								) %}
-								<li class="{% if category.active %}active{% endif %}">
-									<a href="{{ url('productos'~category.url.add) }}" class="add btn pl-0 text-left {% if category.active %}bolder{% endif %}">{{ category.title}}</a>
-									{% if category.active %} <a href="{{ url('productos'~category.url.remove) }}" class="remove pl-1 btn text-primary" title="Quitar"><i class="fa fa-times"></i></a> {% endif %}
+								{% if category.active %}
+								<li class="active">
+									<a href="{{ url('productos'~category.url.add) }}" class="add btn pl-0 text-left bolder">{{ category.title}}</a>
+									<a href="{{ url('productos'~category.url.remove) }}" class="remove pl-1 btn text-primary" title="Quitar"><i class="fa fa-times"></i></a>
 								</li>
+								<hr>
+								{% endif %}
+							{% endfor %}
+							{% for category in attribute(
+								navItems.categories, categoryGroup.handle
+								) %}
+								{% if category.active %} {% else %}
+								<li class="no-active">
+									<a href="{{ url('productos'~category.url.add) }}" class="add btn pl-0 text-left">{{ category.title}}</a>
+								</li>
+								{% endif %}
 							{% endfor %}
 						</ul>
 					{% endif %}
@@ -56,9 +74,13 @@
 								{% for category in navItems.activeCategories %}
 									{% set relationParam = relationParam|merge([{ targetElement:category }]) %}
 									<h1 class="h2 text-uppercase mt-4 mb-0">{{ category.title }}</h1>
-									<span><a href="{{ url('productos'~category.url.remove) }}" class="text-primary">< Ver todas </a></span>
+									<span><a href="{{ url('productos'~category.url.remove) }}" class="text-primary">< Todos los productos </a></span>
 									
 								{% endfor %}
+							</nav>
+						{% else %}
+							<nav>
+								<h1 class="h2 text-uppercase mt-4 mb-0">Todos los productos</h1>
 							</nav>
 						{% endif %}
 					</div>

@@ -251,6 +251,9 @@ b.red{
 
 .clean-ul {
   list-style-type: none;
+  li {
+    list-style: initial;
+  }
 }
 
 /* 

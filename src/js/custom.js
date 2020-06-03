@@ -27,13 +27,22 @@ if ( sessionStorage.getItem('toast-catalogo') != 'closed'){
 /* --------------------------
   Product category mobile
 -------------------------- */
-$('#category-select').on('change', function () {
+$('#category-select-mobile').on('change', function () {
     var url = $(this).val(); // get selected value
     if (url) { // require a URL
         window.location = url; // redirect
     }
     return false;
-  });
+});
+/* --------------------------
+  Product category desktop search
+-------------------------- */
+$("#search-list").on("keyup", function() {
+  var value = this.value.toLowerCase().trim();
+  $("#category-select .no-active").show().filter(function() {
+    return $(this).text().toLowerCase().trim().indexOf(value) == -1;
+  }).hide();
+});
 /* --------------------------
 	Fit images
 -------------------------- */
