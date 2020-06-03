@@ -102,9 +102,22 @@
             </div>
         </div>
 
-        {% set currentCategory = entry.productoCategoria %}
-        {# {% set stocks = craft.entries.relatedTo(currentCategory).stock(':notempty:') %} #}
-		{% set stocks = craft.entries.relatedTo(currentCategory).id('not ' ~ entry.id).limit(8) %}
+		{% set stocks = craft.entries({
+		    relatedTo: entry.productoCategoria.one(),
+		    id: 'not ' ~ entry.id,
+		    limit: 8,
+		    orderBy: 'title asc'
+		}) %}
+
+		{% if stocks|length < 1 %}
+			{% set stocks = craft.entries({
+		    relatedTo: entry.productoMarca.one(),
+		    id: 'not ' ~ entry.id,
+		    limit: 8,
+		    orderBy: 'title asc'
+		}) %}
+		{% endif %}
+
 		{% set count = 0 %}
 			
 			{% set tabs = [] %}

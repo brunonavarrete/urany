@@ -6,12 +6,110 @@
 {% extends "_layout" %}
 
 {% block content %}
-	<section class="container py-5 mt-lg-5">
-		<div class="row py-5 align-items-center py-md-3">
+	
+	{% set navItems = craft.facetedNavigation.buildFacets(['categoriaDeProductos']) %}
+	{% set relationParam = ['or'] %}
+	{% set params = {
+		section: 'productos',
+		orderBy: 'title asc'
+		}
+	%}
 
-			{% set categorias = craft.categories.group('categoriaDeProductos').all() %}
-{# 			{% paginate craft.entries.section('blog').limit(10) as entries %} #}
-			
+
+	<section class="container-fluid py-5 mt-lg-5">
+		<div class="row py-5 py-md-3">
+
+			<div class="col-lg-3 mt-4">
+				{% for categoryGroup in navItems.categoryGroups %}
+					<h3 class="mb-3 bolder h5 text-primary text-uppercase">{{ categoryGroup.name }}</h5>
+					{% if craft.request.isMobileBrowser %}
+						<div class="form-group">
+							<select class="form-control" id="category-select" name="categorias">
+								{% for category in attribute(
+									navItems.categories, categoryGroup.handle
+									) %}
+										<option {% if category.active %}selected{% endif %}  value="{{ url('productos'~category.url.add) }}">{{ category.title}}</option>
+										
+								{% endfor %}
+							</select>
+						</div>
+					{% else %}
+						<ul class="pl-4">
+							{% for category in attribute(
+								navItems.categories, categoryGroup.handle
+								) %}
+								<li class="{% if category.active %}active{% endif %}">
+									<a href="{{ url('productos'~category.url.add) }}" class="add btn pl-0 text-left {% if category.active %}bolder{% endif %}">{{ category.title}}</a>
+									{% if category.active %} <a href="{{ url('productos'~category.url.remove) }}" class="remove pl-1 btn text-primary" title="Quitar"><i class="fa fa-times"></i></a> {% endif %}
+								</li>
+							{% endfor %}
+						</ul>
+					{% endif %}
+				{% endfor %}
+			</div>
+
+			<div class="col-lg">
+				<div class="row">
+					<div class="col-12">
+						{% if navItems.activeCategories|length %}
+							<nav>
+								{% for category in navItems.activeCategories %}
+									{% set relationParam = relationParam|merge([{ targetElement:category }]) %}
+									<h1 class="h2 text-uppercase mt-4 mb-0">{{ category.title }}</h1>
+									<span><a href="{{ url('productos'~category.url.remove) }}" class="text-primary">< Ver todas </a></span>
+									
+								{% endfor %}
+							</nav>
+						{% endif %}
+					</div>
+
+					{% if relationParam|length > 1 %}
+					    {% set params = params|merge({relatedTo: relationParam}) %}
+					{% endif %}
+					{% set productos = craft.entries(params) %}
+
+					{% paginate productos.limit(36) as pageInfo, pageEntries %}
+
+					<div class="col-12 my-4 mx-0">
+						<div class="row">
+							
+							{% for producto in pageEntries %}
+								{% include 'partials/_product-thumb' %}
+							{% endfor %}
+						</div>
+					</div>
+
+					<div class="col-12 justify-content-center d-flex">
+						{# <a href="{{ pageInfo.firstUrl }}"></a> #}
+					    {% if pageInfo.prevUrl %}<a href="{{ pageInfo.prevUrl }}" class="px-2 text-primary btn p-0"><i class="fa fa-chevron-left"></i></a>{% endif %}
+
+					    {% for page, url in pageInfo.getPrevUrls(5) %}
+					        <a href="{{ url }}" class="px-2 text-primary btn p-0">{{ page }}</a>
+					    {% endfor %}
+
+					    {% if pageInfo.totalPages > 1 %}
+					    <span class="current px-2 bolder">{{ pageInfo.currentPage }}</span>
+					    {% endif %}
+
+					    {% for page, url in pageInfo.getNextUrls(5) %}
+					        <a href="{{ url }}" class="px-2 text-primary btn p-0">{{ page }}</a>
+					    {% endfor %}
+
+					    {% if pageInfo.nextUrl %}<a href="{{ pageInfo.nextUrl }}" class="px-2 text-primary btn p-0"><i class="fa fa-chevron-right"></i></a>{% endif %}
+					    {# <a href="{{ pageInfo.lastUrl }}">Last Page</a> #}
+					</div>
+
+					<div class="col-12 text-center">
+						<a href="#" data-chat="open" class="btn btn-primary mt-5 text-uppercase">
+							Cotizar con un asesor
+						</a>
+					</div>
+
+				</div>
+			</div>
+
+			{# {% set categorias = craft.categories.group('categoriaDeProductos').all() %}
+
 			{% for categoria in categorias %}
 				
 				{% set entries = craft.entries.section('productos').relatedTo(categoria) %}
@@ -22,11 +120,8 @@
 					{% endfor %}
 				</div>
 			{% endfor %}
-			<div class="col-12 text-center">
-				<a href="#" data-chat="open" class="btn btn-primary mt-5 text-uppercase">
-					Cotizar con un asesor
-				</a>
-			</div>
+ #}
+
 		</div>
 	</section>
 

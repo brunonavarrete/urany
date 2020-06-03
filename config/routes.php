@@ -19,5 +19,6 @@
  */
 
 return [
+	'productos/<path:.*?>' => ['template' => 'productos']
 
 ];

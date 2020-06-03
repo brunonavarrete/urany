@@ -25,6 +25,16 @@ if ( sessionStorage.getItem('toast-catalogo') != 'closed'){
   $("#catalog-notification").addClass("hide");
 }
 /* --------------------------
+  Product category mobile
+-------------------------- */
+$('#category-select').on('change', function () {
+    var url = $(this).val(); // get selected value
+    if (url) { // require a URL
+        window.location = url; // redirect
+    }
+    return false;
+  });
+/* --------------------------
 	Fit images
 -------------------------- */
 function fitImages() {
