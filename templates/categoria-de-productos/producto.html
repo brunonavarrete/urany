@@ -32,7 +32,7 @@
 				</div>
 			</div>
 			<div class="col-md-10 d-none d-md-block"><br></div>
-			<div class="col-6 col-md-4 order-2 order-md-0 justify-content-center d-flex">
+			<div class="col-6 col-md-4 order-2 order-md-0 justify-content-center d-flex align-items-center">
 				{% if entry.instaBlogImage.one() %}
 					<img src="{{ entry.instaBlogImage.one().url }}" alt="{{entry.title}}" class="img-fluid">
 				{% endif %}
