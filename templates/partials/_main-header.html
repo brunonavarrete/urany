@@ -102,7 +102,7 @@
 					</div>
 				</li>
 				{% if currentSite.language == 'es-MX' %}
-				<li class="parent nav-item px-0 col-lg-auto px-lg-3 {% if 'industrias' in currentPath %}active{% endif %}">
+					<li class="nav-item px-0 col-lg-auto px-lg-3 {% if 'productos' in currentPath %}active{% endif %}">
 						<a class="nav-link d-inline-block text-uppercase position-relative px-lg-0" href="{{ siteUrl('productos') }}">
 							Productos
 							<i class="d-none d-xl-inline fa fa-sort-down ml-2"></i>
@@ -204,7 +204,7 @@
 	{% if 'Blog' in title %}
 		<nav id="blog-nav" class="bg-primary">
 			<div class="container position-relative pr-5">
-				<i class="fa fa-chevron-down text-white p-3 d-lg-none" data-toggle="collapse" data-target="#links"></i>
+				<i class="fa fa-chevron-down text-white p-3 d-lg-none float-right btn" data-toggle="collapse" data-target="#links"></i>
 				<h1 class="py-3 mb-0 bolder h6 text-white d-lg-none">
 					{{ title }}
 				</h1>
@@ -232,7 +232,7 @@
 	{% if 'Webinars' in title %}
 		<nav id="blog-nav" class="bg-primary">
 			<div class="container position-relative pr-5">
-				<i class="fa fa-chevron-down text-white p-3 d-lg-none" data-toggle="collapse" data-target="#links"></i>
+				<i class="fa fa-chevron-down text-white p-3 d-lg-none float-right btn" data-toggle="collapse" data-target="#links"></i>
 				<h1 class="py-3 mb-0 bolder h6 text-white d-lg-none">
 					{{ title }}
 				</h1>
