@@ -57,6 +57,8 @@
     </section>
     
     <section>
+        {% set grid = entry.seleccionadorDeProductosParaIndustria %}
+        {% if grid|length > 0 %}
         <div class="container">
             <div class="row pt-3 pb-5 align-items-center">
                 <h2 class="col-12 h3 text-uppercase col-lg-3 align-self-start">
@@ -64,7 +66,6 @@
                 </h2>   
             </div>
             <div class="col-12 row mx-0">
-                {% set grid = entry.seleccionadorDeProductosParaIndustria %}
                 {% for categoria in grid %}
                     <div class="articulo col-6 mb-4 text-center col-sm-6 col-md-4 col-lg-3">
                         <a href="{{categoria.url}}" class="text-body">
@@ -85,6 +86,7 @@
                 {% endfor %}
             </div>
         </div>
+        {% endif %}
     </section>
 
 	{# <section class="container pb-md-5">
