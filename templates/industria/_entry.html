@@ -54,7 +54,38 @@
 				</div>
 			</div>
 		</div>
-	</section>
+    </section>
+    
+    <section>
+        <div class="container">
+            <div class="row pt-3 pb-5 align-items-center">
+                <h2 class="col-12 h3 text-uppercase col-lg-3 align-self-start">
+                    Productos relacionados
+                </h2>   
+            </div>
+            <div class="col-12 row mx-0">
+                {% set grid = entry.seleccionadorDeProductosParaIndustria %}
+                {% for categoria in grid %}
+                    <div class="articulo col-6 mb-4 text-center col-sm-6 col-md-4 col-lg-3">
+                        <a href="{{categoria.url}}" class="text-body">
+                            <div class="thumb d-flex justify-content-center align-items-center">
+                                {% if categoria.fotoEncabezado is defined %}
+                                    <img src="{{ categoria.fotoEncabezado.one().getUrl('productThumb') }}" alt="{{categoria.title ?? ''}}">
+                                {% else %}
+                                    <img src="/assets/img/icon-black.png" alt="{{categoria.title ?? ''}}">
+                                {% endif %}
+                            </div>
+                            <div>
+                                <h3 class="h5 text-uppercase">
+                                    {{ categoria.title }}
+                                </h3>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
 
 	{# <section class="container pb-md-5">
 			<div class="row pt-3 pb-5 align-items-center">
