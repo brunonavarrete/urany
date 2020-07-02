@@ -4,7 +4,14 @@
 
 {% extends "_layout" %}
 
-
+{% set isStock = false %}
+{% set paginaStock = craft.entries.section('stock').one() %}
+{% set stockEntries = paginaStock.productosDeStock %}
+{% for stockEntry in stockEntries %}
+	{% if stockEntry.id == entry.id %}
+		 {% set isStock = true %}
+	{% endif %}
+{% endfor %}
 
 {% block content %}
 	
@@ -39,8 +46,13 @@
 			</div>
 			<div class="col-12 col-md-8 order-0 order-md-3">
 				<div class="row">
-					<div class="col-12 col-md-6 align-self-end mt-4 mt-md-0">
+					<div class="col-12 col-md-6 align-self-end mt-4 mt-md-0 d-flex align-items-center">
 						<p class="mb-0 h1">{{entry.title}}</p>
+						{% if isStock %}
+						<span class="isStock align-items-center d-flex mx-3">
+							<p class="mb-0 mr-1">En existencia</p><i class="fas fa-check-circle"></i>
+						</span>
+						{% endif %}
 					</div>
 					<div class="col-12 col-md-6 text-md-right align-self-end">
 						<p class="mb-0 h5">{{entry.productoCategoria.one().title ?? ''}}</p>
@@ -88,26 +100,24 @@
             <div class="col-12 mt-5 order-4 stock-table__container table-responsive">
 				{# example table in example-table.txt #}
                 {{ entry.contenidoDeProducto }}
-                {% set paginaStock = craft.entries.section('stock').one() %}
-                {% set stockEntries = paginaStock.productosDeStock %}
-                {% for stockEntry in stockEntries %}
-                	{% if stockEntry.id == entry.id %}
-                		<div class="span">✓: Artículos disponibles en Stock</div>
-                	{% endif %}
-                {% endfor %}
 
-                {# {% if entry.stock %}
+                {% if isStock %}
                     <div class="span">✓: Artículos disponibles en Stock</div>
-                {% endif %} #}
+                {% endif %}
             </div>
         </div>
 
-		{% set stocks = craft.entries({
-		    relatedTo: entry.productoCategoria.one(),
-		    id: 'not ' ~ entry.id,
-		    limit: 8,
-		    orderBy: 'title asc'
-		}) %}
+		{% if isStock %}
+			{% set paginaStock = craft.entries.section('stock').one() %}
+            {% set stocks = paginaStock.productosDeStock.id('not ' ~ entry.id).limit(8).order('title asc') %}
+		{% else %}
+			{% set stocks = craft.entries({
+			    relatedTo: entry.productoCategoria.one(),
+			    id: 'not ' ~ entry.id,
+			    limit: 8,
+			    orderBy: 'title asc'
+			}) %}
+		{% endif %}
 
 		{% if stocks|length < 1 %}
 			{% set stocks = craft.entries({
@@ -115,7 +125,7 @@
 		    id: 'not ' ~ entry.id,
 		    limit: 8,
 		    orderBy: 'title asc'
-		}) %}
+			}) %}
 		{% endif %}
 
 		{% set count = 0 %}
@@ -132,24 +142,31 @@
 		<div class="col-12">
 			<div class="row my-5 pt-5">
 				<div class="col-12">
-					<p class="h2">Más productos</p>
+
+	                {% if isStock == false %}
+                		<p class="h2">Más productos</p>
+                	{% else %}
+                		<p class="h2">Más productos en existencia</p>
+                	{% endif %}
+
 				</div>
+
 				<nav class="col-12 mb-5" id="nav-marca">
-				<ul class="list-unstyled row mx-0 mb-0">
-					{% for tab in tabs %}
-						{% if count > 1 %}
-							{% if loop.first %}
-								<li class="col-12 btn btn-primary text-uppercase col-md-auto mr-md-3 mb-md-3" id="all-tab">
-									Todos
-								</li>
+					<ul class="list-unstyled row mx-0 mb-0">
+						{% for tab in tabs %}
+							{% if count > 1 %}
+								{% if loop.first %}
+									<li class="col-12 btn btn-primary text-uppercase col-md-auto mr-md-3 mb-md-3" id="all-tab">
+										Todos
+									</li>
+								{% endif %}
+									<li class="col-12 btn btn-outline-primary text-uppercase col-md-auto mr-md-3 mb-md-3" data-target="{{ tab.title }}">
+										{{ tab.title }}
+									</li>
 							{% endif %}
-								<li class="col-12 btn btn-outline-primary text-uppercase col-md-auto mr-md-3 mb-md-3" data-target="{{ tab.title }}">
-									{{ tab.title }}
-								</li>
-						{% endif %}
-					{% endfor %}
-				</ul>
-			</nav>
+						{% endfor %}
+					</ul>
+				</nav>
 
 
 			<div class="col-12">

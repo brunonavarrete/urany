@@ -10,14 +10,14 @@ import 'bootstrap';
 import 'slick-carousel';
 //import '@fortawesome/fontawesome-pro/js/all';
 import {dom, library} from '@fortawesome/fontawesome-svg-core';
-import { faFacebook, faFacebookF, faFacebookSquare, faWhatsapp, faTwitterSquare, faLinkedinIn, faGooglePlusSquare } from '@fortawesome/free-brands-svg-icons';
+import { faFacebook, faFacebookF, faFacebookSquare, faWhatsapp, faTwitterSquare, faLinkedinIn, faYoutube, faGooglePlusSquare } from '@fortawesome/free-brands-svg-icons';
 import { faSearch, faChevronDown, faChevronLeft, faChevronRight, faEnvelope, faPhone,
-		 faSortDown, faPlay, faTimes, faComment, faCircleNotch } from '@fortawesome/pro-solid-svg-icons';
+		 faSortDown, faPlay, faTimes, faComment, faCircleNotch, faCheckCircle } from '@fortawesome/pro-solid-svg-icons';
 import {  } from '@fortawesome/pro-regular-svg-icons';
 
 library.add(faSearch, faChevronDown, faChevronLeft, faChevronRight, faEnvelope, faPhone,
-	faSortDown, faPlay, faTimes, faFacebookSquare, faComment, faCircleNotch,
-	faFacebook, faFacebookF, faWhatsapp, faTwitterSquare, faLinkedinIn, faGooglePlusSquare);
+	faSortDown, faPlay, faTimes, faFacebookSquare, faComment, faCircleNotch, faCheckCircle,
+	faFacebook, faFacebookF, faWhatsapp, faTwitterSquare, faLinkedinIn, faYoutube, faGooglePlusSquare);
 
 dom.i2svg();
 window.FontAwesomeConfig = {
