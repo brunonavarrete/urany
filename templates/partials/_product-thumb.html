@@ -1,5 +1,21 @@
-<div class="articulo col-6 mb-4 text-center col-sm-6 col-md-4 col-lg-3" data-info="{{producto.productoMarca.one().title}}">
+{# --------------- Variables --------------- #}
+{% set isStock = false %}
+{% set paginaStock = craft.entries.section('stock').one() %}
+{% set stockEntries = paginaStock.productosDeStock %}
+{% for stockEntry in stockEntries %}
+	{% if stockEntry.id == producto.id %}
+		 {% set isStock = true %}
+	{% endif %}
+{% endfor %}
+{# ----------------------------------------- #}
+
+<div class="articulo col-6 mb-4 col-sm-6 col-md-4 col-lg-3" data-info="{{producto.productoMarca.one().title}}">
 	<a href="{{producto.url}}" class="text-body">
+		{% if isStock %}
+		<span class="isStock position-absolute align-items-center d-flex align-items-center mr-2">
+			<small class="mr-1">En existencia</small><i class="fas fa-check-circle"></i>
+		</span>
+		{% endif %}
 		<div class="thumb d-flex justify-content-center align-items-center">
 			{% if producto.instaBlogImage[0] is defined %}
 				<img src="{{ producto.instaBlogImage[0].getUrl('productThumb') }}" alt="{{producto.productoCategoria.one().title ?? ''}} {{producto.title}} {{ producto.productoMarca.one().title }}">
@@ -7,7 +23,7 @@
 				<img src="/assets/img/icon-black.png" alt="{{producto.productoCategoria.one().title ?? ''}} {{producto.title}} {{ producto.productoMarca.one().title }}">
 			{% endif %}
 		</div>
-		<div>
+		<div class="text-center">
 			<h3 class="h5 text-uppercase">
 				{{ producto.title }}
 			</h3>

@@ -117,6 +117,19 @@
 					{% for producto in entries %}
 						<div class="articulo col-6 mb-4 text-center col-sm-6 col-md-4 col-lg-3">
 							<a href="{{producto.url}}" class="text-body">
+								{% set isStock = false %}
+								{% set paginaStock = craft.entries.section('stock').one() %}
+								{% set stockEntries = paginaStock.productosDeStock %}
+								{% for stockEntry in stockEntries %}
+									{% if stockEntry.id == producto.id %}
+										 {% set isStock = true %}
+									{% endif %}
+								{% endfor %}
+								{% if isStock %}
+									<span class="isStock position-absolute align-items-center d-flex align-items-center mr-2">
+										<small class="mr-1">En existencia</small><i class="fas fa-check-circle"></i>
+									</span>
+								{% endif %}
 								<div class="thumb d-flex justify-content-center align-items-center">
 									{% if producto.instaBlogImage[0] is defined %}
 										<img src="{{ producto.instaBlogImage[0].getUrl('productThumb') }}" alt="{{producto.productoCategoria.one().title ?? ''}} {{producto.title}} {{ producto.productoMarca.one().title }}">
