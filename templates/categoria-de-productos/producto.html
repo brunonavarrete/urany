@@ -109,7 +109,7 @@
 
 		{% if isStock %}
 			{% set paginaStock = craft.entries.section('stock').one() %}
-            {% set stocks = paginaStock.productosDeStock.id('not ' ~ entry.id).limit(8).order('title asc') %}
+            {% set stocks = paginaStock.productosDeStock.id('not ' ~ entry.id).order('title asc') %}
 		{% else %}
 			{% set stocks = craft.entries({
 			    relatedTo: entry.productoCategoria.one(),

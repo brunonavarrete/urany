@@ -12,7 +12,7 @@
 			</span>
 		</button>
 		<div class="px-3 collapse navbar-collapse d-lg-flex flex-lg-column" id="navbarSupportedContent">
-			<nav id="main-nav" class="position-relative mt-4 container navbar-nav row mx-0 order-1 py-lg-3 my-lg-0 mx-lg-auto align-items-md-center">
+			<nav id="main-nav" class="position-relative mt-4 container-fluid navbar-nav row mx-0 order-1 py-lg-3 my-lg-0 mx-lg-auto align-items-md-center">
 
 				<div id="buscar_nav">
 					<form action="{{ siteUrl }}buscar" method="GET" class="input-group mb-2 mb-sm-0">
@@ -34,7 +34,7 @@
 						<i class="fa fa-times"></i>
 					</div>
 				{% endif %}
-				<li class="nav-item logo px-0 col-lg-auto px-lg-3 mr-lg-auto d-lg-flex flex-lg-column">
+				<li class="nav-item logo px-0 col-lg-auto mr-lg-auto d-lg-flex flex-lg-column">
 					<a
 						class="navbar-brand d-none d-lg-flex align-items-lg-center p-lg-0 my-lg-auto" href="{{ siteUrl }}">
 						{# {% include 'includes/logo-slogan.svg.twig' %} #}
@@ -43,20 +43,13 @@
 						{# <img src="/assets/img/20_rojo.jpg" alt="Urany"> #}
 					</a>
 				</li>
-				{# <li class="nav-item px-0 col-lg-auto px-lg-3 {% if '/' in currentPath %}active{% endif %}">
-								                					<a class="nav-link d-inline-block text-uppercase position-relative px-lg-0" href="{{siteUrl}}{% if locale != 'es-MX' %}?lang={{ locale }}{% endif %}">
-								                						Inicio
-								                						{% if '/' in currentPath %} <span class="sr-only">(current)</span> {% endif %}
-								                					</a>
-								                				</li> #}
-				<li class="nav-item px-0 col-lg-auto px-lg-3 {% if 'nosotros' in currentPath %}active{% endif %}">
-					<a class="nav-link d-inline-block text-uppercase position-relative px-lg-0" href="{{ siteUrl('nosotros') }}">
+				<li class="nav-item px-0 col-lg-auto px-lg-3 {% if 'nosotros' in currentPath %}active{% endif %} d-block d-md-none">
+					<a class="nav-link d-inline-block text-uppercase position-relative px-lg-0" href="{{siteUrl('nosotros')}}">
 						Nosotros
-						{% if 'nosotros' in currentPath %}
-							<span class="sr-only">(current)</span>
-						{% endif %}
+						{% if 'nosotros' in currentPath %} <span class="sr-only">(current)</span> {% endif %}
 					</a>
 				</li>
+
 				<li class="parent nav-item px-0 col-lg-auto px-lg-3 {% if 'marcas' in currentPath %}active{% endif %}">
 					<a class="nav-link d-inline-block text-uppercase position-relative px-lg-0" href="{{ siteUrl('marcas') }}">
 						Marcas
@@ -130,6 +123,14 @@
 						</div>
 					</li>
 				{% endif %}
+				<li class="nav-item px-0 col-lg-auto px-lg-3 {% if 'stock-de-productos' in currentPath %}active{% endif %}">
+					<a class="nav-link d-inline-block text-uppercase position-relative px-lg-0" href="{{ siteUrl('stock-de-productos') }}">
+						Productos de existencia
+						{% if 'stock-de-productos' in currentPath %}
+							<span class="sr-only">(current)</span>
+						{% endif %}
+					</a>
+				</li>
 				<li class="nav-item px-0 col-lg-auto px-lg-3 {% if 'blog' in currentPath %}active{% endif %} border-0">
 					<a class="nav-link d-inline-block text-uppercase position-relative px-lg-0" href="{{ siteUrl('blog') }}">
 						Blog
@@ -138,7 +139,7 @@
 						{% endif %}
 					</a>
 				</li>
-				<li class="nav-item px-0 col-lg-auto px-lg-3 {% if 'calculo' in currentPath %}active{% endif %} border-0">
+				<li class="nav-item px-0 col-lg-auto px-lg-3 {% if 'calculo' in currentPath %}active{% endif %} border-0 d-block d-sm-block d-md-block d-lg-none d-xl-block">
 					<a class="nav-link d-inline-block text-uppercase position-relative px-lg-0" href="{{ siteUrl('calculo') }}">
 						Cálculo
 						{% if 'calculo' in currentPath %}
@@ -156,8 +157,8 @@
 				</li>
 			</nav>
 			<div id="sub-nav" class="row pt-3 py-lg-1 align-self-lg-stretch">
-				<ul class="container nav small flex-row flex-md-row-reverse ml-md-0 mx-lg-auto">
-					<li class="nav-item col-6 col-md-auto order-md-3">
+				<ul class="container-fluid nav small flex-row flex-md-row-reverse ml-md-0 mx-lg-auto">
+					<li class="nav-item col-6 col-md-auto order-md-3 list-group-horizontal">
 						{% if currentSite.language == 'es-CO' %}
 							<a href="tel:+573144377901" class="nav-link px-0 py-1 py-lg-0">
 								<i class="fa fa-phone fa-flip-horizontal mr-2"></i>
@@ -187,23 +188,23 @@
 						</a>
 					</li>
 					
-					<li class="nav-item col-12 col-md-auto mr-lg-0 pr-lg-0">
-						<a href="{{ url('descargas') }}" class="nav-link text-primary p-0 py-lg-0">Descargas</a>
+					<li class="nav-item col-6 my-2 my-md-0 col-md-auto mr-lg-0 pr-lg-0">
+						<a href="{{ url('descargas') }}" class="nav-link sub-links p-0 py-lg-0 text-uppercase"><b>Descargas</b></a>
 					</li>
-					<li class="nav-item col-12 col-md-auto mr-lg-0 pr-lg-0">
-						<a href="{{ url('bolsa-de-trabajo') }}" class="nav-link text-primary p-0 py-lg-0">Bolsa de trabajo</a>
+					<li class="nav-item col-6 my-2 my-md-0 col-md-auto mr-lg-0 pr-lg-0 d-block d-sm-block d-md-block d-lg-none d-xl-block">
+						<a href="{{ url('bolsa-de-trabajo') }}" class="nav-link sub-links p-0 py-lg-0 text-uppercase"><b>Bolsa de trabajo</b></a>
 					</li>
-					<li class="nav-item col-12 col-md-auto mr-lg-0 pr-lg-0">
-						<a href="{{ url('demotruck') }}" class="nav-link text-primary p-0 py-lg-0">Demo truck</a>
+					<li class="nav-item col-6 my-2 my-md-0 col-md-auto mr-lg-0 pr-lg-0">
+						<a href="{{ url('demotruck') }}" class="nav-link sub-links p-0 py-lg-0 text-uppercase">Demo truck</b></a>
 					</li>
-					<li class="nav-item col-12 col-md-auto mr-lg-0 pr-lg-0">
-						<a href="{{ url('integradores') }}" class="nav-link text-primary p-0 py-lg-0">Integradores</a>
+					<li class="nav-item col-6 my-2 my-md-0 col-md-auto mr-lg-0 pr-lg-0 d-none d-md-block">
+						<a href="{{ url('integradores') }}" class="nav-link sub-links p-0 py-lg-0 text-uppercase"><b>Integradores</b></a>
                     </li>
-                    <li class="nav-item col-12 col-md-auto mr-lg-0 pr-lg-0">
-						<a href="{{ url('webinars') }}" class="nav-link text-primary p-0 py-lg-0">Webinars</a>
+                    <li class="nav-item col-6 my-2 my-md-0 col-md-auto mr-lg-0 pr-lg-0">
+						<a href="{{ url('webinars') }}" class="nav-link sub-links p-0 py-lg-0 text-uppercase"><b>Webinars</b></a>
 					</li>
-                    <li class="nav-item col-12 col-md-auto mr-lg-0 pr-lg-0 ml-md-auto">
-						<a href="{{ url('stock-de-productos') }}" class="nav-link text-primary p-0 py-lg-0">Productos en Existencia</a>
+                    <li class="nav-item col-6 my-2 my-md-0 col-md-auto mr-lg-0 pr-lg-0 ml-md-auto d-none d-md-block">
+						<a href="{{ url('Nosotros') }}" class="nav-link sub-links p-0 py-lg-0 text-uppercase"><b>Nosotros</b></a>
 					</li>
 				</ul>
 			</div>

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "054ca1fcde34bbd6d2c2de41a59806a8",
+    "content-hash": "9bf432ee59d24b1a4eb04bd011b73659",
     "packages": [
         {
             "name": "cakephp/core",
@@ -1539,6 +1539,10 @@
             "require": {
                 "craftcms/cms": "^3.0.14"
             },
+            "require-dev": {
+                "phpunit/phpunit": "^5.0",
+                "squizlabs/php_codesniffer": "^2.0"
+            },
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1551,6 +1555,7 @@
                     "flipbox\\craft\\ember\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1690,6 +1695,10 @@
                 "php": ">=7.0",
                 "psr/log": "^1.0.1"
             },
+            "require-dev": {
+                "phpunit/phpunit": "^5.0",
+                "squizlabs/php_codesniffer": "^2.0"
+            },
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1701,6 +1710,7 @@
                     "flipbox\\craft\\psr3\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2869,11 +2879,11 @@
         },
         {
             "name": "nystudio107/craft-seomatic",
-            "version": "3.2.28",
+            "version": "3.3.8",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nystudio107/craft-seomatic/zipball/084ffbe06b117d1f91ed06390055733638571797",
-                "reference": "084ffbe06b117d1f91ed06390055733638571797",
+                "url": "https://api.github.com/repos/nystudio107/craft-seomatic/zipball/0d280c87bba826c3bdffc32c4edd43b273ac2e20",
+                "reference": "0d280c87bba826c3bdffc32c4edd43b273ac2e20",
                 "shasum": ""
             },
             "require": {
@@ -2937,7 +2947,7 @@
                 "docs": "https://nystudio107.com/plugins/seomatic/documentation",
                 "issues": "https://nystudio107.com/plugins/seomatic/support"
             },
-            "time": "2019-10-08T20:56:57+00:00"
+            "time": "2020-06-05T02:41:22+00:00"
         },
         {
             "name": "opis/closure",
@@ -3439,6 +3449,7 @@
                     "Psr\\SimpleCache\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3598,12 +3609,16 @@
                 "php": ">=5.5.0",
                 "psr/http-message": "~1.0"
             },
+            "require-dev": {
+                "zendframework/zend-diactoros": "~1.0"
+            },
             "type": "library",
             "autoload": {
                 "psr-4": {
                     "Relay\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -5819,6 +5834,12 @@
             "provide": {
                 "psr/http-message-implementation": "1.0"
             },
+            "require-dev": {
+                "ext-dom": "*",
+                "ext-libxml": "*",
+                "phpunit/phpunit": "^4.6 || ^5.5",
+                "zendframework/zend-coding-standard": "~1.0.0"
+            },
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -5831,6 +5852,7 @@
                     "Zend\\Diactoros\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-2-Clause"
             ],
