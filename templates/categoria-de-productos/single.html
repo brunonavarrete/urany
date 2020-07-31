@@ -30,12 +30,12 @@
 			</div>
 
 			
-			{% set stocks = craft.entries.relatedTo(category) %}
+			{% set stocks = craft.entries.section('productos').relatedTo(category) %}
 			{% set count = 0 %}
 
 			{% set tabs = [] %}
 			{% for stock in stocks %}
-				{% set newElem = {'title': stock.productoMarca.one().title, 'id': stock.productoMarca.one().id } %}
+				{% set newElem = {'title': stock.productoMarca.one.title, 'id': stock.productoMarca.one.id } %}
 				{% if newElem not in tabs %}
 					{% set tabs = tabs|merge([newElem]) %}	
 					{% set count = count + 1 %}
@@ -60,13 +60,13 @@
 			</nav>
 
 
-			{# <div class="col-12">
+			<div class="col-12">
 				<div class="row">
 					{% for producto in stocks %}
 						{% include 'partials/_product-thumb' %}
 					{% endfor %}
 				</div>
-			</div> #}
+			</div>
 
             
 		</div>
