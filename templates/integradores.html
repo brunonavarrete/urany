@@ -107,7 +107,11 @@
 										<input type="hidden" class="form-control integrador-input" name="message[Integrador][]" placeholder="Integrador" required>
 									</div>
                                     
-
+<div class="g-recaptcha"
+      data-sitekey="{{ craft.recaptcha.sitekey }}"
+      data-callback="onSubmit"
+      data-size="invisible">
+</div>
 									<div class="col-12 my-2 px-4">
 										<a href="" id="" value="Regresar" class=" flip-form-2 btn-outline-block button d-inline-block px-3 py-2 red-discrete-button float-left mt-4"> < Regresar </a>
 										<input type="submit" value="Enviar" class="btn-outline-block button d-inline-block px-3 py-2 red-button float-right mt-4">
