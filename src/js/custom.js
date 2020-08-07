@@ -148,7 +148,6 @@ $(".contact-form").submit(function (e) {
         success: function (response) {
             if (response.success) {
                 revealMessage("Gracias por contactarnos, te contactaremos cuanto antes.", form);
-                console.log("si se pudo ggg")
                 ga("send", {
                     hitType: "pageview",
                     page: "/formulario-enviado",

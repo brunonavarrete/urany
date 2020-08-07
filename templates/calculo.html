@@ -29,16 +29,19 @@
 
 {% block content %}
 
-{% cache %}	
+	{% cache %}
 	<div class="container-fluid mt-n5 pt-2">
 		<div class="row">
 			<div class="col-12 col-md-7 text-right align-self-center">
 				<div class="row mb-5">
-					<div class="col-12 col-md-7 my-5 my-md-0 offset-md-4">
+					<div
+						class="col-12 col-md-7 my-5 my-md-0 offset-md-4">
 						{# <img src="{{ logo }}" alt="Logo URANY" class="img-fluid my-5"> #}
 						<p class="text-primary red-title calc mb-0">Con una tasa de confiabilidad del</p>
 						<p class="big-percentage">99.86%</p>
-						<p class="h5">Somos una empresa con más de <b>30 años de experiencia</b> especializados en generar el análisis, cálculo, selección e implementación de servosistemas.
+						<p class="h5">Somos una empresa con más de
+							<b>30 años de experiencia</b>
+							especializados en generar el análisis, cálculo, selección e implementación de servosistemas.
 						</p>
 						<p class="h5"><br><b>Nuestro cálculo evita riesgos para tu proceso y fallas técnicas</b>; realizamos una simulación en uno o más softwares para determinar una serie de componentes mecánicos para un sistema servo o de control de movimiento.</p>
 						<br>
@@ -59,11 +62,9 @@
 		<div class="row mt-n5">
 			<div class="col-12 col-md-2 px-0 align-self-end d-none d-md-block">
 				<picture>
-				    <source srcset="{{ imagenes[1].getUrl('large') }}"
-				    media="(min-width: 1440px)" />
-				    <source srcset="{{ imagenes[1].getUrl('small') }}"
-				    media="(min-width: 750px)" />
-				    <source srcset="{{ imagenes[1].getUrl('small') }}" />
+					<source srcset="{{ imagenes[1].getUrl('large') }}" media="(min-width: 1440px)"/>
+					<source srcset="{{ imagenes[1].getUrl('small') }}" media="(min-width: 750px)"/>
+					<source srcset="{{ imagenes[1].getUrl('small') }}"/>
 					<img src="{{ imagenes[1].url }}" data-src="{{ imagenes[1].url }}" alt="CNC machine" class="lazy img-fluid mb-md-n5 zindex2 position-relative">
 				</picture>
 				{# <img src="{{ calc2 }}" data-src="{{ calc2 }}" alt="CNC machine" class="lazy img-fluid d-none d-md-block"> #}
@@ -75,10 +76,8 @@
 						</p>
 						<a href="#cta_container" class="col-12 btn btn-outline-primary text-uppercase col-md-auto white-button float-right mb-3 scroll_to">COTIZA AHORA</a>
 					</div>
-					<div class="col-12 col-md-6">
-					</div>
-					<div class="col-12 col-md-6">
-					</div>
+					<div class="col-12 col-md-6"></div>
+					<div class="col-12 col-md-6"></div>
 					<div class="col-12 col-md-6 px-0 align-self-end mb-n5">
 						<img src="{{ calc5 }}" alt="Fondo gris" class="img-fluid">
 					</div>
@@ -86,19 +85,20 @@
 			</div>
 		</div>
 		<picture>
-		    <source srcset="{{ imagenes[2].getUrl('large') }}"
-		    media="(min-width: 1440px)" />
-		    <source srcset="{{ imagenes[2].getUrl('medium') }}"
-		    media="(min-width: 750px)" />
-		    <source srcset="{{ imagenes[2].getUrl('small') }}" />
+			<source srcset="{{ imagenes[2].getUrl('large') }}" media="(min-width: 1440px)"/>
+			<source srcset="{{ imagenes[2].getUrl('medium') }}" media="(min-width: 750px)"/>
+			<source srcset="{{ imagenes[2].getUrl('small') }}"/>
 			<img src="{{ imagenes[2].url }}" data-src="{{ imagenes[2].url }}" alt="CNC machine" class="lazy img-fluid floating-arm-1 zindex1 ">
 		</picture>
 	</div>
-	
+
 	<div class="container my-5 py-5 text-center calculo-riesgos">
 		<div class="row pt-5">
 			<div class="col-10 mx-auto">
-				<p class="h3">Este servicio consiste en <b>reducir el riesgo</b> de una selección empírica o basada en conceptos erróneos con el fin de <b>garantizar el funcionamiento de los equipos seleccionados.</b>
+				<p class="h3">Este servicio consiste en
+					<b>reducir el riesgo</b>
+					de una selección empírica o basada en conceptos erróneos con el fin de
+					<b>garantizar el funcionamiento de los equipos seleccionados.</b>
 				</p>
 				<p class="h2 mt-4 text-primary red-title">Conoce las consecuencias de una mala selección</p>
 				<div class="col-12 mx-auto pb-5 mb-5 mt-5 px-0">
@@ -107,19 +107,23 @@
 			</div>
 			<div class="col-12 col-md-4 fact my-4">
 				<p class="h1 text-primary red-title">770</p>
-				<p class="h5 w-75 mx-auto gray-title">PROYECTOS <br>CALCULADOS AL AÑO</p>
+				<p class="h5 w-75 mx-auto gray-title">PROYECTOS
+					<br>CALCULADOS AL AÑO</p>
 			</div>
 			<div class="col-12 col-md-4 fact my-4">
 				<p class="h1 text-primary red-title">1500+</p>
-				<p class="h5 w-75 mx-auto gray-title">EJES CALCULADOS <br> AL AÑO</p>
+				<p class="h5 w-75 mx-auto gray-title">EJES CALCULADOS
+					<br>
+					AL AÑO</p>
 			</div>
 			<div class="col-12 col-md-4 fact my-4">
 				<p class="h1 text-primary red-title">30+</p>
-				<p class="h5 w-75 mx-auto gray-title">AÑOS DE EXPERIENCIA <br>ACUMULADA</p>
+				<p class="h5 w-75 mx-auto gray-title">AÑOS DE EXPERIENCIA
+					<br>ACUMULADA</p>
 			</div>
 		</div>
 	</div>
-	
+
 	{# TABS #}
 	<div class="container">
 		<div class="row pb-5">
@@ -133,7 +137,9 @@
 					{% for step in proceso %}
 						<li class="nav-item">
 							<a class="nav-link {{ (loop.first ) ? 'active' : '' }} py-3" id="tab--{{step.id}}" data-toggle="tab" href="#tab-{{step.id}}" role="tab" aria-controls="tab-{{step.id}}" aria-selected="false">
-								{% if step.habilitarNumero %}<span>{{loop.index }}.</span> {% endif %}
+								{% if step.habilitarNumero %}
+									<span>{{loop.index }}.</span>
+								{% endif %}
 								{{step.title}}</a>
 						</li>
 					{% endfor %}
@@ -145,27 +151,22 @@
 						<div class="tab-pane fade {{ (loop.first ) ? ' show active ' : '' }}" id="tab-{{step.id}}" role="tabpanel" aria-labelledby="tab--{{step.id}}">
 							<div class="row">
 								<div class="col-12 col-md-6 text-right proceso-content align-self-center">
-									{% if step.habilitarNumero %}<span class="tab-index">{{ loop.index }}</span>{% endif %}
+									{% if step.habilitarNumero %}
+										<span class="tab-index">{{ loop.index }}</span>
+									{% endif %}
 									<p class="tab-title">{{ step.title }}</p>
 									<div class="body">{{ step.introduccion }}</div>
 									{% if step.habilitarNumero %}
-										<a href="#!" 
-											data-toggle="modal" 
-											data-target="#modal-proceso" 
-											data-title="{{step.title}}"
-											data-body="{{step.body}}"
-											class="btn mt-n1 red-button px-lg-5 py-3 rounded-0 proceso-trigger mb-4">CONOCE MÁS</a>
+										<a href="#!" data-toggle="modal" data-target="#modal-proceso" data-title="{{step.title}}" data-body="{{step.body}}" class="btn mt-n1 red-button px-lg-5 py-3 rounded-0 proceso-trigger mb-4">CONOCE MÁS</a>
 									{% else %}
-										<a href="#cta_container" class="btn mt-n1 red-button px-lg-5 py-3 rounded-0 scroll_to mb-4">COTIZA AHORA</a>		
+										<a href="#cta_container" class="btn mt-n1 red-button px-lg-5 py-3 rounded-0 scroll_to mb-4">COTIZA AHORA</a>
 									{% endif %}
 								</div>
 								<div class="col-12 col-md-6">
 									<picture>
-									    <source srcset="{{ step.fotoEncabezado.one().getUrl('large') }}"
-									    media="(min-width: 1440px)" />
-									    <source srcset="{{ step.fotoEncabezado.one().getUrl('medium') }}"
-									    media="(min-width: 750px)" />
-									    <source srcset="{{ step.fotoEncabezado.one().getUrl('small') }}" />
+										<source srcset="{{ step.fotoEncabezado.one().getUrl('large') }}" media="(min-width: 1440px)"/>
+										<source srcset="{{ step.fotoEncabezado.one().getUrl('medium') }}" media="(min-width: 750px)"/>
+										<source srcset="{{ step.fotoEncabezado.one().getUrl('small') }}"/>
 										<img src="{{ step.fotoEncabezado.one().url }}" data-src="{{ step.fotoEncabezado.one().url }}" alt="{{ step.title }}" class="img-fluid lazy">
 									</picture>
 								</div>
@@ -177,29 +178,29 @@
 		</div>
 	</div>
 	<!-- Modal -->
-<div class="modal fade" id="modal-proceso" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title h3 text-primary red-title" id="ProcesoModalLabel">Modal title</h5>
-        <button type="button" class="close close-modal-times" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body lead p-md-5">
-        ...
-      </div>
-      <div class="modal-footer">
-        <a href="#cta_container" class="btn mt-n1 red-button px-lg-5 py-3 rounded-0" data-dismiss="modal">CERRAR</a>		
+	<div class="modal fade" id="modal-proceso" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title h3 text-primary red-title" id="ProcesoModalLabel">Modal title</h5>
+					<button type="button" class="close close-modal-times" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body lead p-md-5">
+					...
+				</div>
+				<div class="modal-footer">
+					<a href="#cta_container" class="btn mt-n1 red-button px-lg-5 py-3 rounded-0" data-dismiss="modal">CERRAR</a>
 
-      </div>
-    </div>
-  </div>
-</div>
-{% endcache %}
+				</div>
+			</div>
+		</div>
+	</div>
+	{% endcache %}
 
 	{% cache %}
-		{% include '/partials/_mecanismosCalculo' %}
+	{% include '/partials/_mecanismosCalculo' %}
 	{% endcache %}
 
 	{# footer part #}
@@ -209,11 +210,9 @@
 			<div class="col-12 col-md-3"></div>
 			<div class="col-12 col-md-8">
 				<picture>
-				    <source srcset="{{ imagenes[4].getUrl('large') }}"
-				    media="(min-width: 1440px)" />
-				    <source srcset="{{ imagenes[4].getUrl('medium') }}"
-				    media="(min-width: 750px)" />
-				    <source srcset="{{ imagenes[4].getUrl('small') }}" />
+					<source srcset="{{ imagenes[4].getUrl('large') }}" media="(min-width: 1440px)"/>
+					<source srcset="{{ imagenes[4].getUrl('medium') }}" media="(min-width: 750px)"/>
+					<source srcset="{{ imagenes[4].getUrl('small') }}"/>
 					<img src="{{ imagenes[4].url }}" data-src="{{ imagenes[4].url }}" alt="Equipo servocontrolado" class="lazy img-fluid">
 				</picture>
 			</div>
@@ -221,19 +220,19 @@
 			<div class="col-12 col-md-10 " style="background-image: url({{ calc5 }});">
 				<div class="row">
 					<div class="col-12 col-md-6 offset-md-5 text-center">
-						<p class="py-5 mb-0 h4 text-primary line-height-15 ">En la compra de los componentes sugeridos, <br class="d-none d-md-block">se absorbe el costo del cálculo de los componentes.
-						<a href="#cta_container" class="btn mt-4 red-button px-lg-5 py-3 rounded-0 scroll_to">COTIZA AHORA</a></p>
+						<p class="py-5 mb-0 h4 text-primary line-height-15 ">En la compra de los componentes sugeridos,
+							<br class="d-none d-md-block">se absorbe el costo del cálculo de los componentes.
+							<a href="#cta_container" class="btn mt-4 red-button px-lg-5 py-3 rounded-0 scroll_to">COTIZA AHORA</a>
+						</p>
 
 					</div>
 				</div>
 			</div>
 		</div>
 		<picture class="d-none d-md-block">
-		    <source srcset="{{ imagenes[3].getUrl('large') }}"
-		    media="(min-width: 1440px)" />
-		    <source srcset="{{ imagenes[3].getUrl('medium') }}"
-		    media="(min-width: 750px)" />
-		    <source srcset="{{ imagenes[3].getUrl('small') }}" />
+			<source srcset="{{ imagenes[3].getUrl('large') }}" media="(min-width: 1440px)"/>
+			<source srcset="{{ imagenes[3].getUrl('medium') }}" media="(min-width: 750px)"/>
+			<source srcset="{{ imagenes[3].getUrl('small') }}"/>
 			<img src="{{ imagenes[3] }}" data-src="{{ imagenes[3] }}" alt="CNC machine" class="lazy img-fluid floating-arm-2 zindex3">
 		</picture>
 	</div>
@@ -287,14 +286,17 @@
 								<textarea id="" cols="30" rows="4" name="message[body]" id="estado" class="form-control" placeholder="Describe la aplicación que deseas calcular"></textarea>
 								<div class="messages"></div>
 							</div>
+							<div class="col-12 form-group">
+								{{ craft.recaptcha.render() }}
+							</div>
 							<div class="col-12 col-md-6 offset-md-6 text-right form-group">
-								 <button type="submit" class="col-12 btn btn-outline-primary text-uppercase col-md-auto white-button float-right mb-3">COTIZA AHORA</button>
-								 <div class="messages"></div>
+								<button type="submit" class="col-12 btn btn-outline-primary text-uppercase col-md-auto white-button float-right mb-3">COTIZA AHORA</button>
+								<div class="messages"></div>
 							</div>
 						</div>
 					</form>
 					<div class="form-alert animated" role="alert"></div>
-				</div>	
+				</div>
 			</div>
 		</div>
 	</div>
