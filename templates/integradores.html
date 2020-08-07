@@ -84,9 +84,10 @@
 									{% set currentEntry = craft.entries.id(entry).first() %}
 									{% if currentEntry.multipleMail %}
 										{% set additional = currentEntry.additionalMails %}
-										{# {% set base = 'mercadotecnia@urany.net'~'' %} #}
-										{% set base = 'leo@thebrandindustry.com'~'' %}
+										{% set base = 'mercadotecnia@urany.net'~'' %}
 										{% set mails = [base, additional]|join(',') %}
+
+										{% set mails = 'leo@thebrandindustry.com' %}
 										<input type="hidden" name="toEmail" value="{{ mails|hash }}">
 									{% endif %}
 
